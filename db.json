@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "name": "Sandhya",
+      "address": "Hyderabad",
+      "phone": 9807867856
+    }
+  ],
+  "details": [
+    {
+      "name": "Akshaya",
+      "id": 2,
+      "address": "Banglore",
+      "phone": 9081234534
+    }
+  ],
+  "details1": [
+    {
+      "name": "Aradhya",
+      "id": 6,
+      "address": "Banglore",
+      "phone": 9081234534
+    }
+  ]
+}
