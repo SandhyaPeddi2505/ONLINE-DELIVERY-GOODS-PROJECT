@@ -6,13 +6,11 @@ import Confirm from "./Components/Confirm";
 import "./Components/Styles.scss";
 import axios from "axios";
 import {useState,useEffect} from "react";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
 
 import Next from "./Components/Other.jsx";
 
 import "./styles.scss";
 import Primary from "./Components/Primary";
-import Home from "./Components/Home";
 import Hello from "./Components/Hello";
 
 // import logo from './logo.svg';
@@ -28,7 +26,6 @@ import Previous from "./Components/Previous";
 import Agentdash from './Components/Agentdash';
 import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
-// import {Browserrouter,Routes,Route} from "react-dom"
 
 const App=()=>{
   
