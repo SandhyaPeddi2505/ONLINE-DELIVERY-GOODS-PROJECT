@@ -106,7 +106,7 @@ const Agentdash=()=> {
               <td onClick={()=> hanldeClick(v)}>{v.Quantity}</td>
               <td>
                 <div>
-              <Link to="/confirm"><button type="button" onClick={toastSuccess} class="btn btn-success">Accept</button></Link>
+              <Link to="/confirmScreen"><button type="button" onClick={toastSuccess} class="btn btn-success">Accept</button></Link>
               <button type="button" onClick={toastError} class="btn btn-danger">Reject</button>
               </div>
                 {/* <a href="#" onClick={() => hanldeClick(v)}>
@@ -182,7 +182,7 @@ const Modal = ({ handleClose, details }) => {
           <button type="button" class="btn btn-outline-primary" onClick={handleClose}>Close</button>
           </center>
           <div className='right'>
-          <Link to="/confirm"><button type="button" onClick={toastSuccess} class="btn btn-success" >Accept</button></Link>
+          <Link to="/confirmScreen"><button type="button" onClick={toastSuccess} class="btn btn-success" >Accept</button></Link>
            <button type="button" onClick={toastError} class="btn btn-danger">Reject</button>
            </div>
           {/* /* <button >close</button> */}
