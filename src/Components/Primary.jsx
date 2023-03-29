@@ -116,7 +116,7 @@ const Primary = () => {
   
 
   return (
-    <div className="cont">
+    <div className="primaryCont">
       <h1 style={{ textAlign: "center ", padding: "40px 0 0 0px" }}>
         Address Details!!
       </h1>

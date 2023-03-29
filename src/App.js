@@ -7,12 +7,11 @@ import "./Components/Styles.scss";
 import axios from "axios";
 import {useState,useEffect} from "react";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import "./Components/City.scss";
+
 import Next from "./Components/Other.jsx";
-import "./Components/Other.scss";
+
 import "./styles.scss";
 import Primary from "./Components/Primary";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./Components/Home";
 import Hello from "./Components/Hello";
 
@@ -23,25 +22,18 @@ const App=()=>{
     <>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/primary1" element={<Primary />} />
       <Route path="/hi" element={<Hello />} />
       <Route path="/t" element={<Layout/>}/>
-      <Route path="/" element={<Source/>}/>
+      <Route path="/source" element={<Source/>}/>
       <Route path="/destination" element={<Destination/>}/>
       <Route path="/submit" element={<Submit/>}/>
       <Route path="/confirm" element={<Confirm/>}/>
       
     </Routes>
     </BrowserRouter>
-    {/* <div> */}
-    {/* <Submit/> */}
-    {/* </div> */}
-    {/* <div>
-    <Source primaryAddress={primaryAddress} />
-      <Source primaryAddress={primaryAddress} setPrimaryAddress={setPrimaryAddress} />
-    </div> */}
-    
+  
     </>
   )
 }
