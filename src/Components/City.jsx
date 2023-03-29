@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./City.scss";
 
 var data = require("./MOCK_DATA.json");
 export default function City() {
