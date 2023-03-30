@@ -6,9 +6,7 @@ import Confirm from "./Components/Confirm";
 import "./Components/Styles.scss";
 import axios from "axios";
 import {useState,useEffect} from "react";
-
 import Next from "./Components/Other.jsx";
-
 import "./styles.scss";
 import Primary from "./Components/Primary";
 import Hello from "./Components/Hello";
