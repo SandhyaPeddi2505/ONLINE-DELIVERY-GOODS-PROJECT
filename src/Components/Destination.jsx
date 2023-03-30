@@ -70,7 +70,7 @@ const Destination = () => {
                                 <form id="msform" onSubmit={handleSubmit}>
                                     <ul id="progressbar">
 
-                                        <Link to="/"><li class="active" id="source"><strong>Source</strong></li></Link>
+                                        <Link to="/source"><li class="active" id="source"><strong>Source</strong></li></Link>
                                         <Link to="/destination"><li class="active" id="destination"  ><strong>Destination</strong></li></Link>
                                         <Link to="/submit"><li id="submit" >Submit<strong></strong></li></Link>
                                         <Link to="/confirm"><li id="confirm" ><strong>Confirm</strong></li></Link>
@@ -85,7 +85,7 @@ const Destination = () => {
                                             {/* <button type="submit" className="btn btn-success">Submit</button> */}
                                         </div>
                                        
-                                        <Link to="/"><button name="previous" className="btn btn-secondary">Previous</button></Link>
+                                        <Link to="/source"><button name="previous" className="btn btn-secondary">Previous</button></Link>
                                         <Link to="/submit"><button  name="submit" className="btn btn-primary">Next</button></Link>
                                     </fieldset>
                                 </form>

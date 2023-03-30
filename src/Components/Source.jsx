@@ -104,7 +104,7 @@ const Source = (props) => {
                                 
                                         <ul id="progressbar"  >
                                         {/* // style={{width: `${progress}%`}} */}
-                                        <Link to="/"><li class="active" id="source"><strong>Source</strong></li></Link>
+                                        <Link to="/source"><li class="active" id="source"><strong>Source</strong></li></Link>
                                         <Link to="/destination"><li id="destination" ><strong>Destination</strong></li></Link>
                                         <Link to="/submit"><li id="submit" ><strong>Submit</strong></li></Link>
                                         <Link to="/confirm"><li id="confirm" ><strong>Confirm</strong></li></Link>

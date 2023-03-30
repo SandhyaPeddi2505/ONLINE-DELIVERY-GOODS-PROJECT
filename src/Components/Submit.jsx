@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
-import Source from "./Source";
+// import Source from "./Source";
 import axios from "axios";
 const Submit = (props) => {
     const [data, setData] = useState([]);
-    const getDetails = ({dataa},{details}) => {
+    const getDetails = () => {
         axios.get("http://localhost:3000/details").then(response => {
             setData(response.data)
         })
@@ -36,7 +36,7 @@ const Submit = (props) => {
                             <div className="col-md-12 mx-0">
                                 <form id="msform">
                                     <ul id="progressbar">
-                                        <Link to="/"><li className="active" id="source"><strong>Source</strong></li></Link>
+                                        <Link to="/source"><li className="active" id="source"><strong>Source</strong></li></Link>
                                         <Link to="/destination"><li id="destination" class="active" ><strong>Destination</strong></li></Link>
                                         <Link to="/submit"><li id="submit" class="active" ><strong>Submit</strong></li></Link>
                                         <Link to="/confirm"><li id="confirm" ><strong>Confirm</strong></li></Link>
