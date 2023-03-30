@@ -1,29 +1,40 @@
 import React from "react";
 // import { Link } from 'react-dom';
-import Navbar from 'react-bootstrap/Navbar';
+import logo from "./nav-logo.png"
+// import Navbar from 'react-bootstrap/Navbar';
 import aaa from './del1.png';
 import { Link } from "react-router-dom";
-import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
+// import Nav from 'react-bootstrap/Nav';
+// import Button from 'react-bootstrap/Button';
+
 const Home = () => {
     return (
         <>
-            <Navbar bg="dark" variant="secondary" className='justify-content-start'>
-                <Navbar.Brand href="#home">
-                    <img src="https://image.similarpng.com/very-thumbnail/2020/06/Fast-delivery-logo-design-vector-PNG.png" alt="Sample Brand Logo" width="35" className='align-top d-inline-block' height="35" />
-                    <span style={{ color: 'white' }}>De<span style={{ color: 'red' }}>l</span>ivery</span>
-                </Navbar.Brand>
-                {/* <Nav.Link as={Link} to="/agent"><span></span></Nav.Link> */}
-                &nbsp
-                <Nav.Link as={Link} to="/tracking"><span style={{ color: 'white' }}>Tracking</span></Nav.Link>
-                {/* <div className="justify-content-between"> */}
-                &nbsp
-                <Nav.Link as={Link} to="/agent"><span style={{ color: 'white' }}>Agent Registration</span></Nav.Link>
-                {/* </div> */}
-                {/* <Nav.Link as={Link} to="/agentdash"><span style={{color:'white'}}>Agent Registration</span></Nav.Link> */}
-                {/* <Nav.Link as={Link} to="/previous"><span style={{color:'white'}}>Previous</span></Nav.Link> */}
-            </Navbar>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src={logo} alt="qwe" height="35" width="60"/> <span style={{ color: 'white' }}>De<span style={{ color: 'red' }}>l</span>ivery</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      {/* <li class="nav-item active">
+        <a as={Link} to="/agent">Home <span class="sr-only">(current)</span></a>
+      </li> */}
+      {/* <nav><Link to="/tracking">Tracking</Link></nav> */}
+      <li class="nav-item">
+        <a class="nav-link" to={Link} href="/tracking" ><h5><span style={{color:"white"}}>Tracking</span></h5></a>
+      </li>
+      <li class="nav-item">
+        <div className="wer">
+        <a class="nav-link" to={Link} href="/agent"><h5><span style={{color:"white"}}>Agent Registration</span></h5></a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+           
+            
             {/* <div className="container"> */}
 
             <div className="bgj">
@@ -39,7 +50,8 @@ const Home = () => {
                                         tracking and delivery of items.</p>
                                 </div>
                                 <div>
-                                    <Button variant="outline-primary">Login</Button>{' '}
+                                    <button className="btn btn-primary">Login</button>
+                                 
                                 </div>
                             </div>
                         </div>
