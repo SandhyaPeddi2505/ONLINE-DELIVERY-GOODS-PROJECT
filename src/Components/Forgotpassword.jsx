@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from "react-router-dom";
 import abc from './online.png';
 
@@ -62,27 +60,31 @@ const Forgotpassword = () => {
                                 </div>
                                 {/* <div className="flex">             
           <div className="c"> */}
-                                <Form>
-                                    <Form.Group className="m-2" controlId="formBasicPassword">
-                                        <Form.Label> Enter New Password</Form.Label>
-                                        <Form.Control type="password" onChange={handlePasswordChange} value={password} required placeholder="New Password" />
-                                        <p>{passwordError}</p>
-                                    </Form.Group>
-                                    <Form.Group className="m-2" controlId="formBasicPassword">
-                                        <Form.Label>Confirm Password</Form.Label>
-                                        <Form.Control type="password" onChange={handleConfirmPasswordChange} value={confirmPassword} required placeholder="Confirm password" />                        <p>{confirmPasswordError}</p>
-                                    </Form.Group>
-                                    <Form.Group className="m-2" controlId="formBasicOtp">
-                                        <Form.Label>OTP</Form.Label>
-                                        <Form.Control type="text" onChange={handleOtpChange} value={otp} required placeholder="6-digit code" />                        <p>{otpError}</p>
-                                    </Form.Group>
+                                <form>
+                                    <div className="m-2" controlId="formBasicPassword">
+                                        <label> Enter New Password </label><br/>
+                                        <input type="password" onChange={handlePasswordChange} value={password}  className="form-control"required placeholder="New Password" />
+                                        
+                                        <p><span style={{ color: 'red' }}>{passwordError}</span></p>
+                                    </div>
+                                    <div className="m-2" controlId="formBasicPassword">
+                                        <label>Confirm Password</label><br/>
+                                        <input type="password" onChange={handleConfirmPasswordChange} value={confirmPassword}  className="form-control"required placeholder="Confirm password" />
+                                         
+                                         <p><span style={{ color: 'red' }}>{confirmPasswordError}</span></p>
+                                    </div>
+                                    <div className="m-2" controlId="formBasicOtp">
+                                        <label>OTP</label><br/>
+                                        <input type="text" onChange={handleOtpChange} value={otp}  className="form-control"required placeholder="6-digit code" />
+                                        <p><span style={{color:'red'}}>{otpError}</span></p>
+                                    </div>
                                     <div>
-                                        <Button type="submit">Confirm</Button>
+                                        <button type="submit" className="btn btn-primary">Confirm</button>
                                     </div>
                                     <div>
                                         <Link onClick={loginNavigate}>Back </Link>
                                     </div>
-                                </Form>
+                                </form>
                             </div>
                         </div>
                     </div>
