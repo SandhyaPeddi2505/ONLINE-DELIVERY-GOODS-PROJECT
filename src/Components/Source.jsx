@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState ,useEffect} from "react";
 import axios from "axios";
 
-const Source = (props) => {
+const Source = () => {
     const [dataa, setDataa] = useState([]);
     useEffect(()=>{
         axios.get("http://localhost:3000/posts").then(response=>{
@@ -64,7 +64,7 @@ const Source = (props) => {
         if (isPrimary) {
             setPrimaryAddress({
                 ...primaryAddress,
-                [e.target.name2]: e.target.value
+                [e.target.name]: e.target.value
             });
         } else {
             if(e.target.name === "address"){                                 //from 38 line to 43 line code added 
@@ -75,7 +75,7 @@ const Source = (props) => {
             }
             setSecondaryAddress({
                 ...secondaryAddress,
-                [e.target.name]: e.target.value
+                [e.target.name1]: e.target.value
             });
         }
     };
@@ -100,10 +100,10 @@ const Source = (props) => {
                                 <div className="col-md-12 mx-0">
                                     <form  id="msform" onSubmit={handleSubmit}>
                                         <div >
-                                        {/* // window.location.href = "/destination" */}
+                                        
                                 
                                         <ul id="progressbar"  >
-                                        {/* // style={{width: `${progress}%`}} */}
+                                        
                                         <Link to="/source"><li class="active" id="source"><strong>Source</strong></li></Link>
                                         <Link to="/destination"><li id="destination" ><strong>Destination</strong></li></Link>
                                         <Link to="/submit"><li id="submit" ><strong>Submit</strong></li></Link>
@@ -113,11 +113,12 @@ const Source = (props) => {
                                         </div>
                                         <fieldset>
                                             <div className="form-card" style={{direction:"flex",flexDirection:"row"}}>
-                                                <div className="col mx-0">
-                                                <label style={{ color: 'black' }} className="m-4"><input type="radio" name="addressType" value="primary" checked={isPrimary}
-                                                    onChange={handleAddressTypeChange} />Primary</label>
-                                                <label style={{ color: 'black' }} className="mr"><input type="radio" name="addressType" value="secondary" checked={!isPrimary}
-                                                    onChange={handleAddressTypeChange} />Secondary</label></div>
+                                                <div className="col  mx-5">
+                                                <label style={{ color: 'black' ,position:"relative",padding:"20px"}} >Primary<input type="radio" name="addressType"  value="primary" checked={isPrimary}
+                                                    onChange={handleAddressTypeChange} /></label>
+                                                <label style={{ color: 'black',padding:"20px"}} className="label">Secondary<input type="radio" name="addressType" className="mr" value="secondary" checked={!isPrimary}
+                                                    onChange={handleAddressTypeChange} /></label>
+                                                    </div>
                                                 {isPrimary ? (
                                                     <div className="row">
                                                         {dataa.map((value,i)=>{

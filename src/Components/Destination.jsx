@@ -5,7 +5,7 @@ import axios from "axios";
 const Destination = () => {
     const [details, setDetails] = useState({
         name: "",
-        phoneno: "",
+        phone: "",
         address: ""
       });
     
@@ -20,9 +20,9 @@ const Destination = () => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        const { name, address, phoneno } = details;
+        const { name, address, phone } = details;
         axios
-          .post("http://localhost:3000/details1", { name, phoneno, address })
+          .post("http://localhost:3000/details1", { name, phone, address })
           .then((res) => {
             console.log(res.data);
           })
@@ -81,7 +81,7 @@ const Destination = () => {
                                             <h2 className="fs-title">Destination Details</h2>
                                             <input type="text" name="name" placeholder="Name" value={details.name} onChange={handleChange} />
                                             <input type="text" name="address" placeholder="Address" value={details.address} onChange={handleChange} />
-                                            <input type="text" name="phoneno" placeholder="PhoneNo" value={details.phoneno} onChange={handleChange} />
+                                            <input type="text" name="phone" placeholder="PhoneNo" value={details.phone} onChange={handleChange} />
                                             {/* <button type="submit" className="btn btn-success">Submit</button> */}
                                         </div>
                                        

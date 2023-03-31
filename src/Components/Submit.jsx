@@ -25,6 +25,17 @@ const Submit = (props) => {
             .then((data) => setDest(data))
     }, []);
     console.log(dest, '67')
+    // const getDetails1 = () => {
+    //     axios.get("http://localhost:3000/details1").then(response => {
+    //         setDest(response.data)
+    //     })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         })
+    // }
+    // useEffect(() => {
+    //     getDetails1()
+    // }, [])
 
     return (
         <div className="container-fluid" id="grad1">
@@ -46,12 +57,12 @@ const Submit = (props) => {
                                         <div className="form-card">
                                             <h2 className="fs-title">Source Details</h2>
                                             {/* <label className="fs-title">Address details</label><br /> */}
-                                            {data.map((val, i) => {
+                                            {data.map((val,i) => {
                                                 return (
                                                     <>
-                                                        <label style={{ color: 'black' }}>Name:{val.name}</label><br />
-                                                        <label style={{ color: 'black' }}>Phoneno:{val.phone}</label><br />
-                                                        <label style={{ color: 'black' }}>Address:{val.address}</label>
+                                                        <label style={{ color: 'black' }}><b>Name:</b> {val.name}</label><br />
+                                                        <label style={{ color: 'black' }}><b>Address:</b> {val.address}</label><br/>
+                                                        <label style={{ color: 'black' }}><b>Phoneno:</b>{val.phone}</label><br />
                                                     </>
                                                 )
                                             })}
@@ -59,16 +70,16 @@ const Submit = (props) => {
                                         </div>
                                         <div className="form-card">
                                         
-                                            {dest.map((val, i) => {
+                                            {dest.map((val,i) => {
                                                 return (
                                                     <>
                                                     <h2 className="fs-title">Destination Details</h2>
-                                                        <label style={{ color: 'black' }}>Name:{val.name}</label><br />
-                                                        <label style={{ color: 'black' }}>Phoneno:{val.phone}</label><br />
-                                                        <label style={{ color: 'black' }}>Address:{val.address}</label>
+                                                        <label style={{ color: 'black' }} ><b>Name:</b>{val.name}</label><br />
+                                                        <label style={{ color: 'black' }}><b>Address:</b>{val.address}</label><br/>
+                                                        <label style={{ color: 'black' }}><b>Phoneno:</b>{val.phone}</label><br />
                                                     </>
                                                 )
-                                            })}
+                                            })}<br></br>
                                         </div>
                                         <Link to="/destination"><button name="previous" className="btn btn-secondary">Previous</button></Link>
                                         <Link to="/confirm"><button name="next" className="btn btn-primary">Submit</button></Link>
