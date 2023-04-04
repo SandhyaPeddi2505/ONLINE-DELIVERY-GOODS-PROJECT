@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import React from "react";
 import "./Popular.scss";
-var data = require("./MOCK_DATA.json");
+import axios from "axios";
+// var data = require("./MOCK_DATA");
 
 const Popular = (onClick) => {
     const [selectedCity, setSelectedCity] = useState("");
@@ -17,6 +18,22 @@ const Popular = (onClick) => {
   };
     const handleClick=()=>{
     }
+    const [data, setData] = useState({});
+    useEffect(() => {
+      //call API
+      axios.get('https://57e3-49-249-11-110.in.ngrok.io/list', {
+        headers: {
+           'Content-Type': 'application/json',
+           "Access-Control-Allow-Headers": '*',
+          }
+      })
+        .then(response => {
+          setData(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }, []);
     return (
         <>
     
@@ -41,7 +58,7 @@ const Popular = (onClick) => {
           <a href="#" class="button">
             <button type="button">Search</button>
           </a>
-          {data
+          {/* {data
             .filter((item) => {
               const searchTerm = value.toLowerCase();
               const fullName = item.full_name.toLowerCase();
@@ -58,7 +75,7 @@ const Popular = (onClick) => {
               >
                 {item.full_name}
               </div>
-            ))}
+            ))} */}
         </div>
       </div>
       <div>
