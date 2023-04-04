@@ -68,7 +68,7 @@ const Signup = () => {
       .then((response) => {
         console.log(response);
         if (response?.status === 200) {
-          navigate("/");
+          navigate("/login");
           console.log(response?.status);
         }
       })
@@ -103,10 +103,10 @@ const Signup = () => {
       setErrors({ cpassword: "Passwords do not match" });
     }
 
-    
+
     console.log("EMAIL", email);
     console.log("PASSWORD", password);
-    
+
     if (
       email !== "" &&
       password !== "" &&
@@ -121,28 +121,29 @@ const Signup = () => {
     }
   };
   const loginNavigate = (e) => {
-    navigate("/");
+    navigate("/login");
     window.location.reload();
   };
 
   return (
     <>
       <div>
-        
-          <div className="xyz">
-            <div className="flex">
-              <div className="form">
-                <div className="co">
-                  <img src={abc} alt="dele" height="500" width="500" />
-                </div>
+
+        <div className="man">
+          <div className="flex">
+            <div className="">
+              <div className="f">
+                <img src={abc} alt="dele" height="500" width="500" />
               </div>
-              <div className="co">
-                <div className="form">
-                  <h1>Sign Up</h1>
+            </div>
+            <div className="">
+              <div className="pg">
+                <h1>Sign Up</h1>
 
-                  <form>
-                    {/* {successMsg && <p className="success-msg">{successMsg}</p>} */}
-
+                <form>
+                  {/* {successMsg && <p className="success-msg">{successMsg}</p>} */}
+                  <div>
+                    
                     <div className="mb-3" id="formBasicEmail">
                       <label>Email address</label>
                       <input
@@ -155,55 +156,56 @@ const Signup = () => {
                       />
 
                       <span style={{ color: "red" }}>{emailError}</span>
-                    </div>
+                    
+                  </div>
+                  <div className="mb-3" id="formBasicLastName">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      onChange={(e) => validateEmail(e)}
+                      placeholder="password"
+                      className="form-control"
+                      required
+                    />
+                    {/* <span className='password-icon' onClick={handleToggle}><Icon icon={icon} size={25} /></span>  */}
+                    <span style={{ color: "red" }}>{passwordError}</span>
+                  </div>
+                  {console.log(error)}
+                  <div className="mb-3">
+                    <label>Confirm Password</label>
+                    <input
+                      type="password"
+                      name="cpassword"
+                      className="form-control"
+                      onChange={(e) => validateEmail(e)}
+                      placeholder="Confirm Password"
+                      required
+                    />
+                    {/* <span className='password-icon' onClick={handleTogglee}><Icon icon={icon} size={25} /></span>  */}
+                    <span style={{ color: "red" }}>{cPasswordError}</span>
+                  </div>
 
-                    <div className="mb-3" id="formBasicLastName">
-                      <label>Password</label>
-                      <input
-                        type="password"
-                        name="password"
-                        onChange={(e) => validateEmail(e)}
-                        placeholder="password"
-                        className="form-control"
-                        required
-                      />
-                      {/* <span className='password-icon' onClick={handleToggle}><Icon icon={icon} size={25} /></span>  */}
-                      <span style={{ color: "red" }}>{passwordError}</span>
-                    </div>
-                    {console.log(error)}
-                    <div className="mb-3">
-                      <label>Confirm Password</label>
-                      <input
-                        type="password"
-                        name="cpassword"
-                        className="form-control"
-                        onChange={(e) => validateEmail(e)}
-                        placeholder="Confirm Password"
-                        required
-                      />
-                      {/* <span className='password-icon' onClick={handleTogglee}><Icon icon={icon} size={25} /></span>  */}
-                      <span style={{ color: "red" }}>{cPasswordError}</span>
-                    </div>
-
-                    <button
-                      onClick={handlesubmit}
-                      className="btn btn-primary"
-                      type="Submit"
-                    >
-                      Register
-                    </button>
-                    <div>
-                      <p>
-                        Already have an account !{" "}
-                        <Link onClick={loginNavigate}>Login</Link>
-                      </p>
-                    </div>
-                  </form>
-                </div>
+                  <button
+                    onClick={handlesubmit}
+                    className="btn btn-primary"
+                    type="Submit"
+                  >
+                    Submit
+                  </button>
+                  <div>
+                    <p>
+                      Already have an account ?
+                      <Link style={{ color:"blue",textDecoration:"none"}} onClick={loginNavigate}>Login</Link>
+                    </p>
+                  </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-        
+        </div>
+
       </div>
     </>
   );

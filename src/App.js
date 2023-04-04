@@ -19,7 +19,7 @@ import "./Style.scss";
 import React from 'react';
 import Agent from './Components/Agent';
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeNew from './Components/HomeNew';
 import Home from './Components/Home';
 import Previous from "./Components/Previous";
@@ -64,7 +64,7 @@ const App=()=>{
       <Route path='/previous' element={<Previous/>}/>
       <Route path="/tracking" element={<Tracking/>}/>
       <Route path="/confirmScreen" element={<Confirmscreen/>}/>
-      <Route path='/' element={<Login />}></Route>
+      <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/OTP' element={<OTP/>}></Route>
           <Route path='/user' element={<User/>}></Route>

@@ -57,16 +57,17 @@ const handleSubmit = (e) => {
     }
     return (
         <>
-            <div className="xyz">
+            <div className="yes">
                 <div className='flex'>
                     <div className="form">
-                        <div className='co'>
+                        <div className='mm'>
                             <img src={abc} alt='dele' height="500" width="500" />
                         </div>
                     </div>
-                    <div className='co'>
-                        <div className='form'>
+                    <div className='nn'>
+                        <div className='mb-3'>
                             <h1>Log In</h1>
+                            </div>
                             <form>
                                 <div className="mb-3" id="formBasicEmail">
                                     <label>Email address</label>
@@ -89,11 +90,11 @@ const handleSubmit = (e) => {
                                     <button onClick={handleSubmit} className="btn btn-primary" type="LogIn"> Log In </button>
                                 </div>
                                 <div className="d-flex flex-row justify-content-end" >
-                                    <a className="small text-muted"><Link to='/OTP' >Forgotpassword?</Link></a>
+                                    <a className="small text-muted" style={{textDecoration:"none"}}><Link to='/OTP' style={{color:"black",textDecoration:"none"}} >Forgotpassword?</Link></a>
                                 </div>
-                                <p> Don't have an account? <Link to='/signup'>Signup</Link></p>
+                                <p> Don't have an account? <Link to='/signup'style={{ color:"blue",textDecoration:"none"}}>Signup</Link></p>
                             </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
