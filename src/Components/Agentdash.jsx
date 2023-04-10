@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 // import Navbar from 'react-bootstrap/Navbar';
 // import Nav from 'react-bootstrap/Nav';
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 import logo from "./nav-logo.png";
 const Agentdash=()=> {
         const data= [
@@ -67,6 +68,22 @@ const Agentdash=()=> {
   // const handleReject=()=>{
   //   alert("Oops! Delivery Rejected!")
   // }
+  const [dataa, setDataa] = useState({});
+  useEffect(() => {
+    //call API
+    axios.get('http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/order_info/', {
+      // headers: {
+      //    'Content-Type': 'application/json',
+      //    "Access-Control-Allow-Headers": '*',
+      //   }
+    })
+      .then(response => {
+        setDataa(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
     return (
         <>

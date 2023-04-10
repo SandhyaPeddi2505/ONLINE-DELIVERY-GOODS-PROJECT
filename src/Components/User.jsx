@@ -1,9 +1,27 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Link } from "react-router-dom";
 // import Nav from 'react-bootstrap/Nav';
 // import Navbar from 'react-bootstrap/Navbar';
 import abc from './user.png';
+import axios from "axios";
+
 const User = () => {
+  const [dataa, setDataa] = useState({});
+useEffect(() => {
+  //call API
+  axios.get('http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/userinfo', {
+    // headers: {
+    //    'Content-Type': 'application/json',
+    //    "Access-Control-Allow-Headers": '*',
+    //   }
+  })
+    .then(response => {
+      setDataa(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}, []);
   return (
 
     <div>

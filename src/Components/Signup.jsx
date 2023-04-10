@@ -60,7 +60,7 @@ const Signup = () => {
     e.preventDefault();
 
     axios
-      .post("https://a6f7-49-249-11-110.in.ngrok.io/admin_sign_up", {
+      .post("http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/admin_sign_up", {
         email,
         password,
         cpassword
