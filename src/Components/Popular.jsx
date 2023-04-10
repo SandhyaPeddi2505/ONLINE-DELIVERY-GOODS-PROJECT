@@ -21,11 +21,11 @@ const Popular = (onClick) => {
     const [data, setData] = useState({});
     useEffect(() => {
       //call API
-      axios.get('https://57e3-49-249-11-110.in.ngrok.io/list', {
-        headers: {
-           'Content-Type': 'application/json',
-           "Access-Control-Allow-Headers": '*',
-          }
+      axios.get('http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/cityList', {
+        // headers: {
+        //    'Content-Type': 'application/json',
+        //    "Access-Control-Allow-Headers": '*',
+        //   }
       })
         .then(response => {
           setData(response.data);
