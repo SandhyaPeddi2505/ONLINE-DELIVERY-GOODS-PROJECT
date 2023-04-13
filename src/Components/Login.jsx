@@ -35,7 +35,7 @@ import abc from './online.png';
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    axios.get('http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/admin_sign_up',).then(response => {
+    axios.get('',).then(response => {
     
     if(!email || !password) {
     alert("Enter all fields");

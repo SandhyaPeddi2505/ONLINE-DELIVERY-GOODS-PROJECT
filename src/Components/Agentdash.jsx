@@ -71,7 +71,7 @@ const Agentdash=()=> {
   const [dataa, setDataa] = useState({});
   useEffect(() => {
     //call API
-    axios.get('http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/order_info/', {
+    axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/order_info/', {
       // headers: {
       //    'Content-Type': 'application/json',
       //    "Access-Control-Allow-Headers": '*',

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 // import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import abc from './pic.png';
 // import Swal from "swal"
+import axios from "axios";
 import Swal from 'sweetalert2';
 
 const Profile = () => {
@@ -88,6 +89,22 @@ const Profile = () => {
     //       )
     //     }
     //   })
+    const [dataa, setDataa] = useState({});
+    useEffect(() => {
+        //call API
+        axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/userinfo', {
+          // headers: {
+          //    'Content-Type': 'application/json',
+          //    "Access-Control-Allow-Headers": '*',
+          //   }
+        })
+          .then(response => {
+            setDataa(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }, []);
     const handleSubmit = () => {
         Swal.fire({
             title: 'Do you want to order from this address?',

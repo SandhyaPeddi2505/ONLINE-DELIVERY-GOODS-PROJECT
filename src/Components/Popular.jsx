@@ -21,7 +21,7 @@ const Popular = (onClick) => {
     const [data, setData] = useState({});
     useEffect(() => {
       //call API
-      axios.get('http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/cityList', {
+      axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/cityList', {
         // headers: {
         //    'Content-Type': 'application/json',
         //    "Access-Control-Allow-Headers": '*',

@@ -85,7 +85,7 @@ const Destination = () => {
                                             {/* <button type="submit" className="btn btn-success">Submit</button> */}
                                         </div>
                                        
-                                        <Link to="/"><button name="previous" className="btn btn-secondary">Previous</button></Link>
+                                        <Link to="/source"><button name="previous" className="btn btn-secondary">Previous</button></Link>
                                         <Link to="/submit"><button  name="submit" className="btn btn-primary">Next</button></Link>
                                     </fieldset>
                                 </form>

@@ -60,7 +60,7 @@ const Signup = () => {
     e.preventDefault();
 
     axios
-      .post("http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/admin_sign_up", {
+      .get("http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/admin_sign_up", {
         email,
         password,
         cpassword

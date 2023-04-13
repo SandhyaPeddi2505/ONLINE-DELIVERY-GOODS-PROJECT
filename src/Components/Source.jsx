@@ -39,7 +39,7 @@ const Source = (props) => {
         
 
         
-       fetch("http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/Primary_Secondary_Dest_infos/",{
+       fetch("http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/Primary_Secondary_Dest_infos/",{
         method:"POST",
         body: JSON.stringify({
             Name:details.Name,
