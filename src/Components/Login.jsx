@@ -35,7 +35,7 @@ import abc from './online.png';
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    axios.get('https://a6f7-49-249-11-110.in.ngrok.io/admin_sign_up',).then(response => {
+    axios.get('',).then(response => {
     
     if(!email || !password) {
     alert("Enter all fields");

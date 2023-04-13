@@ -20,9 +20,9 @@ const Destination = () => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        const { name, address, phoneno } = details;
+        const { name, address, mobile_num } = details;
         axios
-          .post("http://localhost:3000/details1", { name, phoneno, address })
+          .post("http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/destination/", { name, mobile_num, address })
           .then((res) => {
             console.log(res.data);
           })
@@ -85,7 +85,7 @@ const Destination = () => {
                                             {/* <button type="submit" className="btn btn-success">Submit</button> */}
                                         </div>
                                        
-                                        <Link to="/"><button name="previous" className="btn btn-secondary">Previous</button></Link>
+                                        <Link to="/source"><button name="previous" className="btn btn-secondary">Previous</button></Link>
                                         <Link to="/submit"><button  name="submit" className="btn btn-primary">Next</button></Link>
                                     </fieldset>
                                 </form>
