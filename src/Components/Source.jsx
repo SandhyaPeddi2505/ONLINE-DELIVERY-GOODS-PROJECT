@@ -1,61 +1,80 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from "react-router-dom";
 import { useState ,useEffect} from "react";
 import axios from "axios";
 
-const Source = (props) => {
+const Source = ({ onNextClick,deliveryData }) => {
     const [dataa, setDataa] = useState([]);
-    // // useEffect(()=>{
-    // //     axios.post("http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/Primary_Secondary_Dest_infos/").then(response=>{
-    // //         setDataa(response.data)
-    // //         console.log(response)
-    // //     })
-    // //     .catch((error)=>{
-    // //         console.log(error)
-    // //     })
-    // // },[])
-    const [details,setDetails]=useState({   //for secondary address upto line 17 and continue from line no: 36
-        Name:"",
-        Address:"",
-        Phone_number:""
+    const [details,setDetails]=useState({   
+        name: "",
+        address: "",
+        phone:"",
+        formErrors: {
+            name: "",
+            address: "",
+            phone: ""
+          }
     })
     
-    const changeHandle=(e)=>{
-        let updateData=details;
-        updateData[e.target.name]=e.target.value;
-        setDetails({...updateData})
+    useEffect(()=>{
+        axios.get("http://localhost:3000/posts").then(response=>{
+            setDataa(response.data)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+        console.log(deliveryData, "dfdf")
+        if(deliveryData && !deliveryData.Source.isPrimary){
+            
+            setDetails({...details, name:deliveryData.Source.name,address:deliveryData.Source.address,phone:deliveryData.Source.phone})
+            
+        }
+        
+        },[])
+        const changeHandle=(e)=>{
+        const { name, value } = e.target;
+        let formErrors = details.formErrors;
+        switch (name) {
+            case "name":
+              formErrors.name =
+                value.length < 3 ? "minimum 3 characters required" : "";
+              break;
+            case "address":
+              formErrors.address =
+                value.length < 10 ? "minimum 10 characters required" : "";
+              break;
+            case "phone":
+              formErrors.phone =
+                value.length < 10
+                  ? "minimum 10 digits required"
+                  : value.length > 10
+                  ? "maximum 10 digits allowed"
+                  : "";
+              break;
+            default:
+              break;
+          }
+        setDetails({ ...details, [name]: value, formErrors })
 }
-    
     const [primaryAddress, setPrimaryAddress] = useState({
         name2: "Sandhya",
         address2: "Hyderabad",
         phone2: "9087898078"
     });
-    
-    // console.log(dataa,"primary")
-    
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(deliveryData)
         
-
-        
-       fetch("http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/Primary_Secondary_Dest_infos/",{
-        method:"POST",
-        body: JSON.stringify({
-            Name:details.Name,
-            Address:details.Address,
-            Phone_number:details.Phone_number
-        }),
-        headers:{"Content-type": "application/json; charset=UTF-8",},
-    })
-    .then((response)=>response.json())
-    .then((data)=>{
-
-    }).catch((error)=>{
-        console.log(error)
-    })
+        if (
+            details.formErrors.name === "" &&
+            details.formErrors.address === "" &&
+            details.formErrors.phone === ""
+          ) {
+            console.log(details);
+          } else {
+            alert("Form has errors!");
+          }
+       
 }
-    
     const [secondaryAddress, setSecondaryAddress] = useState({
         name1: "",
         address1: "",
@@ -66,7 +85,7 @@ const Source = (props) => {
         if (isPrimary) {
             setPrimaryAddress({
                 ...primaryAddress,
-                [e.target.name2]: e.target.value
+                [e.target.name]: e.target.value
             });
         } else {
             if(e.target.name === "address"){                                 //from 38 line to 43 line code added 
@@ -77,12 +96,10 @@ const Source = (props) => {
             }
             setSecondaryAddress({
                 ...secondaryAddress,
-                [e.target.name]: e.target.value
+                [e.target.name1]: e.target.value
             });
         }
     };
-    
-    
     const handleAddressTypeChange = (e) => {
         setIsPrimary(e.target.value === "primary");
     };
@@ -102,34 +119,32 @@ const Source = (props) => {
                                 <div className="col-md-12 mx-0">
                                     <form  id="msform" onSubmit={handleSubmit}>
                                         <div >
-                                        {/* // window.location.href = "/destination" */}
-                                
                                         <ul id="progressbar"  >
-                                        {/* // style={{width: `${progress}%`}} */}
-                                        <Link to="/"><li class="active" id="source"><strong>Source</strong></li></Link>
-                                        <Link to="/destination"><li id="destination" ><strong>Destination</strong></li></Link>
-                                        <Link to="/submit"><li id="submit" ><strong>Submit</strong></li></Link>
-                                        <Link to="/confirm"><li id="confirm" ><strong>Confirm</strong></li></Link>
-
+                                        <li class="active" id="source"><strong>Source</strong></li>
+                                        <li id="destination" ><strong>Destination</strong></li>
+                                        <li id="submit" ><strong>Submit</strong></li>
+                                        <li id="confirm" ><strong>Confirm</strong></li>
                                         </ul>
                                         </div>
                                         <fieldset>
                                             <div className="form-card" style={{direction:"flex",flexDirection:"row"}}>
-                                                <div className="col mx-0">
-                                                <label style={{ color: 'black' }} className="m-4"><input type="radio" name="addressType" value="primary" checked={isPrimary}
-                                                    onChange={handleAddressTypeChange} />Primary</label>
-                                                <label style={{ color: 'black' }} className="mr"><input type="radio" name="addressType" value="secondary" checked={!isPrimary}
-                                                    onChange={handleAddressTypeChange} />Secondary</label></div>
+                                                <div className="col  mx-5">
+                                                <label style={{ color: 'black' ,position:"relative",padding:"20px"}} >Primary<input type="radio" name="addressType"  value="primary" checked={isPrimary}
+                                                    onChange={handleAddressTypeChange} /></label>
+                                                <label style={{ color: 'black',padding:"20px"}} className="label">Secondary<input type="radio" name="addressType" className="mr" value="secondary" checked={!isPrimary}
+                                                    onChange={handleAddressTypeChange} /></label>
+                                                    </div>
                                                 {isPrimary ? (
                                                     <div className="row">
                                                         {dataa.map((value,i)=>{
-                                                            console.log(value,"one")
+                                                            // console.log(value,"one")
                                                             return (
                                                                 <>
                                                                 <div className="col-md-4">
                                                             <div className="form-outline">
                                                         <label style={{ color: 'black' }} ><b>Name:</b><input type="text" name="name" value={value.name} placeholder="Name"
                                                             onChange={handleChange} />
+                                                           
                                                             </label>
                                                             </div>
                                                             </div>
@@ -137,11 +152,13 @@ const Source = (props) => {
                                                                 <div className="form-outline">
                                                         <label style={{ color: 'black' }}><b>Address:</b><input type="text" name="address" value={value.address} placeholder="Address"
                                                             onChange={handleChange} />
+                                                            
                                                             </label>
                                                             </div>
                                                             </div>
-                                                        <label style={{ color: 'black' }}><b>Phone:</b><input type="text" name="Phone" value={value.phone} placeholder="PhoneNo"
+                                                        <label style={{ color: 'black' }}><b>Phone:</b><input type="tel" name="phone" value={value.phone} placeholder="PhoneNo"
                                                             onChange={handleChange} />
+                                                           
                                                         </label>
                                                                 </>
                                                             )
@@ -150,34 +167,46 @@ const Source = (props) => {
                                                         </div>  
                                                     
                                                          ) : (
-                                                        // <form onSubmit={submitHandle}>
+                                                        
                                                        <div className="row" >
                                                            <div className="col-md-4">
                                                           <label style={{ color: 'black' }}><b>Name:</b>
-                                                            <input type="text" name="Name" value={details.Name} className="cont"
-                                                                onChange={changeHandle} />
+                                                            <input type="text" name="name" value={details.name}  className={details.formErrors.name.length > 0 ? "error" : null}
+                                                                onChange={changeHandle} /> {details.formErrors.name.length > 0 && (
+                                                                    <span style={{color:"red"}} className="errorMessage">{details.formErrors.name}</span>
+                                                                  )}
                                                             </label></div>
                                                            <div className="col-md-4">
-                                                           <label style={{ color: 'black' }}><b>Address:</b><input className="cont" type="text" name="Address" value={details.Address}
+                                                           <label style={{ color: 'black' }}><b>Address:</b><input className={details.formErrors.address.length > 0 ? "error" : null} type="text" name="address" value={details.address}
                                                             onChange={changeHandle} />
+                                                            {details.formErrors.address.length > 0 && (
+                                                            <span style={{color:"red"}} className="errorMessage">{details.formErrors.address}</span>
+                                                            )}
                                                            </label></div>
-                                                           <label style={{ color: 'black' }}><b>Phone_number:</b>
-                                                            <input className="cont" type="text" name="Phone_number" value= {details.Phone}
+                                                           <label style={{ color: 'black' }}><b>Phone:</b>
+                                                            <input className={details.formErrors.phone.length > 0 ? "error" : null} type="text" name="phone" value= {details.phone}
                                                                 onChange={changeHandle} />
+                                                                 {details.formErrors.phone.length > 0 && (
+                                                            <span style={{color:"red"}} className="errorMessage">{details.formErrors.phone}</span>
+                                                            )}
                                                             </label>
                                                             
                                                         </div>
                                                         
-                                                        // </form>
+                                                        
                                                 )}
-                                                {/* <button type="submit" className="btn btn-success">Submit</button> */}
+                                                
                                             </div>
+                                            <div>
+                                             
+                                              </div>
+                                              
+                                            
                                             <button type="button" onClick={handleCancel} className="btn btn-secondary">Cancel</button>
-                                            {/* <Link to="/"><button name="cancel" class="btn btn-primary">Cancel</button></Link> */}
-                                            <Link to="/destination"><button name="next" className="btn btn-primary">Next</button></Link>
-                                            <button type="submit">submit</button>
+                                            <button  name="button" value="submit" className="btn btn-primary" onClick={()=>{onNextClick(isPrimary ? {isPrimary:true,...dataa[0]}:{isPrimary:false,...details})}}>Next</button>
                                         </fieldset>
                                     </form>
+                                    
                                 </div>
                             </div>
                         </div>
