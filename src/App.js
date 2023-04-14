@@ -26,6 +26,7 @@ import Previous from "./Components/Previous";
 import Agentdash from './Components/Agentdash';
 import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
+import StepperWrapper from "./Components/StepperWrapper";
 
 const App=()=>{
   
@@ -38,10 +39,10 @@ const App=()=>{
       <Route path="/primary1" element={<Primary />} />
       <Route path="/hi" element={<Hello />} />
       <Route path="/t" element={<Layout/>}/>
-      <Route path="/source" element={<Source/>}/>
-      <Route path="/destination" element={<Destination/>}/>
-      <Route path="/submit" element={<Submit/>}/>
-      <Route path="/confirm" element={<Confirm/>}/>
+      <Route path="/source" element={<StepperWrapper/>}/>
+      {/* <Route path="/destination" element={<Destination/>}/> */}
+      {/* <Route path="/submit" element={<Submit/>}/> */}
+      {/* <Route path="/confirm" element={<Confirm/>}/> */}
       <Route path='/' element={<Home/>}></Route>
       <Route path='/agent' element={<Agent/>}/>
       <Route path='/agentdash' element={<Agentdash/>}/>

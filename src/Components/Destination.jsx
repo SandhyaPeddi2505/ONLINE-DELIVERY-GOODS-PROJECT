@@ -2,7 +2,8 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const Destination = () => {
+// import Submit from "./Submit";
+const Destination = ({ onNextClick, onPrevClick }) => {
     const [details, setDetails] = useState({
         name: "",
         phone: "",
@@ -84,9 +85,9 @@ const Destination = () => {
                                             <input type="text" name="phone" placeholder="PhoneNo" value={details.phone} onChange={handleChange} />
                                             {/* <button type="submit" className="btn btn-success">Submit</button> */}
                                         </div>
-                                       
-                                        <Link to="/source"><button name="previous" className="btn btn-secondary">Previous</button></Link>
-                                        <Link to="/submit"><button  name="submit" className="btn btn-primary">Next</button></Link>
+                                       {/* <Submit/> */}
+                                        <button name="previous" type="button" className="btn btn-secondary" onClick={onPrevClick}>Previous</button>
+                                        <button  name="submit" type="button" className="btn btn-primary" onClick={onNextClick}>Next</button>
                                     </fieldset>
                                 </form>
                             </div>

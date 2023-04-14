@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 // import Source from "./Source";
 import axios from "axios";
-const Submit = (props) => {
+const Submit = ({ onNextClick, onPrevClick }) => {
+    const [dest, setDest] = useState([])
     const [data, setData] = useState([]);
     const getDetails = () => {
         axios.get("http://localhost:3000/details").then(response => {
@@ -18,7 +19,6 @@ const Submit = (props) => {
     }, [])
     console.log(data,'source')
     //destination details
-    const [dest, setDest] = useState([])
     useEffect(() => {
         fetch("http://localhost:3000/details1")
             .then((res) => res.json())
@@ -81,8 +81,8 @@ const Submit = (props) => {
                                                 )
                                             })}<br></br>
                                         </div>
-                                        <Link to="/destination"><button name="previous" className="btn btn-secondary">Previous</button></Link>
-                                        <Link to="/confirm"><button name="next" className="btn btn-primary">Submit</button></Link>
+                                        <button name="previous" type="button" className="btn btn-secondary" onClick={onPrevClick}>Previous</button>
+                                       <button name="next" type="button" className="btn btn-primary"  onClick={onNextClick}>Submit</button>
                                     </fieldset>
 
                                 </form>
@@ -95,6 +95,27 @@ const Submit = (props) => {
     )
 }
 export default Submit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

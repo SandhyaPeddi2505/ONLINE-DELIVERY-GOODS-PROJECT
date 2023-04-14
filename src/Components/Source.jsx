@@ -2,8 +2,50 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import { useState ,useEffect} from "react";
 import axios from "axios";
+import Submit from "./Submit";
+import Confirm from "./Confirm";
+import Destination from "./Destination";
+const Source = ({ onNextClick }) => {
+    const [page, setPage] = useState(1);
+    
+    // const handleNext = () => {
+    //     setPage(page + 1);
+    //   }
+    
+      
+    //   const handlePrev = () => {
+    //     setPage(page - 1);
+    //   }
+    
+    
+    //   let component;
 
-const Source = () => {
+   
+      const handleNext = () => {
+        setPage(page + 1);
+      };
+    
+    // Creating a function to handle previous button
+      const handlePrevious = () => {
+        setPage(page - 1);
+      };
+//     const [step, setStep] = useState(1);
+//   const nextStep = () => {
+//     setStep(step + 1);
+//   };
+//   const prevStep = () => {
+//     setStep(step - 1);
+//   };
+//   switch (step) {
+//     case 1:
+//       return <Source nextStep={nextStep} />;
+//     case 2:
+//       return <Destination prevStep={prevStep} nextStep={nextStep} />;
+//     case 3:
+//       return <Submit prevStep={prevStep} nextStep={nextStep} />;
+//     case 4:
+//       return <Confirm prevStep={prevStep} />;
+//   }
     const [dataa, setDataa] = useState([]);
     useEffect(()=>{
         axios.get("http://localhost:3000/posts").then(response=>{
@@ -88,7 +130,35 @@ const Source = () => {
         e.preventDefault();
         window.location.reload();
     }
-    
+    const renderComponent = () => {
+        switch (page) {
+          
+          case 1:
+            return <Destination />;
+          case 2:
+            return <Submit />;
+          case 3:
+            return <Confirm/>;
+          default:
+            break;
+        }
+      };
+    // switch (page) {
+    //     case 1:
+    //       component = <Destination />;
+    //       break;
+    //     case 2:
+    //       component = <Destination />;
+    //       break;
+    //     case 3:
+    //       component = <Submit />;
+    //       break;
+    //     case 4:
+    //       component = <Confirm />;
+    //       break;
+    //     default:
+    //       component = <Source />;
+    //   }
     return (
         <>
         <div className="container-fluid" id="grad1">
@@ -108,7 +178,7 @@ const Source = () => {
                                         <Link to="/destination"><li id="destination" ><strong>Destination</strong></li></Link>
                                         <Link to="/submit"><li id="submit" ><strong>Submit</strong></li></Link>
                                         <Link to="/confirm"><li id="confirm" ><strong>Confirm</strong></li></Link>
-
+                                        
                                         </ul>
                                         </div>
                                         <fieldset>
@@ -171,11 +241,27 @@ const Source = () => {
                                                 )}
                                                 {/* <button type="submit" className="btn btn-success">Submit</button> */}
                                             </div>
+                                            <div>
+                                             
+                                              </div>
+                                              
+                                            
                                             <button type="button" onClick={handleCancel} className="btn btn-secondary">Cancel</button>
                                             {/* <Link to="/"><button name="cancel" class="btn btn-primary">Cancel</button></Link> */}
-                                            <Link to="/destination"><button name="next" className="btn btn-primary">Next</button></Link>
+                                            <button name="next" className="btn btn-primary" onClick={onNextClick}>Next</button>
                                         </fieldset>
                                     </form>
+                                    {/* <div>
+      {component}
+      <div>
+        {page > 1 && <button onClick={handlePrev}>Prev</button>}
+        {page < 4 && <button onClick={handleNext}>Next</button>}
+      </div>
+    </div> */}
+                                    
+                                 
+                                            {/* {page !== 1 && <button onClick={handlePrevious}>Previous</button>}
+                                            {page !== 4 && <button onClick={handleNext}>Next</button>} */}
                                 </div>
                             </div>
                         </div>
