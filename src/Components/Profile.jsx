@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-// import { useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import abc from './pic.png';
-// import Swal from "swal"
+
 import Swal from 'sweetalert2';
 
 const Profile = () => {
@@ -14,8 +14,6 @@ const Profile = () => {
     const [number, setnumber] = useState("9867453267")
     const [gender, setgender] = useState("Female")
     const [address, setaddress] = useState("1-26/1,durgamcheruvu,hyderbad")
-    // const[state,setstate]=useState("Telangana")
-    // const[city,setcity]=useState("Hyderabad")
     const [pincode, setpincode] = useState("500081")
     const savehandle = () => {
         setIsEditing(false)
@@ -30,64 +28,10 @@ const Profile = () => {
         setnumber("")
         setgender("")
         setaddress("")
-        // setstate("")
-        // setcity("")
+        
         setpincode("")
     }
-    // const navigate = useNavigate();
-
-    // const loginNavigate = (e) => {
-    //     navigate('/user');
-    //     window.location.reload();
-    // }
-    // Swal.fire({
-    //     title: 'Do you want to save the changes?',
-    //     showDenyButton: true,
-    //     showCancelButton: true,
-    //     confirmButtonText: 'Save',
-    //     denyButtonText: `Don't save`,
-    //   }).then((result) => {
-    //     /* Read more about isConfirmed, isDenied below */
-    //     if (result.isConfirmed) {
-    //       Swal.fire('Saved!', '', 'success')
-    //     } else if (result.isDenied) {
-    //       Swal.fire('Changes are not saved', '', 'info')
-    //     }
-    //   })
-    // const swalWithBootstrapButtons = Swal.mixin({
-    //     customClass: {
-    //       confirmButton: 'btn btn-success',
-    //       cancelButton: 'btn btn-danger'
-    //     },
-    //     buttonsStyling: true
-    //   })
-
-    //   swalWithBootstrapButtons.fire({
-    //     title: 'Are you sure?',
-    //     text: "You won't be able to revert this!",
-    //     icon: 'warning',
-    //     showCancelButton: true,
-    //     confirmButtonText: 'Yes, delete it!',
-    //     cancelButtonText: 'No, cancel!',
-    //     reverseButtons: true
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //       swalWithBootstrapButtons.fire(
-    //         'Deleted!',
-    //         'Your file has been deleted.',
-    //         'success'
-    //       )
-    //     } else if (
-    //       /* Read more about handling dismissals below */
-    //       result.dismiss === Swal.DismissReason.cancel
-    //     ) {
-    //       swalWithBootstrapButtons.fire(
-    //         'Cancelled',
-    //         'Your imaginary file is safe :)',
-    //         'error'
-    //       )
-    //     }
-    //   })
+    
     const handleSubmit = () => {
         Swal.fire({
             title: 'Do you want to order from this address?',
@@ -126,7 +70,7 @@ const Profile = () => {
 
                 </Link>
             </div>
-            {/* <div className='form'> */}
+           
 
             <div className='flex'>
                 <div className="rm">
@@ -188,26 +132,7 @@ const Profile = () => {
                                         <textarea value={address} onChange={(b) => (setaddress(b.target.value))} rows="4" cols="10" placeholder="Enter address" className='form-control'></textarea>
                                     }
                                 </div>
-                                {/* <div className="mb-2" id="formBasicnumber">
-                                    <label> State </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={state} className='form-control' placeholder="Enter state" />
-                                        </div>)}
-                                    {isEditing &&
-                                    <input type="text" value={state}  onChange={(c)=>(setstate(c.target.value))} placeholder="Enter state" className='form-control' />
-}
-                                </div> */}
-                                {/* <div className="mb-2" id="formBasicnumber">
-                                    <label> City </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={city} className='form-control' placeholder="Enter city" />
-                                        </div>)}
-                                    {isEditing &&
-                                    <input type="text" value={city}  onChange={(d)=>(setcity(d.target.value))} placeholder="Enter city" className='form-control' />
-}
-                                </div> */}
+                               
                                 <div className="mb-2" id="formBasicnumber">
                                     <label> Pincode </label>
                                     {!isEditing &&
@@ -220,9 +145,7 @@ const Profile = () => {
                                 </div>
 
 
-                                {/* <div>
-                                    <Link onClick={loginNavigate}>Back </Link>
-                                </div> */}
+                                
                             </div>
                         </form>
                         <div className='cc'>
@@ -238,9 +161,7 @@ const Profile = () => {
                                 </button>
                             }
                         </div>
-                        {/* <div>
-                                <p><Link onClick={loginNavigate}>Back</Link></p>
-                            </div> */}
+                        
                         <div className='m'>
                             <button className='btn btn-primary' onClick={handleSubmit}>
                                 Next
@@ -259,9 +180,4 @@ const Profile = () => {
 }
 export default Profile;
 
-// const Modal=()=> {
-// //     return (
-// //         <>
-// //         </>
-// //     )
-// // }
+

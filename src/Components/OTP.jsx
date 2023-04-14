@@ -1,45 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import validator from 'validator'
 import axios from 'axios';
 import abc from './online.png';
 const OTP = () => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("")
-    // const [error, setError] = useState(false)
-    // const [semail, setSemail] = useState("")
     const navigate = useNavigate();
-    // const forgot = useNavigate();
-
-    // const sendEmail = (email, otp) => {
-    // Email API Here  };
-    // Handling the form submission
-    //  const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //    if (email !== '') 
-    // {//      setError(true);
-    //      } else {
-    //        setSubmitted(true);
-    //        setError(false);
-    //       }
-    //         alert("OTP sent successfully");
-    //          forgot("/forgotpassword");
-    // };
+    
     const validateEmail = (e) => {
         var email = e.target.value
         setEmail(e.target.value);
-        // if (validator.isEmail(email)) {
-        //     const loginEmail = localStorage.getItem("EMAIL")
-        //     setEmailError('')
-        //     if (e.target.value !== loginEmail) {
-        //         setEmailError("Please enter Registered email")
-        //     }
-        //     else {
-        //         setEmailError("")
-        //     }
-        // } else {
-        //     setEmailError('Enter valid Email!')
-        // }
+        
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -61,9 +32,7 @@ const OTP = () => {
 
 
     };
-    // useEffect(() => {
-    //     setSemail(localStorage.getItem("EMAIL"))
-    // }, [])
+    
     const loginNavigate = (e) => {
         navigate('/login');
         window.location.reload();
@@ -73,11 +42,11 @@ const OTP = () => {
         <div className="xyz">
             <div className='flex'>
                 <div className="zz">
-                    {/* <div className=''> */}
+                    
                     <img src={abc} alt='dele' height="500" width="500" />
-                    {/* </div> */}
+                    
                 </div>
-                {/* <div className=''> */}
+                
                 <div className='xx'>
                     <h1>OTP ?</h1>
 
@@ -95,12 +64,12 @@ const OTP = () => {
                         </div>
                     </form>
                 </div>
-                {/* </div> */}
+                
             </div>
 
 
         </div>
-        // </div>
+        
     );
 }
 export default OTP;
