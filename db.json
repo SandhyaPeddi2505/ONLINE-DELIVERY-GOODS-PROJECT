@@ -1,9 +1,9 @@
 {
   "posts": [
     {
-      "name": "Sandhya",
-      "address": "Hyderabad",
-      "phone": 9807867856
+      "Name": "Sandhya",
+      "Address": "Hyderabad",
+      "Phone_number": 9807867856
     }
   ],
   "details": [
