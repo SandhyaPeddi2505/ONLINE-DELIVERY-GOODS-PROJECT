@@ -1,65 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
-// import Submit from "./Submit";
-const Destination = ({ onNextClick, onPrevClick }) => {
-    const [details, setDetails] = useState({
+
+const Destination = ({ onNextClick, onPrevClick, deliveryData,dataa,isPrimary,details }) => {
+    const [dest, setDest] = useState({
         name: "",
         phone: "",
         address: ""
-      });
-    
-      const handleChange = (event) => {
-        const { name, value } = event.target;
-    
-        setDetails({
-          ...details,
-          [name]: value
-        });
-      };
-    
-      const handleSubmit = (e) => {
+    });
+    useEffect(() => {
+        if (deliveryData) {
+            setDest({ ...dest, name: deliveryData.Destination.name, address: deliveryData.Destination.address, phone: deliveryData.Destination.phone })
+        }
+    }, [])
+    const handleChange = (e) => {
         e.preventDefault();
-        const { name, address, phone } = details;
-        axios
-          .post("http://localhost:3000/details1", { name, phone, address })
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-    // const [name, setName] = useState();
-    // const [phone, setPhone] = useState();
-    // const [address, setAddress] = useState();
-    // const [showdetails, setShowDetails] = useState(false);
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setShowDetails(true);
-
-       
-    //     fetch("http://localhost:3000/details1", {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             name,
-    //             address,
-    //             phone
-    //         }),
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
+        const { name, value } = e.target;
+        setDest({
+            ...dest,
+            [name]: value
+        });
     };
-    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log(deliveryData)
+        return false;
+
+    };
+
     return (
         <div className="container-fluid" id="grad1">
             <div className="row justify-content-center mt-0">
@@ -70,24 +38,24 @@ const Destination = ({ onNextClick, onPrevClick }) => {
                             <div className="col-md-12 mx-0">
                                 <form id="msform" onSubmit={handleSubmit}>
                                     <ul id="progressbar">
-
-                                        <Link to="/source"><li class="active" id="source"><strong>Source</strong></li></Link>
-                                        <Link to="/destination"><li class="active" id="destination"  ><strong>Destination</strong></li></Link>
-                                        <Link to="/submit"><li id="submit" >Submit<strong></strong></li></Link>
-                                        <Link to="/confirm"><li id="confirm" ><strong>Confirm</strong></li></Link>
-
+                                        <li class="active" id="source"><strong>Source</strong></li>
+                                        <li class="active" id="destination"  ><strong>Destination</strong></li>
+                                        <li id="submit" >Submit<strong></strong></li>
+                                        <li id="confirm" ><strong>Confirm</strong></li>
                                     </ul>
                                     <fieldset>
                                         <div className="form-card">
                                             <h2 className="fs-title">Destination Details</h2>
-                                            <input type="text" name="name" placeholder="Name" value={details.name} onChange={handleChange} />
-                                            <input type="text" name="address" placeholder="Address" value={details.address} onChange={handleChange} />
-                                            <input type="text" name="phone" placeholder="PhoneNo" value={details.phone} onChange={handleChange} />
-                                            {/* <button type="submit" className="btn btn-success">Submit</button> */}
+                                            <input type="text" name="name" placeholder="Name" value={dest.name} onChange={handleChange} required />
+                                            <input type="text" name="address" placeholder="Address" value={dest.address} onChange={handleChange} required />
+                                            <input type="text" name="phone" placeholder="PhoneNo" value={dest.phone} onChange={handleChange} required pattern="/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/" min="10" />
                                         </div>
-                                       {/* <Submit/> */}
-                                        <button name="previous" type="button" className="btn btn-secondary" onClick={onPrevClick}>Previous</button>
-                                        <button  name="submit" type="button" className="btn btn-primary" onClick={onNextClick}>Next</button>
+                                        <button name="previous" type="button" className="btn btn-secondary" onClick={() => onPrevClick(dataa)}>Previous</button>
+                                        <button name="submit" type="button" className="btn btn-primary" onClick={() => {
+                                            if(dest.name && dest.address && dest.phone){
+                                                onNextClick(dest);
+                                            }
+                                        }}>Next</button>
                                     </fieldset>
                                 </form>
                             </div>

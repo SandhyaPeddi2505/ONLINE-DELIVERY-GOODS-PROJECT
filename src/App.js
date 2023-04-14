@@ -1,8 +1,8 @@
-import Submit from "./Components/Submit";
-import Source from "./Components/Source";
-import Destination from "./Components/Destination";
-import Layout from "./Components/Layout";
-import Confirm from "./Components/Confirm";
+// import Submit from "./Components/Submit";
+// import Source from "./Components/Source";
+// import Destination from "./Components/Destination";
+// import Layout from "./Components/Layout";
+// import Confirm from "./Components/Confirm";
 import "./Components/Styles.scss";
 import axios from "axios";
 import {useState,useEffect} from "react";
@@ -38,7 +38,7 @@ const App=()=>{
       <Route path="/home" element={<HomeNew />} />
       <Route path="/primary1" element={<Primary />} />
       <Route path="/hi" element={<Hello />} />
-      <Route path="/t" element={<Layout/>}/>
+      {/* <Route path="/t" element={<Layout/>}/> */}
       <Route path="/source" element={<StepperWrapper/>}/>
       {/* <Route path="/destination" element={<Destination/>}/> */}
       {/* <Route path="/submit" element={<Submit/>}/> */}
