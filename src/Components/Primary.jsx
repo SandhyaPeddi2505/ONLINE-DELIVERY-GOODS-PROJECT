@@ -110,7 +110,7 @@ const Primary = () => {
       console.log(`Destination is ${selectedDestination}`);
       console.log(`Date is ${date}`);
 
-      window.location.replace("/hi");
+      window.location.replace("/Source");
     }
   };
   
@@ -152,9 +152,10 @@ const Primary = () => {
  
         <FaCalendarAlt />
         <input type="date" onChange={handleChange} />
-        <br />
+        <br></br>
         <div class="but">
-          <input type="submit" value="Submit" />
+          <button className="btn btn-primary" type="submit" >Submit</button>
+          {/* <input type="submit" value="Submit" /> */}
         </div>
       </form>
       <br />

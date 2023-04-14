@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-
+import React, { useState ,useEffect} from 'react';
+// import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import abc from './pic.png';
-
+// import Swal from "swal"
+import axios from "axios";
 import Swal from 'sweetalert2';
 
 const Profile = () => {
@@ -31,7 +32,76 @@ const Profile = () => {
         
         setpincode("")
     }
-    
+    // const navigate = useNavigate();
+
+    // const loginNavigate = (e) => {
+    //     navigate('/user');
+    //     window.location.reload();
+    // }
+    // Swal.fire({
+    //     title: 'Do you want to save the changes?',
+    //     showDenyButton: true,
+    //     showCancelButton: true,
+    //     confirmButtonText: 'Save',
+    //     denyButtonText: `Don't save`,
+    //   }).then((result) => {
+    //     /* Read more about isConfirmed, isDenied below */
+    //     if (result.isConfirmed) {
+    //       Swal.fire('Saved!', '', 'success')
+    //     } else if (result.isDenied) {
+    //       Swal.fire('Changes are not saved', '', 'info')
+    //     }
+    //   })
+    // const swalWithBootstrapButtons = Swal.mixin({
+    //     customClass: {
+    //       confirmButton: 'btn btn-success',
+    //       cancelButton: 'btn btn-danger'
+    //     },
+    //     buttonsStyling: true
+    //   })
+
+    //   swalWithBootstrapButtons.fire({
+    //     title: 'Are you sure?',
+    //     text: "You won't be able to revert this!",
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonText: 'Yes, delete it!',
+    //     cancelButtonText: 'No, cancel!',
+    //     reverseButtons: true
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       swalWithBootstrapButtons.fire(
+    //         'Deleted!',
+    //         'Your file has been deleted.',
+    //         'success'
+    //       )
+    //     } else if (
+    //       /* Read more about handling dismissals below */
+    //       result.dismiss === Swal.DismissReason.cancel
+    //     ) {
+    //       swalWithBootstrapButtons.fire(
+    //         'Cancelled',
+    //         'Your imaginary file is safe :)',
+    //         'error'
+    //       )
+    //     }
+    //   })
+    const [dataa, setDataa] = useState({});
+    useEffect(() => {
+        //call API
+        axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/userinfo', {
+          // headers: {
+          //    'Content-Type': 'application/json',
+          //    "Access-Control-Allow-Headers": '*',
+          //   }
+        })
+          .then(response => {
+            setDataa(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }, []);
     const handleSubmit = () => {
         Swal.fire({
             title: 'Do you want to order from this address?',
