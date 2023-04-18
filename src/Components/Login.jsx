@@ -4,6 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import validator from 'validator';
 import axios from 'axios'
 import abc from './online.png'; 
+ 
 
  const Login = () => {
     const profile = useNavigate();
@@ -35,7 +36,8 @@ import abc from './online.png';
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    axios.get('https://a6f7-49-249-11-110.in.ngrok.io/admin_sign_up',).then(response => {
+   
+    axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/admin_sign_up').then(response => {
     
     if(!email || !password) {
     alert("Enter all fields");
@@ -57,7 +59,7 @@ const handleSubmit = (e) => {
     }
     return (
         <>
-            <div className="yes">
+            <div className="bgj">
                 <div className='flex'>
                     <div className="form">
                         <div className='mm'>

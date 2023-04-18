@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import "./Primary.scss";
 import third from "./third";
+import { Link } from "react-router-dom";
 
 
 const Primary = () => {
@@ -154,7 +155,7 @@ const Primary = () => {
         <input type="date" onChange={handleChange} />
         <br />
         <div class="but">
-          <input type="submit" value="Submit" />
+          <Link to="/source"><input type="submit" value="Submit" /></Link>
         </div>
       </form>
       <br />

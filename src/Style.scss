@@ -17,8 +17,12 @@
      
 }
 .r{
-    margin: 7rem;
+    // margin: 7rem;
     margin-right: 5px;
+    position: relative;
+    left:100px;
+    top: 130px;
+
 }
 .paragraph{
     font-size: 20px;
@@ -42,7 +46,7 @@ td{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    // background: rgba(0, 0, 0, 0.6);
   }
   
   .modal-main {
@@ -52,6 +56,7 @@ td{
     height: auto;
     top: 50%;
     left: 50%;
+    border: solid white;
     transform: translate(-50%, -50%);
   }
   
@@ -126,3 +131,12 @@ td{
     position: absolute;
     right: 120px;
 }
+.rew{
+    position:absolute;
+    
+}
+// .b {
+//     position: absolute;
+//     bottom: 300px;
+//     z-index: -1;
+// }

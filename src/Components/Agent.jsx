@@ -1,31 +1,43 @@
-// import { ChangeEvent } from 'react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import qwe from './12.png';
-// import Form from 'react-bootstrap/Form';
-// import { Button } from 'react-bootstrap';
-
-// import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Agent = () => {
-    const redirect = useNavigate()
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    // const [address,setAddress]=useState("");
-    const handlesubmit = () => {
-        localStorage.setItem('EMAIL', email)
-        localStorage.setItem('PASSWORD', password)
-        if (email.length < 0) {
-            alert("email")
+    const home = useNavigate()
+    const[firstName,setFirstName]=useState("");
+    const[lastName,setLastName]=useState("");
+    const[email,setEmail]=useState("");
+    const[password,setPassword]=useState("");
+    const[phoneNumber,setPhoneNumber]=useState("");
+    const[address,setAddress]=useState("");
+    const [api,setApi]=useState([])
+
+    const handleSubmit=(e)=> {
+        e.preventDefault();
+        const validFirstName = firstName.length>0;
+        const validLastName = lastName.length >0;
+        const validEmail=email.includes("@gmail.com");
+        const validPassword = password.length > 5;
+        const validPhoneNumber=phoneNumber.length>8;
+        const validAddress= address.length>0;
+
+        if(
+            validFirstName &&
+            validLastName &&
+            validEmail &&
+            validPassword &&
+            validPhoneNumber &&
+            validAddress
+        ){
+            alert('User Successfully Registred "\r Admin will get back to you once "\r your details are verified!!')
+            home('/')
+        } else {
+            alert("Error Occurred!")
         }
-        else if (email !== "a@gmail.com") {
-            //  alert("qwerty") 
-        }
-        // else {
-        //     alert("Thankyou for successful regristration" + "\n" + "Admin will get back to you!!")
-        //     redirect('/agentdash')
-        // }
     }
+
+
     const [file, setFile] = useState();
     function handleChange(e) {
         console.log(e.target.files);
@@ -36,115 +48,83 @@ const Agent = () => {
         console.log(e.target.files);
         setFiles(URL.createObjectURL(e.target.files[0]));
     }
+    useEffect(()=> {
+        axios.get("http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/Agent_Info/")
+        .then((res)=>setApi(res.data))
+        console.log(api)
+    },[])
     return (
         <>
-            <div>
+            
                 <div className='bgj'>
-                    <div className='flex'>
+                    <div className=' flex'>
                         <div className="co4">
-                            {/* <img src="https://o.remove.bg/downloads/885675ca-621b-4cc3-83ec-94fe62dfe9e0/frontlogo-removebg-preview.png"/> */}
                             <img src={qwe} alt='dele' height="500" width="600" />
                         </div>
                         <div className='co4'>
                             <div >
                                 <h3>Agent Signup Details!</h3>
-                                <form >
-                                    <div>
+                                <form onSubmit={handleSubmit}>
+                                    <div className='mt-5'>
                                         
                                         <div class='row'>
-                                            <div class='col-md-6'>
+                                            <div class='col-md-12'>
                                                 {/* <div class=''> */}
-                                                    <div class="form-group">
+                                                <div className='row'>
+                                                <div class=" col-6 form-group">
                                                         <label className="fs title" >First Name</label>
-                                                        <input type="text" class="form-control"  placeholder="Enter first Name" />
+                                                        <input type="text" class="form-control" value={firstName} onChange={(e)=>setFirstName(e.target.value)} placeholder="Enter first Name" required/>
                                                         
-                                                    </div>
-                                                    <div class="form-group">
+                                                        </div>
+                                                    <div class=" col-6 form-group">
                                                         <label className="fs title" >Last Name</label>
-                                                        <input type="text" class="form-control"  placeholder="Enter last Name" />
+                                                        <input type="text" class="form-control" value={lastName} onChange={(e)=>setLastName(e.target.value)}  placeholder="Enter last Name" required/>
                                                         
                                                     </div>
+                                                     
+                                                </div>
+                                                    
 
                                                 {/* </div> */}
-                                                
-
-                                                {/* <Form.Group className="mb-3" controlId="formBasicFirstname">
-                                                    <Form.Label>FirstName</Form.Label>
-                                                    <Form.Control type="FirstName" required placeholder="Ex: abc" />
-                                                </Form.Group> */}
-                                            </div>
+                                            
                                             <div>
                                                 <div>
                                                     <label>Email</label>
-                                                    <input type="email"class="form-control"   placeholder="Enter email"/>
+                                                    <input type="email" value={email} class="form-control"  onChange={(e)=>setEmail(e.target.value)} placeholder="Enter email" required/>
                                                 </div>
                                                 <div>
                                                     <div>
+                                                        <label>Password</label>
+                                                        <input type="password" value={password} className='form-control' onChange={(e)=>setPassword(e.target.value)} placeholder='Enter Password' required/>
+                                                    </div>
+                                                    <div>
                                                         <label>phone number</label>
-                                                        <input type="text" class="form-control"   placeholder="Enter phone number"/>
+                                                        <input type="PhoneInput" maxLength={10} value={phoneNumber} class="form-control" onChange={(e)=>setPhoneNumber(e.target.value)}   placeholder="Enter phone number" required/>
                                                     </div>
                                                 </div>
                                                 <div>
                                                         <label>Enter  Address</label>
-                                                        <input type="text" class="form-control"   placeholder="Enter Address"/>
+                                                        <input type="text" value={address} class="form-control" onChange={(e)=>setAddress(e.target.value)}  placeholder="Enter Address" required/>
                                                     </div>
 
                                             </div>
-
-                                            {/* <div class='col-md-6'>
-                                                <div class='form-outline'> */}
-                                            {/* <Form.Group className="mb-3" controlId="formBasicFirstname">
-                                                    <Form.Label>LastName</Form.Label>
-                                                    <Form.Control type="LastName" required placeholder="Ex: def" />
-                                                </Form.Group> */}
-                                            {/* </div>
-                                            </div> */}
                                         </div>
-                                        {/* <div className='row'>
-                                        <div className='col-md-6'>
-                                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                <Form.Label>Email</Form.Label>
-                                                <Form.Control onChange={(e) => setEmail(e.target.value)} type="Email" required placeholder="Enter Email" />
-                                            </Form.Group>
-                                                        
-                                        </div> */}
-                                        {/* <div className='col-md-6'>
-                                            <div className='form-outline'>
-                                                <Form.Group className="mb-3" controlId="formBasicPassword">
-                                                    <Form.Label>Phone Number</Form.Label>
-                                                    <Form.Control type="PhoneInput" country={'us'} required placeholder="Enter Number" />
-                                                </Form.Group>
-                                            </div>
-                                        </div> */}
+                                        </div>
                                     </div>
-                                    {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-                                        <Form.Label>Password</Form.Label>
-                                        <Form.Control onChange={(e) => setPassword(e.target.value)} type="Password" required placeholder="Enter Password" />
-                                    </Form.Group>
-                                    <Form.Group className="mb-2" controlId="formAddress">
-                                        <Form.Label>Address</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter Address"  name="address" required  />
-                                    </Form.Group> */}
                                     <h6>Addhar Image:</h6>
-                                    <input type="file" required onChange={handleChange} />
+                                    <input type="file" onChange={handleChange} />
                                     <img src={file} height="50px" width="50px" />
                                     <h6>Licence Image:</h6>
-                                    <input type="file" required onChange={handleChange2} />
+                                    <input type="file" onChange={handleChange2} />
                                     <img src={files} height="50px" width="50px" />
                                     <div className='heading6'>
                                         <button className='btn btn-primary'>Submit</button>
-                                        {/* <Button className='btn' onClick={handlesubmit} variant="secondary" type="submit">Confirm</Button>{' '} */}
                                     </div>
-                                    {/* </div> */}
-                                    {/* <div class="center"> 
-                                                   <Link to='/'>Back</Link>  
-                                                    </div> */}
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div >
         </>
     )
 }
