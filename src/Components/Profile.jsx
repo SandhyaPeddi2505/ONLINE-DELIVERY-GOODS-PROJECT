@@ -15,8 +15,6 @@ const Profile = () => {
     const [number, setnumber] = useState("9867453267")
     const [gender, setgender] = useState("Female")
     const [address, setaddress] = useState("1-26/1,durgamcheruvu,hyderbad")
-    // const[state,setstate]=useState("Telangana")
-    // const[city,setcity]=useState("Hyderabad")
     const [pincode, setpincode] = useState("500081")
     const savehandle = () => {
         setIsEditing(false)
@@ -31,8 +29,7 @@ const Profile = () => {
         setnumber("")
         setgender("")
         setaddress("")
-        // setstate("")
-        // setcity("")
+        
         setpincode("")
     }
     // const navigate = useNavigate();
@@ -143,7 +140,7 @@ const Profile = () => {
 
                 </Link>
             </div>
-            {/* <div className='form'> */}
+           
 
             <div className='flex'>
                 <div className="rm">
@@ -205,26 +202,7 @@ const Profile = () => {
                                         <textarea value={address} onChange={(b) => (setaddress(b.target.value))} rows="4" cols="10" placeholder="Enter address" className='form-control'></textarea>
                                     }
                                 </div>
-                                {/* <div className="mb-2" id="formBasicnumber">
-                                    <label> State </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={state} className='form-control' placeholder="Enter state" />
-                                        </div>)}
-                                    {isEditing &&
-                                    <input type="text" value={state}  onChange={(c)=>(setstate(c.target.value))} placeholder="Enter state" className='form-control' />
-}
-                                </div> */}
-                                {/* <div className="mb-2" id="formBasicnumber">
-                                    <label> City </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={city} className='form-control' placeholder="Enter city" />
-                                        </div>)}
-                                    {isEditing &&
-                                    <input type="text" value={city}  onChange={(d)=>(setcity(d.target.value))} placeholder="Enter city" className='form-control' />
-}
-                                </div> */}
+                               
                                 <div className="mb-2" id="formBasicnumber">
                                     <label> Pincode </label>
                                     {!isEditing &&
@@ -237,9 +215,7 @@ const Profile = () => {
                                 </div>
 
 
-                                {/* <div>
-                                    <Link onClick={loginNavigate}>Back </Link>
-                                </div> */}
+                                
                             </div>
                         </form>
                         <div className='cc'>
@@ -255,9 +231,7 @@ const Profile = () => {
                                 </button>
                             }
                         </div>
-                        {/* <div>
-                                <p><Link onClick={loginNavigate}>Back</Link></p>
-                            </div> */}
+                        
                         <div className='m'>
                             <button className='btn btn-primary' onClick={handleSubmit}>
                                 Next
@@ -276,9 +250,4 @@ const Profile = () => {
 }
 export default Profile;
 
-// const Modal=()=> {
-// //     return (
-// //         <>
-// //         </>
-// //     )
-// // }
+

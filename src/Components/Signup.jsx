@@ -59,8 +59,9 @@ const Signup = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
 
+    
     axios
-      .get("http://ec2-3-7-73-126.ap-south-1.compute.amazonaws.com:8001/admin_sign_up", {
+      .post("http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/admin_sign_up", {
         email,
         password,
         cpassword
@@ -97,7 +98,7 @@ const Signup = () => {
       });
     } else if (password.length < 6) {
       setErrors({ password: "Password must be atleast 6 characters" });
-      // alert("must contain capital,small,numeric,special characters")
+      
     }
     if (password !== cpassword) {
       setErrors({ cpassword: "Passwords do not match" });
@@ -114,8 +115,7 @@ const Signup = () => {
       !passwordError &&
       !cPasswordError
     ) {
-      // console.log("EMAIL", email)
-      // console.log("PASSWORD", password)
+      
       navigate("/");
       window.location.reload();
     }
@@ -141,7 +141,7 @@ const Signup = () => {
                 <h1>Sign Up</h1>
 
                 <form>
-                  {/* {successMsg && <p className="success-msg">{successMsg}</p>} */}
+                  
                   <div>
                     
                     <div className="mb-3" id="formBasicEmail">
@@ -168,7 +168,7 @@ const Signup = () => {
                       className="form-control"
                       required
                     />
-                    {/* <span className='password-icon' onClick={handleToggle}><Icon icon={icon} size={25} /></span>  */}
+                    
                     <span style={{ color: "red" }}>{passwordError}</span>
                   </div>
                   {console.log(error)}
@@ -182,7 +182,7 @@ const Signup = () => {
                       placeholder="Confirm Password"
                       required
                     />
-                    {/* <span className='password-icon' onClick={handleTogglee}><Icon icon={icon} size={25} /></span>  */}
+                    
                     <span style={{ color: "red" }}>{cPasswordError}</span>
                   </div>
 

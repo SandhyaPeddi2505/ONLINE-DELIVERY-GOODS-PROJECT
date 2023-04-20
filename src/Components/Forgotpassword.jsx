@@ -71,12 +71,11 @@ const Forgotpassword = () => {
                             <img src={abc} height="500" width="500" alt="del" />
                         </div>
                         <div class="">
-                            {/* <div className='form'> */}
+                            
                             <div className="zx">
                                 <h1>Forgot password ?</h1>
                             </div>
-                            {/* <div className="flex">             
-          <div className="c"> */}
+                           
                             <form>
                                 <div className="z">
                                     <div className="m-2" controlId="formBasicPassword">
@@ -104,7 +103,7 @@ const Forgotpassword = () => {
                                     </div>
                                 </div>
                             </form>
-                            {/* </div> */}
+                            
                         </div>
                     </div>
                 </div>

@@ -17,13 +17,6 @@ const Changepassword = () => {
 
 
         setoldPassword(e.target.value);
-        // if (e.target.value.length < 8) {
-        //     setoldPasswordError("Password must be 8 characters long.");
-        //     setIsValid(false);
-        // } else {
-        //     setoldPasswordError("");
-        //     setIsValid(true);
-        // }
         if (!oldpassword) {
             setoldPasswordError('Password is required');
         }
@@ -39,13 +32,6 @@ const Changepassword = () => {
     };
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-        // if (e.target.value.length < 8) {
-        //     setPasswordError("Password must be 8 characters long.");
-        //     setIsValid(false);
-        // } else {
-        //     setPasswordError("");
-        //     setIsValid(true);
-        // }
         if (!password) {
             setPasswordError('Password is required');
         }
@@ -80,10 +66,7 @@ const Changepassword = () => {
         }
     }
 
-    // const loginNavigate = (e) => {
-    //     navigate('/login');
-    //     window.location.reload();
-    // }
+
     return (
         <>
             <div>
@@ -93,12 +76,7 @@ const Changepassword = () => {
                             <img src={abc} height="500" width="500" alt="del" />
                         </div>
                         <div class="ab">
-                            {/* <div className='form'> */}
-                            <div>
-                                <h1>Change password ?</h1>
-                            </div>
-                            {/* <div className="flex">             
-          <div className="c"> */}
+                            <h1>Change password ?</h1>
                             <form>
                                 <div className="cd">
                                     <div className="m-2" controlId="formBasicPassword">
@@ -120,12 +98,9 @@ const Changepassword = () => {
                                     <div>
                                         <button type="submit" className="btn btn-primary" onClick={handlesubmit}>Confirm</button>
                                     </div>
-                                    {/* <div>
-                                        <Link style={{ color: "black", textDecoration: "none" }} onClick={loginNavigate}> Back </Link>
-                                    </div> */}
+
                                 </div>
                             </form>
-                            {/* </div> */}
                         </div>
                     </div>
                 </div>
