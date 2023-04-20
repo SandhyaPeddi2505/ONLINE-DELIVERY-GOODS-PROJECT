@@ -14,7 +14,7 @@ const Agentdash=()=> {
             DeliveryId:1223311,
             Ordertype:"Groceries",
             CustomerName:"sdssdssd",
-            SourceAddress:"Radidurg",
+            SourceAddress:"Raidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:1
         },
@@ -22,7 +22,7 @@ const Agentdash=()=> {
             DeliveryId:1223312,
             Ordertype:"Files",
             CustomerName:"sdssdssd",
-            SourceAddress:"Radidurg",
+            SourceAddress:"Raidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:3
         },
@@ -30,22 +30,22 @@ const Agentdash=()=> {
             DeliveryId:1223313,
             Ordertype:"Clothes",
             CustomerName:"sdssdssd",
-            SourceAddress:"Radidurg",
+            SourceAddress:"Raidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:2
         },{
             DeliveryId:1223314,
-            Ordertype:"Sweets",
+            Ordertype:"Medicines",
             CustomerName:"sdssdssd",
-            SourceAddress:"Radidurg",
+            SourceAddress:"Raidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:4
         },
         {
             DeliveryId:1223315,
-            Ordertype:"Chocolates",
+            Ordertype:"Tickets",
             CustomerName:"sdssdssd",
-            SourceAddress:"Radidurg",
+            SourceAddress:"Raidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:2
         }
@@ -61,7 +61,7 @@ const Agentdash=()=> {
     setShow(false);
   };
   const toastSuccess = () => toast.success('Wooh! Delivery Accepted.');
-  const toastError = () => toast.error('Oops! Delivery Rejected.');
+  const toastError = () => toast.error('Oops!You rejected this Delivery.');
   // const handleAccept=()=>{
   //   alert("Wooh! Delivery Accepted")
   // }

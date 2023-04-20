@@ -35,7 +35,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/admin_sign_up',).then(response => {
+        axios.post('http://ec2-3-110-122-239.ap-south-1.compute.amazonaws.com:8000/app/user/token/',).then(response => {
 
             if (!email || !password) {
                 alert("Enter all fields");
