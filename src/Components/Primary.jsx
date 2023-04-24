@@ -184,10 +184,10 @@ const Primary = () => {
       <br />
       <ToastContainer />
       
-      <img
+      {/* <img
         src={third} style={{width:450,height:450,marginLeft:450}}
 
-      />
+      /> */}
     </div>
   );
 };
