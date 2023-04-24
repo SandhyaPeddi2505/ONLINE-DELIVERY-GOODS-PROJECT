@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "./nav-logo.png";
+import logo from "./sk.png";
 const Agentdash = () => {
   const data = [
     {
@@ -74,24 +74,33 @@ const Agentdash = () => {
 
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" height="35" width="60" /> <span style={{ color: 'white' }}>De<span style={{ color: 'red' }}>l</span>ivery</span></a>
+      <nav class="fixed-nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"  /> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+           
             <li class="nav-item">
-              <a class="nav-link" to={Link} href="/previous" ><h5><span style={{ color: "white" }}>Previous</span></h5></a>
+              <a class="hi nav-link" to={Link} href="/previous" ><p className="qb"><span style={{ color: "black" }}>previous</span></p></a>
+            </li>
+           
+            <li class="nav-item">
+              
+                {/* <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a> */}
+              
             </li>
 
           </ul>
         </div>
       </nav>
+      </nav>
 
       <div className='bgj'>
-
-        <div className="App">
+      <div className="blur">
+        <div className="tab">
           <table class="table">
             <thead>
               <tr>
@@ -138,6 +147,7 @@ const Agentdash = () => {
           draggable
           pauseOnHover
         />
+      </div>
       </div>
     </>
   )

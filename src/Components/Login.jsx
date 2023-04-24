@@ -89,7 +89,7 @@ const handleSubmit = (e) => {
                                     <ReCAPTCHA sitekey='6LfVii4kAAAAAJ8_m87S4NKEcvgpNvCcMtskDBnQ' onChange={onChange} />
                                 </div>
                                 <div className='mt-2'>
-                                    <button onClick={handleSubmit} className="btn btn-primary" type="LogIn"> Log In </button>
+                                   <Link to="/profile"> <button onClick={handleSubmit} className="btn btn-primary" type="LogIn"> Log In </button></Link>
                                 </div>
                                 <div className="d-flex flex-row justify-content-end" >
                                     <a className="small text-muted" style={{textDecoration:"none"}}><Link to='/OTP' style={{color:"black",textDecoration:"none"}} >Forgotpassword?</Link></a>

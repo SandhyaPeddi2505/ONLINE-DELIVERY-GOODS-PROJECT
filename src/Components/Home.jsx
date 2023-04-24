@@ -1,17 +1,17 @@
 import React from "react";
 // import { Link } from 'react-dom';
 // import logo from "./nav-logo.png"
-import logo from "./nlogo.png";
+import logo from "./sk.png";
 // import Navbar from 'react-bootstrap/Navbar';
-import aaa from './del1.png';
+// import aaa from './del1.png';
 import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
-    <div className="fixed">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" height="35" width="50" /> <span style={{ color: 'white' }}>De<span style={{ color: 'red' }}>l</span>ivery</span></a>
+    <nav class="fixed-nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"  /> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,49 +19,50 @@ const Home = () => {
           <ul class="navbar-nav">
             <div className="">
             <li class="nav-item">
-              <a class="nav-link" to={Link} href="/tracking" ><h5><span style={{ color: "white" }}>Tracking</span></h5></a>
+              <a class="hi nav-link" to={Link} href="/tracking" ><p className="qb"><span style={{ color: "black" }}>Tracking</span></p></a>
             </li>
             </div>
             <li class="nav-item">
               <div className="wer">
-                <a class="nav-link" to={Link} href="/agent"><h5><span style={{ color: "white" }}>Agent Registration</span></h5></a>
+                <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a>
               </div>
             </li>
 
           </ul>
         </div>
       </nav>
-      </div>
+      </nav>
+    
 
 
 
 
       <div className="bgj">
-        <div>
+        <div className="blur">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-12">
               <div className="r">
                 <h1 className="heading1 mb-4">Fastest</h1>
-                <h1 className="heading1 mb-4"><span style={{ color: '#e4e6b7' }}>Delivery </span>&</h1>
-                <h1 className="heading1 mb-3">Easy <span style={{ color: '#e4e6b7' }}>Pickup.</span> </h1>
+                <h1 className="heading1 mb-4"><p></p><span style={{ color: 'red' }}>Delivery </span>&</h1>
+                <h1 className="heading1 mb-3">Easy <span style={{ color: 'red' }}>Pickup.</span> </h1>
                 <div>
                   <p className="paragraph">We take care of order fulfillment collection,transport,<br />
                     tracking and delivery of items.</p>
                 </div>
                 <div>
                 <Link to="/login">
-                  <button className="btn btn-primary">Login</button>
+                  <button className="custom-btn btn-7"><span>Login</span></button>
                   </Link>
 
                 </div>
               </div>
             </div>
 
-            <div className="col-md-6">
+            {/* <div className="col-md-6">
               <div className="flex">
                 <img src={aaa} alt='dele' height="500" width="600" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
