@@ -38,9 +38,9 @@ const Submit = ({ onNextClick, onPrevClick ,deliveryData,details,isPrimary,dataa
                                         <div className="form-card">
                                             <h2 className="fs-title">Source Details</h2>
                                          
-                                            <label style={{ color: 'black' }}><b>Name:</b> {Source.name}</label><br />
-                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.address}</label><br/>
-                                            <label style={{ color: 'black' }}><b>Phoneno:</b>{Source.phone}</label><br />
+                                            <label style={{ color: 'black' }}><b>Name:</b> {Source.Name}</label><br />
+                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.Address}</label><br/>
+                                            <label style={{ color: 'black' }}><b>Phoneno:</b>{Source.Phone_number}</label><br />
                                         </div>
                                         <div className="form-card">
                                             <h2 className="fs-title">Destination Details</h2>

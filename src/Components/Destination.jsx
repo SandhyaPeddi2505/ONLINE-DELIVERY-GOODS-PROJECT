@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
-const Destination = ({ onNextClick, onPrevClick, deliveryData,dataa,isPrimary,details }) => {
+const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa}) => {
     const [dest, setDest] = useState({
         name: "",
         phone: "",
@@ -15,10 +15,7 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData,dataa,isPrimary,de
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
-        setDest({
-            ...dest,
-            [name]: value
-        });
+        setDest({ ...dest, [name]: value });
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,6 +24,14 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData,dataa,isPrimary,de
         return false;
 
     };
+    function checkFormValidation() {
+        if (dest.name && dest.name.length >= 3 && dest.address && dest.address.length >= 5 && dest.phone && dest.phone.length === 10 && !isNaN(dest.phone)) {
+            return true;
+        } else {
+            return false;
+
+        }
+    }
 
     return (
         <div className="container-fluid" id="grad1">
@@ -52,10 +57,11 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData,dataa,isPrimary,de
                                         </div>
                                         <button name="previous" type="button" className="btn btn-secondary" onClick={() => onPrevClick(dataa)}>Previous</button>
                                         <button name="submit" type="button" className="btn btn-primary" onClick={() => {
-                                            if(dest.name && dest.address && dest.phone){
+                                            if (checkFormValidation()) {
                                                 onNextClick(dest);
                                             }
                                         }}>Next</button>
+
                                     </fieldset>
                                 </form>
                             </div>
