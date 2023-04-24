@@ -1,30 +1,32 @@
-import { useState ,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import validator from 'validator';
 import axios from 'axios'
 import abc from './online.png';
 
 const Login = () => {
-    const profile = useNavigate();
-    const [email, setEmail] = useState('');
+    // const profile = useNavigate();
+    const navigate = useNavigate();
+    const [username, setuserName] = useState('');
     const [password, setPassword] = useState('');
 
-    const [emailError, setEmailError] = useState('')
+    const [usernameError, setuserNameError] = useState('')
     // States for checking the errors 
     const [submitted, setSubmitted] = useState(false);
+    const [error, setErrors] = useState();
 
 
-    const navigate = useNavigate();
 
-    const validateEmail = (e) => {
-        var email = e.target.value
-        setEmail(e.target.value);
-        if (validator.isEmail(email)) {
-            setEmailError('')
+
+    const validateuserName = (e) => {
+        var username = e.target.value
+        setuserName(e.target.value);
+        if (validator.isuserName(username)) {
+            setuserNameError('')
         }
         else {
-            setEmailError('Enter valid Email!')
+            setuserNameError('Enter valid userName!')
         }
     }
     // Handling the password change  
@@ -35,26 +37,61 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/admin_sign_up',).then(response => {
+        axios.post('http://ec2-13-232-88-209.ap-south-1.compute.amazonaws.com:8000/app/user/token/', {
+            username,
+            password
+        }).then(response => {
 
-            if (!email || !password) {
+            if (!username || !password) {
                 alert("Enter all fields");
             }
             else if (response?.status === 200) {
-                navigate('/profile');
-                // console.log(response?.status);
+                //  navigate('/profile');
+                console.log(response?.status);
                 alert("login successful");
                 console.log(response);
+                // navigate('/profile');
             }
         })
             .catch(error => {
                 console.log(error.response.data); // handle error
             })
-    }
+        setErrors({});
+        
 
-    const onChange = () => {
-        // console.log("captcha value : ", value);
+        // {
+
+        //     navigate("/profile");
+        //     window.location.reload();
+        // }
     }
+    //     axios
+    //   .post("ec2-13-232-88-209.ap-south-1.compute.amazonaws.com:8000/app/user/token/", {
+
+    //     username,
+    //     password,
+    //     // cpassword
+    //     // username
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     if (response?.status === 200) {
+
+    //       console.log(response?.status);
+    //       alert("login successful");
+    //             console.log(response);
+    //             navigate("/profile");
+    //     }
+    //   })
+
+    //   .catch((error) => {
+    //     console.log(error.response.data); // handle error
+    //   });
+
+
+    // const onChange = () => {
+    //     // console.log("captcha value : ", value);
+    // }
     return (
         <>
             <div className="yes">
@@ -69,10 +106,10 @@ const Login = () => {
                             <h1>Log In</h1>
                         </div>
                         <form>
-                            <div className="mb-3" id="formBasicEmail">
-                                <label>Email address</label>
-                                <input type="Email" id="userEmail" onChange={(e) => validateEmail(e)} placeholder="Enter email" className='form-control' />
-                                <span style={{ color: 'red' }}>{emailError}</span>
+                            <div className="mb-3" id="formBasicuserName">
+                                <label>Email</label>
+                                <input type="email" id="username" onChange={(e) => validateuserName(e)} placeholder="Enter email" className='form-control' />
+                                <span style={{ color: 'red' }}>{usernameError}</span>
                                 <div className="text-muted">
                                     We'll never share your email with anyone else.
                                 </div>
@@ -82,9 +119,9 @@ const Login = () => {
                                 <input type="password" onChange={handlePassword} required placeholder="Password" className='form-control' ></input>
 
                             </div>
-                            <div>
+                            {/* <div>
                                 <ReCAPTCHA sitekey='6LfVii4kAAAAAJ8_m87S4NKEcvgpNvCcMtskDBnQ' onChange={onChange} />
-                            </div>
+                            </div> */}
                             <div className='mt-2'>
                                 <button onClick={handleSubmit} className="btn btn-primary" type="LogIn"> Log In </button>
                             </div>

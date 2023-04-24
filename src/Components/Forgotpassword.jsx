@@ -6,6 +6,7 @@ const Forgotpassword = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [otp, setOtp] = useState("");
+    const [error, setError] = useState("")
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
     const [otpError, setOtpError] = useState("");
@@ -18,7 +19,7 @@ const Forgotpassword = () => {
                 setPasswordError('Password is required');
             }
             else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)) {
-                setPasswordError('Password must contain capital,small,numeric,special characters');
+                setPasswordError('must contain cap,small,num,specialcharacters');
             }
             else if (password.length < 6) {
                 setPasswordError('Password must be atleast 6 characters');
@@ -27,25 +28,64 @@ const Forgotpassword = () => {
                 setPasswordError("")
             }
         }
-        if (e.target.name === "confirmPassword") {
-            setConfirmPassword(e.target.value)
-            if (e.target.value !== password) {
-                setConfirmPasswordError("Passwords do not match")
-            }
-            else {
-                setConfirmPasswordError("")
-            }
-        }
     }
+    const handleConfirmPasswordChange = (e) => {
+        setConfirmPassword(e.target.value);
+        if (e.target.value !== password) {
+            setConfirmPasswordError("Passwords must match.");
+            setIsValid(false);
+        } else {
+            setConfirmPasswordError("");
+            setIsValid(true);
+        }
+    };
+    // if (e.target.name === "confirmPassword") {
+    //     setConfirmPassword(e.target.value)
+    //     if (e.target.value !== password) {
+    //         setConfirmPasswordError("Passwords do not match")
+    //     }
+    //     else {
+    //         setConfirmPasswordError("")
+    //     }
+    // }
 
+
+    // const handlesubmit = (e) => {
+    //     e.preventDefault();
+    //     if (password === '' || confirmPassword === '' || otp === '') {
+    //         alert("Enter all Fields");
+    //     }
+    //     else if (password !== '' && confirmPassword !== '' && otp !== '') {
+
+    //         // if(!password ==confirmPassword){
+    //         //     setError("Passwords must match")
+    //         //        }
+    //         //        else{
+    //         //            error=''
+    //         //        }
+
+    //         // navigate('/login');
+    //         // window.location.reload();
+    //     }
+    //     alert("password changed successfully")
+    //     navigate('/login');
+    //         window.location.reload();
+    // }
     const handlesubmit = (e) => {
         e.preventDefault();
-        if (password === '' || confirmPassword === '' || otp === '') {
+        if (password === '' || password === '' || confirmPassword === '') {
             alert("Enter all Fields");
         }
-        else if (password !== '' && confirmPassword !== '' && otp !== '') {
+        else if (password !== '' && password !== '' && confirmPassword !== '') {
+            //             if(!password ==confirmPassword){
+            // setError("Passwords must match")
+            //             }
+            //             else{
+            //                 error=''
+            //             }
+            alert("password changed successfully")
             navigate('/login');
-            window.location.reload();
+            // window.location.reload();
         }
     }
     const handleOtpChange = (e) => {
@@ -70,7 +110,34 @@ const Forgotpassword = () => {
                         <div className="x ">
                             <img src={abc} height="500" width="500" alt="del" />
                         </div>
-                        <div class="">
+                        <div class="ab">
+                            <h1>Forgot password ?</h1>
+                            <form>
+                                <div className="cd">
+                                    <div className="m-1" controlId="formBasicPassword">
+                                        <label> Enter New Password</label><br />
+                                        <input type="password" onChange={(e) => validatepassword(e)} name="password" className="form-control" required placeholder="Old Password" />
+                                        <p><span style={{ color: 'red' }}>{passwordError}</span></p>
+                                    </div>
+                                    <div className="m-1" controlId="formBasicPassword">
+                                        <label> Confirm Password</label><br />
+                                        <input type="password" onChange={handleConfirmPasswordChange} name="password" className="form-control" required placeholder="New Password" />
+                                        <p><span style={{ color: 'red' }}>{confirmPasswordError}</span></p>
+                                    </div>
+                                    <div className="m-1" controlId="formBasicPassword">
+                                        <label>OTP</label><br />
+                                        <input type="password" onChange={handleOtpChange} value={otp} className="form-control" required placeholder="Confirm Password" />
+                                        <p><span style={{ color: 'red' }}>{otpError}</span></p>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" className="btn btn-primary" onClick={handlesubmit}>Confirm</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        {/* <div class="">
                             
                             <div className="zx">
                                 <h1>Forgot password ?</h1>
@@ -104,7 +171,7 @@ const Forgotpassword = () => {
                                 </div>
                             </form>
                             
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div >

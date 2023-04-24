@@ -6,7 +6,7 @@ const Changepassword = () => {
     const [password, setPassword] = useState("");
     const [oldpassword, setoldPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-
+    const [error, setError] = useState("")
     const [passwordError, setPasswordError] = useState("");
     const [oldpasswordError, setoldPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
@@ -36,7 +36,7 @@ const Changepassword = () => {
             setPasswordError('Password is required');
         }
         else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)) {
-            setPasswordError('Password must contain capital,small,numeric,special characters');
+            setPasswordError(' must contain capital,small,numeric,special characters');
         }
         else if (password.length < 6) {
             setPasswordError('Password must be atleast 6 characters');
@@ -61,8 +61,15 @@ const Changepassword = () => {
             alert("Enter all Fields");
         }
         else if (oldpassword !== '' && password !== '' && confirmPassword !== '') {
-            navigate('/login');
-            window.location.reload();
+            //             if(!password ==confirmPassword){
+            // setError("Passwords must match")
+            //             }
+            //             else{
+            //                 error=''
+            //             }
+            alert("password changed successfully")
+            navigate('/profile');
+            // window.location.reload();
         }
     }
 
