@@ -21,6 +21,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import HomeNew from './Components/HomeNew';
 import Home from './Components/Home';
 import Previous from "./Components/Previous";
+import Order from "./Components/Items";
 import Agentdash from './Components/Agentdash';
 import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
@@ -50,6 +51,7 @@ const App=()=>{
     <BrowserRouter>
     <Routes>
       <Route path="/home" element={<HomeNew />} />
+      <Route path="/items" element={<Order/>}/>
       <Route path="/primary1" element={<Primary />} />
       <Route path="/hi" element={<Hello />} />
       {/* <Route path="/t" element={<Layout/>}/> */}

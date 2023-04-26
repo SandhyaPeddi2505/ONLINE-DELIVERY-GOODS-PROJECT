@@ -110,7 +110,7 @@ const Primary = () => {
       console.log(`Destination is ${selectedDestination}`);
       console.log(`Date is ${date}`);
 
-      window.location.replace("/Source");
+      window.location.replace("/items");
     }
   };
   

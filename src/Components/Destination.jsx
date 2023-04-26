@@ -28,6 +28,7 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa}) => {
         if (dest.name && dest.name.length >= 3 && dest.address && dest.address.length >= 5 && dest.phone && dest.phone.length === 10 && !isNaN(dest.phone)) {
             return true;
         } else {
+            window.alert("Please enter the valid details.");
             return false;
 
         }
