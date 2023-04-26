@@ -1,32 +1,49 @@
-// import { ChangeEvent } from 'react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import qwe from './12.png';
-import axios from "axios";
+// import axios from "axios";
 // import Form from 'react-bootstrap/Form';
 // import { Button } from 'react-bootstrap';
 
 // import { Link } from "react-router-dom";
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import logo from "./sk.png"
 const Agent = () => {
-    const redirect = useNavigate()
+    const home = useNavigate()
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [address,setAddress]=useState("");
-    const handlesubmit = () => {
-        localStorage.setItem('EMAIL', email)
-        localStorage.setItem('PASSWORD', password)
-        if (email.length < 0) {
-            alert("email")
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [api, setApi] = useState([])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const validFirstName = firstName.length > 0;
+        const validLastName = lastName.length > 0;
+        const validEmail = email.includes("@gmail.com");
+        const validPassword = password.length > 5;
+        const validPhoneNumber = phoneNumber.length > 8;
+        const validAddress = address.length > 0;
+
+        if (
+            validFirstName &&
+            validLastName &&
+            validEmail &&
+            validPassword &&
+            validPhoneNumber &&
+            validAddress
+        ) {
+            alert('User Successfully Registred "\r Admin will get back to you once "\r your details are verified!!')
+            home('/')
+        } else {
+            alert("Error Occurred!")
         }
-        else if (email !== "a@gmail.com") {
-            //  alert("qwerty") 
-        }
-        // else {
-        //     alert("Thankyou for successful regristration" + "\n" + "Admin will get back to you!!")
-        //     redirect('/agentdash')
-        // }
     }
+
+
     const [file, setFile] = useState();
     function handleChange(e) {
         console.log(e.target.files);
@@ -55,113 +72,93 @@ const Agent = () => {
       }, []);
     return (
         <>
-            <div>
-                <div className='bgj'>
-                    <div className='flex'>
-                        <div className="co4">
-                            {/* <img src="https://o.remove.bg/downloads/885675ca-621b-4cc3-83ec-94fe62dfe9e0/frontlogo-removebg-preview.png"/> */}
-                            <img src={qwe} alt='dele' height="500" width="600" />
-                        </div>
-                        <div className='co4'>
-                            <div >
-                                <h3>Agent Signup Details!</h3>
-                                <form >
-                                    <div>
-                                        
-                                        <div class='row'>
-                                            <div class='col-md-6'>
-                                                {/* <div class=''> */}
-                                                    <div class="form-group">
-                                                        <label className="fs title" >First Name</label>
-                                                        <input type="text" class="form-control"  placeholder="Enter first Name" />
-                                                        
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label className="fs title" >Last Name</label>
-                                                        <input type="text" class="form-control"  placeholder="Enter last Name" />
-                                                        
-                                                    </div>
-
-                                                {/* </div> */}
-                                                
-
-                                                {/* <Form.Group className="mb-3" controlId="formBasicFirstname">
-                                                    <Form.Label>FirstName</Form.Label>
-                                                    <Form.Control type="FirstName" required placeholder="Ex: abc" />
-                                                </Form.Group> */}
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    <label>Email</label>
-                                                    <input type="email"class="form-control"   placeholder="Enter email"/>
-                                                </div>
-                                                <div>
-                                                    <div>
-                                                        <label>phone number</label>
-                                                        <input type="text" class="form-control"   placeholder="Enter phone number"/>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                        <label>Enter  Address</label>
-                                                        <input type="text" class="form-control"   placeholder="Enter Address"/>
-                                                    </div>
-
-                                            </div>
-
-                                            {/* <div class='col-md-6'>
-                                                <div class='form-outline'> */}
-                                            {/* <Form.Group className="mb-3" controlId="formBasicFirstname">
-                                                    <Form.Label>LastName</Form.Label>
-                                                    <Form.Control type="LastName" required placeholder="Ex: def" />
-                                                </Form.Group> */}
-                                            {/* </div>
-                                            </div> */}
-                                        </div>
-                                        {/* <div className='row'>
-                                        <div className='col-md-6'>
-                                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                <Form.Label>Email</Form.Label>
-                                                <Form.Control onChange={(e) => setEmail(e.target.value)} type="Email" required placeholder="Enter Email" />
-                                            </Form.Group>
-                                                        
-                                        </div> */}
-                                        {/* <div className='col-md-6'>
-                                            <div className='form-outline'>
-                                                <Form.Group className="mb-3" controlId="formBasicPassword">
-                                                    <Form.Label>Phone Number</Form.Label>
-                                                    <Form.Control type="PhoneInput" country={'us'} required placeholder="Enter Number" />
-                                                </Form.Group>
-                                            </div>
-                                        </div> */}
-                                    </div>
-                                    {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-                                        <Form.Label>Password</Form.Label>
-                                        <Form.Control onChange={(e) => setPassword(e.target.value)} type="Password" required placeholder="Enter Password" />
-                                    </Form.Group>
-                                    <Form.Group className="mb-2" controlId="formAddress">
-                                        <Form.Label>Address</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter Address"  name="address" required  />
-                                    </Form.Group> */}
-                                    <h6>Addhar Image:</h6>
-                                    <input type="file" required onChange={handleChange} />
-                                    <img src={file} height="50px" width="50px" />
-                                    <h6>Licence Image:</h6>
-                                    <input type="file" required onChange={handleChange2} />
-                                    <img src={files} height="50px" width="50px" />
-                                    <div className='heading6'>
-                                        <button className='btn btn-primary'>Submit</button>
-                                        {/* <Button className='btn' onClick={handlesubmit} variant="secondary" type="submit">Confirm</Button>{' '} */}
-                                    </div>
-                                    {/* </div> */}
-                                    {/* <div class="center"> 
-                                                   <Link to='/'>Back</Link>  
-                                                    </div> */}
-                                </form>
+            <nav class="fixed-nav-bar">
+                <nav class="navbar navbar-expand-lg navbar-dark ">
+                    <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30" /> </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <div className="">
+                                {/* <li class="nav-item">
+              <a class="hi nav-link" to={Link} href="/tracking" ><p className="qb"><span style={{ color: "black" }}>Tracking</span></p></a>
+            </li> */}
                             </div>
+                            {/* <li class="nav-item">
+              <div className="wer">
+                <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a>
+              </div>
+            </li> */}
+
+                        </ul>
+                    </div>
+                </nav>
+            </nav>
+            <div className='bgj'>
+                <div className="blur">
+                    <div className="cont">
+                        <div className="form-agent">
+                            
+                            <form onSubmit={handleSubmit}>
+                            <center>
+                                <h4>Agent SignUp details</h4>
+                            </center>
+                                <div class='row'>
+                                    <div class='col-md-12'>
+                                        <div >
+                                        <div className='row'>
+                                            <div class=" col-6 form-group">
+                                                {/* <label className="fs title" >First Name</label> */}
+                                                <input type="text" class="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Enter first Name" required />
+
+                                            </div>
+                                            <div class=" col-6 form-group">
+                                                {/* <label className="fs title" >Last Name</label> */}
+                                                <input type="text" class="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Enter last Name" required />
+
+                                            </div>
+                                        </div>
+                                            <div>
+                                                {/* <label>Email</label> */}
+                                                <input type="email" value={email} class="form-control" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" required />
+                                            </div>
+                                        
+                                                <div>
+                                                    {/* <label>Password</label> */}
+                                                    <input type="password" value={password} className='form-control' onChange={(e) => setPassword(e.target.value)} placeholder='Enter Password' required />
+                                                </div>
+                                                <div>
+                                                    {/* <label>phone number</label> */}
+                                                    <input type="PhoneInput" maxLength={10} value={phoneNumber} class="form-control" onChange={(e) => setPhoneNumber(e.target.value)} placeholder="Enter phone number" required />
+                                                </div>
+                                            
+                                            <div>
+                                                {/* <label>Enter  Address</label> */}
+                                                <input type="text" value={address} class="form-control" onChange={(e) => setAddress(e.target.value)} placeholder="Enter Address" required />
+                                            </div>
+
+                                        
+                                        <h6 class="font-bold">Addhar Image:</h6>
+                                <input type="file" onChange={handleChange} />
+                                <img src={file} height="50px" width="50px" />
+                                <h6 class="font-bold">Licence Image:</h6>
+                                <input type="file" onChange={handleChange2} />
+                                <img src={files} height="50px" width="50px" />
+                                <div className='heading6 mt-3'>
+                                    <button className='btn btn-primary'>Submit</button>
+                                </div>
+</div>
+                                    </div>
+                                </div>
+
+                                
+                            </form>
                         </div>
+
                     </div>
                 </div>
-            </div >
+            </div>
         </>
     )
 }

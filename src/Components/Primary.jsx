@@ -7,6 +7,7 @@ import { Calendar, DatePicker } from 'antd';
 import "./Primary.scss";
 import Map1 from "./Map";
 import third from "./third";
+import { Link } from "react-router-dom";
 
 
 const Primary = () => {
