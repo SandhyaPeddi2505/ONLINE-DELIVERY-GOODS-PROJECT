@@ -1,11 +1,12 @@
-// import Submit from "./Components/Submit";
-// import Source from "./Components/Source";
-// import Destination from "./Components/Destination";
-// import Layout from "./Components/Layout";
-// import Confirm from "./Components/Confirm";
+import Submit from "./Components/Submit";
+import Source from "./Components/Source";
+import Destination from "./Components/Destination";
+import Layout from "./Components/Layout";
+import Confirm from "./Components/Confirm";
 import "./Components/Styles.scss";
 import axios from "axios";
-import {useState,useEffect} from "react";
+import { useState, useEffect } from "react";
+
 import Next from "./Components/Other.jsx";
 import "./styles.scss";
 import Primary from "./Components/Primary";
@@ -43,10 +44,10 @@ import Changepassword from './Components/Changepassword';
 import Profile from './Components/Profile';
 import Forgotpassword from './Components/Forgotpassword';
 
-const App=()=>{
-  
+const App = () => {
 
-  return(
+
+  return (
     <>
     <BrowserRouter>
     <Routes>
@@ -67,14 +68,14 @@ const App=()=>{
       <Route path="/confirmScreen" element={<Confirmscreen/>}/>
       <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/OTP' element={<OTP/>}></Route>
-          <Route path='/user' element={<User/>}></Route>
+          <Route path='/OTP' element={<OTP />}></Route>
+          <Route path='/user' element={<User />}></Route>
           <Route path='/changepassword' element={<Changepassword />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
           <Route path='/forgotpassword' element={<Forgotpassword />}></Route>
-    </Routes>
-    </BrowserRouter>
-  
+        </Routes>
+      </BrowserRouter>
+
     </>
   )
 }

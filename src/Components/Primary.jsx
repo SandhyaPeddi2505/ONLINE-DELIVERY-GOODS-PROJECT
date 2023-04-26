@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import "./Primary.scss";
 import third from "./third";
+import { Link } from "react-router-dom";
 
 
 const Primary = () => {

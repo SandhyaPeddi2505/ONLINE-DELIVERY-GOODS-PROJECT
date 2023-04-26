@@ -2,7 +2,7 @@ const Confirmscreen=()=> {
     return (
         <>
         <div className='bgj'>
-            <div>
+            <div className="blur">
         <h1 class="overview">Order Over-View</h1>
         </div>
         </div>
