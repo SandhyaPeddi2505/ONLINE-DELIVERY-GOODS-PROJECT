@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
 import qwe from './12.png';
+// import axios from "axios";
+// import Form from 'react-bootstrap/Form';
+// import { Button } from 'react-bootstrap';
+
+// import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -49,11 +54,22 @@ const Agent = () => {
         console.log(e.target.files);
         setFiles(URL.createObjectURL(e.target.files[0]));
     }
+    const[data,setData]=useState({})
     useEffect(() => {
-        axios.get("http://ec2-65-2-161-39.ap-south-1.compute.amazonaws.com:8001/Agent_Info/")
-            .then((res) => setApi(res.data))
-        console.log(api)
-    }, [])
+        //call API
+        axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/Agent_Info/', {
+          // headers: {
+          //    'Content-Type': 'application/json',
+          //    "Access-Control-Allow-Headers": '*',
+          //   }
+        })
+          .then(response => {
+            setData(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }, []);
     return (
         <>
             <nav class="fixed-nav-bar">

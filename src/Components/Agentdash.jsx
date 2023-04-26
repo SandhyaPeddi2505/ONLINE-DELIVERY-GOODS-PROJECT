@@ -1,53 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+// import Navbar from 'react-bootstrap/Navbar';
+// import Nav from 'react-bootstrap/Nav';
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "./sk.png";
-const Agentdash = () => {
-  const data = [
-    {
-      DeliveryId: 1223311,
-      Ordertype: "Groceries",
-      CustomerName: "sdssdssd",
-      SourceAddress: "Radidurg",
-      DestinationAddress: "Durgam cheruvu",
-      Quantity: 1
-    },
-    {
-      DeliveryId: 1223312,
-      Ordertype: "Files",
-      CustomerName: "sdssdssd",
-      SourceAddress: "Radidurg",
-      DestinationAddress: "Durgam cheruvu",
-      Quantity: 3
-    },
-    {
-      DeliveryId: 1223313,
-      Ordertype: "Clothes",
-      CustomerName: "sdssdssd",
-      SourceAddress: "Radidurg",
-      DestinationAddress: "Durgam cheruvu",
-      Quantity: 2
-    }, {
-      DeliveryId: 1223314,
-      Ordertype: "Sweets",
-      CustomerName: "sdssdssd",
-      SourceAddress: "Radidurg",
-      DestinationAddress: "Durgam cheruvu",
-      Quantity: 4
-    },
-    {
-      DeliveryId: 1223315,
-      Ordertype: "Chocolates",
-      CustomerName: "sdssdssd",
-      SourceAddress: "Radidurg",
-      DestinationAddress: "Durgam cheruvu",
-      Quantity: 2
-    }
-  ]
-  const [show, setShow] = useState(false);
-  const redirect = useNavigate();
+import axios from "axios";
+import logo from "./nav-logo.png";
+const Agentdash=()=> {
+  const redirect=useNavigate()
+        const data= [
+        {
+            DeliveryId:1223311,
+            Ordertype:"Groceries",
+            CustomerName:"sdssdssd",
+            SourceAddress:"Radidurg",
+            DestinationAddress:"Durgam cheruvu",
+            Quantity:1
+        },
+        {
+            DeliveryId:1223312,
+            Ordertype:"Files",
+            CustomerName:"sdssdssd",
+            SourceAddress:"Radidurg",
+            DestinationAddress:"Durgam cheruvu",
+            Quantity:3
+        },
+        {
+            DeliveryId:1223313,
+            Ordertype:"Clothes",
+            CustomerName:"sdssdssd",
+            SourceAddress:"Radidurg",
+            DestinationAddress:"Durgam cheruvu",
+            Quantity:2
+        },{
+            DeliveryId:1223314,
+            Ordertype:"Sweets",
+            CustomerName:"sdssdssd",
+            SourceAddress:"Radidurg",
+            DestinationAddress:"Durgam cheruvu",
+            Quantity:4
+        },
+        {
+            DeliveryId:1223315,
+            Ordertype:"Chocolates",
+            CustomerName:"sdssdssd",
+            SourceAddress:"Radidurg",
+            DestinationAddress:"Durgam cheruvu",
+            Quantity:2
+        }
+    ] 
+     const [show, setShow] = useState(false);
   const [selectedData, setSelectedData] = useState({});
   const hanldeClick = (selectedRec) => {
     setSelectedData(selectedRec);

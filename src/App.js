@@ -8,7 +8,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 import Next from "./Components/Other.jsx";
-
 import "./styles.scss";
 import Primary from "./Components/Primary";
 import Hello from "./Components/Hello";
@@ -26,6 +25,7 @@ import Previous from "./Components/Previous";
 import Agentdash from './Components/Agentdash';
 import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
+import StepperWrapper from "./Components/StepperWrapper";
 
 import Login from './Components/Login';
 import "./Login.scss";
