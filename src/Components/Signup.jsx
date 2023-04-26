@@ -1,24 +1,29 @@
-import { useState } from "react";
+import React from "react";
+import { useState ,useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
+// import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import abc from './online.png';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import abc from "./online.png";
 
 const Signup = () => {
   const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
   const [password, passwordchange] = useState("");
   const [cpassword, setCpassword] = useState("");
+  const [username, setuserName] = useState("");
   const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState("");
   const [cPasswordError, setCpasswordError] = useState("");
-
-  // States for checking the errors
-  const [submitted, setSubmitted] = useState(false);
   const [error, setErrors] = useState();
-
+  
   const validateEmail = (e) => {
-    // var email = e.target.value
+    var email = e.target.value;
+    if (e.target.name === "username") {
+      setuserName(e.target.value);
+    }
 
     if (e.target.name === "email") {
       setEmail(e.target.value);
@@ -55,21 +60,21 @@ const Signup = () => {
       }
     }
   };
-
-  const handlesubmit = (e) => {
+    const handleSubmit = (e) => {
     e.preventDefault();
-
-    
+    const payload = {
+      username,
+      email,
+      password,
+    };
     axios
-      .post("http://ec2-3-110-122-239.ap-south-1.compute.amazonaws.com:8000/app/user/create_user/", {
-        email,
-        password,
-        cpassword
-      })
+      .post(
+        "http://ec2-3-110-189-227.ap-south-1.compute.amazonaws.com:8001/app/user/create_user/",
+        payload
+      )
       .then((response) => {
         console.log(response);
         if (response?.status === 200) {
-          navigate("/login");
           console.log(response?.status);
         }
       })
@@ -79,46 +84,16 @@ const Signup = () => {
       });
 
     setErrors({});
-    let data = ({ email, password, cpassword } = submitted);
-    if (!email) {
-      setErrors({ email: "Email is required" });
-    } else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      setErrors({ email: "Email is not valid" });
+    if (username !== "" && email!=="" && password!=="" ) {
+  toast.success("successfully signed up!");
+  setTimeout(() => {
+    navigate('/login');
+  }, 6000);
     }
-    if (!password) {
-      setErrors({ password: "Password is required" });
-    } else if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
-        password
-      )
-    ) {
-      setErrors({
-        password:
-          "Password must contain capital,small,numeric,special characters"
-      });
-    } else if (password.length < 6) {
-      setErrors({ password: "Password must be atleast 6 characters" });
-      
+    else{
+      toast.warn("noo")
     }
-    if (password !== cpassword) {
-      setErrors({ cpassword: "Passwords do not match" });
-    }
-
-
-    console.log("EMAIL", email);
-    console.log("PASSWORD", password);
-
-    if (
-      email !== "" &&
-      password !== "" &&
-      !emailError &&
-      !passwordError &&
-      !cPasswordError
-    ) {
-      
-      navigate("/");
-      window.location.reload();
-    }
+    setErrors({});
   };
   const loginNavigate = (e) => {
     navigate("/login");
@@ -128,7 +103,6 @@ const Signup = () => {
   return (
     <>
       <div>
-
         <div className="man">
           <div className="flex">
             <div className="">
@@ -141,9 +115,19 @@ const Signup = () => {
                 <h1>Sign Up</h1>
 
                 <form>
-                  
                   <div>
-                    
+                    <div className="mb-3" id="formBasicUsername">
+                      <label>Username</label>
+                      <input
+                        onChange={(e) => validateEmail(e)}
+                        name="username"
+                        type="text"
+                        placeholder="Enter Username"
+                        className="form-control"
+                        required
+                      />
+                    </div>
+
                     <div className="mb-3" id="formBasicEmail">
                       <label>Email address</label>
                       <input
@@ -156,59 +140,70 @@ const Signup = () => {
                       />
 
                       <span style={{ color: "red" }}>{emailError}</span>
-                    
-                  </div>
-                  <div className="mb-3" id="formBasicLastName">
-                    <label>Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      onChange={(e) => validateEmail(e)}
-                      placeholder="password"
-                      className="form-control"
-                      required
-                    />
-                    
-                    <span style={{ color: "red" }}>{passwordError}</span>
-                  </div>
-                  {console.log(error)}
-                  <div className="mb-3">
-                    <label>Confirm Password</label>
-                    <input
-                      type="password"
-                      name="cpassword"
-                      className="form-control"
-                      onChange={(e) => validateEmail(e)}
-                      placeholder="Confirm Password"
-                      required
-                    />
-                    
-                    <span style={{ color: "red" }}>{cPasswordError}</span>
-                  </div>
+                    </div>
+                    <div className="mb-3" id="formBasicLastName">
+                      <label>Password</label>
+                      <input
+                        type="password"
+                        name="password"
+                        onChange={(e) => validateEmail(e)}
+                        placeholder="password"
+                        className="form-control"
+                        required
+                      />
 
-                  <button
-                    onClick={handlesubmit}
-                    className="btn btn-primary"
-                    type="Submit"
-                  >
-                    Submit
-                  </button>
-                  <div>
-                    <p>
-                      Already have an account ?
-                      <Link style={{ color:"blue",textDecoration:"none"}} onClick={loginNavigate}>Login</Link>
-                    </p>
-                  </div>
+                      <span style={{ color: "red" }}>{passwordError}</span>
+                    </div>
+                    {console.log(error)}
+                    <div className="mb-3">
+                      <label>Confirm Password</label>
+                      <input
+                        type="password"
+                        name="cpassword"
+                        className="form-control"
+                        onChange={(e) => validateEmail(e)}
+                        placeholder="Confirm Password"
+                        required
+                      />
+
+                      <span style={{ color: "red" }}>{cPasswordError}</span>
+                    </div>
+
+                    <button
+                      onClick={handleSubmit}
+                      className="btn btn-primary"
+                      type="Submit"
+                    >
+                      Submit
+                    </button>
+                    <div>
+                      <p>
+                        Already have an account ?
+                        <Link
+                          style={{ color: "blue", textDecoration: "none" }}
+                          onClick={loginNavigate}
+                        >
+                          Login
+                        </Link>
+                      </p>
+                    </div>
                   </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
-
+       
       </div>
+      <ToastContainer />
     </>
   );
 };
 
 export default Signup;
+
+
+
+
+
+

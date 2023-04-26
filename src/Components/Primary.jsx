@@ -75,7 +75,7 @@ const Primary = () => {
    const handleChange = date => {
      if (date < today) {
       toast.warn("Choose the date which is yet to come !");
-      setTimeout(() => window.location.reload(), 6500);
+      setTimeout(() => date.location.reload(), 6500);
      } else {
         setSelectedDate(date);
      }
@@ -118,6 +118,7 @@ const Primary = () => {
     else if (!selectedDate) {
       toast.warn('Date field is empty, please select');
     } 
+    
     
     else {
       console.log(`Source is ${selectedSource}`);

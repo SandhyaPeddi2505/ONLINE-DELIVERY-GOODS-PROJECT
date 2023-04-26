@@ -1,8 +1,4 @@
-// import Submit from "./Components/Submit";
-// import Source from "./Components/Source";
-// import Destination from "./Components/Destination";
-// import Layout from "./Components/Layout";
-// import Confirm from "./Components/Confirm";
+// import ProtectedRoute from "./protected";
 import "./Components/Styles.scss";
 import axios from "axios";
 import {useState,useEffect} from "react";
@@ -10,14 +6,10 @@ import Next from "./Components/Other.jsx";
 import "./styles.scss";
 import Primary from "./Components/Primary";
 import Hello from "./Components/Hello";
-
-// import logo from './logo.svg';
-// import './App.css';
 import "./Style.scss";
 import React from 'react';
 import Agent from './Components/Agent';
 import "bootstrap/dist/css/bootstrap.css";
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeNew from './Components/HomeNew';
 import Home from './Components/Home';
 import Previous from "./Components/Previous";
@@ -25,13 +17,13 @@ import Agentdash from './Components/Agentdash';
 import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
 import StepperWrapper from "./Components/StepperWrapper";
-
 import Login from './Components/Login';
 import "./Login.scss";
 import "./Signup.scss";
 import "./OTP.scss";
 import "./Changepassword.scss";
 import "./Forgotpassword.scss";
+import Create from "./Components/CreateProfile";
 import "./Profile.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -49,6 +41,9 @@ const App=()=>{
     <>
     <BrowserRouter>
     <Routes>
+    {/* <Route element={<ProtectedRoute/>}>
+    <Route path="/" element={<Home />} />
+</Route> */}
       <Route path="/home" element={<HomeNew />} />
       <Route path="/primary1" element={<Primary />} />
       <Route path="/hi" element={<Hello />} />
@@ -69,6 +64,7 @@ const App=()=>{
           <Route path='/user' element={<User/>}></Route>
           <Route path='/changepassword' element={<Changepassword />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/createProfile' element={<Create />}></Route>
           <Route path='/forgotpassword' element={<Forgotpassword />}></Route>
     </Routes>
     </BrowserRouter>

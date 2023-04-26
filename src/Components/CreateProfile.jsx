@@ -3,89 +3,27 @@ import React, { useState ,useEffect} from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import abc from './pic.png';
 // import Swal from "swal"
+import Swal from 'sweetalert2';
 import axios from "axios";
-// import Swal from 'sweetalert2';
+// import { toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
-const Profile = () => {
+const Create = () => {
     const navigate = useNavigate();
     const [isEditing, setIsEditing] = useState(false);
     const [save, setsave] = useState(false);
-    const [name, setname] = useState("Manoja")
-    const [email, setemail] = useState("manoja@gmail.com")
-    const [number, setnumber] = useState("9867453267")
-    const [gender, setgender] = useState("Female")
-    const [address, setaddress] = useState("1-26/1,durgamcheruvu,hyderbad")
-    const [pincode, setpincode] = useState("500081")
+    const [name, setname] = useState("")
+    const [email, setemail] = useState("")
+    const [number, setnumber] = useState("")
+    const [gender, setgender] = useState("")
+    const [address, setaddress] = useState("")
+    const [pincode, setpincode] = useState("")
     const savehandle = () => {
-        setIsEditing(false)
-        setsave(false)
+       toast.success("Saved successfiully")
         console.log({ "name": name, "email": email, "number": number, "gender": gender, "address": address, "pincode": pincode });
     }
-    const edithandle = () => {
-        setIsEditing(true)
-        setsave(true)
-        setname("")
-        setemail("")
-        setnumber("")
-        setgender("")
-        setaddress("")
-        
-        setpincode("")
-    }
-    // const navigate = useNavigate();
+ 
 
-    // const loginNavigate = (e) => {
-    //     navigate('/user');
-    //     window.location.reload();
-    // }
-    // Swal.fire({
-    //     title: 'Do you want to save the changes?',
-    //     showDenyButton: true,
-    //     showCancelButton: true,
-    //     confirmButtonText: 'Save',
-    //     denyButtonText: `Don't save`,
-    //   }).then((result) => {
-    //     /* Read more about isConfirmed, isDenied below */
-    //     if (result.isConfirmed) {
-    //       Swal.fire('Saved!', '', 'success')
-    //     } else if (result.isDenied) {
-    //       Swal.fire('Changes are not saved', '', 'info')
-    //     }
-    //   })
-    // const swalWithBootstrapButtons = Swal.mixin({
-    //     customClass: {
-    //       confirmButton: 'btn btn-success',
-    //       cancelButton: 'btn btn-danger'
-    //     },
-    //     buttonsStyling: true
-    //   })
-
-    //   swalWithBootstrapButtons.fire({
-    //     title: 'Are you sure?',
-    //     text: "You won't be able to revert this!",
-    //     icon: 'warning',
-    //     showCancelButton: true,
-    //     confirmButtonText: 'Yes, delete it!',
-    //     cancelButtonText: 'No, cancel!',
-    //     reverseButtons: true
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //       swalWithBootstrapButtons.fire(
-    //         'Deleted!',
-    //         'Your file has been deleted.',
-    //         'success'
-    //       )
-    //     } else if (
-    //       /* Read more about handling dismissals below */
-    //       result.dismiss === Swal.DismissReason.cancel
-    //     ) {
-    //       swalWithBootstrapButtons.fire(
-    //         'Cancelled',
-    //         'Your imaginary file is safe :)',
-    //         'error'
-    //       )
-    //     }
-    //   })
     const [dataa, setDataa] = useState({});
     useEffect(() => {
         //call API
@@ -103,14 +41,27 @@ const Profile = () => {
           });
       }, []);
     const handleSubmit = () => {
-        // Swal.fire({
-        //     title: 'Do you want to order from this address?',
-        //     // text: "You won't be able to revert this!",
-        //     icon: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#3085d6',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Yes'
+        Swal.fire({
+            title: 'Do you want to order from this address?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+            
+
+        }).then((result) => {
+            if (result.value) {
+                //   Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                window.location.href = "/source";
+            }
+            else {
+                window.location.href = "/home"
+            }
+        });
+    };
+       
             
 
         // }).then((result) => {
@@ -122,14 +73,14 @@ const Profile = () => {
         //         window.location.href = "/home"
         //     }
         // });
-    };
+    // };
 
 
 
     return (
 
         <div className='xyz'>
-            <div className='end '>
+            {/* <div className='end '>
 
                 <Link to="/changepassword" style={{ color: 'black', textDecoration: "none" }}>
 
@@ -139,7 +90,7 @@ const Profile = () => {
                     Changepassword
 
                 </Link>
-            </div>
+            </div> */}
            
 
             <div className='flex'>
@@ -148,41 +99,29 @@ const Profile = () => {
                 </div>
                 <div className="col-md-5">
                     <div className='yy'>
-                        <h1>Edit Profile !</h1>
+                        <h1>Create your Profile !</h1>
                     </div>
                     <div >
                         <form>
                             <div className='no'>
                                 <div className="mb-2" id="formBasicName">
                                     <label>Name</label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={name} className='form-control' placeholder="Enter name" />
-                                        </div>)}
-                                    {isEditing &&
-                                        (<input type="Name" value={name} onChange={(t) => (setname(t.target.value))} id="userName" placeholder="Enter name" className='form-control' />)
-                                    }
+                                  
+                                  
+                                        <input type="Name" value={name} onChange={(t) => (setname(t.target.value))} id="userName" placeholder="Enter name" className='form-control' />
+                                    
 
                                 </div>
                                 <div className="mb-2" id="formBasicEmail">
-                                    <label> Email </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={email} className='form-control' placeholder="Enter email" />
-                                        </div>)}
-                                    {isEditing &&
+                                <label> Email </label>
                                         <input type="Email" value={email} onChange={(e) => (setemail(e.target.value))} id="userEmail" placeholder="Enter email" className='form-control' />
-                                    }
+                                    
                                 </div>
                                 <div className="mb-2" id="formBasicnumber">
                                     <label> Phone number </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={number} className='form-control' placeholder="Enter phonenumber" />
-                                        </div>)}
-                                    {isEditing &&
+                                 
                                         <input type="number" value={number} onChange={(a) => { if (a.target.value.length <= 10) { (setnumber(a.target.value)) } }} placeholder="Enter phonenumber" className='form-control' />
-                                    }
+                                    
                                 </div>
                                 <div >
                                     <label>Gender</label>
@@ -194,42 +133,30 @@ const Profile = () => {
                                 </div>
                                 <div className="mb-2" id="formBasicAddress">
                                     <label> Address </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={address} className='form-control' placeholder="Enter address" />
-                                        </div>)}
-                                    {isEditing &&
+                                  
                                         <textarea value={address} onChange={(b) => (setaddress(b.target.value))} rows="4" cols="10" placeholder="Enter address" className='form-control'></textarea>
-                                    }
+                                    
                                 </div>
                                
                                 <div className="mb-2" id="formBasicnumber">
                                     <label> Pincode </label>
-                                    {!isEditing &&
-                                        (<div className="">
-                                            <input value={pincode} className='form-control' placeholder="Enter pincode" />
-                                        </div>)}
-                                    {isEditing &&
+                                    
                                         <input type="number" value={pincode} onChange={(e) => { if (e.target.value.length <= 6) { (setpincode(e.target.value)) } }} placeholder="Enter pincode" className='form-control' />
-                                    }
+                                    
                                 </div>
 
 
                                 
                             </div>
                         </form>
+                        <br>
+                        </br>
                         <div className='cc'>
-                            {!isEditing &&
-                                <button className='btn btn-primary' onClick={edithandle} >
-                                    Edit
-                                </button>
-                            }
-
-                            {save &&
+                          
                                 <button className='btn btn-primary' onClick={savehandle} >
                                     Save
                                 </button>
-                            }
+                            
                         </div>
                         
                         <div className='m'>
@@ -244,10 +171,11 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
 
     )
 }
-export default Profile;
+export default Create;
 
 
