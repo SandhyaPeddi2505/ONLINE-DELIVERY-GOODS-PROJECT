@@ -54,6 +54,7 @@ const VerticalStepper = () => {
   };
 
   return (
+    <div className="container">
     <div className="zz">
 <div className="xx">
       <Stepper activeStep={activeStep} orientation="vertical">
@@ -84,6 +85,7 @@ const VerticalStepper = () => {
           </div>
         )}
       </div>
+    </div>
     </div>
     </div>
   );

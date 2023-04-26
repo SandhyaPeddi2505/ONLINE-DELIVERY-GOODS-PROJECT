@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import validator from 'validator';
 import axios from 'axios'
 import abc from './online.png';
+// import { ToastContainer,toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
     // const profile = useNavigate();
@@ -14,7 +16,7 @@ const Login = () => {
     const [usernameError, setuserNameError] = useState('')
     // States for checking the errors 
     const [submitted, setSubmitted] = useState(false);
-    const [error, setErrors] = useState();
+    // const [error, setErrors] = useState();
 
 
 
@@ -43,12 +45,12 @@ const Login = () => {
         }).then(response => {
 
             if (!username || !password) {
-                alert("Enter all fields");
+                alert(" Please enter all fields");
             }
             else if (response?.status === 200) {
                 //  navigate('/profile');
                 console.log(response?.status);
-                alert("login successful");
+                // alert("login successful");
                 console.log(response);
                 // navigate('/profile');
             }
@@ -56,8 +58,13 @@ const Login = () => {
             .catch(error => {
                 console.log(error.response.data); // handle error
             })
-        setErrors({});
+            if(username !== '' && password !== '' ){
+                navigate("/profile");
+            window.location.reload();
+        }
         
+        // setErrors({});
+
 
         // {
 
@@ -125,6 +132,8 @@ const Login = () => {
                             <div className='mt-2'>
                                 <button onClick={handleSubmit} className="btn btn-primary" type="LogIn"> Log In </button>
                             </div>
+                            {/* <ToastContainer/> */}
+
                             <div className="d-flex flex-row justify-content-end" >
                                 <a className="small text-muted" style={{ textDecoration: "none" }}><Link to='/OTP' style={{ color: "black", textDecoration: "none" }} >Forgotpassword?</Link></a>
                             </div>

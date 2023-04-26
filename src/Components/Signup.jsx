@@ -15,11 +15,14 @@ const Signup = () => {
   const [cPasswordError, setCpasswordError] = useState("");
 
   // States for checking the errors
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
   const [error, setErrors] = useState();
 
   const validateEmail = (e) => {
-    // var email = e.target.value
+    var email = e.target.value
+    if(e.target.name==="username"){
+      setuserName(e.target.value)
+    }
 
     if (e.target.name === "email") {
       setEmail(e.target.value);
@@ -85,7 +88,7 @@ const Signup = () => {
     setErrors({});
     if (username !== '' && email !== '' && password !== ''  ) {
 
-      alert('registerd successfully')
+      // alert('registerd successfully')
 
       // navigate('/login');
 
@@ -96,11 +99,11 @@ const Signup = () => {
     //   alert("")
     // }
 
-    {
+    // {
 
-      // navigate("/login");
-      // window.location.reload();
-    }
+    //   navigate("/login");
+    //   window.location.reload();
+    // }
   };
   const loginNavigate = (e) => {
     navigate("/login");
@@ -130,7 +133,7 @@ const Signup = () => {
 
                       <label>Username</label>
                       <input
-                        // onChange={(e) => validateEmail(e)}
+                        onChange={(e) => validateEmail(e)}
                         name="username"
                         type="text"
                         placeholder="Enter Username"

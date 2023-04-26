@@ -39,7 +39,7 @@ const OTP = () => {
     }
     return (
 
-        <div className="xyz">
+        <div className="tt">
             <div className='flex'>
                 <div className="zz">
                     

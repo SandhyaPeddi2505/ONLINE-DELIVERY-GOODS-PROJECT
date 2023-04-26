@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import abc from './online.png';
+import { ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Forgotpassword = () => {
     const [password, setPassword] = useState("");
@@ -71,23 +73,35 @@ const Forgotpassword = () => {
     //     navigate('/login');
     //         window.location.reload();
     // }
+    // const handlesubmit = (e) => {
+    //     e.preventDefault();
+    //     if (password === '' || password === '' || confirmPassword === '') {
+    //         toast.warn(" Please enter all Fields");
+    //     }
+    //     else if (password !== '' && password !== '' && confirmPassword !== '') {
+    //         //             if(!password ==confirmPassword){
+    //         // setError("Passwords must match")
+    //         //             }
+    //         //             else{
+    //         //                 error=''
+    //         //             }
+    //         toast.success("password changed successfully")
+    //         navigate('/login');
+    //         // window.location.reload();
+    //     }
+    // }
+
     const handlesubmit = (e) => {
         e.preventDefault();
-        if (password === '' || password === '' || confirmPassword === '') {
-            alert("Enter all Fields");
+        if (password !== '' && password !== '' && confirmPassword !== '') {
+          // Here you can send the data to your server
+          alert(" password changed Successfully!");
+          navigate('/')
+          
+        } else {
+          toast.error("Please enter all details!");
         }
-        else if (password !== '' && password !== '' && confirmPassword !== '') {
-            //             if(!password ==confirmPassword){
-            // setError("Passwords must match")
-            //             }
-            //             else{
-            //                 error=''
-            //             }
-            alert("password changed successfully")
-            navigate('/login');
-            // window.location.reload();
-        }
-    }
+      };
     const handleOtpChange = (e) => {
         setOtp(e.target.value);
         if (e.target.value.length !== 6) {
@@ -105,7 +119,7 @@ const Forgotpassword = () => {
     return (
         <>
             <div>
-                <div className="xyz">
+                <div className="gg">
                     <div className="flex">
                         <div className="x ">
                             <img src={abc} height="500" width="500" alt="del" />
@@ -116,17 +130,17 @@ const Forgotpassword = () => {
                                 <div className="cd">
                                     <div className="m-1" controlId="formBasicPassword">
                                         <label> Enter New Password</label><br />
-                                        <input type="password" onChange={(e) => validatepassword(e)} name="password" className="form-control" required placeholder="Old Password" />
+                                        <input type="password" onChange={(e) => validatepassword(e)} name="password" className="form-control" required placeholder="New Password" />
                                         <p><span style={{ color: 'red' }}>{passwordError}</span></p>
                                     </div>
                                     <div className="m-1" controlId="formBasicPassword">
                                         <label> Confirm Password</label><br />
-                                        <input type="password" onChange={handleConfirmPasswordChange} name="password" className="form-control" required placeholder="New Password" />
+                                        <input type="password" onChange={handleConfirmPasswordChange} name="password" className="form-control" required placeholder="confrim Password" />
                                         <p><span style={{ color: 'red' }}>{confirmPasswordError}</span></p>
                                     </div>
                                     <div className="m-1" controlId="formBasicPassword">
                                         <label>OTP</label><br />
-                                        <input type="password" onChange={handleOtpChange} value={otp} className="form-control" required placeholder="Confirm Password" />
+                                        <input type="number" onChange={handleOtpChange} value={otp} className="form-control" required placeholder="Otp" />
                                         <p><span style={{ color: 'red' }}>{otpError}</span></p>
                                     </div>
 
@@ -135,6 +149,7 @@ const Forgotpassword = () => {
                                     </div>
 
                                 </div>
+                                <ToastContainer/>
                             </form>
                         </div>
                         {/* <div class="">
