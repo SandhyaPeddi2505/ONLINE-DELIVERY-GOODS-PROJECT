@@ -2,7 +2,7 @@ import React from 'react';
 // import Navbar from 'react-bootstrap/Navbar';
 import DataTable from "react-data-table-component";
 import styled from "styled-components";
-import logo from "./nav-logo.png";
+import logo from "./sk.png";
 const Previous = () => {
     const items = [
         {
@@ -84,61 +84,33 @@ const Previous = () => {
 
     return (
         <>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><img src={logo} alt="qwe" height="35" width="60"/> <span style={{ color: 'white' }}>De<span style={{ color: 'red' }}>l</span>ivery</span></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    {/* <ul class="navbar-nav"> */}
-      {/* <li class="nav-item active">
-        <a as={Link} to="/agent">Home <span class="sr-only">(current)</span></a>
-      </li> */}
-      {/* <nav><Link to="/tracking">Tracking</Link></nav> */}
-      {/* <li class="nav-item">
-        <a class="nav-link" to={Link} href="/tracking" ><h5><span style={{color:"white"}}>Tracking</span></h5></a>
-      </li> */}
-      {/* <li class="nav-item">
-        <div className="wer">
-        <a class="nav-link" to={Link} href="/agent"><h5><span style={{color:"white"}}>Agent Registration</span></h5></a>
-        </div>
-      </li> */}
-      
-    {/* </ul> */}
-  </div>
-</nav>
-        {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav> */}
-            {/* <Navbar bg="dark" variant="secondary" className='justify-content-start'>
-                <Navbar.Brand className="justify-content-end" href="#home">
-                    <img src="https://image.similarpng.com/very-thumbnail/2020/06/Fast-delivery-logo-design-vector-PNG.png" alt="Sample Brand Logo" width="35" className='align-top d-inline-block' height="35" />
-                    <span style={{ color: 'white' }}>De<span style={{ color: 'red' }}>l</span>ivery</span>
-                </Navbar.Brand>
-            </Navbar> */}
-            <div className=''>
+        <nav class="fixed-nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"  /> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+           
+            {/* <li class="nav-item"> */}
+              {/* <a class="hi nav-link" to={Link} href="/previous" ><p className="qb"><span style={{ color: "black" }}>previous</span></p></a> */}
+            {/* </li> */}
+           
+            <li class="nav-item">
+              
+                {/* <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a> */}
+              
+            </li>
 
+          </ul>
+        </div>
+      </nav>
+      </nav>
+            <div className='bgj'>
+                <div className="pre-table">
+                    <div className="blur">
                 <DataTable
-                    // title="Covid-19 Stats"
                     defaultSortAsc="false"
                     // responsive
                     // defaultSortAsc={false}
@@ -183,6 +155,9 @@ const Previous = () => {
                         }
                     ]}
                 />
+                </div>
+                </div>
+                
             </div>
 
         </>

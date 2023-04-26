@@ -116,7 +116,7 @@ const Profile = () => {
         }).then((result) => {
             if (result.value) {
                 //   Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                window.location.href = "/source";
+                window.location.href = "/destination";
             }
             else {
                 window.location.href = "/home"
