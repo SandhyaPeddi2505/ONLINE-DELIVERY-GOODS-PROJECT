@@ -9,34 +9,27 @@ import abc from "./online.png";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setuserName] = useState("");
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
-  
 
-  const [usernameError, setuserNameError] = useState("");
+
+  const [emailError, setemailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setErrors] = useState();
 
-  const validateuserName = (e) => {
-    var username = e.target.value;
-    setuserName(e.target.value);
-    if (validator.isuserName(username)) {
-      setuserNameError("");
+  const validateEmail = (e) => {
+    var email = e.target.value;
+    setEmail(e.target.value);
+    if (validator.isemail(email)) {
+      setemailError("");
     } else {
-      setuserNameError("Enter valid userName!");
+      setemailError("Enter valid userName!");
     }
   };
-  // function nav() {
-  //   if (loggedIn === 'temporary') {
-  //     // navigate to page 1
-  //     navigate('/createProfile');
-  //   } else {
-  //     // navigate to page 2
-  //     navigate('/home');
-  //   }
-  // }
+  
   function user() {
     if (userType === 'Agent') {
       // navigate to page 1
@@ -54,40 +47,63 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = {
-      username: "santhoshd@example.com", password: "Santhu@123"
+    const payload =
+    {
+
+      "email": email,
+
+      "password": password
+
     }
+    // {
+    // username: "santhoshd@example.com", password: "Santhu@123"
+    // }
+    // axios.post('http://ec2-65-0-177-196.ap-south-1.compute.amazonaws.com:8001/token/' ,payload,{ headers: {"Authorization" : `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjQ4NzE5OSwiaWF0IjoxNjgyNDAwNzk5LCJqdGkiOiI2M2I1Mzc4ZmMwZGY0NGE4YTM3MmQwYjY4YzViYWY5OSIsInVzZXJfaWQiOiJOb25lIn0.vzDg7vd2wcxF9XhaYr7guth4hvQ1TmD9Kbrz6Yzmn9M","access":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDAyODk5LCJpYXQiOjE2ODI0MDA3OTksImp0aSI6IjQ5MjVhNTAyMTg5MzQzMzM5MzQ4MDQ1NmIyZTcwODg2IiwidXNlcl9pZCI6Ik5vbmUifQ.cE8y0_5rD-oYSdVbWpMnLSy1qbKx89Pnljz7VqfIOWM'}`} })
+    //     .then((response) => {
+    //   if (!username || !password) {
+    //     toast.warn("Enter all fields");
+    //   } else if (response?.status === 200) {
+
+    //     console.log(response?.status);
+    //        let type=response.data.user_type;
+    // console.log(type);
+    // console.log(response);
+    //     this.setState({
+    //         items: response.data,  /*set response data in items array*/
+    //         isLoaded : true,
+    //         redirectToReferrer: false
+    //     })
     axios
-      .post('http://ec2-3-110-189-227.ap-south-1.compute.amazonaws.com:8001/token/',
+      .post('http://ec2-65-0-177-196.ap-south-1.compute.amazonaws.com:8001/login/',
         payload
       )
       .then((response) => {
-            if (!username || !password) {
-              toast.warn("Enter all fields");
-            } else if (response?.status === 200) {
-            
-              console.log(response?.status);
-              let type=response.data.user_type;
-              console.log(type);
-              console.log(response);
-              if(type=='temporary')
-              navigate('/createProfile');
-              else
-              navigate('/home');
-             
-       
-              
-             
-              console.log(response);
-              navigate('/createProfile');
-            }
-          })
-          .catch((error) => {
-            console.log(error.response.data); // handle error
-          });
-        
+        if (!email || !password) {
+          toast.warn("Enter all fields");
+        } else if (response?.status === 200) {
 
-   
+          console.log(response?.status);
+          let type = response.data.user_type;
+          console.log(type);
+          console.log(response);
+          // if(type=='temporary')
+          // navigate('/createProfile');
+          // else
+          // navigate('/home');
+
+
+
+
+          console.log(response);
+          navigate('/createProfile');
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data); // handle error
+      });
+
+
+
     setErrors({});
 
     {
@@ -95,9 +111,9 @@ const Login = () => {
       //   window.location.reload();
     }
   };
- 
-  
-  const storeToken = (token) => { sessionStorage.setItem('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjQ4NzE5OSwiaWF0IjoxNjgyNDAwNzk5LCJqdGkiOiI2M2I1Mzc4ZmMwZGY0NGE4YTM3MmQwYjY4YzViYWY5OSIsInVzZXJfaWQiOiJOb25lIn0.vzDg7vd2wcxF9XhaYr7guth4hvQ1TmD9Kbrz6Yzmn9M","access":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDAyODk5LCJpYXQiOjE2ODI0MDA3OTksImp0aSI6IjQ5MjVhNTAyMTg5MzQzMzM5MzQ4MDQ1NmIyZTcwODg2IiwidXNlcl9pZCI6Ik5vbmUifQ.cE8y0_5rD-oYSdVbWpMnLSy1qbKx89Pnljz7VqfIOWM', token); } 
+
+
+  const storeToken = (token) => { sessionStorage.setItem('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjQ4NzE5OSwiaWF0IjoxNjgyNDAwNzk5LCJqdGkiOiI2M2I1Mzc4ZmMwZGY0NGE4YTM3MmQwYjY4YzViYWY5OSIsInVzZXJfaWQiOiJOb25lIn0.vzDg7vd2wcxF9XhaYr7guth4hvQ1TmD9Kbrz6Yzmn9M","access":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDAyODk5LCJpYXQiOjE2ODI0MDA3OTksImp0aSI6IjQ5MjVhNTAyMTg5MzQzMzM5MzQ4MDQ1NmIyZTcwODg2IiwidXNlcl9pZCI6Ik5vbmUifQ.cE8y0_5rD-oYSdVbWpMnLSy1qbKx89Pnljz7VqfIOWM', token); }
 
   return (
     <>
@@ -114,15 +130,15 @@ const Login = () => {
             </div>
             <form>
               <div className="mb-3" id="formBasicuserName">
-                <label>username address</label>
+                <label>Email</label>
                 <input
                   type="email"
-                  id="username"
-                  onChange={(e) => validateuserName(e)}
+                  id="email"
+                  onChange={(e) => validateEmail(e)}
                   placeholder="Enter email"
                   className="form-control"
                 />
-                <span style={{ color: "red" }}>{usernameError}</span>
+                <span style={{ color: "red" }}>{emailError}</span>
                 <div className="text-muted">
                   We'll never share your email with anyone else.
                 </div>
@@ -137,7 +153,7 @@ const Login = () => {
                   className="form-control"
                 ></input>
               </div>
-              
+
               <div className="mt-2">
                 <button
                   onClick={handleSubmit}
@@ -153,7 +169,7 @@ const Login = () => {
                   className="small text-muted"
                   style={{ textDecoration: "none" }}
                 >
-  
+
                   <Link
                     to="/OTP"
                     style={{ color: "black", textDecoration: "none" }}
@@ -175,7 +191,7 @@ const Login = () => {
             </form>
           </div>
         </div>
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     </>
   );

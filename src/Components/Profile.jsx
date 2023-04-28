@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from 'react';
-// import { useState } from "react";
+// import { useAuth } from "./auth";
 import { Link, useNavigate } from "react-router-dom";
 import abc from './pic.png';
 // import Swal from "swal"
@@ -7,6 +7,7 @@ import axios from "axios";
 // import Swal from 'sweetalert2';
 
 const Profile = () => {
+    // const auth=useAuth()
     const navigate = useNavigate();
     const [isEditing, setIsEditing] = useState(false);
     const [save, setsave] = useState(false);
@@ -213,7 +214,6 @@ const Profile = () => {
                                         <input type="number" value={pincode} onChange={(e) => { if (e.target.value.length <= 6) { (setpincode(e.target.value)) } }} placeholder="Enter pincode" className='form-control' />
                                     }
                                 </div>
-
 
                                 
                             </div>

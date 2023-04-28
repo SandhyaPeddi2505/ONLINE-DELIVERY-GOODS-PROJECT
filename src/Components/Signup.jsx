@@ -1,5 +1,5 @@
 import React from "react";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 // import { useHistory } from 'react-router-dom';
@@ -18,7 +18,7 @@ const Signup = () => {
   const [passwordError, setPasswordError] = useState("");
   const [cPasswordError, setCpasswordError] = useState("");
   const [error, setErrors] = useState();
-  
+
   const validateEmail = (e) => {
     var email = e.target.value;
     if (e.target.name === "username") {
@@ -60,16 +60,22 @@ const Signup = () => {
       }
     }
   };
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
-      username,
-      email,
-      password,
-    };
+
+      "username": username,
+
+      "email": email,
+
+      "password": password
+
+    }
+
     axios
       .post(
-        "http://ec2-3-110-189-227.ap-south-1.compute.amazonaws.com:8001/app/user/create_user/",
+        "http://ec2-65-0-177-196.ap-south-1.compute.amazonaws.com:8001/register/",
+        // "http://ec2-65-0-177-196.ap-south-1.compute.amazonaws.com:8000/app/user/register",
         payload
       )
       .then((response) => {
@@ -84,13 +90,13 @@ const Signup = () => {
       });
 
     setErrors({});
-    if (username !== "" && email!=="" && password!=="" ) {
-  toast.success("successfully signed up!");
-  setTimeout(() => {
-    navigate('/login');
-  }, 6000);
+    if (username !== "" && email !== "" && password !== "") {
+      toast.success("successfully signed up!");
+      setTimeout(() => {
+        navigate('/login');
+      }, 6000);
     }
-    else{
+    else {
       toast.warn("noo")
     }
     setErrors({});
@@ -193,7 +199,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
-       
+
       </div>
       <ToastContainer />
     </>

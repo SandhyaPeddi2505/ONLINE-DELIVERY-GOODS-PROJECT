@@ -15,6 +15,9 @@ const Linking = () => {
           </li>
         </ul>
       </nav>
+      {
+       
+      }
       {Outlet}
     </>
   );
