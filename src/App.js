@@ -8,25 +8,31 @@ import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
   // function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isAuthenticated, setIsAuthenticated] = useState(false);
+    // const handleLogin = () => {
+    //   setIsAuthenticated(true);
+    // };
   
     const checkUserToken = () => {
-      const userToken = localStorage.getItem("user-token");
+      const userToken = localStorage.getItem("token");
   
       if (!userToken || userToken === "undefined") {
         setIsLoggedIn(false);
         Navigate("/");
         // toast.warn("redirecting you to login page please login into and access it!")
       }
+      else{
+        // <Navigate  to =''
+      }
   
       setIsLoggedIn(true);
-    };
+    // };
   
     useEffect(() => {
       checkUserToken();
     }, [isLoggedIn]);
   return (
     <>
-     
       <React.Fragment>
       {isLoggedIn && <HomeNew />}
 
@@ -37,5 +43,6 @@ const App = () => {
   <ToastContainer/>
     </>
   );
+};
 };
 export default App;

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+// import Routing from "./Components/Routing"
 import Submit from "./Components/Submit";
 import Source from "./Components/Source";
 import Destination from "./Components/Destination";
@@ -23,7 +24,9 @@ import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
 import StepperWrapper from "./Components/StepperWrapper";
 import Login from "./Components/Login";
+
 import ProtectedRoute from "./Components/ProtectedRoute";
+
 import "./Login.scss";
 import "./Signup.scss";
 import "./OTP.scss";
@@ -32,6 +35,8 @@ import "./Forgotpassword.scss";
 import Create from "./Components/CreateProfile";
 import "./Profile.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import PrivateRoute from './PrivateRoute';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./Components/Signup";
 import OTP from "./Components/OTP";
@@ -41,7 +46,14 @@ import Profile from "./Components/Profile";
 import Forgotpassword from "./Components/Forgotpassword";
 import reportWebVitals from './reportWebVitals';
 
+
+const USER_TYPES={
+  PUBLIC:'pUBLIC User',
+  NORMAL_USER:"Normal User",
+  ADMIN_USER:"Admin User"
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const CURRENT_USER_TYPE=USER_TYPES.PUBLIC
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -88,11 +100,11 @@ root.render(
 </ProtectedRoute>
 } />
            
-            <Route path='/agent' element={
+            {/* <Route path='/agent' element={
 <ProtectedRoute>
 <Agent/>
 </ProtectedRoute>
-} />
+} /> */}
             
             <Route path='/agentdash' element={
 <ProtectedRoute>
@@ -154,23 +166,32 @@ root.render(
 </ProtectedRoute>
 } />
                 
-                     <Route path='/' element={
+                     {/* <Route path='/' element={
 <ProtectedRoute>
 <Home />
-</ProtectedRoute>
-} />
+</ProtectedRoute> */}
+{/* 
+             <Route path="home" element={<PublicRoutes />
              <Route path="/" element={<Home />} /> 
+             </Route> */}
+             <Route path="/" element={<Home />}/>
              <Route path="/login" element={<Login />}/>
-             <Route path="/signup" element={<Signup />} />
-             {/* <Route path="/home" element={<HomeNew />} />
+            <Route path="/signup" element={<Signup />} />
+             {/* <Route path="*" element={<div>Page Not Found!!</div>} />
+             <Route path="/createProfile" element={<Create />} />
+             <Route path="/denied" element={<PermissionDenied />} /> 
+             <Route path="/home" element={<HomeNew />} />
              <Route path="/primary1" element={<Primary />} />
              <Route path="/hi" element={<Hello />} />
              <Route path="/source" element={<StepperWrapper />} />
              <Route path="/destination" element={<Destination/>}/>
              <Route path="/confirm" element={<Confirm/>}/>
-             <Route path="/submit" element={<Submit/>}/>
+             <Route path="/submit" element={<Submit/>}/> */}
+             {/* <Route path="agent" element={<ProtectedRoute roleRequired="AGENT" />} >
+             <Route path="/agent" element={<Agent />} />  */}
+             {/* </Route> */}
              <Route path="/agent" element={<Agent />} />
-             <Route path="/t" element={<Layout/>}/> 
+             {/* <Route path="/t" element={<Layout/>}/> 
               <Route path="/agentdash" element={<Agentdash />} />
              <Route path="/previous" element={<Previous />} />
              <Route path="/tracking" element={<Tracking />} />
@@ -179,12 +200,12 @@ root.render(
              <Route path="/user" element={<User />} />
              <Route path="/changepassword" element={<Changepassword />} />
              <Route path="/profile" element={<Profile />} />
-             <Route path="/createProfile" element={<Create />} />
+           
              <Route path="/forgotpassword" element={<Forgotpassword />} /> */}
         
           {/* </Route> */}
         </Routes>
-      </BrowserRouter>
+       </BrowserRouter>
   </React.StrictMode>
 );
 

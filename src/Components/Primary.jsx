@@ -11,57 +11,10 @@ import { Link } from "react-router-dom";
 
 
 const Primary = () => {
-  // const [date, setDate] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-
-  // const sourceAddress = [
-  //   { name: "Ameerpet" },
-  //   { name: "Afzalgunj" },
-  //   { name: "Alwal" },
-  //   { name: "Amberpet" },
-  //   { name: "Bachupally" },
-  //   { name: "Balapur" },
-  //   { name: "Begum Bazaar" },
-  //   { name: "Boduppal" },
-  //   { name: "Chaderghat" },
-  //   { name: "Chikkadpally" },
-  //   { name: "Chaitanyapuri" },
-  //   { name: "Dilsukhnagar" },
-  //   { name: "ECIL" },
-  //   { name: "Film Nagar" },
-  //   { name: "Gandipet" },
-  //   { name: "Gacchibowli" },
-  //   { name: "Durgam Cheruvu" },
-  //   { name: "Hasthinapuram" },
-  //   { name: "HayathNagar" },
-  //   { name: "HimayaathNagar" },
-  //   { name: "Ibrahimpatnam" },
-  //   { name: "Jeedimetla" },
-  //   { name: "Kachiguda" },
-  //   { name: "Koti" },
-  //   { name: "Karmanghat" },
-  //   { name: "L B Nagar" },
-  //   { name: "Lingampally" },
-  //   { name: "Madhapur" },
-  //   { name: "Miyapur" },
-  //   { name: "Nallakunta" },
-  //   { name: "Narayanguda" },
-  //   { name: "Osmania University" },
-  //   { name: "Punjagutta" },
-  //   { name: "Ramanthapur" },
-  //   { name: "Safilguda" },
-  //   { name: "Towlichowki" },
-  //   { name: "Uppal" },
-  //   { name: "Vanasthalipuram" },
-  //   { name: "Yousufguda" }
-  // ];
-
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
-  // const [date, setDate] = useState();
-  // const [date, setDate] = useState(null);
   const today = new Date()
-  // .toISOString().substring(0, 10); 
   const [reload, setReload] = useState(false);
 
   const handleSourceChange = (even) => {
