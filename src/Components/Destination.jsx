@@ -1,31 +1,20 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Map1 from "./Map1"
+import Map1 from "./Map2"
 
-const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa }) => {
+const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa,details }) => {
+    const [address,setAddress]=useState("")
     const [dest, setDest] = useState({
         name: "",
         phone: "",
-        address: ""
+        // Address:""
+        
     });
     useEffect(() => {
         if (deliveryData) {
-            setDest({ ...dest, name: deliveryData.Destination.name, address: deliveryData.Destination.address, phone: deliveryData.Destination.phone })
+            setDest({ ...dest, name: deliveryData.Destination.name, Address: deliveryData.address, phone: deliveryData.Destination.phone })
         }
     }, [])
-    // const [location, setLocation] = useState(null);
-    // const getCurrentLocation = () => {
-    //     if (navigator.geolocation) {
-    //       navigator.geolocation.getCurrentPosition((position) => {
-    //         setLocation({
-    //           latitude: position.coords.latitude,
-    //           longitude: position.coords.longitude,
-    //         });
-    //       });
-    //     } else {
-    //       alert("Geolocation is not supported by this browser.");
-    //     }
-    //   };
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
@@ -34,12 +23,13 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log(deliveryData)
+        console.log("deliveryData"+deliveryData)
+        console.log("Destination-Address",+address)
         return false;
 
     };
     function checkFormValidation() {
-        if (dest.name && dest.name.length >= 3 && dest.address && dest.address.length >= 5 && dest.phone && dest.phone.length === 10 && !isNaN(dest.phone)) {
+        if (dest.name && dest.name.length >= 3 && address && address.length >= 5 && dest.phone && dest.phone.length === 10 && !isNaN(dest.phone)) {
             return true;
         } else {
             window.alert("Please enter the valid details.");
@@ -47,6 +37,10 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa }) => {
 
         }
     }
+    const addressHandle=(z)=>{
+      setAddress(z)
+    }
+
     return (
         <div className="container-fluid" id="grad1">
             <div className="row justify-content-center mt-0">
@@ -66,28 +60,19 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa }) => {
                                         <div className="form-card">
                                             <h2 className="fs-title">Destination Details</h2>
                                             <input type="text" name="name" placeholder="Name" value={dest.name} onChange={handleChange} required />
-                                            {/* <Map1 map={handleChange} class="map" /> */}
-
-                                            <br></br>
-                                            {/* <input
-                                                type="text"
-                                                name="address"
-                                                placeholder="Address"
-                                                value={dest.address}
-                                                onChange={handleChange}
-                                                defaultValue={`${location.latitude}, ${location.longitude}`}
-                                                required
-                                            /> */}
-
+                                            
                                             {/* <input type="text" name="address" placeholder="Address" value={dest.address} onChange={handleChange} required /> */}
                                             <input type="text" name="phone" placeholder="PhoneNo" value={dest.phone} onChange={handleChange} required pattern="/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/" min="10" />
+                                            <Map1 maper1={addressHandle}/>
+
                                         </div>
                                         <button name="previous" type="button" className="btn btn-secondary" onClick={() => onPrevClick(dataa)}>Previous</button>
                                         <button name="submit" type="button" className="btn btn-primary" onClick={() => {
                                             if (checkFormValidation()) {
-                                                onNextClick(dest);
+                                                onNextClick(dest,address);
                                             }
                                         }}>Next</button>
+                                        
 
                                     </fieldset>
                                 </form>

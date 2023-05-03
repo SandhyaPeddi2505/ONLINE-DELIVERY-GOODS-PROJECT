@@ -5,22 +5,30 @@ const Order=() =>{
   const [orderType, setOrderType] = useState("");
   const [quantity, setQuantity] = useState("");
   const [date, setDate] = useState("");
+  
+  const handleCheckboxChange=(e) =>{
+    const itemName = e.target.name;
+    if (e.target.checked) {
+      setOrderType([...orderType, itemName]);
+    } else {
+      setOrderType(orderType.filter(item => item !== itemName));
+    }
+    console.log(orderType)
+  }
 
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
 
   };
-  const handleOrderTypeChange = (e) => {
-    setOrderType(e.target.value);
-  };
+  // const handleOrderTypeChange = (e) => {
+  //   setOrderType(e.target.value);
+  // };
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
 
   };
-  const handleChange = (e) => {
-    e.preventDefault();
-  };
+ 
   const handleSubmit=(e)=>{
     e.preventDefault();
     if (orderType === "" || quantity === "" || date === "") {
@@ -37,42 +45,42 @@ const Order=() =>{
       <div className="container-fluid  ">
         <div className="container pb-5 pt-5">
           <h3 className="form-head-contact-h3 ">Select Category</h3>
-          <form onSubmit={handleSubmit}  onChange={handleOrderTypeChange}>
-            <div className="row">
+          <form onSubmit={handleSubmit}>
+            <div className="row" style={{paddingLeft:"20%"}} >
               <div className="col-md-6">
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="orderType" value="Food" onChange={handleChange}/>
+                  <input className="form-check-input" type="checkbox" name="Food" value="Food" onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Food</label>
                 </div>
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="orderType"  value="Groceries" onChange={handleChange}/>
+                  <input className="form-check-input" type="checkbox" name="Groceries"  value="Groceries" onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Groceries</label>
                   </div>
                 <div className="form-check m-3">
-                  <input className="form-check-input" type="checkbox" name="orderType" value="Medicines" onChange={handleChange}/>
+                  <input className="form-check-input" type="checkbox" name="Medicines" value="Medicines" onChange={handleCheckboxChange}/>
                     <label  className="form-check-label"> Medicines</label>
                     </div>
                     <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="orderType" value="Documents" onChange={handleChange}/>
+                  <input className="form-check-input" type="checkbox" name="Documents" value="Documents" onChange={handleCheckboxChange}/>
                   <label className="form-check-label"> Documents</label>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="orderType"  value="Electronics" onChange={handleChange}/>
+                  <input className="form-check-input" type="checkbox" name="Electronics"  value="Electronics" onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Electronics</label>
                   </div>
                   <div className="form-check m-3" >
-                  <input className="form-check-input"  type="checkbox" name="orderType" value="Clothes" onChange={handleChange}/>
+                  <input className="form-check-input"  type="checkbox" name="Clothes" value="Clothes" onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Clothes</label>
                   </div>
                   <div className="form-check m-3">
-                  <input className="form-check-input" type="checkbox" name="orderType" value="Gifts" onChange={handleChange}/>
+                  <input className="form-check-input" type="checkbox" name="Gifts" value="Gifts" onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Gifts</label>
                   </div>
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="OrderType" value="Others" onChange={handleChange}/>
-                  <label className="form-check-label">Others </label>
+                  <input className="form-check-input" type="checkbox" name="Others" value="Others" onChange={handleCheckboxChange}/>
+                  <label className="form-check-label">Others</label>
                   </div>
                   
               </div>
@@ -88,7 +96,8 @@ const Order=() =>{
             /><br/>
             <label className="mt-2 pt-3 m-3"><b>Date</b></label>
             <input type="date" placeholder="Date" onChange={handleDateChange} />
-            <input type="submit" value="Submit" onClick={handleSubmit} />
+            <button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1">Submit</button>
+            
             </form>
         </div>
       </div>

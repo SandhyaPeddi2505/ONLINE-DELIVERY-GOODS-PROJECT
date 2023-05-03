@@ -3,22 +3,22 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
 
-const Submit = ({ onNextClick, onPrevClick ,deliveryData,details,isPrimary,dataa}) => {
+const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address}) => {
     const { Source, Destination } = deliveryData;
     useEffect((e) => {
         //getDetails()
-       
+
         console.log(deliveryData)
     }, [])
-    useEffect(()=>{
-        axios.post("").then(response=>{
+    useEffect(() => {
+        axios.post("").then(response => {
             console.log(response)
         })
-        .catch((error)=>{
-            console.log(error)
-        })
-    },[])
-    
+            .catch((error) => {
+                console.log(error)
+            })
+    }, [])
+
     return (
         <div className="container-fluid" id="grad1">
             <div className="row justify-content-center mt-0">
@@ -37,20 +37,21 @@ const Submit = ({ onNextClick, onPrevClick ,deliveryData,details,isPrimary,dataa
                                     <fieldset>
                                         <div className="form-card">
                                             <h2 className="fs-title">Source Details</h2>
-                                         
+
                                             <label style={{ color: 'black' }}><b>Name:</b> {Source.Name}</label><br />
-                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.Address}</label><br/>
+                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.Address}</label><br />
                                             <label style={{ color: 'black' }}><b>Phoneno:</b>{Source.Phone_number}</label><br />
                                         </div>
                                         <div className="form-card">
                                             <h2 className="fs-title">Destination Details</h2>
                                             <label style={{ color: 'black' }} ><b>Name:</b>{Destination.name}</label><br />
-                                            <label style={{ color: 'black' }}><b>Address:</b>{Destination.address}</label><br/>
+                                            <label style={{ color: 'black' }}><b>Address:</b>{Destination.address}</label><br />
                                             <label style={{ color: 'black' }}><b>Phoneno:</b>{Destination.phone}</label><br />
-                                        <br></br>
+                                            <br></br>
                                         </div>
-                                        <button name="previous" type="button" className="btn btn-secondary" onClick={()=>onPrevClick(details)}>Previous</button>
-                                       <button name="next" type="button" className="btn btn-primary"  onClick={()=>onNextClick(details)}>Submit</button>
+                                        <button name="previous" type="button" className="btn btn-secondary" onClick={() => onPrevClick(details)}>Previous</button>
+                                        <button name="next" type="button" className="btn btn-primary" onClick={() => onNextClick(details,address)}>Submit</button>
+                                        
                                     </fieldset>
                                 </form>
                             </div>

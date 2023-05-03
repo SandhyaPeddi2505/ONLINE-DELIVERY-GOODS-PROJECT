@@ -4,7 +4,7 @@ import Submit from "./Submit";
 import Source from "./Source";
 import Confirm from "./Confirm";
 
-const StepperWrapper = (details) => {
+const StepperWrapper = (details,address) => {
     const [deliveryData, setDelivaryData] = useState({
         Source: { isPrimary : false,  Name: "", Address: "", Phone_number: "" },
         Destination: { name: "", address: "", phone: "" }
@@ -18,8 +18,8 @@ const StepperWrapper = (details) => {
                     setDelivaryData({...deliveryData, Source:{ isPrimary : details.isPrimary, Name:details.Name, Address:details.Address, Phone_number:details.Phone_number}});
                     setStepperIndex(1) }} />
             case 1:
-                return <Destination  deliveryData={deliveryData} onPrevClick={(deliveryData) => { setStepperIndex(0) }} onNextClick={(details) => {setStepperIndex(2)
-                    setDelivaryData({...deliveryData, Destination:{name:details.name, address:details.address, phone:details.phone}});
+                return <Destination  deliveryData={deliveryData} onPrevClick={(deliveryData,address) => { setStepperIndex(0) }} onNextClick={(details) => {setStepperIndex(2)
+                    setDelivaryData({...deliveryData, Destination:{name:details.name, Address:details.address, phone:details.phone}});
                     
                 }} />
             case 2:

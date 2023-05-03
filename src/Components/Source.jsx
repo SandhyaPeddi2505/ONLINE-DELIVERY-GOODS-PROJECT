@@ -1,13 +1,15 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Map1 from "./Map1";
 
 const Source = ({ onNextClick, deliveryData, props }) => {
     const [isPrimary, setIsPrimary] = useState(true);
     const [dataa, setDataa] = useState([]);
+    const [Address,setAddress]=useState("")
     const [details, setDetails] = useState({
         Name: "",
-        Address: "",
+        // Address: "",
         Phone_number: "",
     });
     useEffect(() => {
@@ -24,7 +26,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
             setDetails({
                 ...details,
                 Name: deliveryData.Source.Name,
-                Address: deliveryData.Source.Address,
+                // Address: deliveryData.Source.Address,
                 Phone_number: deliveryData.Source.Phone_number
             });
         }
@@ -41,6 +43,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(deliveryData);
+        console.log("address123",+Address)
     };
     const [secondaryAddress, setSecondaryAddress] = useState({
         name1: "",
@@ -52,7 +55,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         if (isPrimary) {
             setPrimaryAddress({ ...primaryAddress, [e.target.Name]: e.target.value });
         } else {
-            if (e.target.Name === "address") {
+            if (e.target.Name === "Address") {
                 setPrimaryAddress({ ...primaryAddress, Address: e.target.value });
             }
             setSecondaryAddress({ ...secondaryAddress, [e.target.name1]: e.target.value });
@@ -65,6 +68,9 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         e.preventDefault();
         window.location.reload();
     };
+    const addressHandler=(data1)=>{
+        setAddress(data1)
+    }
 
 
     return (
@@ -126,15 +132,9 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                     </div>
                                                 ) : (
                                                     <div className="row">
-                                                        <div className="col-md-4">
+                                                        <div className="col">
                                                             <label style={{ color: "black" }}><b>Name:</b>
                                                                 <input type="text" name="Name" value={details.Name} onChange={changeHandle} required minLength={3} />{" "}
-                                                                
-                                                            </label>
-                                                        </div>
-                                                        <div className="col-md-4">
-                                                            <label style={{ color: "black" }}><b>Address:</b>
-                                                                <input type="text" name="Address" value={details.Address} onChange={changeHandle} required minLength={5} />
                                                                 
                                                             </label>
                                                         </div>
@@ -142,6 +142,14 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                             <input type="text" name="Phone_number" value={details.Phone_number} onChange={changeHandle} required />
                                                             
                                                         </label>
+                                                        <div className="col">
+                                                            <label style={{ color: "black" }}><b>Address:</b>
+                                                            <Map1 maper={addressHandler}/>
+                                                                {/* <input type="text" name="Address" value={details.Address} onChange={changeHandle} required minLength={5} /> */}
+                                                                
+                                                            </label>
+                                                        </div>
+                                                        
                                                     </div>
                                                 )}
                                             </div>
@@ -152,8 +160,8 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                 onClick={() => {
                                                     if (isPrimary) {
                                                         onNextClick({ isPrimary: true, ...dataa[0] });
-                                                    } else if (details.Name && details.Name.length >= 3 && details.Address && details.Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
-                                                        onNextClick({ isPrimary: false, ...details });
+                                                    } else if (details.Name && details.Name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
+                                                        onNextClick({ isPrimary: false, ...details ,Address});
                                                     }
                                                 }}>
                                                 Next
