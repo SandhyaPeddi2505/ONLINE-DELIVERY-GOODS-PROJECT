@@ -1,22 +1,6 @@
-import Submit from "./Components/Submit";
-import Source from "./Components/Source";
-import Destination from "./Components/Destination";
-import Layout from "./Components/Layout";
-import Confirm from "./Components/Confirm";
-import "./Components/Styles.scss";
-import axios from "axios";
+import { Navigate, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-import Next from "./Components/Other.jsx";
-import "./styles.scss";
-import Primary from "./Components/Primary";
-import Hello from "./Components/Hello";
-
-// import logo from './logo.svg';
-// import './App.css';
-import "./Style.scss";
-import React from 'react';
-import Agent from './Components/Agent';
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeNew from './Components/HomeNew';
@@ -45,8 +29,31 @@ import Profile from './Components/Profile';
 import Forgotpassword from './Components/Forgotpassword';
 
 const App = () => {
-
-
+  // function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isAuthenticated, setIsAuthenticated] = useState(false);
+    // const handleLogin = () => {
+    //   setIsAuthenticated(true);
+    // };
+  
+    const checkUserToken = () => {
+      const userToken = localStorage.getItem("token");
+  
+      if (!userToken || userToken === "undefined") {
+        setIsLoggedIn(false);
+        Navigate("/");
+        // toast.warn("redirecting you to login page please login into and access it!")
+      }
+      else{
+        // <Navigate  to =''
+      }
+  
+      setIsLoggedIn(true);
+    // };
+  
+    useEffect(() => {
+      checkUserToken();
+    }, [isLoggedIn]);
   return (
     <>
       <BrowserRouter>
@@ -74,9 +81,16 @@ const App = () => {
           <Route path='/forgotpassword' element={<Forgotpassword />}></Route>
         </Routes>
       </BrowserRouter>
+      <React.Fragment>
+      {isLoggedIn && <HomeNew />}
 
+      <Outlet />
+
+      {isLoggedIn && <Login />}
+    </React.Fragment>
+  <ToastContainer/>
     </>
-  )
-}
+  );
+};
+};
 export default App;
-

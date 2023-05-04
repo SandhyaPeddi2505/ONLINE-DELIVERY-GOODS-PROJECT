@@ -10,7 +10,7 @@ const Layout = () => {
                         <Link to="/source">Source</Link>
                     </li>
                     <li>
-                        <Link to="/destination" >Destination</Link>
+                        <Link to="/destination" >Destination(Protected)</Link>
                     </li>
                     <li>
                         <Link to="/submit" >Submit</Link>

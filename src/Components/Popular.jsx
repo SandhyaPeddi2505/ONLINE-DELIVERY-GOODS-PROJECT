@@ -22,12 +22,10 @@ const Popular = (onClick) => {
     const [data, setData] = useState({});
     useEffect(() => {
       //call API
-      axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/cityList', {
-        // headers: {
-        //    'Content-Type': 'application/json',
-        //    "Access-Control-Allow-Headers": '*',
-        //   }
-      })
+      axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/cityList',
+      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+
+      )
         .then(response => {
           setData(response.data);
         })
@@ -96,8 +94,6 @@ const Popular = (onClick) => {
                         height="100px"  onClick={handleClick}
                     />
                     </Link>
-                    
-                    
                         <p>Hyderabad</p>
                     </div><br>
                     </br>

@@ -23,3 +23,23 @@
 .but {
   padding-left: 10px;
 }
+.map{
+  width:fixed;
+}
+svg{
+  // position: fixed;
+  height: 2em;
+}
+// input[type="date"] {
+//   background: #eee;
+//   padding: 10px;
+//   font-size: 16px;
+//   border-radius: 5px;
+//   border: 1px solid #ccc;
+//   color: #555;
+  // placeholder: "Select Date";
+// }
+
+input[type="date"] {
+  color: #000000;
+}
