@@ -26,13 +26,20 @@ const Create = () => {
 
     const [dataa, setDataa] = useState({});
     useEffect(() => {
+        const headers = { 'Authorization': 'Bearer my-token' };
+        axios.get('http://ec2-13-233-41-227.ap-south-1.compute.amazonaws.com:8001/userinfo', { headers })
+            // .then(response => setProduct(response.data));
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
+    // useEffect(() => {
         //call API
-        axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/userinfo', {
+        // axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/userinfo', {
           // headers: {
           //    'Content-Type': 'application/json',
           //    "Access-Control-Allow-Headers": '*',
           //   }
-        })
+        // },[])
           .then(response => {
             setDataa(response.data);
           })

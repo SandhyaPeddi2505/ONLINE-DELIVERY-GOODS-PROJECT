@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,16 +9,10 @@ import abc from "./online.png";
 
 const Login = () => {
   const navigate = useNavigate();
-  // localStorage.setItem('user', JSON.stringify ({role:'AGENT'}))
-  // navigate('/')
-
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
-
-
   const [emailError, setemailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setErrors] = useState();
@@ -59,29 +53,9 @@ const Login = () => {
       "password": password
 
     }
-    // {
-    // username: "santhoshd@example.com", password: "Santhu@123"
-    // }
-    // axios.post('http://ec2-65-0-177-196.ap-south-1.compute.amazonaws.com:8001/token/' ,payload,{ headers: {"Authorization" : `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjQ4NzE5OSwiaWF0IjoxNjgyNDAwNzk5LCJqdGkiOiI2M2I1Mzc4ZmMwZGY0NGE4YTM3MmQwYjY4YzViYWY5OSIsInVzZXJfaWQiOiJOb25lIn0.vzDg7vd2wcxF9XhaYr7guth4hvQ1TmD9Kbrz6Yzmn9M","access":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDAyODk5LCJpYXQiOjE2ODI0MDA3OTksImp0aSI6IjQ5MjVhNTAyMTg5MzQzMzM5MzQ4MDQ1NmIyZTcwODg2IiwidXNlcl9pZCI6Ik5vbmUifQ.cE8y0_5rD-oYSdVbWpMnLSy1qbKx89Pnljz7VqfIOWM'}`} })
-    //     .then((response) => {
-    //   if (!username || !password) {
-    //     toast.warn("Enter all fields");
-    //   } else if (response?.status === 200) {
-
-    //     console.log(response?.status);
-    //        let type=response.data.user_type;
-    // console.log(type);
-    // console.log(response);
-    //     this.setState({
-    //         items: response.data,  /*set response data in items array*/
-    //         isLoaded : true,
-    //         redirectToReferrer: false
-    //     })
-    // axios.get(api ,
-    //               { headers: {"Authorization" : `Bearer ${token}`}
-    //   })
+    
     axios
-      .post('http://ec2-43-204-108-116.ap-south-1.compute.amazonaws.com:8001/login/',
+      .post('http://ec2-13-233-41-227.ap-south-1.compute.amazonaws.com:8001/login/',
         payload, 
        
         // { headers: {"Authorization" : `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1MDk4YzZhZGVmNjkxYzM2ODkyYmE1IiwiZXhwIjoxNjgzMDE0MTA2fQ.GVrnpkZitrKFGWUZ0U-7CnNEEqBaIt0nXg_9cxWS3KA'}`}
@@ -147,7 +121,7 @@ const Login = () => {
               <h1>Log In</h1>
             </div>
             <form>
-              <div className="mb-3" id="formBasicuserName">
+              <div className="mb-3" id="formBasicemail">
                 <label>Email</label>
                 <input
                   type="email"

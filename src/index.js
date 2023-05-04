@@ -47,13 +47,9 @@ import Forgotpassword from "./Components/Forgotpassword";
 import reportWebVitals from './reportWebVitals';
 
 
-const USER_TYPES={
-  PUBLIC:'pUBLIC User',
-  NORMAL_USER:"Normal User",
-  ADMIN_USER:"Admin User"
-}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const CURRENT_USER_TYPE=USER_TYPES.PUBLIC
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -100,11 +96,11 @@ root.render(
 </ProtectedRoute>
 } />
            
-            {/* <Route path='/agent' element={
-<ProtectedRoute>
-<Agent/>
-</ProtectedRoute>
-} /> */}
+           {/* <Route path='/agent' element={ */}
+{/* // <ProtectedRoute>
+// <Agent/>
+// </ProtectedRoute>
+// } /> */}
             
             <Route path='/agentdash' element={
 <ProtectedRoute>
@@ -177,6 +173,7 @@ root.render(
              <Route path="/" element={<Home />}/>
              <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Signup />} />
+             <Route path="/agent" element={<Agent />} />
              {/* <Route path="*" element={<div>Page Not Found!!</div>} />
              <Route path="/createProfile" element={<Create />} />
              <Route path="/denied" element={<PermissionDenied />} /> 
@@ -190,7 +187,7 @@ root.render(
              {/* <Route path="agent" element={<ProtectedRoute roleRequired="AGENT" />} >
              <Route path="/agent" element={<Agent />} />  */}
              {/* </Route> */}
-             <Route path="/agent" element={<Agent />} />
+             
              {/* <Route path="/t" element={<Layout/>}/> 
               <Route path="/agentdash" element={<Agentdash />} />
              <Route path="/previous" element={<Previous />} />
