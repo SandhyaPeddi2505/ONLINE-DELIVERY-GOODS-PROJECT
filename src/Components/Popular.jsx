@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import React from "react";
 import "./Popular.scss";
-var data = require("./MOCK_DATA.json");
+import axios from "axios";
+// var data = require("./MOCK_DATA");
 
 const Popular = (onClick) => {
     const [selectedCity, setSelectedCity] = useState("");
@@ -17,6 +18,20 @@ const Popular = (onClick) => {
   };
     const handleClick=()=>{
     }
+    const [data, setData] = useState({});
+    useEffect(() => {
+      //call API
+      axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/cityList',
+      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+
+      )
+        .then(response => {
+          setData(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }, []);
     return (
         <>
     
@@ -41,7 +56,7 @@ const Popular = (onClick) => {
           <a href="#" class="button">
             <button type="button">Search</button>
           </a>
-          {data
+          {/* {data
             .filter((item) => {
               const searchTerm = value.toLowerCase();
               const fullName = item.full_name.toLowerCase();
@@ -58,7 +73,7 @@ const Popular = (onClick) => {
               >
                 {item.full_name}
               </div>
-            ))}
+            ))} */}
         </div>
       </div>
       <div>
@@ -78,8 +93,6 @@ const Popular = (onClick) => {
                         height="100px"  onClick={handleClick}
                     />
                     </Link>
-                    
-                    
                         <p>Hyderabad</p>
                     </div><br>
                     </br>

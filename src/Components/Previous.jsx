@@ -2,41 +2,41 @@ import React from 'react';
 // import Navbar from 'react-bootstrap/Navbar';
 import DataTable from "react-data-table-component";
 import styled from "styled-components";
-import logo from "./nav-logo.png";
+import logo from "./sk.png";
 const Previous = () => {
     const items = [
         {
             DeliveryId: 1223311,
         CustomerName: "saikrishna",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223312,
         CustomerName: "manoja",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Reject"
         },
         {
             DeliveryId: 1223313,
-        CustomerName: "soumya",
-        SourceAddress: "Radidurg",
+        CustomerName: "sowmya",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Pending"
         },
         {
             DeliveryId: 1223314,
         CustomerName: "sandhya",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223315,
         CustomerName: "Arun",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "In-transist"
         }];
@@ -84,16 +84,32 @@ const Previous = () => {
 
     return (
         <>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><img src={logo} alt="qwe" height="35" width="60"/> <span style={{ color: 'white' }}>De<span style={{ color: 'red' }}>l</span>ivery</span></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    
-  </div>
-</nav>
-            <div className=''>
+        <nav class="fixed-nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"  /> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+           
+            {/* <li class="nav-item"> */}
+              {/* <a class="hi nav-link" to={Link} href="/previous" ><p className="qb"><span style={{ color: "black" }}>previous</span></p></a> */}
+            {/* </li> */}
+           
+            <li class="nav-item">
+              
+                {/* <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a> */}
+              
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+      </nav>
+            <div className='bgj'>
+                <div className="pre-table">
+                    <div className="blur">
                 <DataTable
                     defaultSortAsc="false"
                     // responsive
@@ -139,6 +155,9 @@ const Previous = () => {
                         }
                     ]}
                 />
+                </div>
+                </div>
+                
             </div>
 
         </>

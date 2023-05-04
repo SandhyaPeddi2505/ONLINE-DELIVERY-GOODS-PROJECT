@@ -11,10 +11,13 @@ const Linking = () => {
             <Link to="/primary">Next</Link>
           </li>
           <li>
-            <Link to="/hi">Submit</Link>
+            <Link to="/Source">Submit</Link>
           </li>
         </ul>
       </nav>
+      {
+       
+      }
       {Outlet}
     </>
   );
