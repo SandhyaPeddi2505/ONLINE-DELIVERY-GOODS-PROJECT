@@ -23,7 +23,7 @@ import HomeNew from './Components/HomeNew';
 import Home from './Components/Home';
 import Previous from "./Components/Previous";
 import Agentdash from './Components/Agentdash';
-import Tracking from "./Components/Tracking";
+import VerticalStepper from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
 import StepperWrapper from "./Components/StepperWrapper";
 
@@ -34,6 +34,7 @@ import "./OTP.scss";
 import "./Changepassword.scss";
 import "./Forgotpassword.scss";
 import "./Profile.scss";
+import"./Components/Tracking.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Signup from './Components/Signup';
@@ -62,7 +63,7 @@ const App = () => {
           <Route path='/agent' element={<Agent />} />
           <Route path='/agentdash' element={<Agentdash />} />
           <Route path='/previous' element={<Previous />} />
-          <Route path="/tracking" element={<Tracking />} />
+          <Route path="/tracking" element={<VerticalStepper />} />
           <Route path="/confirmScreen" element={<Confirmscreen />} />
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>

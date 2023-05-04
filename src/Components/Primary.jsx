@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "./Primary.scss";
 import third from "./third";
 import { Link } from "react-router-dom";
+import Navbar from './Navbar';
 
 
 const Primary = () => {
@@ -117,6 +118,8 @@ const Primary = () => {
   
 
   return (
+    <>
+    <Navbar/>
     <div className="primaryCont">
       <h1 style={{ textAlign: "center ", padding: "40px 0 0 0px" }}>
         Address Details!!
@@ -167,6 +170,7 @@ const Primary = () => {
 
       />
     </div>
+    </>
   );
 };
 export default Primary;
