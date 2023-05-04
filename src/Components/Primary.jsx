@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { FaMapMarkerAlt, FaCalendarAlt, FaMapMarker } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import { Calendar, DatePicker } from 'antd';
+import { DatePicker } from 'antd';
 // import PlacesAutocomplete from "react-places-autocomplete";
 import "./Primary.scss";
 import Map1 from "./Map";
 import third from "./third";
 import { Link } from "react-router-dom";
+import Navbar from './Navbar';
+// import { Calendar, DatePicker } from 'antd';
 
 
 const Primary = () => {
@@ -85,7 +87,8 @@ const Primary = () => {
   
 
   return (
-
+    <>
+    <Navbar/>
     <div className="primaryCont">
       <h1 style={{ textAlign: "center ", padding: "40px 0 0 0px" }}>
         Address Details!!
@@ -144,6 +147,7 @@ const Primary = () => {
 
       /> */}
     </div>
+    </>
   );
 };
 export default Primary;

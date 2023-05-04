@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import "./Popular.scss";
 import axios from "axios";
+import Navbar from './Navbar';
 // var data = require("./MOCK_DATA");
 
 const Popular = (onClick) => {
@@ -34,7 +35,7 @@ const Popular = (onClick) => {
     }, []);
     return (
         <>
-    
+    <Navbar/>
     <div class="whole">
       <div className="Main">
         <h2>Select Your City</h2>

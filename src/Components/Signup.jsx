@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 // import { useHistory } from 'react-router-dom';
+import Navbar from './Navbar';
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -82,6 +83,7 @@ const Signup = () => {
         console.log(response);
         if (response?.status === 200) {
           console.log(response?.status);
+          // navigate("/login");
         }
       })
 
@@ -106,8 +108,10 @@ const Signup = () => {
     window.location.reload();
   };
 
+
   return (
     <>
+    <Navbar/>
       <div>
         <div className="man">
           <div className="flex">
@@ -135,6 +139,7 @@ const Signup = () => {
                     </div> */}
 
                     <div className="mb-3" id="formBasicEmail">
+
                       <label>Email address</label>
                       <input
                         onChange={(e) => validateEmail(e)}
