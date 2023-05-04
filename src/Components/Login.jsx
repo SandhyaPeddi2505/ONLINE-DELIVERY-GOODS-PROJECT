@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import validator from 'validator';
 import axios from 'axios'
 import abc from './online.png';
+import Navbar from './Navbar';
 // import { ToastContainer,toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -101,6 +102,7 @@ const Login = () => {
     // }
     return (
         <>
+        <Navbar/>
             <div className="bgj">
                 <div className='flex'>
                     <div className="form">

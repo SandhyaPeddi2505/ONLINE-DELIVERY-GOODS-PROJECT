@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import axios from "axios";
 import abc from './online.png';
+import Navbar from './Navbar';
 
 const Signup = () => {
   const [emailError, setEmailError] = useState("");
@@ -113,6 +114,7 @@ const Signup = () => {
 
   return (
     <>
+    <Navbar/>
       <div>
 
         <div className="man">

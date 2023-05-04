@@ -1,94 +1,74 @@
-// write a code for vertical stepperand  we should call API for the steps to work   only when completion  of step1 it should go to step2  it should  be in vertical stepper in reactjs with  functional component
+import { Steps } from 'rsuite';
+import axios from 'axios';
+import {useState,useEffect} from 'react'
+import 'rsuite/dist/rsuite.min.css';
+import Navbar from './Navbar';
 
-import React, { useState } from "react";
-import { Step, Stepper, StepLabel } from "@material-ui/core";
 
-const VerticalStepper = () => {
-  // State for Stepper
-  const [activeStep, setActiveStep] = useState(0);
-  // State for API response
-  const [APIResponse, setAPIResponse] = useState(null);
+ const VerticalStepper = () => {
+  // const [activeStep, setActiveStep] = useState(0);
+  const [APIResponse, setAPIResponse] = useState([]);
+  
+  useEffect(()=>{
+          axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/DUMMY_INFO/').then((response)=>{
+            setAPIResponse(response.data)
+          })
+        },[])
+    
+    // APIResponse.map((i) => {
+    //   if (i["status_code"] === 200) {
+    //     count += 1;
+    //   }
+    // });
 
-  // Array of Steps
-  const steps = [
-    {
-      title: "Step 1",
-      content: "Order confirmed"
-    },
-    {
-      title: "Step 2",
-      content: "Awaiting for agent"
-    },
-    {
-      title: "Step 3",
-      content: "Agent confirmed"
-    },
-    {
-      title: "Step 4",
-      content: "Ordered delivered"
-    }
-  ];
-
-  // Handle Next Button
-  const handleNext = () => {
-    if (activeStep === 0) {
-      // Call API here
-      // When API response comes, setAPIResponse
-      // Update activeStep to 1 only when API response is success
-      if (APIResponse === "success") {
-        setActiveStep(1);
+    let count = 0;
+    APIResponse.map((i) => {
+      if (i["status_code"] === 0) {
+        count += 1;
       }
-    } else {
-      setActiveStep(activeStep + 1);
-    }
-  };
+    });
 
-  // Handle Back Button
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
 
-  // Step Content
-  const getStepContent = (step) => {
-    return steps[step].content;
-  };
+    // APIResponse.map((i)=>{
+    //   if (i['status_code']== 200){
+    //     setActiveStep(()=>activeStep+1)
+    //   }
+    // })
 
+  // console.log(APIResponse)
+  //   useEffect(()=>{
+  //     APIResponse.map((i)=>{
+  //       if(i['status_code']==200){
+  //         setActiveStep(activeStep+1);
+  //       }
+  //     })
+      
+  //   },[]);
+   
+    
   return (
-    <div className="container">
-    <div className="zz">
-<div className="xx">
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((step, index) => (
-          <Step key={step.title}>
-            <StepLabel>{step.title}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+    <>
+    <Navbar/>
+<div className='ee'>
+    
+    <div className='steps'>
 
-      <div>
-        {activeStep === steps.length ? (
-          <div>
-            <p>All steps completed</p>
-            <button>Done</button>
-          </div>
-        ) : (
-          <div>
-            <p>{getStepContent(activeStep)}</p>
-            <div>
-              <button className="btn btn-primary"disabled={activeStep === 0} onClick={handleBack}>
-                Back
-              </button>
-              <button className="btn btn-primary" variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-    </div>
-    </div>
-  );
-};
+      <Steps vertical current={count}>
 
+        <Steps.Item description=<h6 style={{ color: "white"}}>Order confirmed</h6>/>
+
+        <Steps.Item description=<h6 style={{ color: "white"}}>Awaiting for Agent</h6>/>
+
+        <Steps.Item description=<h6 style={{ color: "white"}}>Agent confirmed</h6>/>
+
+        <Steps.Item description= <h6 style={{ color: "white"}}>Order delivered</h6>/>
+
+      </Steps>
+
+    </div>
+    </div>
+    </>
+  )
+
+}
 export default VerticalStepper;
