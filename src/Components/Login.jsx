@@ -41,39 +41,24 @@ const Login = () => {
     setPassword(e.target.value);
     setSubmitted(false);
   };
-
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload =
     {
-
       "email": email,
-
       "password": password
-
     }
     
     axios
-      .post('http://ec2-13-233-41-227.ap-south-1.compute.amazonaws.com:8001/login/',
+      .post('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/',
         payload, 
        
-        // { headers: {"Authorization" : `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1MDk4YzZhZGVmNjkxYzM2ODkyYmE1IiwiZXhwIjoxNjgzMDE0MTA2fQ.GVrnpkZitrKFGWUZ0U-7CnNEEqBaIt0nXg_9cxWS3KA'}`}
-    // }
     )
       .then((response) => {
         if (!email || !password) {
           toast.warn("Enter all fields");
         } else if (response?.status === 200) {
         localStorage.setItem("token",response.data.token)
-
-
-
-
-         
-          
-          
-          
           console.log(response?.status);
           let type = response.data.user_type;
           console.log(type);
@@ -82,10 +67,6 @@ const Login = () => {
           // navigate('/createProfile');
           // else
           // navigate('/home');
-
-
-
-
           console.log(response);
           navigate('/createProfile');
         }
@@ -93,20 +74,8 @@ const Login = () => {
       .catch((error) => {
         console.log(error.response.data); // handle error
       });
-
-
-
     setErrors({});
-
-    {
-      //   navigate("/profile");
-      //   window.location.reload();
-    }
   };
-
-
-  // const storeToken = (token) => { sessionStorage.setItem('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjQ4NzE5OSwiaWF0IjoxNjgyNDAwNzk5LCJqdGkiOiI2M2I1Mzc4ZmMwZGY0NGE4YTM3MmQwYjY4YzViYWY5OSIsInVzZXJfaWQiOiJOb25lIn0.vzDg7vd2wcxF9XhaYr7guth4hvQ1TmD9Kbrz6Yzmn9M","access":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDAyODk5LCJpYXQiOjE2ODI0MDA3OTksImp0aSI6IjQ5MjVhNTAyMTg5MzQzMzM5MzQ4MDQ1NmIyZTcwODg2IiwidXNlcl9pZCI6Ik5vbmUifQ.cE8y0_5rD-oYSdVbWpMnLSy1qbKx89Pnljz7VqfIOWM', token); }
-
   return (
     <>
       <div className="yes">

@@ -1,12 +1,8 @@
-
 import React, { useEffect } from "react";
 import qwe from "./12.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./sk.png";
-
-  
-  
   const Agent = () => {
     const [imageFile, setImageFile] = useState('');
     const [base64, setBase64] = useState();
@@ -19,19 +15,10 @@ import logo from "./sk.png";
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [api, setApi] = useState([]);
-  const [aadharImage, setAadharImage] = useState(null);
-  const [licenseImage, setLicenseImage] = useState(null);
-
   const [file, setFile] = useState();
   const [files, setFiles] = useState();
   const [data, setData] = useState({});
-  // const [imageFile, setImageFile] = useState("");
   const [imageFile1, setImageFile1] = useState("");
-
-
-
-   
-    
     const handleFileInputChange = (event) => {
       const file = event.target.files[0];
       setImageFile(file);
@@ -39,12 +26,6 @@ import logo from "./sk.png";
       reader.readAsDataURL(file);
       reader.onload = () => {
         setBase64(reader.result);
-        // let obj1={
-        //   "name":imageFile,
-        //   "BASE64":base64
-        // }
-        // seta(obj1)
-        // console.log(base64);
       };
     };
     const handleFileInputChange1 = (event) => {
@@ -54,15 +35,8 @@ import logo from "./sk.png";
       reader.readAsDataURL(file1);
       reader.onload = () => {
         setBase641(reader.result);
-        // let obj2={
-        //   "name":imageFile1,
-        //   "BASE642":base641
-        // }
-        // setb(obj2)
-        // // console.log(base64);
       };
     };
-  
     const handleSubmit = (event) => {
       event.preventDefault();
       
@@ -102,28 +76,11 @@ import logo from "./sk.png";
       az.push(def)
   
       console.log({firstName,lastName,email,password,phoneNumber,address,"INFO":az})
-      
-   
       // console.log({"INFO":az});
       
       // console.log(b);
   
     };
-   
-  
-
-    // const handleSubmit1 = (e) => {
-     
-
-    // const handleEncode = () => {
-    //   const info = {
-    //     // [aadharImage],[licenseImage]
-    //     aadhar: [aadharImage],
-    //     license: [licenseImage]
-    //   };
-    //   console.log(info);
-    // }
-    // console.log({firstName,lastName,email,phoneNumber,password,address})
     return (
       <>
         <nav class="fixed-nav-bar">
@@ -228,9 +185,7 @@ import logo from "./sk.png";
                           />
                         </div>
 
-                        <h6 class="font-bold">Addhar Image:</h6>
-                        
-                        {/* <input type="file"  onChange={handleAadharChange} /> */}
+                        <h6 class="font-bold">Aadhar Image:</h6>
                         <img src={file} height="50px" width="50px" />
                         <h6 class="font-bold">Licence Image:</h6>
                         <input
@@ -238,7 +193,6 @@ import logo from "./sk.png";
                           id="imageFileInput"
                           onChange={handleFileInputChange}
                         />
-                        {/* <input type="file" onChange={handleLicenseChange1} /> */}
                         <input
                           type="file"
                           id="imageFileInput1"
