@@ -7,6 +7,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     const [isPrimary, setIsPrimary] = useState(true);
     const [dataa, setDataa] = useState([]);
     const [Address,setAddress]=useState("")
+    const [sourceLocation,setSourceLocation]=useState([])
     const [details, setDetails] = useState({
         Name: "",
         // Address: "",
@@ -71,8 +72,9 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     const addressHandler=(data1)=>{
         setAddress(data1)
     }
-
-
+    const lathandle=(p)=>{
+        setSourceLocation(p)
+    }
     return (
         <>
             <div className="container-fluid" id="grad1">
@@ -144,7 +146,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                         </label>
                                                         <div className="col">
                                                             <label style={{ color: "black" }}><b>Address:</b>
-                                                            <Map1 maper={addressHandler}/>
+                                                            <Map1 maper={addressHandler} maper1={lathandle}/>
                                                                 {/* <input type="text" name="Address" value={details.Address} onChange={changeHandle} required minLength={5} /> */}
                                                                 
                                                             </label>
@@ -161,7 +163,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                     if (isPrimary) {
                                                         onNextClick({ isPrimary: true, ...dataa[0] });
                                                     } else if (details.Name && details.Name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
-                                                        onNextClick({ isPrimary: false, ...details ,Address});
+                                                        onNextClick({ isPrimary: false, ...details ,Address,sourceLocation});
                                                     }
                                                 }}>
                                                 Next

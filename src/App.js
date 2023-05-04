@@ -51,9 +51,9 @@ const App = () => {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path="/home" element={<HomeNew />} />
+      <Route path="/home" element={<HomeNew />}/>
       <Route path="/items" element={<Order/>}/>
-      <Route path="/primary1" element={<Primary />} />
+      <Route path="/primary1" element={<Primary />}/>
       <Route path="/hi" element={<Hello />} />
       {/* <Route path="/t" element={<Layout/>}/> */}
       <Route path="/source" element={<StepperWrapper/>}/>

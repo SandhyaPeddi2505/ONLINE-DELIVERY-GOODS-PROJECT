@@ -2,22 +2,20 @@ import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
-
-const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address}) => {
+const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address,lat}) => {
     const { Source, Destination } = deliveryData;
     useEffect((e) => {
         //getDetails()
-
         console.log(deliveryData)
     }, [])
-    useEffect(() => {
-        axios.post("").then(response => {
-            console.log(response)
-        })
-            .catch((error) => {
-                console.log(error)
-            })
-    }, [])
+    // useEffect(() => {
+    //     axios.post("http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/").then(response => {
+    //         console.log(response)
+    //     })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         })
+    // }, [])
 
     return (
         <div className="container-fluid" id="grad1">
@@ -47,10 +45,13 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address}) => {
                                             <label style={{ color: 'black' }} ><b>Name:</b>{Destination.name}</label><br />
                                             <label style={{ color: 'black' }}><b>Address:</b>{Destination.address}</label><br />
                                             <label style={{ color: 'black' }}><b>Phoneno:</b>{Destination.phone}</label><br />
+                                            {/* <label style={{ color: 'black' }}><b>Phoneno:</b>{Destination.lat}</label><br /> */}
+
+                                            {/* {console.log({latlng,lat,lng})} */}
                                             <br></br>
                                         </div>
                                         <button name="previous" type="button" className="btn btn-secondary" onClick={() => onPrevClick(details)}>Previous</button>
-                                        <button name="next" type="button" className="btn btn-primary" onClick={() => onNextClick(details,address)}>Submit</button>
+                                        <button name="next" type="button" className="btn btn-primary" onClick={() => onNextClick(details)}>Submit</button>
                                         
                                     </fieldset>
                                 </form>
