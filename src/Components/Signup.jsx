@@ -65,7 +65,7 @@ const Signup = () => {
     e.preventDefault();
     const payload = {
 
-      "username": username,
+      // "username": username,
 
       "email": email,
 
@@ -126,7 +126,7 @@ const Signup = () => {
 
                 <form>
                   <div>
-                    <div className="mb-3" id="formBasicUsername">
+                    {/* <div className="mb-3" id="formBasicUsername">
                       <label>Username</label>
                       <input
                         onChange={(e) => validateEmail(e)}
@@ -136,7 +136,7 @@ const Signup = () => {
                         className="form-control"
                         required
                       />
-                    </div>
+                    </div> */}
 
                     <div className="mb-3" id="formBasicEmail">
 
