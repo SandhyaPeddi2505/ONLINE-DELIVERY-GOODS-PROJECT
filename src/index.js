@@ -8,6 +8,7 @@ import Source from "./Components/Source";
 import Destination from "./Components/Destination";
 import Layout from "./Components/Layout";
 import Confirm from "./Components/Confirm";
+import Order from "./Components/Items";
 import "./Components/Styles.scss";
 import "./Components/OrderConfirm";
 import "./Components/OrderConfirm.scss";
@@ -50,7 +51,7 @@ import Profile from "./Components/Profile";
 // import Order from './Components/OrderConfirm';
 import Forgotpassword from "./Components/Forgotpassword";
 import reportWebVitals from './reportWebVitals';
-import Order from './Components/OrderConfirm';
+import OrderDetails from './Components/OrderConfirm';
 
 
 
@@ -83,11 +84,11 @@ root.render(
 </ProtectedRoute>
 } />
            
-            <Route path='/source' element={
+            {/* <Route path='/source' element={
 <ProtectedRoute>
 <StepperWrapper/>
 </ProtectedRoute>
-} />
+} /> */}
             
             <Route path='/destination' element={
 <ProtectedRoute>
@@ -187,6 +188,8 @@ root.render(
              <Route path="/" element={<Home />} /> 
              </Route> */}
              <Route path="/" element={<Home />}/>
+             <Route path="/items" element={<Order/>}/>
+             <Route path="/source" element={<StepperWrapper/>}/>
              <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Signup />} />
             <Route path="/primary1" element={<Primary />} />
@@ -197,7 +200,7 @@ root.render(
              <Route path="/home" element={<HomeNew />} />
             //  <Route path="/primary1" element={<Primary />} />
              <Route path="/hi" element={<Hello />} />
-             <Route path="/source" element={<StepperWrapper />} />
+            
              <Route path="/destination" element={<Destination/>}/>
              <Route path="/confirm" element={<Confirm/>}/>
              <Route path="/submit" element={<Submit/>}/> */}

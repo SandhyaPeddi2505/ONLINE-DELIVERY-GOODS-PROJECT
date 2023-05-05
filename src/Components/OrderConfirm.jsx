@@ -2,7 +2,7 @@ import React from "react";
 
 
 // function OrderConfirmation({ orderId, expectedDeliveryDate }) {
-const Order = ({ orderId, expectedDeliveryDate }) => {
+const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
 
 
   const isExpectedDeliveryToday = () => {
@@ -40,4 +40,4 @@ const Order = ({ orderId, expectedDeliveryDate }) => {
   );
 }
 
-export default Order;
+export default OrderDetails;
