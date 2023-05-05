@@ -8,35 +8,35 @@ const Previous = () => {
         {
             DeliveryId: 1223311,
         CustomerName: "saikrishna",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223312,
         CustomerName: "manoja",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Reject"
         },
         {
             DeliveryId: 1223313,
-        CustomerName: "sowmya",
-        SourceAddress: "Raidurg",
+        CustomerName: "soumya",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Pending"
         },
         {
             DeliveryId: 1223314,
         CustomerName: "sandhya",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223315,
         CustomerName: "Arun",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "In-transist"
         }];

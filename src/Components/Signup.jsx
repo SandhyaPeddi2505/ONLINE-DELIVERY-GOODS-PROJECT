@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 // import { useHistory } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -64,14 +64,12 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
-
       // "username": username,
 
-      "email": email,
+      email: email,
 
-      "password": password
-
-    }
+      password: password
+    };
 
     axios
       .post(
@@ -95,11 +93,10 @@ const Signup = () => {
     if (username !== "" && email !== "" && password !== "") {
       toast.success("successfully signed up!");
       setTimeout(() => {
-        navigate('/login');
+        navigate("/login");
       }, 6000);
-    }
-    else {
-      toast.warn("noo")
+    } else {
+      toast.warn("noo");
     }
     setErrors({});
   };
@@ -108,10 +105,9 @@ const Signup = () => {
     window.location.reload();
   };
 
-
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div>
         <div className="man">
           <div className="flex">
@@ -139,7 +135,6 @@ const Signup = () => {
                     </div> */}
 
                     <div className="mb-3" id="formBasicEmail">
-
                       <label>Email address</label>
                       <input
                         onChange={(e) => validateEmail(e)}
@@ -204,7 +199,6 @@ const Signup = () => {
             </div>
           </div>
         </div>
-
       </div>
       <ToastContainer />
     </>
@@ -212,9 +206,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-
-
-
-
-

@@ -94,6 +94,8 @@ const Popular = (onClick) => {
                         height="100px"  onClick={handleClick}
                     />
                     </Link>
+                    
+                    
                         <p>Hyderabad</p>
                     </div><br>
                     </br>
