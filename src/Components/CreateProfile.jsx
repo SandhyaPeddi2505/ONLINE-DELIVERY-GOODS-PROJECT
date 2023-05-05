@@ -19,20 +19,18 @@ const Create = () => {
     const [address, setaddress] = useState("")
     const [pincode, setpincode] = useState("")
     const savehandle = () => {
-       toast.success("Saved successfiully")
+       toast.success("Saved successfully")
         console.log({ "name": name, "email": email, "number": number, "gender": gender, "address": address, "pincode": pincode });
     }
  
 
     const [dataa, setDataa] = useState({});
     useEffect(() => {
-        //call API
-        axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/userinfo', {
-          // headers: {
-          //    'Content-Type': 'application/json',
-          //    "Access-Control-Allow-Headers": '*',
-          //   }
-        })
+        const headers = { 'Authorization': 'Bearer token' };
+        
+        axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/userinfo', 
+        { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+        )
           .then(response => {
             setDataa(response.data);
           })

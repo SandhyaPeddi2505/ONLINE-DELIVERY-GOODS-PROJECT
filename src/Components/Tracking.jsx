@@ -1,54 +1,74 @@
-// import React from "react";
-// import Form from 'react-bootstrap/Form';
-// import { Button } from "react-bootstrap";
+import { Steps } from 'rsuite';
+import axios from 'axios';
+import {useState,useEffect} from 'react'
+import 'rsuite/dist/rsuite.min.css';
+import Navbar from './Navbar';
 
-// const Tracking = () => {
-//     return (
-//         <>
-//             <div className="bgj">
-//                 <div>
-//                     <h1>Tracking order</h1>
-//                 </div>
 
-//                 <div>
-//                     <div className="col-3">
-//                         <div className="row">
-//                             <h1>hiii</h1>
-//                         </div>
-//                     </div>
-//                 </div>
+ const VerticalStepper = () => {
+  // const [activeStep, setActiveStep] = useState(0);
+  const [APIResponse, setAPIResponse] = useState([]);
+  
+  useEffect(()=>{
+          axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/DUMMY_INFO/').then((response)=>{
+            setAPIResponse(response.data)
+          })
+        },[])
+    
+    // APIResponse.map((i) => {
+    //   if (i["status_code"] === 200) {
+    //     count += 1;
+    //   }
+    // });
 
-//                 {/* <div className="col-8">
-//                     <div className="row">
-//                         <div className="container">
-//                             <div className="">
-//                                 <div className="card">
-//                                     <div className="head">
-//                                         <h1 className="track-your-order">Track your order</h1>
-//                                         <div className="body">
-//                                             <Form>
-//                                                 <Form.Group className="mb-3" controlId="formBasicordernumber">
-//                                                     <Form.Label>Order ID</Form.Label>
-//                                                     <Form.Control type="ordernumber" required placeholder="Ex: OQW213" />
-//                                                 </Form.Group>
+    let count = 0;
+    APIResponse.map((i) => {
+      if (i["status_code"] === 0) {
+        count += 1;
+      }
+    });
 
-//                                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-//                                                     <Form.Label>Email</Form.Label>
-//                                                     <Form.Control type="enteremail" required placeholder="Ex:abc@gmail.com" />
-//                                                 </Form.Group>
-//                                                 <div className="center">
-//                                                     <Button variant="outline-primary">Track</Button>{' '}
-//                                                 </div>
-//                                             </Form>
-//                                         </div>
-//                                     </div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div> */}
-//             </div>
-//         </>
-//     )
-// }
-// export default Tracking;
+
+    // APIResponse.map((i)=>{
+    //   if (i['status_code']== 200){
+    //     setActiveStep(()=>activeStep+1)
+    //   }
+    // })
+
+  // console.log(APIResponse)
+  //   useEffect(()=>{
+  //     APIResponse.map((i)=>{
+  //       if(i['status_code']==200){
+  //         setActiveStep(activeStep+1);
+  //       }
+  //     })
+      
+  //   },[]);
+   
+    
+  return (
+    <>
+    <Navbar/>
+<div className='ee'>
+    
+    <div className='steps'>
+
+      <Steps vertical current={count}>
+
+        <Steps.Item description=<h6 style={{ color: "white"}}>Order confirmed</h6>/>
+
+        <Steps.Item description=<h6 style={{ color: "white"}}>Awaiting for Agent</h6>/>
+
+        <Steps.Item description=<h6 style={{ color: "white"}}>Agent confirmed</h6>/>
+
+        <Steps.Item description= <h6 style={{ color: "white"}}>Order delivered</h6>/>
+
+      </Steps>
+
+    </div>
+    </div>
+    </>
+  )
+
+}
+export default VerticalStepper;

@@ -52,6 +52,7 @@ const Agentdash=()=> {
     ] 
      const [show, setShow] = useState(false);
   const [selectedData, setSelectedData] = useState({});
+  const [data1, setData1] = useState({});
   const hanldeClick = (selectedRec) => {
     setSelectedData(selectedRec);
     setShow(true);
@@ -74,6 +75,19 @@ const Agentdash=()=> {
     setYesDisabled(true)
     toast.error('Oops! Delivery Rejected.');
   }
+   useEffect(() => {
+      //call API
+      axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/order_info/',
+      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+
+      )
+        .then(response => {
+          setData1(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }, []);
 
   return (
     <>

@@ -2,59 +2,20 @@ import React, { useState } from "react";
 import { FaMapMarkerAlt, FaCalendarAlt, FaMapMarker } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { DatePicker } from 'antd';
+// import PlacesAutocomplete from "react-places-autocomplete";
 import "./Primary.scss";
 import third from "./third";
 import { Link } from "react-router-dom";
+import Navbar from './Navbar';
+// import { Calendar, DatePicker } from 'antd';
 
 
 const Primary = () => {
-  const sourceAddress = [
-    { name: "Ameerpet" },
-    { name: "Afzalgunj" },
-    { name: "Alwal" },
-    { name: "Amberpet" },
-    { name: "Bachupally" },
-    { name: "Balapur" },
-    { name: "Begum Bazaar" },
-    { name: "Boduppal" },
-    { name: "Chaderghat" },
-    { name: "Chikkadpally" },
-    { name: "Chaitanyapuri" },
-    { name: "Dilsukhnagar" },
-    { name: "ECIL" },
-    { name: "Film Nagar" },
-    { name: "Gandipet" },
-    { name: "Gacchibowli" },
-    { name: "Durgam Cheruvu" },
-    { name: "Hasthinapuram" },
-    { name: "HayathNagar" },
-    { name: "HimayaathNagar" },
-    { name: "Ibrahimpatnam" },
-    { name: "Jeedimetla" },
-    { name: "Kachiguda" },
-    { name: "Koti" },
-    { name: "Karmanghat" },
-    { name: "L B Nagar" },
-    { name: "Lingampally" },
-    { name: "Madhapur" },
-    { name: "Miyapur" },
-    { name: "Nallakunta" },
-    { name: "Narayanguda" },
-    { name: "Osmania University" },
-    { name: "Punjagutta" },
-    { name: "Ramanthapur" },
-    { name: "Safilguda" },
-    { name: "Towlichowki" },
-    { name: "Uppal" },
-    { name: "Vanasthalipuram" },
-    { name: "Yousufguda" }
-  ];
-
+  const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
-  const [date, setDate] = useState();
-  const today = new Date();
-
+  const today = new Date()
   const [reload, setReload] = useState(false);
 
   const handleSourceChange = (event) => {
@@ -117,6 +78,8 @@ const Primary = () => {
   
 
   return (
+    <>
+    <Navbar/>
     <div className="primaryCont">
       <h1 style={{ textAlign: "center ", padding: "40px 0 0 0px" }}>
         Address Details!!
@@ -167,6 +130,7 @@ const Primary = () => {
 
       />
     </div>
+    </>
   );
 };
 export default Primary;
