@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import qwe from './12.png';
+// import qwe from './12.png';
 // import axios from "axios";
 // import Form from 'react-bootstrap/Form';
 // import { Button } from 'react-bootstrap';
@@ -17,16 +17,18 @@ const Agent = () => {
     const [password, setPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [address, setAddress] = useState("");
-    const [api, setApi] = useState([])
+    // const [api, setApi] = useState([])
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const validFirstName = firstName.length > 0;
         const validLastName = lastName.length > 0;
         const validEmail = email.includes("@gmail.com");
-        const validPassword = password.length > 5;
+        const validPassword = password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/[0-9]/) && password.match(/[!@#$%^&*]/)
         const validPhoneNumber = phoneNumber.length > 8;
         const validAddress = address.length > 0;
+        const validFile = file.length > 0;
+        const validFiles = files.length > 0
 
         if (
             validFirstName &&
@@ -34,42 +36,80 @@ const Agent = () => {
             validEmail &&
             validPassword &&
             validPhoneNumber &&
-            validAddress
+            validAddress &&
+            validFile &&
+            validFiles
         ) {
-            alert('User Successfully Registred "\r Admin will get back to you once "\r your details are verified!!')
+            // console.log({ firstname: firstName, lastname: lastName, Email: email, Password: password, Phno: phoneNumber, Address: address, File: file, Files: files })
+            alert('User Successfully Registred \r Admin will get back to you once \r your details are verified!!')
             home('/')
-        } else {
+        } 
+        else if(!password.match(/[a-z]/) || !password.match(/[A-Z]/) || !password.match(/[0-9]/) || !password.match(/[!@#$%^&*]/)){
+         alert(' Password must contain capital,small,num,special characters');
+
+        }else {
             alert("Error Occurred!")
         }
     }
+     
+    //     if (!password.match(/[a-z]/) || !password.match(/[A-Z]/) || !password.match(/[0-9]/) || !password.match(/[!@#$%^&*]/)) {
+
+    //     alert(' password must contain cap,small,num,special characters');
+    // }
 
 
     const [file, setFile] = useState();
-    function handleChange(e) {
-        console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
-    }
+    const handleChange = (e) => {
+        const file = e.target.files[0];
+
+        if (file.type !== "image/jpeg") {
+            alert("Only JPEG files are allowed");
+            e.target.value = "";
+        } else if (file.size > 1000000) {
+            alert("File size should not exceed 1MB");
+            e.target.value = "";
+        } else {
+            setFile(URL.createObjectURL(e.target.files[0]));
+        }
+    };
+    // function handleChange(e) {
+    //     console.log(e.target.files);
+    //     setFile(URL.createObjectURL(e.target.files[0]));
+    // }
     const [files, setFiles] = useState();
-    function handleChange2(e) {
-        console.log(e.target.files);
-        setFiles(URL.createObjectURL(e.target.files[0]));
-    }
-    const[data,setData]=useState({})
+    const handleChange2 = (e) => {
+        const file = e.target.files[0];
+
+        if (file.type !== "image/jpeg") {
+            alert("Only JPEG files are allowed");
+            e.target.value = "";
+        } else if (file.size > 1000000) {
+            alert("File size should not exceed 1MB");
+            e.target.value = "";
+        } else {
+            setFiles(URL.createObjectURL(e.target.files[0]));
+        }
+    };
+    // function handleChange2(e) {
+    //     console.log(e.target.files);
+    //     setFiles(URL.createObjectURL(e.target.files[0]));
+    // }
+    const [data, setData] = useState({})
     useEffect(() => {
         //call API
         axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/Agent_Info/', {
-          // headers: {
-          //    'Content-Type': 'application/json',
-          //    "Access-Control-Allow-Headers": '*',
-          //   }
+            // headers: {
+            //    'Content-Type': 'application/json',
+            //    "Access-Control-Allow-Headers": '*',
+            //   }
         })
-          .then(response => {
-            setData(response.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }, []);
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
     return (
         <>
             <nav class="fixed-nav-bar">
@@ -99,60 +139,61 @@ const Agent = () => {
                 <div className="blur">
                     <div className="cont">
                         <div className="form-agent">
-                            
+
                             <form onSubmit={handleSubmit}>
-                            <center>
-                                <h4>Agent SignUp details</h4>
-                            </center>
+                                <center>
+                                    <h4>Agent SignUp details</h4>
+                                </center>
                                 <div class='row'>
                                     <div class='col-md-12'>
-                                        <div >
-                                        <div className='row'>
-                                            <div class=" col-6 form-group">
-                                                {/* <label className="fs title" >First Name</label> */}
-                                                <input type="text" class="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Enter first Name" required />
+                                        <div>
+                                            <div className='row'>
+                                                <div class=" col-6 form-group">
+                                                    {/* <label className="fs title" >First Name</label> */}
+                                                    <input type="text" class="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Enter first Name" required />
 
-                                            </div>
-                                            <div class=" col-6 form-group">
-                                                {/* <label className="fs title" >Last Name</label> */}
-                                                <input type="text" class="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Enter last Name" required />
+                                                </div>
+                                                <div class=" col-6 form-group">
+                                                    {/* <label className="fs title" >Last Name</label> */}
+                                                    <input type="text" class="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Enter last Name" required />
 
+                                                </div>
                                             </div>
-                                        </div>
                                             <div>
                                                 {/* <label>Email</label> */}
                                                 <input type="email" value={email} class="form-control" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" required />
                                             </div>
-                                        
-                                                <div>
-                                                    {/* <label>Password</label> */}
-                                                    <input type="password" value={password} className='form-control' onChange={(e) => setPassword(e.target.value)} placeholder='Enter Password' required />
-                                                </div>
-                                                <div>
-                                                    {/* <label>phone number</label> */}
-                                                    <input type="PhoneInput" maxLength={10} value={phoneNumber} class="form-control" onChange={(e) => setPhoneNumber(e.target.value)} placeholder="Enter phone number" required />
-                                                </div>
-                                            
+
+                                            <div>
+                                                {/* <label>Password</label> */}
+                                                <input type="password" value={password} className='form-control' onChange={(e) => setPassword(e.target.value)} placeholder='Enter Password' required />
+                                   
+                                            </div>
+                                            <div>
+                                                {/* <label>phone number</label> */}
+                                                <input type="PhoneInput" maxLength={10} value={phoneNumber} class="form-control" onChange={(e) => setPhoneNumber(e.target.value)} placeholder="Enter phone number" required />
+                                            </div>
+
                                             <div>
                                                 {/* <label>Enter  Address</label> */}
                                                 <input type="text" value={address} class="form-control" onChange={(e) => setAddress(e.target.value)} placeholder="Enter Address" required />
                                             </div>
 
-                                        
-                                        <h6 class="font-bold">Addhar Image:</h6>
-                                <input type="file" onChange={handleChange} />
-                                <img src={file} height="50px" width="50px" />
-                                <h6 class="font-bold">Licence Image:</h6>
-                                <input type="file" onChange={handleChange2} />
-                                <img src={files} height="50px" width="50px" />
-                                <div className='heading6 mt-3'>
-                                    <button className='btn btn-primary'>Submit</button>
-                                </div>
-</div>
+
+                                            <h6 class="font-bold">Addhar Image:</h6>
+                                            <input type="file" accept="image/*" max-size="5" onChange={handleChange} />
+                                            <img src={file} height="50px" width="50px" />
+                                            <h6 class="font-bold">Licence Image:</h6>
+                                            <input type="file" onChange={handleChange2} />
+                                            <img src={files} height="50px" width="50px" />
+                                            <div className='heading6 mt-3'>
+                                                <button className='btn btn-primary'>Submit</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                
+
                             </form>
                         </div>
 

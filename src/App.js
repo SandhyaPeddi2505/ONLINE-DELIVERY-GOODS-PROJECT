@@ -44,8 +44,10 @@ import Profile from './Components/Profile';
 import Forgotpassword from './Components/Forgotpassword';
 
 const App = () => {
-
-
+  const [key1,setKey1]=useState([])
+    const ddata=(l)=> {
+      setKey1(()=>[l])
+    }
   return (
     <>
       <BrowserRouter>
@@ -60,10 +62,10 @@ const App = () => {
           <Route path="/confirm" element={<Confirm />} />
           <Route path='/' element={<Home />}></Route>
           <Route path='/agent' element={<Agent />} />
-          <Route path='/agentdash' element={<Agentdash />} />
+          <Route path='/agentdash' element={<Agentdash display={ddata}/>} />
           <Route path='/previous' element={<Previous />} />
           <Route path="/tracking" element={<Tracking />} />
-          <Route path="/confirmScreen" element={<Confirmscreen />} />
+          <Route path="/confirmscreen" element={<Confirmscreen display1={key1} />} />
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/OTP' element={<OTP />}></Route>
