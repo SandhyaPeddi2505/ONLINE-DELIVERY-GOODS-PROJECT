@@ -14,7 +14,7 @@ const Agentdash=()=> {
             DeliveryId:1223311,
             Ordertype:"Groceries",
             CustomerName:"sdssdssd",
-            SourceAddress:"Raidurg",
+            SourceAddress:"Radidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:1
         },
@@ -22,7 +22,7 @@ const Agentdash=()=> {
             DeliveryId:1223312,
             Ordertype:"Files",
             CustomerName:"sdssdssd",
-            SourceAddress:"Raidurg",
+            SourceAddress:"Radidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:3
         },
@@ -30,22 +30,22 @@ const Agentdash=()=> {
             DeliveryId:1223313,
             Ordertype:"Clothes",
             CustomerName:"sdssdssd",
-            SourceAddress:"Raidurg",
+            SourceAddress:"Radidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:2
         },{
             DeliveryId:1223314,
-            Ordertype:"Medicines",
+            Ordertype:"Sweets",
             CustomerName:"sdssdssd",
-            SourceAddress:"Raidurg",
+            SourceAddress:"Radidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:4
         },
         {
             DeliveryId:1223315,
-            Ordertype:"Tickets",
+            Ordertype:"Chocolates",
             CustomerName:"sdssdssd",
-            SourceAddress:"Raidurg",
+            SourceAddress:"Radidurg",
             DestinationAddress:"Durgam cheruvu",
             Quantity:2
         }

@@ -1,3 +1,22 @@
+import Submit from "./Components/Submit";
+import Source from "./Components/Source";
+import Destination from "./Components/Destination";
+import Layout from "./Components/Layout";
+import Confirm from "./Components/Confirm";
+import "./Components/Styles.scss";
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+import Next from "./Components/Other.jsx";
+import "./styles.scss";
+import Primary from "./Components/Primary";
+import Hello from "./Components/Hello";
+
+// import logo from './logo.svg';
+// import './App.css';
+import "./Style.scss";
+import React from 'react';
+import Agent from './Components/Agent';
 import { Navigate, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
@@ -6,16 +25,17 @@ import "bootstrap/dist/css/bootstrap.css";
 import HomeNew from './Components/HomeNew';
 import Home from './Components/Home';
 import Previous from "./Components/Previous";
+import Order from "./Components/Items";
 import Agentdash from './Components/Agentdash';
 import VerticalStepper from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
 import StepperWrapper from "./Components/StepperWrapper";
 
 import Login from './Components/Login';
-import "./Login.scss";
+// import "./Login.scss";
 import "./Signup.scss";
-import "./OTP.scss";
-import "./Changepassword.scss";
+// import "./OTP.scss";
+// import "./Changepassword.scss";
 import "./Forgotpassword.scss";
 import "./Profile.scss";
 import"./Components/Tracking.scss";
@@ -62,6 +82,8 @@ const App = () => {
           <Route path="/primary1" element={<Primary />} />
           <Route path="/hi" element={<Hello />} />
           <Route path="/t" element={<Layout />} />
+          <Route path="/source" element={<StepperWrapper/>}/>
+          <Route path="/items" element={<Order/>}/>
           <Route path="/source" element={<Source />} />
           <Route path="/destination" element={<Destination />} />
           <Route path="/submit" element={<Submit />} />
