@@ -37,7 +37,7 @@ import "./Signup.scss";
 // import "./OTP.scss";
 // import "./Changepassword.scss";
 import "./Forgotpassword.scss";
-// import "./Profile.scss";
+import "./Profile.scss";
 import"./Components/Tracking.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
