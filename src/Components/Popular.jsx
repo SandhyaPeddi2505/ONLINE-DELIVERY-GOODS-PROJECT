@@ -22,7 +22,7 @@ const Popular = (onClick) => {
     const [data, setData] = useState({});
     useEffect(() => {
       //call API
-      axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/cityList',
+      axios.get('http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/cityList',
       { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
 
       )

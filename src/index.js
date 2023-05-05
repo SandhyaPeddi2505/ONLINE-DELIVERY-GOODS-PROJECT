@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 // import Routing from "./Components/Routing"
 import Submit from "./Components/Submit";
 import Source from "./Components/Source";
@@ -8,6 +9,8 @@ import Destination from "./Components/Destination";
 import Layout from "./Components/Layout";
 import Confirm from "./Components/Confirm";
 import "./Components/Styles.scss";
+import "./Components/OrderConfirm";
+import "./Components/OrderConfirm.scss";
 import { Outlet } from "react-router-dom";
 import Next from "./Components/Other.jsx";
 import "./styles.scss";
@@ -47,6 +50,7 @@ import Profile from "./Components/Profile";
 // import Order from './Components/OrderConfirm';
 import Forgotpassword from "./Components/Forgotpassword";
 import reportWebVitals from './reportWebVitals';
+import Order from './Components/OrderConfirm';
 
 
 
@@ -67,11 +71,11 @@ root.render(
 <HomeNew />
 </ProtectedRoute>
 } /> */}
-            <Route path='/primary1' element={
+            {/* <Route path='/primary1' element={
 <ProtectedRoute>
 <Primary />
 </ProtectedRoute>
-} />
+} /> */}
           
             <Route path='/hi' element={
 <ProtectedRoute>
@@ -162,6 +166,11 @@ root.render(
 <Create />
 </ProtectedRoute>
 } />
+     <Route path='/OrderConfirm' element={
+<ProtectedRoute>
+<Order />
+</ProtectedRoute>
+} />
             
             <Route path='/forgotpassword' element={
 <ProtectedRoute>
@@ -180,12 +189,13 @@ root.render(
              <Route path="/" element={<Home />}/>
              <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Signup />} />
-             <Route path="/agent" element={<Agent />} />
+            <Route path="/primary1" element={<Primary />} />
+             {/* <Route path="/agent" element={<Agent />} /> */}
              {/* <Route path="*" element={<div>Page Not Found!!</div>} />
              <Route path="/createProfile" element={<Create />} />
              <Route path="/denied" element={<PermissionDenied />} /> 
              <Route path="/home" element={<HomeNew />} />
-             <Route path="/primary1" element={<Primary />} />
+            //  <Route path="/primary1" element={<Primary />} />
              <Route path="/hi" element={<Hello />} />
              <Route path="/source" element={<StepperWrapper />} />
              <Route path="/destination" element={<Destination/>}/>

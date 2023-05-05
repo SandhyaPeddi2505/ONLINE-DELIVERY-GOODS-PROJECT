@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { DatePicker } from 'antd';
 // import PlacesAutocomplete from "react-places-autocomplete";
 import "./Primary.scss";
-import Map1 from "./Map";
+import Map1 from "./Map5";
 import third from "./third";
 import { Link } from "react-router-dom";
 import Navbar from './Navbar';

@@ -6,14 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import abc from "./online.png";
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = React.useState("");
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [usertype, setUsertype] = useState("");
   const [emailError, setemailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setErrors] = useState();
@@ -27,56 +26,50 @@ const Login = () => {
       setemailError("Enter valid userName!");
     }
   };
-  
-  function user() {
-    if (userType === 'Agent') {
-      // navigate to page 1
-      navigate('/agent');
-    } else {
-      // navigate to page 2
-      navigate('/login');
-    }
-  }
+
   // Handling the password change
   const handlePassword = (e) => {
     setPassword(e.target.value);
     setSubmitted(false);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload =
-    {
-      "email": email,
-      "password": password
-    }
-    
+    const payload = {
+      email: email,
+      password: password,
+    };
+
     axios
-      .post('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/',
-        payload, 
-       
-    )
+      .post(
+        "http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/login/",
+        payload
+      )
       .then((response) => {
         if (!email || !password) {
           toast.warn("Enter all fields");
         } else if (response?.status === 200) {
-        localStorage.setItem("token",response.data.token)
+          localStorage.setItem("token", response.data.token);
           console.log(response?.status);
           let type = response.data.user_type;
           console.log(type);
           console.log(response);
-          // if(type=='temporary')
-          // navigate('/createProfile');
-          // else
-          // navigate('/home');
-          console.log(response);
-          navigate('/createProfile');
+
+          if (usertype === "temporary") {
+            navigate("/createProfile");
+          } else {
+            navigate("/home");
+          }
         }
       })
       .catch((error) => {
         console.log(error.response.data); // handle error
       });
+
     setErrors({});
   };
+
+
   return (
     <>
       <div className="yes">
