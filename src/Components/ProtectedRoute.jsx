@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+// import { toast, ToastContainer } from "react-toastify";
 const ProtectedRoute = (props) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +19,7 @@ const ProtectedRoute = (props) => {
   }, [isLoggedIn]);
   return <React.Fragment>{isLoggedIn ? props.children : null}</React.Fragment>;
 };
-<ToastContainer/>
+{/* <ToastContainer/> */}
 export default ProtectedRoute;
 
 

@@ -29,6 +29,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 
 import "./Login.scss";
 import "./Signup.scss";
+import VerticalStepper from "./Components/Tracking";
 import "./OTP.scss";
 import "./Changepassword.scss";
 import "./Forgotpassword.scss";
@@ -43,6 +44,7 @@ import OTP from "./Components/OTP";
 import User from "./Components/User";
 import Changepassword from "./Components/Changepassword";
 import Profile from "./Components/Profile";
+// import Order from './Components/OrderConfirm';
 import Forgotpassword from "./Components/Forgotpassword";
 import reportWebVitals from './reportWebVitals';
 
@@ -60,6 +62,11 @@ root.render(
 </ProtectedRoute>
 } />
            
+           {/* <Route path='/home' element={
+<ProtectedRoute>
+<HomeNew />
+</ProtectedRoute>
+} /> */}
             <Route path='/primary1' element={
 <ProtectedRoute>
 <Primary />
@@ -116,7 +123,7 @@ root.render(
            
             <Route path='/tracking' element={
 <ProtectedRoute>
-// <Tracking />
+<VerticalStepper />
 </ProtectedRoute>
 } />
             

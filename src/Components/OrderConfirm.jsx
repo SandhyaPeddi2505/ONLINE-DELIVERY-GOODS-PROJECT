@@ -1,19 +1,35 @@
-import React from 'react';
+import React from "react";
 
-function OrderDetails({ orderName, orderId, deliveryDate }) {
-  const handleTrackingButtonClick = () => {
-    // handle tracking button click event here
+// function OrderConfirmation({ orderId, expectedDeliveryDate }) {
+  const Order=({orderId, expectedDeliveryDate})=>{
+
+  
+  const isExpectedDeliveryToday = () => {
+    const today = new Date();
+    const expectedDelivery = new Date(expectedDeliveryDate);
+    return (
+      today.getFullYear() === expectedDelivery.getFullYear() &&
+      today.getMonth() === expectedDelivery.getMonth() &&
+      today.getDate() === expectedDelivery.getDate()
+    );
   };
 
   return (
-    <div>
-      <h2>Order Details</h2>
-      <p>Order Name: {orderName}</p>
-      <p>Order ID: {orderId}</p>
-      <p>Expected Delivery Date: {deliveryDate}</p>
-      <button onClick={handleTrackingButtonClick}>Track Order</button>
+    <div className="order-confirmation">
+      <div className="order-confirmation-header">
+        <span className="green-tick">✔</span>
+        <h2>Order Confirmed</h2>
+      </div>
+      <div className="order-details">
+        <p>Order ID: {orderId}</p>
+        <p>
+          Expected Delivery Date:{" "}
+          {isExpectedDeliveryToday() ? "Today" : expectedDeliveryDate}
+        </p>
+      </div>
+      <button className="track-button">Track Order</button>
     </div>
   );
 }
 
-export default OrderDetails;
+export default Order;
