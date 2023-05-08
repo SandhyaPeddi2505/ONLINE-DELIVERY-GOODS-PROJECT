@@ -28,6 +28,7 @@ export default function City() {
  
   return (
     <>
+    <div className="">
     <div class="whole">
       <div className="Main">
         <h2>Select Your City</h2>
@@ -63,6 +64,7 @@ export default function City() {
             ))}
         </div>
       </div>
+        </div>
         </div>
     </>
   );

@@ -8,35 +8,35 @@ const Previous = () => {
         {
             DeliveryId: 1223311,
         CustomerName: "saikrishna",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223312,
         CustomerName: "manoja",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Reject"
         },
         {
             DeliveryId: 1223313,
-        CustomerName: "sowmya",
-        SourceAddress: "Raidurg",
+        CustomerName: "soumya",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Pending"
         },
         {
             DeliveryId: 1223314,
         CustomerName: "sandhya",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223315,
         CustomerName: "Arun",
-        SourceAddress: "Raidurg",
+        SourceAddress: "Radidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "In-transist"
         }];
@@ -86,7 +86,7 @@ const Previous = () => {
         <>
         <nav class="fixed-nav-bar">
       <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"  /> </a>
+        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"/> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

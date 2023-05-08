@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import qwe from "./12.png";
 import { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import logo from "./sk.png";
   const Agent = () => {
@@ -21,7 +22,16 @@ import logo from "./sk.png";
   const [imageFile1, setImageFile1] = useState("");
     const handleFileInputChange = (event) => {
       const file = event.target.files[0];
-      setImageFile(file);
+      
+      if (file.type !== "image/jpeg") {
+        alert("Only JPEG files are allowed");
+        event.target.value = "";
+    } else if (file.size > 1000000) {
+        alert("File size should not exceed 1MB");
+        event.target.value = "";
+    }else{
+        setImageFile(URL.createObjectURL(event.target.files[0]));
+    }
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -30,7 +40,16 @@ import logo from "./sk.png";
     };
     const handleFileInputChange1 = (event) => {
       const file1 = event.target.files[0];
-      setImageFile1(file1);
+      
+      if (file.type !== "image/jpeg") {
+        alert("Only JPEG files are allowed");
+        event.target.value = "";
+    } else if (file.size > 1000000) {
+        alert("File size should not exceed 1MB");
+        event.target.value = "";
+    }else{
+        setImageFile1(URL.createObjectURL(event.target.files[0]));
+    }
       const reader = new FileReader();
       reader.readAsDataURL(file1);
       reader.onload = () => {
@@ -44,7 +63,7 @@ import logo from "./sk.png";
       const validFirstName = firstName.length > 0;
       const validLastName = lastName.length > 0;
       const validEmail = email.includes("@gmail.com");
-      const validPassword = password.length > 5;
+      const validPassword = password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/[0-9]/) && password.match(/[!@#$%^&*]/)
       const validPhoneNumber = phoneNumber.length > 8;
       const validAddress = address.length > 0;
 
@@ -57,10 +76,12 @@ import logo from "./sk.png";
         validAddress
       ) {
         alert(
-          'User Successfully Registred "\r Admin will get back to you once "\r your details are verified!!'
-        );
+          'User Successfully Registred \r Admin will get back to you once \r your details are verified!!');
         home("/");
-      } else {
+      }else if(!password.match(/[a-z]/) || !password.match(/[A-Z]/) || !password.match(/[0-9]/) || !password.match(/[!@#$%^&*]/)){
+        alert(' Password must contain capital,small,num,special characters');
+       } 
+      else {
         alert("Error Occurred!");
       }
       let az=[]

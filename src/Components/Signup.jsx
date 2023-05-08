@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 // import { useHistory } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -64,18 +64,16 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
+      // "username": username,
 
-      "username": username,
+      email: email,
 
-      "email": email,
-
-      "password": password
-
-    }
+      password: password
+    };
 
     axios
       .post(
-        "http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/register/",
+        "http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/register/",
 
         payload
       )
@@ -95,11 +93,10 @@ const Signup = () => {
     if (username !== "" && email !== "" && password !== "") {
       toast.success("successfully signed up!");
       setTimeout(() => {
-        navigate('/login');
+        navigate("/login");
       }, 6000);
-    }
-    else {
-      toast.warn("noo")
+    } else {
+      toast.warn("noo");
     }
     setErrors({});
   };
@@ -108,10 +105,9 @@ const Signup = () => {
     window.location.reload();
   };
 
-
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div>
         <div className="man">
           <div className="flex">
@@ -126,7 +122,7 @@ const Signup = () => {
 
                 <form>
                   <div>
-                    <div className="mb-3" id="formBasicUsername">
+                    {/* <div className="mb-3" id="formBasicUsername">
                       <label>Username</label>
                       <input
                         onChange={(e) => validateEmail(e)}
@@ -136,7 +132,7 @@ const Signup = () => {
                         className="form-control"
                         required
                       />
-                    </div>
+                    </div> */}
 
                     <div className="mb-3" id="formBasicEmail">
 
@@ -215,7 +211,6 @@ const Signup = () => {
             </div>
           </div>
         </div>
-
       </div>
       <ToastContainer />
     </>
@@ -223,9 +218,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-
-
-
-
-

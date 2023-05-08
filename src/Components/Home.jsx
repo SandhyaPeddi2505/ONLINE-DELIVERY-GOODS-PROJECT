@@ -6,6 +6,7 @@ import logo from "./sk.png";
 // import aaa from './del1.png';
 import { Link } from "react-router-dom";
 
+
 const Home = () => {
   
   return (

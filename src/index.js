@@ -72,11 +72,11 @@ root.render(
 </ProtectedRoute>
 } />
            
-            <Route path='/source' element={
+            {/* <Route path='/source' element={
 <ProtectedRoute>
 <StepperWrapper/>
 </ProtectedRoute>
-} />
+} /> */}
             
             <Route path='/destination' element={
 <ProtectedRoute>
@@ -174,13 +174,14 @@ root.render(
              <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Signup />} />
              <Route path="/agent" element={<Agent />} />
+             <Route path="/source" element={<StepperWrapper />} />
              {/* <Route path="*" element={<div>Page Not Found!!</div>} />
              <Route path="/createProfile" element={<Create />} />
              <Route path="/denied" element={<PermissionDenied />} /> 
              <Route path="/home" element={<HomeNew />} />
              <Route path="/primary1" element={<Primary />} />
              <Route path="/hi" element={<Hello />} />
-             <Route path="/source" element={<StepperWrapper />} />
+            
              <Route path="/destination" element={<Destination/>}/>
              <Route path="/confirm" element={<Confirm/>}/>
              <Route path="/submit" element={<Submit/>}/> */}
