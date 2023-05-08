@@ -27,7 +27,7 @@ const Login = () => {
       setemailError("Enter valid userName!");
     }
   };
-  
+
   function user() {
     if (userType === 'Agent') {
       // navigate to page 1
@@ -49,17 +49,17 @@ const Login = () => {
       "email": email,
       "password": password
     }
-    
+
     axios
-      .post('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/',
-        payload, 
-       
-    )
+      .post('http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/login/',
+        payload,
+
+      )
       .then((response) => {
         if (!email || !password) {
           toast.warn("Enter all fields");
         } else if (response?.status === 200) {
-        localStorage.setItem("token",response.data.token)
+          localStorage.setItem("token", response.data.token)
           console.log(response?.status);
           let type = response.data.user_type;
           console.log(type);
@@ -79,6 +79,7 @@ const Login = () => {
   };
   return (
     <>
+      <Navbar />
       <div className="yes">
         <div className="flex">
           <div className="form">
@@ -92,7 +93,11 @@ const Login = () => {
             </div>
             <form>
               <div className="mb-3" id="formBasicemail">
-                <label>Email</label>
+                <label>
+                  <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>                  Email
+                  </p>
+                 
+                  </label>
                 <input
                   type="email"
                   id="email"
@@ -102,11 +107,15 @@ const Login = () => {
                 />
                 <span style={{ color: "red" }}>{emailError}</span>
                 <div className="text-muted">
-                  We'll never share your email with anyone else.
+                  <p style={{color:"black"}}>We'll never share your email with anyone else.</p> 
                 </div>
               </div>
-              <div className="mb-3 " id="formBasicPassword">
-                <label>Password</label>
+              <div className="mb-4" id="formBasicPassword">
+                <label>
+                  <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>
+                    Password
+                    </p>
+                  </label>
                 <input
                   type="password"
                   onChange={handlePassword}
@@ -115,9 +124,10 @@ const Login = () => {
                   className="form-control"
                 ></input>
               </div>
-
-              <div className="mt-2">
+          
+              <div className="d-flex flex-row justify-content-center">
                 <button
+                style={{width:290}}
                   onClick={handleSubmit}
                   className="btn btn-primary"
                   type="LogIn"
@@ -126,7 +136,19 @@ const Login = () => {
                   Log In{" "}
                 </button>
               </div>
-              <div className="d-flex flex-row justify-content-end">
+              
+              <div className="d-flex flex-row justify-content-center">
+                <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>
+                  {" "}
+                  Don't have an account?{" "}
+                  <Link
+                    to="/signup"
+                    style={{ color: "blue", textDecoration: "underline" }}
+                  >
+                    Signup
+                  </Link>
+                </p></div>
+              <div className="d-flex flex-row justify-content-center">
                 <a
                   className="small text-muted"
                   style={{ textDecoration: "none" }}
@@ -134,27 +156,17 @@ const Login = () => {
 
                   <Link
                     to="/OTP"
-                    style={{ color: "black", textDecoration: "none" }}
+                    style={{ color: "blue", textDecoration: "none", fontSize: 16 }}
                   >
-                    Forgotpassword?
+                    <p>Forgot Password?</p>
                   </Link>
                 </a>
               </div>
-              <p>
-                {" "}
-                Don't have an account?{" "}
-                <Link
-                  to="/signup"
-                  style={{ color: "blue", textDecoration: "none" }}
-                >
-                  Signup
-                </Link>
-              </p>
             </form>
           </div>
-        </div>
+        </div >
         <ToastContainer />
-      </div>
+      </div >
     </>
   );
 };

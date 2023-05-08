@@ -135,7 +135,12 @@ const Signup = () => {
                     </div> */}
 
                     <div className="mb-3" id="formBasicEmail">
-                      <label>Email address</label>
+
+                      <label>
+                         <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>
+                         Email address
+                         </p>
+                        </label>
                       <input
                         onChange={(e) => validateEmail(e)}
                         name="email"
@@ -148,7 +153,11 @@ const Signup = () => {
                       <span style={{ color: "red" }}>{emailError}</span>
                     </div>
                     <div className="mb-3" id="formBasicLastName">
-                      <label>Password</label>
+                      <label>
+                        <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>
+                        Password
+                        </p>
+                        </label>
                       <input
                         type="password"
                         name="password"
@@ -162,7 +171,9 @@ const Signup = () => {
                     </div>
                     {console.log(error)}
                     <div className="mb-3">
-                      <label>Confirm Password</label>
+                      <label>
+                       <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Confirm Password</p> 
+                        </label>
                       <input
                         type="password"
                         name="cpassword"
@@ -177,13 +188,14 @@ const Signup = () => {
 
                     <button
                       onClick={handleSubmit}
+                      style={{width:265}}
                       className="btn btn-primary"
                       type="Submit"
                     >
                       Submit
                     </button>
                     <div>
-                      <p>
+                      <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>
                         Already have an account ?
                         <Link
                           style={{ color: "blue", textDecoration: "none" }}

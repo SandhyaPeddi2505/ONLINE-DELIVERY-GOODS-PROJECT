@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import axios from "axios";
+import axios from "axios";
 import logo from "./sk.png";
 const Agentdash = (props) => {
   const redirect = useNavigate()
