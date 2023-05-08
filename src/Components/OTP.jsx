@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import abc from './online.png';
+import Navbar from './Navbar';
 const OTP = () => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("")
@@ -38,8 +39,9 @@ const OTP = () => {
         window.location.reload();
     }
     return (
-
-        <div className="xyz">
+<>
+<Navbar/>
+        <div className="tt">
             <div className='flex'>
                 <div className="zz">
                     
@@ -69,7 +71,7 @@ const OTP = () => {
 
 
         </div>
-        
+        </>
     );
 }
 export default OTP;

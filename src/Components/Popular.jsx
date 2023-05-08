@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import "./Popular.scss";
 import axios from "axios";
+import Navbar from './Navbar';
 // var data = require("./MOCK_DATA");
 
 const Popular = (onClick) => {
@@ -21,12 +22,10 @@ const Popular = (onClick) => {
     const [data, setData] = useState({});
     useEffect(() => {
       //call API
-      axios.get('http://ec2-13-232-41-19.ap-south-1.compute.amazonaws.com:8001/cityList', {
-        // headers: {
-        //    'Content-Type': 'application/json',
-        //    "Access-Control-Allow-Headers": '*',
-        //   }
-      })
+      axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/cityList',
+      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+
+      )
         .then(response => {
           setData(response.data);
         })
@@ -36,7 +35,7 @@ const Popular = (onClick) => {
     }, []);
     return (
         <>
-    
+    <Navbar/>
     <div class="whole">
       <div className="Main">
         <h2>Select Your City</h2>
