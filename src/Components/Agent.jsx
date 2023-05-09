@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import qwe from "./12.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer,toast } from 'react-toastify';
 import logo from "./sk.png";
   const Agent = () => {
     const [imageFile, setImageFile] = useState('');
@@ -56,12 +57,13 @@ import logo from "./sk.png";
         validPhoneNumber &&
         validAddress
       ) {
-        alert(
-          'User Successfully Registred "\r Admin will get back to you once "\r your details are verified!!'
+        toast.success(
+          'User Successfully Registred '
+          // "\r Admin will get back to you once "\r your details are verified!!'
         );
         home("/");
       } else {
-        alert("Error Occurred!");
+        toast.error("Error Occurred!");
       }
       let az=[]
       let abc={
@@ -218,6 +220,7 @@ import logo from "./sk.png";
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </>
     );
   };

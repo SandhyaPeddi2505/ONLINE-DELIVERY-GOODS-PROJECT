@@ -26,7 +26,6 @@ import StepperWrapper from "./Components/StepperWrapper";
 import Login from "./Components/Login";
 import Order from './Components/Items';
 import ProtectedRoute from "./Components/ProtectedRoute";
-
 import "./Login.scss";
 import "./Signup.scss";
 import "./OTP.scss";

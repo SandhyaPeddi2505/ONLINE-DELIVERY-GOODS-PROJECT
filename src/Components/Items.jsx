@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Items.scss";
+import { toast, ToastContainer } from 'react-toastify';
+import axios from "axios";
   
 const Order=() =>{
   const [orderType, setOrderType] = useState("");
@@ -32,13 +34,29 @@ const Order=() =>{
   const handleSubmit=(e)=>{
     e.preventDefault();
     if (orderType === "" || quantity === "" || date === "") {
-      alert("Fill out all the fields");
+      toast.error("Fill out all the fields");
     } else{
     console.log(orderType)
     console.log(quantity)
     console.log(date)
   }
 }
+const payload = { 
+
+  "order_type":"Toys",
+  
+  "quantity":"22"
+  
+  };
+  axios
+  .post("http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/ordertype",
+  payload,
+  
+  { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
+  )}`}}
+  ).then((response) => {
+    console.log(response)
+  })
     
   return (
     <>
@@ -101,6 +119,7 @@ const Order=() =>{
             </form>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
