@@ -45,7 +45,7 @@ const Create = () => {
         }
         
         
-        axios.post('http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/createprofile', payload,
+        axios.post('http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/createprofile', payload,
         { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
         )
           .then(response => {

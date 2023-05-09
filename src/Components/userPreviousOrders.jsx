@@ -9,37 +9,37 @@ const Orderss = () => {
         {
             DeliveryId: 1223311,
         CustomerName: "saikrishna",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223312,
         CustomerName: "manoja",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
-        Status: "Reject"
+        Status: "Completed"
         },
         {
             DeliveryId: 1223313,
-        CustomerName: "soumya",
-        SourceAddress: "Radidurg",
+        CustomerName: "sowmya",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
-        Status: "Pending"
+        Status: "Completed"
         },
         {
             DeliveryId: 1223314,
         CustomerName: "sandhya",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223315,
         CustomerName: "Arun",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
-        Status: "In-transist"
+        Status: "Completed"
         }];
         function getCssClass(Status) {
         if (Status === "Completed") return "high";

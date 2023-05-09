@@ -104,7 +104,7 @@ const Popular = (onClick) => {
    
     <div class="whole">
       <div className="Main">
-        <h2>Select Your City</h2>
+        <h3 class="title" >Select Your City</h3>
       </div>
 
       <div className="void">
@@ -121,7 +121,10 @@ const Popular = (onClick) => {
           
 
           <a href="#" class="button">
-            <button type="button">Search</button>
+            {/* <button type="button">Search</button>
+             */}
+          <button name="next" type="button" className="btn btn-primary">Search</button>
+
           </a>
           {/* {data
             .filter((item) => {
@@ -143,15 +146,17 @@ const Popular = (onClick) => {
             ))} */}
         </div>
       </div>
-      <div>
-        <h2>Popular Cities</h2>
-      </div>
+      
         </div>
-        <div className="card-container">
+        <div>
+        <h3 class="title2">Popular Cities</h3>
+      </div>
+        <div className="card-container" >
+        
             <div style={{display:"flex"}}>
            
                     <div>
-                        <Link to="/primary1">
+                        <Link to="/cityselection">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9YFjAlXIhoTve0TEYdxJZs_ui1qjgA1DDA&usqp=CAU"
                         className="card-img-top"
@@ -162,7 +167,7 @@ const Popular = (onClick) => {
                     </Link>
                     
                     
-                        <p>Hyderabad</p>
+                        <p class="title1">Hyderabad</p>
                     </div><br>
                     </br>
                     <div>
@@ -173,7 +178,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px" onClick={handleClick}
                     />
-                        <p>Delhi-NCR</p>
+                        <p class="title1">Delhi-NCR</p>
                     </div>
                     <div >
                     <img
@@ -183,7 +188,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px" onClick={handleClick}
                     />
-                    <p>Mumbai</p>
+                    <p class="title1">Mumbai</p>
                     </div> 
                     <div>
                     <img
@@ -193,7 +198,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px"  onClick={handleClick}
                     />         
-                        <p>Banglore</p>
+                        <p class="title1">Banglore</p>
                     </div>
                     <div>
                     <img
@@ -203,7 +208,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px" onClick={handleClick}
                     />
-                        <p>Chandigarh</p>
+                        <p class="title1">Chandigarh</p>
                     </div><br/>
                    
                     <div>
@@ -214,7 +219,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px"  onClick={handleClick}
                     />
-                        <p>Pune-MR</p>
+                        <p class="title1">Pune-MH</p>
                     </div>
                     <div>
                     <img
@@ -224,7 +229,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px"  disabled onClick={handleClick}
                     />
-                        <p>Chennai</p>
+                        <p class="title1">Chennai</p>
                     </div>
             </div>
         </div>   

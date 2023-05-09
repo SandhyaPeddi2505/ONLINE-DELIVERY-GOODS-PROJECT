@@ -46,7 +46,7 @@ const Login = () => {
 
     axios
       .post(
-        "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/login/",
+        "http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/login/",
         payload
       )
       .then((response) => {

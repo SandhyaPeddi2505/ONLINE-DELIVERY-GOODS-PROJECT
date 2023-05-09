@@ -18,15 +18,17 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     });
     useEffect(() => {
         axios
-            .get("http://localhost:3000/posts")
-            .then((response) => {
-                setDataa(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        .get(
+          "http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
+          
+          { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+          // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
+          // )}`}}
+        ).then((response) => {
+          console.log(response)
+        })
         console.log(deliveryData, "dfdf");
-        setIsConfirmed(localStorage.getItem('isConfirmed'))
+        // setIsConfirmed(localStorage.getItem('isConfirmed'))
         if (deliveryData && !deliveryData.Source.isPrimary) {
             setDetails({
                 ...details,
@@ -37,21 +39,21 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         }
     }, []);
    
-    useEffect( () => {
-        console.log(localStorage.getItem('isConfirmed'),'isconfirmed')
-        if(!!isConfirmed){
-       axios
-            .get("http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails")
-            .then((response) => {
-                setSweet(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    // useEffect( () => {
+    //     console.log(localStorage.getItem('isConfirmed'),'isconfirmed')
+    //     if(!!isConfirmed){
+    //    axios
+    //         .get("http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails")
+    //         .then((response) => {
+    //             setSweet(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
             
-         }
-    }
-    , [isConfirmed]);
+    //      }
+    // }
+    // , [isConfirmed]);
     const changeHandle = (e) => {
         const { name, value } = e.target;
         setDetails({ ...details, [name]: value });
@@ -95,26 +97,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     const lathandle=(p)=>{
         setSourceLocation(p)
     }
-    // const payload =
-    // {
-    //     "name":"shiva",
-    //     "phone":"98765432",
-    //     "address":"nizampet",
-    //     "location":[12.2345,12.4321]
-    // }
-    //  {                        //api call for secondary details
-    //     "Name":details.Name,
-    //     "Phone_number":details.Phone_number,
-    //     "Address":Address
-    //    };
-    //    axios
-    //    .post(
-         
-    //      payload,
-    //      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
-    //    ).then((response) => {
-    //      console.log(response)
-    //    })
+          
     return (
         <>
         <Navbar/>
