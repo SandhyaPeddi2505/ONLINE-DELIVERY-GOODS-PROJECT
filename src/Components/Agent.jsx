@@ -3,6 +3,7 @@ import qwe from "./12.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./sk.png";
+import axios from "axios";
   const Agent = () => {
     const [imageFile, setImageFile] = useState('');
     const [base64, setBase64] = useState();
@@ -81,6 +82,28 @@ import logo from "./sk.png";
       // console.log(b);
   
     };
+    const payload = {                        //api call 
+      "firstName":firstName,
+      "lastName":lastName,
+      "email":email,
+      "password":password,
+      "phoneNumber":phoneNumber,
+      "address":address,
+      "api":api,
+      "file":file,
+      "files":files,
+      "data":data,
+      "imageFile1":imageFile1,
+      "imageFile":imageFile,
+      "base64":base64
+      };
+     axios
+     .post(
+       // "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/login/",
+       payload
+     ).then((response) => {
+       console.log(response)
+     })
     return (
       <>
         <nav class="fixed-nav-bar">

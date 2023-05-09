@@ -2,8 +2,6 @@ import React, { useState ,useEffect} from 'react';
 // import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import abc from './pic.png';
-// import Swal from "swal"
-import Swal from 'sweetalert2';
 import axios from "axios";
 // import { toast } from 'react-toastify';
 import { ToastContainer, toast } from "react-toastify";
@@ -29,6 +27,7 @@ const Create = () => {
         e.preventDefault();
         
         const payload =
+        
         {
 
             "name": name,
@@ -45,7 +44,8 @@ const Create = () => {
 
         }
         
-        axios.post('http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/CreateProfile', payload,
+        
+        axios.post('http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/createprofile', payload,
         { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
         )
           .then(response => {
@@ -56,6 +56,7 @@ const Create = () => {
           });
           toast.success("Saved successfully")
           console.log({ "name": name, "email": email, "number": number, "gender": gender, "pincode": pincode,"primary_address":add ,"primary_location":latit});
+          navigate('/')
     };
        
 const maphan=(i)=>{
@@ -124,19 +125,9 @@ selatit(p)
                                         {isEditing &&
                                             <input type="radio" value="female" name="gender" onChange={(y) => (setgender(y.target.value))} checked={gender === 'female'} />}Female
                                     </div>
-                                {/* <div >
-                                    <label>Gender</label>
-
-                                    <input type="radio" name="gender" value="male" />Male
-
-                                    <input type="radio" name="gender" value="female" />Female
-
-                                </div> */}
                                 <div className="mb-2" id="formBasicAddress">
                                     <label> Address </label>
                                   <Map1 map={maphan} lat={lathan}/>
-                                        {/* <textarea value={address} onChange={(b) => (setaddress(b.target.value))} rows="4" cols="10" placeholder="Enter address" className='form-control'></textarea> */}
-                                    
                                 </div>
                                
                                 <div className="mb-2" id="formBasicnumber">
@@ -154,9 +145,9 @@ selatit(p)
                         </br>
                         <div className='cc'>
                           
-                                <button className='btn btn-primary' onClick={handleSubmit} >
+                               <Link to='/'><button className='btn btn-primary' onClick={handleSubmit} >
                                     Save
-                                </button>
+                                </button></Link>
                             
                         </div>
                     </div>

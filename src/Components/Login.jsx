@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import abc from "./online.png";
 import Navbar from "./Navbar";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ const Login = () => {
   const [emailError, setemailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setErrors] = useState();
+  // const[loggedin,setLoggedin]=useState();
+  const [loggedin, setLoggedin] = useState("");
 
   const validateEmail = (e) => {
     var email = e.target.value;
@@ -39,10 +42,11 @@ const Login = () => {
       email: email,
       password: password,
     };
+   
 
     axios
       .post(
-        "http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/login/",
+        "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/login/",
         payload
       )
       .then((response) => {
@@ -54,12 +58,32 @@ const Login = () => {
           let type = response.data.user_type;
           console.log(type);
           console.log(response);
+          // let type = response.data.user_type;
+          // console.log(type);
+          // console.log(response);
+          // setLoggedin(type); // add this line
+          // if (type === "temporary") { // modify this line
+          //   navigate("/createProfile");
+          // }
 
-          if (usertype === "temporary") {
-            navigate("/createProfile");
-          } else {
+          
+          // if (type === "permanent") { // modify this line
+          //   navigate("/home");
+          // }
+          // if (loggedin === "temporary") {
+          //   navigate("/createProfile");
+          // }
+          // if (loggedin === "permanent") {
+          //   navigate("/home");
+          // }
+          if (response.data.loggedin === "permanant") {
             navigate("/home");
-          }
+          } 
+          else if(response.data.loggedin === "tempoorarily"){
+          navigate("/createProfile");
+        }
+         
+        
         }
       })
       .catch((error) => {
@@ -67,7 +91,20 @@ const Login = () => {
       });
 
     setErrors({});
+  //   if (loggedin === "temporary") {
+  //     navigate("/createProfile");
+  //   } 
+  //   if(loggedin === "permanant"){
+  //   navigate("/home");
+  // }
   };
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     window.location.href = '/home';
+  //   } else {
+  //     window.location.href = '/createProfile';
+  //   }
+  // }, [isLoggedIn]);
 
 
   return (

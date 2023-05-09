@@ -1,8 +1,15 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import axios from "axios";
+import {useState} from "react";
 
 
-// function OrderConfirmation({ orderId, expectedDeliveryDate }) {
+
 const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
+  
+  const [orderid, setOrderId] = useState('');
+
+  
 
 
   const isExpectedDeliveryToday = () => {
@@ -15,11 +22,17 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
     );
   };
 
+   axios
+   .get(
+    "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/successorder"
+    //  payload
+   ).then((response) => {
+     console.log(response)
+   })
+
   return (
     <div className="con">
       <div className="order-confirmation-header">
-        <span className="green-tick">✔</span>
-        {/* <h2>Order Confirmed</h2> */}
         <h2 className="fs-title text-center">Order placed, thank you!</h2>
       </div>
       <div className="row justify-content-center">
@@ -28,14 +41,13 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
         </div>
       </div>
       <div className="order-details">
-        <p className="fs-title text-center">Order ID: {orderId}</p>
-        <p className="fs-title text-center">
+        <p className="fs-title text-center">Order ID: {  localStorage.getItem("orderId")}</p>
+        {/* <p className="fs-title text-center">
           Expected Delivery Date:{" "}
           {isExpectedDeliveryToday() ? "Today" : expectedDeliveryDate}
-        </p>
+        </p> */}
       </div><br></br>
-      {/* <btn btn-prim>Track Order</button> */}
-      <button className="btn btn-primary" id="css" type="track" >Track your Order</button>
+     <Link to ='/tracking'> <button className="btn btn-primary" id="css" type="track" >Track your Order</button></Link>
     </div>
   );
 }

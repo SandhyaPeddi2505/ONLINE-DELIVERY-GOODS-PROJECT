@@ -4,6 +4,8 @@ import React from "react";
 import "./Popular.scss";
 import axios from "axios";
 import Navbar from './Navbar';
+import logo from "./sk.png";
+// import "./Navbar.scss"
 // var data = require("./MOCK_DATA");
 
 const Popular = (onClick) => {
@@ -13,6 +15,23 @@ const Popular = (onClick) => {
   const onChange = (event) => {
     setValue(event.target.value);
   };
+  const [disprofile, setdisprofile] = useState(false)
+
+  const dishan = () => {
+
+    if (disprofile === false) {
+
+      setdisprofile(true)
+
+    }
+
+    else {
+
+      setdisprofile(false)
+
+    }
+
+  }
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
     console.log("search", searchTerm);
@@ -20,22 +39,69 @@ const Popular = (onClick) => {
     const handleClick=()=>{
     }
     const [data, setData] = useState({});
-    useEffect(() => {
-      //call API
-      axios.get('http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/cityList',
-      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+    // useEffect(() => {
+    //   //call API
+    //   axios.get('http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/cityList',
+    //   { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
 
-      )
-        .then(response => {
-          setData(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }, []);
+    //   )
+    //     .then(response => {
+    //       setData(response.data);
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    // }, []);
     return (
         <>
-    <Navbar/>
+    {/* <Navbar/> */}
+    <nav class="fixed-nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+          <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30" /> </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              
+              <li class="nav-item">
+                <div className="wer">
+                  <a class="nav-link" to={Link} href="/userPrevOrders"><h5><span style={{ color: "black" }}>My Previous Orders</span></h5></a>
+                  <div className="right-profile" onClick={dishan}>MT</div>
+                  {
+
+                    disprofile ?
+                      <div className="profile-container">
+                        <div className="ij">
+                          <Link to="/profile" style={{ color: "white", textDecoration: "none" }}><p style={{color:"#A2A9B4",fontSize: '15px',fontStyle:'Proxima Nova'}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+
+                          </svg>Edit profile</p></Link>
+                        </div>
+                        <div className="ji">
+                          <Link to='/changepassword' style={{ color: "white", textDecoration: "none" }}><p style={{color:"#A2A9B4",fontSize: '15px',fontStyle:'Proxima Nova'}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+
+                            <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+
+                          </svg>Changepassword</p></Link>
+                        </div>
+                      </div>
+
+                      : ""
+
+                  }
+
+
+
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+      </nav>
+   
     <div class="whole">
       <div className="Main">
         <h2>Select Your City</h2>

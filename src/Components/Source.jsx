@@ -7,8 +7,10 @@ import Navbar from './Navbar';
 const Source = ({ onNextClick, deliveryData, props }) => {
     const [isPrimary, setIsPrimary] = useState(true);
     const [dataa, setDataa] = useState([]);
+    const [sweet,setSweet]=useState([])
     const [Address,setAddress]=useState("")
     const [sourceLocation,setSourceLocation]=useState([])
+    const [isConfirmed,setIsConfirmed]=useState(localStorage.getItem("isConfirmed"))
     const [details, setDetails] = useState({
         Name: "",
         // Address: "",
@@ -24,6 +26,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                 console.log(error);
             });
         console.log(deliveryData, "dfdf");
+        setIsConfirmed(localStorage.getItem('isConfirmed'))
         if (deliveryData && !deliveryData.Source.isPrimary) {
             setDetails({
                 ...details,
@@ -33,6 +36,22 @@ const Source = ({ onNextClick, deliveryData, props }) => {
             });
         }
     }, []);
+   
+    useEffect( () => {
+        console.log(localStorage.getItem('isConfirmed'),'isconfirmed')
+        if(!!isConfirmed){
+       axios
+            .get("http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails")
+            .then((response) => {
+                setSweet(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+            
+         }
+    }
+    , [isConfirmed]);
     const changeHandle = (e) => {
         const { name, value } = e.target;
         setDetails({ ...details, [name]: value });
@@ -76,6 +95,26 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     const lathandle=(p)=>{
         setSourceLocation(p)
     }
+    // const payload =
+    // {
+    //     "name":"shiva",
+    //     "phone":"98765432",
+    //     "address":"nizampet",
+    //     "location":[12.2345,12.4321]
+    // }
+    //  {                        //api call for secondary details
+    //     "Name":details.Name,
+    //     "Phone_number":details.Phone_number,
+    //     "Address":Address
+    //    };
+    //    axios
+    //    .post(
+         
+    //      payload,
+    //      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+    //    ).then((response) => {
+    //      console.log(response)
+    //    })
     return (
         <>
         <Navbar/>

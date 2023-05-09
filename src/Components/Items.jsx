@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Items.scss";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
   
 const Order=() =>{
+  const navigate = useNavigate();
   const [orderType, setOrderType] = useState("");
   const [quantity, setQuantity] = useState("");
   const [date, setDate] = useState("");
@@ -28,8 +32,48 @@ const Order=() =>{
     setDate(e.target.value);
 
   };
+  const payload = {    
+      "order_type":orderType,
+      "quantity":quantity
+    
+  //  "orderType":orderType,
+  //  "quantity":quantity,
+  //  "date":date
+  };
+  axios
+  .post(
+    "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/ordertype",
+    payload,
+    { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+    // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
+    // )}`}}
+  ).then((response) => {
+    console.log(response)
+  })
  
   const handleSubmit=(e)=>{
+    Swal.fire({
+              title: 'Do you want to order from this address?',
+              // text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes'
+    
+          }).then((result) => {
+            // window.location.href = "/source"
+            console.log(result?.isConfirmed,'result')
+            localStorage.setItem('isConfirmed',result?.isConfirmed)
+              if (result?.isConfirmed===true) {
+                  //   Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                  // window.location.href = "/destination";
+                  navigate("/source")
+              }
+              else if(result?.isConfirmed===false){
+                  window.location.href = "/source"
+              }
+          });
     e.preventDefault();
     if (orderType === "" || quantity === "" || date === "") {
       alert("Fill out all the fields");
@@ -37,7 +81,9 @@ const Order=() =>{
     console.log(orderType)
     console.log(quantity)
     console.log(date)
+    
   }
+  
 }
     
   return (

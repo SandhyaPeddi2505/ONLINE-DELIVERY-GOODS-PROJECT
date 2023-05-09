@@ -11,10 +11,10 @@ const Confirm=()=>{
                             <div className="col-md-12 mx-0">
                                 <form id="msform">
                                 <ul id="progressbar">
-                                        <Link to="/source"><li className="active" id="source"><strong>Source</strong></li></Link>
-                                        <Link to="/destination"><li className="active" id="destination"  ><strong>Destination</strong></li></Link>
-                                        <Link to="/submit"><li className="active" id="submit" ><strong>Submit</strong></li></Link>
-                                        <Link to="/confirm"><li className="active" id="confirm" ><strong>Confirm</strong></li></Link>
+                                        <li className="active" id="source"><strong>Source</strong></li>
+                                       <li className="active" id="destination"  ><strong>Destination</strong></li>
+                                       <li className="active" id="submit" ><strong>Submit</strong></li>
+                                        <li className="active" id="confirm" ><strong>Confirm</strong></li>
                                     </ul>
                                     <fieldset>
                                     <div className="form-card">
@@ -30,6 +30,7 @@ const Confirm=()=>{
                                                     <div className="col-7 text-center">
                                                         <h5>Successful</h5>
                                                     </div>
+                                                    <Link to="/orderConfirm"><button >NEXT</button></Link>
                                                 </div>
                                             </div>
                                     </fieldset>

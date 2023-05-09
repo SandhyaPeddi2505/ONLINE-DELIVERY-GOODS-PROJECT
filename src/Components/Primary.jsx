@@ -9,9 +9,10 @@ import Map1 from "./Map5";
 import third from "./third";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import axios from "axios";
 // import { Calendar, DatePicker } from 'antd';
 
-const Primary = () => {
+const CitySelection = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
@@ -35,6 +36,22 @@ const Primary = () => {
       setSelectedDate(date);
     }
   };
+  const payload = {
+    "source_address": selectedSource,
+    "destination_address": selectedDestination,
+    // "selectedDate":selectedDate
+  };
+  axios
+  .post(
+    " http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/address  ",
+    payload,
+    { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+  ).then((response) => {
+    console.log(response)
+  })
+  // .catch((error)=>{
+  //   console.log(error)
+  // })
   // const handleChange = (event) => {
   //   setDate(event.target.value);
   //   if (event.target.value < today) {
@@ -79,7 +96,7 @@ const Primary = () => {
       console.log(`Destination is ${selectedDestination}`);
       console.log(`Date is ${selectedDate}`);
 
-      window.location.replace("/Source");
+      window.location.replace("/items");
     }
   };
 
@@ -152,4 +169,4 @@ const Primary = () => {
     </>
   );
 };
-export default Primary;
+export default CitySelection;

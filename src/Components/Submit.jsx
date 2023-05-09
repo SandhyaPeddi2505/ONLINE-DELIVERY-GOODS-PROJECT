@@ -8,6 +8,29 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address,lat}) 
         //getDetails()
         console.log(deliveryData)
     }, [])
+    const payload=  {
+        "source_info":{
+            "name":"shiva",
+            "phone":"98765432",
+            "address":"nizampet",
+            "location":[12.2345,12.4321]
+        },
+        "destination_info":{
+            "name":"sai",
+            "phone":"98765432",
+            "address":"nizampet",
+            "location":[12.2345,12.4321]
+        }
+    }
+    axios
+       .post("http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
+         
+         payload,
+         { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+       ).then((response) => {
+         console.log(response)
+         localStorage.setItem("orderId",response.data.OrderID)
+       })
     // useEffect(() => {
     //     axios.post("http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/").then(response => {
     //         console.log(response)
