@@ -46,7 +46,7 @@ const Login = () => {
 
     axios
       .post(
-        "http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/login/",
+        "http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/login/",
         payload
       )
       .then((response) => {
@@ -89,22 +89,17 @@ const Login = () => {
       .catch((error) => {
         console.log(error.response.data); // handle error
       });
+    
 
     setErrors({});
-  //   if (loggedin === "temporary") {
-  //     navigate("/createProfile");
-  //   } 
-  //   if(loggedin === "permanant"){
-  //   navigate("/home");
-  // }
+
   };
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     window.location.href = '/home';
-  //   } else {
-  //     window.location.href = '/createProfile';
-  //   }
-  // }, [isLoggedIn]);
+  const logout = () => {
+    localStorage.removeItem('token');
+  }
+  useEffect(() => {
+    logout();
+  }, []);
 
 
   return (
@@ -128,7 +123,7 @@ const Login = () => {
                   id="email"
                   onChange={(e) => validateEmail(e)}
                   placeholder="Enter email"
-                  className="form-control"
+                  className="form-control" 
                 />
                 <span style={{ color: "red" }}>{emailError}</span>
                 <div className="text-muted">

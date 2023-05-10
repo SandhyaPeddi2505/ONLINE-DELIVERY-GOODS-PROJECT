@@ -6,7 +6,7 @@ import Confirm from "./Confirm";
 
 const StepperWrapper = (details,address) => {
     const [deliveryData, setDelivaryData] = useState({
-        Source: { isPrimary : false,  Name: "", Address: "", Phone_number: "",sourceLocation:"" },
+        Source: { isPrimary : false,  name: "", address: "", phone: "",sourceLocation:"" },
         Destination: { name: "", address: "", phone: "",destinationLocation:"" }
     })
     const [stepperIndex, setStepperIndex] = useState(0)
@@ -15,7 +15,7 @@ const StepperWrapper = (details,address) => {
         switch (stepperIndex) {
             case 0:
                 return <Source  deliveryData={deliveryData} onNextClick={(details) => { 
-                    setDelivaryData({...deliveryData, Source:{ isPrimary : details.isPrimary, Name:details.Name, Address:details.Address, Phone_number:details.Phone_number,sourceLocation:details.sourceLocation}});
+                    setDelivaryData({...deliveryData, Source:{ isPrimary : details.isPrimary, name:details.name, address:details.address, phone:details.phone,sourceLocation:details.sourceLocation}});
                     setStepperIndex(1) }} />
             case 1:
                 return <Destination  deliveryData={deliveryData} onPrevClick={(deliveryData,address) => { setStepperIndex(0) }} onNextClick={(details) => {setStepperIndex(2)

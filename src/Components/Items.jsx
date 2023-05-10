@@ -42,7 +42,7 @@ const Order=() =>{
   };
   axios
   .post(
-    "http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/ordertype",
+    "http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/ordertype",
     payload,
     { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
     // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"

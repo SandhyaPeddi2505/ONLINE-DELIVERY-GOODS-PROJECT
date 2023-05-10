@@ -7,19 +7,19 @@ import Navbar from './Navbar';
 const Source = ({ onNextClick, deliveryData, props }) => {
     const [isPrimary, setIsPrimary] = useState(true);
     const [dataa, setDataa] = useState([]);
-    const [sweet,setSweet]=useState([])
+    // const [sweet,setSweet]=useState([])
     const [Address,setAddress]=useState("")
     const [sourceLocation,setSourceLocation]=useState([])
     const [isConfirmed,setIsConfirmed]=useState(localStorage.getItem("isConfirmed"))
     const [details, setDetails] = useState({
-        Name: "",
+        name: "",
         // Address: "",
-        Phone_number: "",
+        phone: "",
     });
     useEffect(() => {
         axios
         .get(
-          "http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
+          "http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
           
           { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
           // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
@@ -32,36 +32,21 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         if (deliveryData && !deliveryData.Source.isPrimary) {
             setDetails({
                 ...details,
-                Name: deliveryData.Source.Name,
+                name: deliveryData.Source.name,
                 // Address: deliveryData.Source.Address,
-                Phone_number: deliveryData.Source.Phone_number
+                phone: deliveryData.Source.phone
             });
         }
     }, []);
-   
-    // useEffect( () => {
-    //     console.log(localStorage.getItem('isConfirmed'),'isconfirmed')
-    //     if(!!isConfirmed){
-    //    axios
-    //         .get("http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails")
-    //         .then((response) => {
-    //             setSweet(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-            
-    //      }
-    // }
-    // , [isConfirmed]);
+  
     const changeHandle = (e) => {
         const { name, value } = e.target;
         setDetails({ ...details, [name]: value });
     };
     const [primaryAddress, setPrimaryAddress] = useState({
-        name2: "Sandhya",
-        address2: "Hyderabad",
-        phone2: "9087898078"
+        name: "Sandhya",
+        address:"Hyderabad",
+        phone: "9087898078"
     });
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -76,10 +61,10 @@ const Source = ({ onNextClick, deliveryData, props }) => {
 
     const handleChange = (e) => {
         if (isPrimary) {
-            setPrimaryAddress({ ...primaryAddress, [e.target.Name]: e.target.value });
+            setPrimaryAddress({ ...primaryAddress, [e.target.name]: e.target.value });
         } else {
-            if (e.target.Name === "Address") {
-                setPrimaryAddress({ ...primaryAddress, Address: e.target.value });
+            if (e.target.name === "address") {
+                setPrimaryAddress({ ...primaryAddress, address: e.target.value });
             }
             setSecondaryAddress({ ...secondaryAddress, [e.target.name1]: e.target.value });
         }
@@ -131,41 +116,41 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                 </div>
                                                 {isPrimary ? (
                                                     <div className="row">
-                                                        {dataa.map((value, i) => {
+                                                        {/* {dataa.map((value, i) => {
 
-                                                            return (
+                                                            return ( */}
                                                                 <>
                                                                     <div className="col-md-4">
                                                                         <div className="form-outline">
                                                                             <label style={{ color: "black" }}><b>Name:</b>
-                                                                                <input type="text" name="Name" value={value.Name} placeholder="Name" onChange={handleChange} />
+                                                                                <input type="text" name="name" value={primaryAddress.name} placeholder="Name" onChange={handleChange} />
                                                                             </label>
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6 md-4">
                                                                         <div className="form-outline">
                                                                             <label style={{ color: "black" }}><b>Address:</b>
-                                                                                <input type="text" name="Address" value={value.Address} placeholder="Address" onChange={handleChange} />
+                                                                                <input type="text" name="address" value={primaryAddress.address} placeholder="Address" onChange={handleChange} />
                                                                             </label>
                                                                         </div>
                                                                     </div>
                                                                     <label style={{ color: "black" }}><b>Phone:</b>
-                                                                        <input type="tel" name="Phone_number" value={value.Phone_number} placeholder="PhoneNo" onChange={handleChange} />
+                                                                        <input type="tel" name="phone" value={primaryAddress.phone} placeholder="PhoneNo" onChange={handleChange} />
                                                                     </label>
                                                                 </>
-                                                            );
-                                                        })}
+                                                            {/* );
+                                                        })} */}
                                                     </div>
                                                 ) : (
                                                     <div className="row">
                                                         <div className="col">
                                                             <label style={{ color: "black" }}><b>Name:</b>
-                                                                <input type="text" name="Name" value={details.Name} onChange={changeHandle} required minLength={3} />{" "}
+                                                                <input type="text" name="Name" value={details.name} onChange={changeHandle} required minLength={3} />{" "}
                                                                 
                                                             </label>
                                                         </div>
                                                         <label style={{ color: "black" }}><b>Phone:</b>
-                                                            <input type="text" name="Phone_number" value={details.Phone_number} onChange={changeHandle} required />
+                                                            <input type="text" name="Phone_number" value={details.phone} onChange={changeHandle} required />
                                                             
                                                         </label>
                                                         <div className="col">
@@ -186,7 +171,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                 onClick={() => {
                                                     if (isPrimary) {
                                                         onNextClick({ isPrimary: true, ...dataa[0] });
-                                                    } else if (details.Name && details.Name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
+                                                    } else if (details.name && details.name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
                                                         onNextClick({ isPrimary: false, ...details ,Address,sourceLocation});
                                                     }
                                                 }}>

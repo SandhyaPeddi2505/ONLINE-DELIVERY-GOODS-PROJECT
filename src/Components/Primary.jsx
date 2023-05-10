@@ -43,7 +43,7 @@ const CitySelection = () => {
   };
   axios
   .post(
-    " http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/address  ",
+    " http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/address  ",
     payload,
     { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
   ).then((response) => {
@@ -55,7 +55,7 @@ const CitySelection = () => {
   // const handleChange = (event) => {
   //   setDate(event.target.value);
   //   if (event.target.value < today) {
-  //     toast.warn("Choose the date which is yet to come !");
+  //     toast.warn("ChoosehandlechNthe date which is yet to come !");
   //     setTimeout(() => window.location.reload(), 6500);
   //   } else {
   //     setDate(event.target.value );
@@ -90,7 +90,7 @@ const CitySelection = () => {
     } else if (!selectedDestination) {
       toast.warn("Destination address field is empty, please select");
     } else if (!selectedDate) {
-      toast.warn("Date field is empty, please select");
+      toast.warn("Please Select Valid Date");
     } else {
       console.log(`Source is ${selectedSource}`);
       console.log(`Destination is ${selectedDestination}`);

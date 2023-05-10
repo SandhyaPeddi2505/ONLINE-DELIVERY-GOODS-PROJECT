@@ -24,7 +24,7 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
 
    axios
    .get(
-    "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/successorder"
+    "http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/successorder"
     //  payload
    ).then((response) => {
      console.log(response)

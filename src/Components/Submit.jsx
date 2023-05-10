@@ -23,7 +23,7 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address,lat}) 
         }
     }
     axios
-       .post("http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
+       .post("http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
          
          payload,
          { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
@@ -59,9 +59,9 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address,lat}) 
                                         <div className="form-card">
                                             <h2 className="fs-title">Source Details</h2>
 
-                                            <label style={{ color: 'black' }}><b>Name:</b> {Source.Name}</label><br />
-                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.Address}</label><br />
-                                            <label style={{ color: 'black' }}><b>Phoneno:</b>{Source.Phone_number}</label><br />
+                                            <label style={{ color: 'black' }}><b>Name:</b> {Source.name}</label><br />
+                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.address}</label><br />
+                                            <label style={{ color: 'black' }}><b>Phoneno:</b>{Source.phone}</label><br />
                                         </div>
                                         <div className="form-card">
                                             <h2 className="fs-title">Destination Details</h2>
