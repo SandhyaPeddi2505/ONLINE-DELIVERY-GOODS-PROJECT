@@ -27,7 +27,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         if (deliveryData && !deliveryData.Source.isPrimary) {
             setDetails({
                 ...details,
-                Name: deliveryData.Source.Name,
+                Name: deliveryData.Source.Name, 
                 // Address: deliveryData.Source.Address,
                 Phone_number: deliveryData.Source.Phone_number
             });

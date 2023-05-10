@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState ,useRef} from "react";
 import "./Items.scss";
 import { toast, ToastContainer } from 'react-toastify';
+import { Link } from "react-router-dom";
+// import DatePicker from 'react-datepicker';
+import {DatePicker} from "antd"
 import axios from "axios";
   
 const Order=() =>{
   const [orderType, setOrderType] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [date, setDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const today= new Date();
+  const [placeholderText, setPlaceholderText] = useState('Select a date');
+  // const [placeholder, setPlaceholder] = useState('Select a date');
+
+  // const datePickerRef = useRef(null);
+  // const [date,setDate]=useState("")
   
   const handleCheckboxChange=(e) =>{
     const itemName = e.target.name;
@@ -25,20 +34,56 @@ const Order=() =>{
   // const handleOrderTypeChange = (e) => {
   //   setOrderType(e.target.value);
   // };
+  const handleDateChange=(e)=>{
+    e.preventDefault();
+  }
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
+  // const handleChange = (date) => {
+  //   if(date < today ){
+  //     toast.warn("Choose the date which is yet to come!");
+  //     setTimeout(() => date.location.reload(), 6500);
+  //     // setTimeout(() => {
+  //     //   setSelectedDate(today);
+  //     //   datePickerRef.current.forceUpdate();
+  //     // }, 3000);
+  //   }
+  //   else{
+  //     setSelectedDate(date)
+  //   }
+  //   // setDate(e.target.value);
 
+  // };
+  // const handleChange = (date) => {
+  //   const today = new Date();
+  //   if (date < today) {
+  //     toast.warn('Choose a future date!');
+  //     setSelectedDate(null);
+  //     setTimeout(() => {
+  //       setSelectedDate(today);
+  //     }, 3000);
+  //   } else {
+  //     setSelectedDate(date);
+  //   }
+  // };
+  const handleChange = (date) => {
+    if (date < today) {
+      toast.warn('Choose a future date!');
+      setSelectedDate(null);
+      setPlaceholderText('Select a date');
+    } else {
+      setSelectedDate(date);
+    }
   };
  
   const handleSubmit=(e)=>{
     e.preventDefault();
-    if (orderType === "" || quantity === "" || date === "") {
+    if (orderType === "" || quantity === "" || selectedDate === "") {
       toast.error("Fill out all the fields");
+      
     } else{
     console.log(orderType)
     console.log(quantity)
-    console.log(date)
+    console.log(selectedDate)
   }
 }
 const payload = { 
@@ -113,8 +158,25 @@ const payload = {
               onChange={handleQuantityChange}
             /><br/>
             <label className="mt-2 pt-3 m-3"><b>Date</b></label>
-            <input type="date" placeholder="Date" onChange={handleDateChange} />
-            <button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1">Submit</button>
+            <DatePicker
+        selected={selectedDate}
+        onChange={handleChange}
+        placeholderText={placeholderText}
+        onFocus={() => setPlaceholderText('Select a date')}
+        onBlur={() => {
+          if (!selectedDate) {
+            setPlaceholderText('Select a date');
+          }
+        }}
+      />
+            {/* <DatePicker
+        selected={selectedDate}
+        onChange={handleChange}
+        placeholderText={selectedDate ? selectedDate.toDateString() : 'Select a date' } 
+      /> */}
+            {/* <DatePicker type="date" placeholderText={placeholder} selected={selectedDate} onChange={handleChange}  style={{height:"30px",width:"160px"}}/> */}
+            {/* <input type="date" placeholder="Date" onChange={handleDateChange} /> */}
+            <Link to="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1">Submit</button></Link>
             
             </form>
         </div>
