@@ -38,9 +38,9 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         setDetails({ ...details, [name]: value });
     };
     const [primaryAddress, setPrimaryAddress] = useState({
-        name2: "Sandhya",
-        address2: "Hyderabad",
-        phone2: "9087898078"
+        Name: "Sandhya",
+        Address: "Hyderabad",
+        Phone_number: "9087898078"
     });
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -55,20 +55,20 @@ const Source = ({ onNextClick, deliveryData, props }) => {
 
         // }
     };
-    const [secondaryAddress, setSecondaryAddress] = useState({
-        name1: "",
-        address1: "",
-        phoneno1: ""
-    });
+    // const [secondaryAddress, setSecondaryAddress] = useState({
+    //     Name: "",
+    //     Address: "",
+    //     Phone_number: ""
+    // });
 
     const handleChange = (e) => {
         if (isPrimary) {
-            setPrimaryAddress({ ...primaryAddress, [e.target.Name]: e.target.value });
+            setPrimaryAddress({ ...primaryAddress, [e.target.name]: e.target.value });
         } else {
-            if (e.target.Name === "Address") {
-                setPrimaryAddress({ ...primaryAddress, Address: e.target.value });
+            if (e.target.name === "address") {
+                setPrimaryAddress({ ...primaryAddress, address: e.target.value });
             }
-            setSecondaryAddress({ ...secondaryAddress, [e.target.name1]: e.target.value });
+            setDetails({ ...details, [e.target.name]: e.target.value });
         }
     };
     const handleAddressTypeChange = (e) => {

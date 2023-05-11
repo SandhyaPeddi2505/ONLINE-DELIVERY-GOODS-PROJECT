@@ -1,8 +1,7 @@
-import React, { useState ,useRef} from "react";
+import { useState ,useEffect,useRef} from "react";
 import "./Items.scss";
 import { toast, ToastContainer } from 'react-toastify';
 import { Link } from "react-router-dom";
-// import DatePicker from 'react-datepicker';
 import {DatePicker} from "antd"
 import axios from "axios";
   
@@ -12,25 +11,24 @@ const Order=() =>{
   const [selectedDate, setSelectedDate] = useState(null);
   const today= new Date();
   const [placeholderText, setPlaceholderText] = useState('Select a date');
-  // const [placeholder, setPlaceholder] = useState('Select a date');
-
-  // const datePickerRef = useRef(null);
-  // const [date,setDate]=useState("")
   
   const handleCheckboxChange=(e) =>{
     const itemName = e.target.name;
-    if (e.target.checked) {
-      setOrderType([...orderType, itemName]);
-    } else {
-      setOrderType(orderType.filter(item => item !== itemName));
-    }
-    console.log(orderType)
-  }
+  if (e.target.checked) {
+    setOrderType([...orderType, itemName]);
+  } else {
+    setOrderType(orderType.filter((item) => item !== itemName));
+  }}
+  useEffect(() => {
+    console.log(orderType);
+  }, [orderType]);
+ 
 
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
 
   };
+  
   // const handleOrderTypeChange = (e) => {
   //   setOrderType(e.target.value);
   // };
@@ -38,33 +36,6 @@ const Order=() =>{
     e.preventDefault();
   }
 
-  // const handleChange = (date) => {
-  //   if(date < today ){
-  //     toast.warn("Choose the date which is yet to come!");
-  //     setTimeout(() => date.location.reload(), 6500);
-  //     // setTimeout(() => {
-  //     //   setSelectedDate(today);
-  //     //   datePickerRef.current.forceUpdate();
-  //     // }, 3000);
-  //   }
-  //   else{
-  //     setSelectedDate(date)
-  //   }
-  //   // setDate(e.target.value);
-
-  // };
-  // const handleChange = (date) => {
-  //   const today = new Date();
-  //   if (date < today) {
-  //     toast.warn('Choose a future date!');
-  //     setSelectedDate(null);
-  //     setTimeout(() => {
-  //       setSelectedDate(today);
-  //     }, 3000);
-  //   } else {
-  //     setSelectedDate(date);
-  //   }
-  // };
   const handleChange = (date) => {
     if (date < today) {
       toast.warn('Choose a future date!');
@@ -86,63 +57,67 @@ const Order=() =>{
     console.log(selectedDate)
   }
 }
-const payload = { 
+// const payload = { 
 
-  "order_type":"Toys",
+//   "order_type":"Toys",
   
-  "quantity":"22"
+//   "quantity":"22"
   
-  };
-  axios
-  .post("http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/ordertype",
-  payload,
+//   };
+//   axios
+//   .post("http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/ordertype",
+//   payload,
   
-  { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
-  )}`}}
-  ).then((response) => {
-    console.log(response)
-  })
-    
+//   { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
+//   )}`}}
+//   ).then((response) => {
+//     console.log(response)
+//   })
+const handleClose = () => {
+  if (!selectedDate) {
+    setPlaceholderText('Select a date');
+  }
+};
   return (
     <>
-      <div className="container-fluid  ">
+      <div className="container-fluid">
         <div className="container pb-5 pt-5">
           <h3 className="form-head-contact-h3 ">Select Category</h3>
           <form onSubmit={handleSubmit}>
             <div className="row" style={{paddingLeft:"20%"}} >
               <div className="col-md-6">
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="Food" value="Food" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input" type="checkbox" name="Food" value="Food" checked={orderType.includes("Food")} onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Food</label>
                 </div>
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="Groceries"  value="Groceries" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input" type="checkbox" name="Groceries"  value="Groceries" checked={orderType.includes("Groceries")} onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Groceries</label>
                   </div>
                 <div className="form-check m-3">
-                  <input className="form-check-input" type="checkbox" name="Medicines" value="Medicines" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input" type="checkbox" name="Medicines" value="Medicines" checked={orderType.includes("Medicines")} onChange={handleCheckboxChange}/>
                     <label  className="form-check-label"> Medicines</label>
                     </div>
                     <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="Documents" value="Documents" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input" type="checkbox" name="Documents" value="Documents" checked={orderType.includes("Documents")} onChange={handleCheckboxChange}/>
                   <label className="form-check-label"> Documents</label>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="Electronics"  value="Electronics" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input" type="checkbox" name="Electronics"  value="Electronics" checked={orderType.includes("Electronics")} onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Electronics</label>
                   </div>
                   <div className="form-check m-3" >
-                  <input className="form-check-input"  type="checkbox" name="Clothes" value="Clothes" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input"  type="checkbox" name="Clothes" value="Clothes" checked={orderType.includes("Clothes")} onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Clothes</label>
                   </div>
                   <div className="form-check m-3">
-                  <input className="form-check-input" type="checkbox" name="Gifts" value="Gifts" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input" type="checkbox" name="Gifts" value="Gifts" checked={orderType.includes("Gifts")} onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Gifts</label>
                   </div>
                 <div className="form-check m-3" >
-                  <input className="form-check-input" type="checkbox" name="Others" value="Others" onChange={handleCheckboxChange}/>
+                  <input className="form-check-input" type="checkbox" name="Others" value="Others" checked={orderType.includes("Others")} onChange={handleCheckboxChange}/>
                   <label className="form-check-label">Others</label>
                   </div>
                   
@@ -167,7 +142,7 @@ const payload = {
           if (!selectedDate) {
             setPlaceholderText('Select a date');
           }
-        }}
+        }} onClose={handleClose}
       />
             {/* <DatePicker
         selected={selectedDate}
@@ -176,7 +151,7 @@ const payload = {
       /> */}
             {/* <DatePicker type="date" placeholderText={placeholder} selected={selectedDate} onChange={handleChange}  style={{height:"30px",width:"160px"}}/> */}
             {/* <input type="date" placeholder="Date" onChange={handleDateChange} /> */}
-            <Link to="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1">Submit</button></Link>
+            <a href="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1">Submit</button></a>
             
             </form>
         </div>
