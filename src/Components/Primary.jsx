@@ -43,9 +43,9 @@ const CitySelection = () => {
   };
   axios
   .post(
-    " http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/address  ",
+    " http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/address  ",
     payload,
-    { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+    { headers: {"Authorization" : `Bearer ${sessionStorage.getItem("token")}`}}
   ).then((response) => {
     console.log(response)
   })

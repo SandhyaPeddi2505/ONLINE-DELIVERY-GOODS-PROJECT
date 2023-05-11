@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 
 
 
@@ -21,14 +21,17 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
       today.getDate() === expectedDelivery.getDate()
     );
   };
+  
 
    axios
    .get(
-    "http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/successorder"
+    "http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/successorder"
     //  payload
    ).then((response) => {
      console.log(response)
    })
+   
+   
 
   return (
     <div className="con">
@@ -41,7 +44,7 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
         </div>
       </div>
       <div className="order-details">
-        <p className="fs-title text-center">Order ID: {  localStorage.getItem("orderId")}</p>
+        <p className="fs-title text-center">Order ID: {  sessionStorage.getItem("orderId")}</p>
         {/* <p className="fs-title text-center">
           Expected Delivery Date:{" "}
           {isExpectedDeliveryToday() ? "Today" : expectedDeliveryDate}

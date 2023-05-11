@@ -10,26 +10,26 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address,lat}) 
     }, [])
     const payload=  {
         "source_info":{
-            "name":"shiva",
-            "phone":"98765432",
-            "address":"nizampet",
+            "name":Source.name,
+            "phone":Source.phone,
+            "address":Source.Address,
             "location":[12.2345,12.4321]
         },
         "destination_info":{
-            "name":"sai",
-            "phone":"98765432",
-            "address":"nizampet",
+            "name":Destination.name,
+            "phone":Destination.phone,
+            "address":Destination.address,
             "location":[12.2345,12.4321]
         }
     }
     axios
-       .post("http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
+       .post("http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
          
          payload,
-         { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+         { headers: {"Authorization" : `Bearer ${sessionStorage.getItem("token")}`}}
        ).then((response) => {
          console.log(response)
-         localStorage.setItem("orderId",response.data.OrderID)
+         sessionStorage.setItem("orderId",response.data.OrderID)
        })
     // useEffect(() => {
     //     axios.post("http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/").then(response => {
@@ -58,9 +58,8 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address,lat}) 
                                     <fieldset>
                                         <div className="form-card">
                                             <h2 className="fs-title">Source Details</h2>
-
                                             <label style={{ color: 'black' }}><b>Name:</b> {Source.name}</label><br />
-                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.address}</label><br />
+                                            <label style={{ color: 'black' }}><b>Address:</b> {Source.Address}</label><br />
                                             <label style={{ color: 'black' }}><b>Phoneno:</b>{Source.phone}</label><br />
                                         </div>
                                         <div className="form-card">

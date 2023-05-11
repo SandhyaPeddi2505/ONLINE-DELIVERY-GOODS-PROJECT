@@ -8,7 +8,9 @@ const Next = () => {
   return (
     <>
       <div className="other">
-        <h3 class="title3">Other Cities</h3>
+        <div className="row">
+          <div className="col-md-6">
+        <h3 class="title4">Other Cities</h3>
         <a href="/cityselection"  className="sow" onClick={(Amaravathi) => {}}>
           Amaravathi
         </a>
@@ -77,6 +79,8 @@ const Next = () => {
           Karnataka
         </a>
         <br />
+        </div>
+        <div className="col-md-6" id="sandhya" >
         <a href="/cityselection"  className="sow" onClick={(Kerala) => {}}>
           Kerala
         </a>
@@ -145,6 +149,8 @@ const Next = () => {
           WestBengal
         </a>
         <br />
+        </div>
+        </div>
       </div>
       <div class="net">
         <Link to="/cityselection">
@@ -152,6 +158,7 @@ const Next = () => {
             Next
           </button>
         </Link>
+       
       </div>
     </>
   );

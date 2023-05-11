@@ -10,22 +10,31 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     // const [sweet,setSweet]=useState([])
     const [Address,setAddress]=useState("")
     const [sourceLocation,setSourceLocation]=useState([])
-    const [isConfirmed,setIsConfirmed]=useState(localStorage.getItem("isConfirmed"))
-    const [details, setDetails] = useState({
+    const [isConfirmed,setIsConfirmed]=useState(sessionStorage.getItem("isConfirmed"))
+    const [details, setDetails] = useState(
+        {
         name: "",
         // Address: "",
-        phone: "",
+        phone: "",}
+    );
+    const [primaryAddress, setPrimaryAddress] = useState({
+        name: "",
+        address:"",
+        phone: ""
     });
     useEffect(() => {
         axios
         .get(
-          "http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
+          "http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
           
-          { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+          { headers: {"Authorization" : `Bearer ${sessionStorage.getItem("token")}`}}
           // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
           // )}`}}
         ).then((response) => {
-          console.log(response)
+       
+                      setPrimaryAddress({name:response.data?.name,
+                        // address:response.data[0]?.Address,
+                        phone:response.data?.phone});
         })
         console.log(deliveryData, "dfdf");
         // setIsConfirmed(localStorage.getItem('isConfirmed'))
@@ -43,30 +52,26 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         const { name, value } = e.target;
         setDetails({ ...details, [name]: value });
     };
-    const [primaryAddress, setPrimaryAddress] = useState({
-        name: "Sandhya",
-        address:"Hyderabad",
-        phone: "9087898078"
-    });
+   
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(deliveryData);
         console.log("address123",+Address)
     };
-    const [secondaryAddress, setSecondaryAddress] = useState({
-        name1: "",
-        address1: "",
-        phoneno1: ""
-    });
+    // const [secondaryAddress, setSecondaryAddress] = useState({
+    //     name1: "",
+    //     address1: "",
+    //     phoneno1: ""
+    // });
 
     const handleChange = (e) => {
         if (isPrimary) {
             setPrimaryAddress({ ...primaryAddress, [e.target.name]: e.target.value });
         } else {
-            if (e.target.name === "address") {
+            if (e.target.name === "Address") {
                 setPrimaryAddress({ ...primaryAddress, address: e.target.value });
             }
-            setSecondaryAddress({ ...secondaryAddress, [e.target.name1]: e.target.value });
+            setDetails({ ...details, [e.target.name1]: e.target.value });
         }
     };
     const handleAddressTypeChange = (e) => {
@@ -123,7 +128,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                                     <div className="col-md-4">
                                                                         <div className="form-outline">
                                                                             <label style={{ color: "black" }}><b>Name:</b>
-                                                                                <input type="text" name="name" value={primaryAddress.name} placeholder="Name" onChange={handleChange} />
+                                                                                <input type="text" name="name" value={primaryAddress.name} placeholder="Name" onChange={changeHandle} />
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -145,12 +150,12 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                     <div className="row">
                                                         <div className="col">
                                                             <label style={{ color: "black" }}><b>Name:</b>
-                                                                <input type="text" name="Name" value={details.name} onChange={changeHandle} required minLength={3} />{" "}
+                                                                <input type="text" name="name" value={details.name} onChange={changeHandle} required minLength={3} />{" "}
                                                                 
                                                             </label>
                                                         </div>
                                                         <label style={{ color: "black" }}><b>Phone:</b>
-                                                            <input type="text" name="Phone_number" value={details.phone} onChange={changeHandle} required />
+                                                            <input type="text" name="phone" value={details.phone} onChange={changeHandle} required />
                                                             
                                                         </label>
                                                         <div className="col">
@@ -171,7 +176,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                 onClick={() => {
                                                     if (isPrimary) {
                                                         onNextClick({ isPrimary: true, ...dataa[0] });
-                                                    } else if (details.name && details.name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
+                                                    } else if (details.name && details.name.length >= 3 && Address && Address.length >= 5 && details.phone && details.phone.length === 10 && !isNaN(details.phone)) {
                                                         onNextClick({ isPrimary: false, ...details ,Address,sourceLocation});
                                                     }
                                                 }}>

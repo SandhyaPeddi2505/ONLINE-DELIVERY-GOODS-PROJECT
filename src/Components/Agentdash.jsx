@@ -78,7 +78,7 @@ const Agentdash=()=> {
    useEffect(() => {
       //call API
       axios.get('http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/order_info/',
-      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+      { headers: {"Authorization" : `Bearer ${sessionStorage.getItem("token")}`}}
 
       )
         .then(response => {

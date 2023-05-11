@@ -46,44 +46,24 @@ const Login = () => {
 
     axios
       .post(
-        "http://ec2-13-126-234-17.ap-south-1.compute.amazonaws.com:8001/login/",
+        "http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/login/",
         payload
       )
       .then((response) => {
         if (!email || !password) {
           toast.warn("Enter all fields");
         } else if (response?.status === 200) {
-          localStorage.setItem("token", response.data.token);
+          sessionStorage.setItem("token", response.data.token);
           console.log(response?.status);
           let type = response.data.user_type;
           console.log(type);
           console.log(response);
-          // let type = response.data.user_type;
-          // console.log(type);
-          // console.log(response);
-          // setLoggedin(type); // add this line
-          // if (type === "temporary") { // modify this line
-          //   navigate("/createProfile");
-          // }
-
-          
-          // if (type === "permanent") { // modify this line
-          //   navigate("/home");
-          // }
-          // if (loggedin === "temporary") {
-          //   navigate("/createProfile");
-          // }
-          // if (loggedin === "permanent") {
-          //   navigate("/home");
-          // }
           if (response.data.loggedin === "permanant") {
             navigate("/home");
           } 
           else if(response.data.loggedin === "tempoorarily"){
           navigate("/createProfile");
         }
-         
-        
         }
       })
       .catch((error) => {
@@ -94,12 +74,12 @@ const Login = () => {
     setErrors({});
 
   };
-  const logout = () => {
-    localStorage.removeItem('token');
-  }
-  useEffect(() => {
-    logout();
-  }, []);
+  // const logout = () => {
+  //   localStorage.removeItem('token');
+  // }
+  // useEffect(() => {
+  //   logout();
+  // }, []);
 
 
   return (
