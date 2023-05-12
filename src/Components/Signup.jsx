@@ -188,7 +188,7 @@ const Signup = () => {
 
                     <button
                       onClick={handleSubmit}
-                      style={{width:265}}
+                      style={{width:250}}
                       className="btn btn-primary"
                       type="Submit"
                     >
