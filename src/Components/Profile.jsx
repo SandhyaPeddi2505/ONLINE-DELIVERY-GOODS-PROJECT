@@ -55,7 +55,7 @@ const Profile = () => {
             });
 
         if (!name || !email || !number || !gender || !pincode || !add) {
-            toast.error("All fields are required")
+            toast.error("All Fields are required")
         }
         else {
             toast.success("Saved Successfully")
