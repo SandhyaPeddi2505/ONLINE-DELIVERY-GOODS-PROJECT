@@ -27,7 +27,8 @@ const Changepassword = () => {
       setErrors(validationErrors);
       return;
     }
-    axios.post('http://ec2-43-204-108-116.ap-south-1.compute.amazonaws.com:8000/app/user/changepassword/', passwords)
+    axios.post('http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/changepassword', passwords
+    )
       .then(response => {
         if (response?.status === 200) {
           toast.success("Password Changed successfully");

@@ -29,6 +29,19 @@ const Confirm = () => {
                                                 <div className="row justify-content-center">
                                                     <div className="col-7 text-center">
                                                         <h5>Successful</h5>
+                                                        <br></br>
+                                                    </div>
+
+                                                    <div className="div" style={{ paddingLeft: "180px" }}
+                                                    >
+                                                        <Link to="/orderConfirm">
+
+                                                            <button className="btn btn-primary" type="submit"
+
+                                                            >
+                                                                Next
+                                                            </button>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

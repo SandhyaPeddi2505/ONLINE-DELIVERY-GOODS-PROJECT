@@ -2,43 +2,44 @@ import React from 'react';
 // import Navbar from 'react-bootstrap/Navbar';
 import DataTable from "react-data-table-component";
 import styled from "styled-components";
+import "./userPreviousOrders.scss";
 import logo from "./sk.png";
-const Previous = () => {
+const Orderss = () => {
     const items = [
         {
             DeliveryId: 1223311,
         CustomerName: "saikrishna",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223312,
         CustomerName: "manoja",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
-        Status: "Reject"
+        Status: "Completed"
         },
         {
             DeliveryId: 1223313,
-        CustomerName: "soumya",
-        SourceAddress: "Radidurg",
+        CustomerName: "sowmya",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
-        Status: "Pending"
+        Status: "Completed"
         },
         {
             DeliveryId: 1223314,
         CustomerName: "sandhya",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
         Status: "Completed"
         },
         {
             DeliveryId: 1223315,
         CustomerName: "Arun",
-        SourceAddress: "Radidurg",
+        SourceAddress: "Raidurg",
         DestinationAddress: "Durgam cheruvu",
-        Status: "In-transist"
+        Status: "Completed"
         }];
         function getCssClass(Status) {
         if (Status === "Completed") return "high";
@@ -86,7 +87,7 @@ const Previous = () => {
         <>
         <nav class="fixed-nav-bar">
       <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"/> </a>
+        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"  /> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -163,4 +164,4 @@ const Previous = () => {
         </>
     )
 }
-export default Previous;
+export default Orderss;
