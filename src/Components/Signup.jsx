@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 // import { useHistory } from 'react-router-dom';
+import Navbar from "./Navbar";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -63,18 +64,16 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
+      // "username": username,
 
-      "username": username,
+      email: email,
 
-      "email": email,
-
-      "password": password
-
-    }
+      password: password
+    };
 
     axios
       .post(
-        "http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/register/",
+        "http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/register/",
 
         payload
       )
@@ -82,6 +81,7 @@ const Signup = () => {
         console.log(response);
         if (response?.status === 200) {
           console.log(response?.status);
+          // navigate("/login");
         }
       })
 
@@ -93,11 +93,10 @@ const Signup = () => {
     if (username !== "" && email !== "" && password !== "") {
       toast.success("successfully signed up!");
       setTimeout(() => {
-        navigate('/login');
+        navigate("/login");
       }, 6000);
-    }
-    else {
-      toast.warn("noo")
+    } else {
+      toast.warn("noo");
     }
     setErrors({});
   };
@@ -108,6 +107,7 @@ const Signup = () => {
 
   return (
     <>
+      <Navbar />
       <div>
         <div className="man">
           <div className="flex">
@@ -122,7 +122,7 @@ const Signup = () => {
 
                 <form>
                   <div>
-                    <div className="mb-3" id="formBasicUsername">
+                    {/* <div className="mb-3" id="formBasicUsername">
                       <label>Username</label>
                       <input
                         onChange={(e) => validateEmail(e)}
@@ -132,10 +132,15 @@ const Signup = () => {
                         className="form-control"
                         required
                       />
-                    </div>
+                    </div> */}
 
                     <div className="mb-3" id="formBasicEmail">
-                      <label>Email address</label>
+
+                      <label>
+                         <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>
+                         Email address
+                         </p>
+                        </label>
                       <input
                         onChange={(e) => validateEmail(e)}
                         name="email"
@@ -148,7 +153,11 @@ const Signup = () => {
                       <span style={{ color: "red" }}>{emailError}</span>
                     </div>
                     <div className="mb-3" id="formBasicLastName">
-                      <label>Password</label>
+                      <label>
+                        <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>
+                        Password
+                        </p>
+                        </label>
                       <input
                         type="password"
                         name="password"
@@ -162,7 +171,9 @@ const Signup = () => {
                     </div>
                     {console.log(error)}
                     <div className="mb-3">
-                      <label>Confirm Password</label>
+                      <label>
+                       <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Confirm Password</p> 
+                        </label>
                       <input
                         type="password"
                         name="cpassword"
@@ -177,13 +188,14 @@ const Signup = () => {
 
                     <button
                       onClick={handleSubmit}
+                      style={{width:265}}
                       className="btn btn-primary"
                       type="Submit"
                     >
                       Submit
                     </button>
                     <div>
-                      <p>
+                      <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>
                         Already have an account ?
                         <Link
                           style={{ color: "blue", textDecoration: "none" }}
@@ -199,7 +211,6 @@ const Signup = () => {
             </div>
           </div>
         </div>
-
       </div>
       <ToastContainer />
     </>
@@ -207,9 +218,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-
-
-
-
-

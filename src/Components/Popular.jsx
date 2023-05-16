@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import React from "react";
 import "./Popular.scss";
 import axios from "axios";
+import Navbar from './Navbar';
+import logo from "./sk.png";
+// import "./Navbar.scss"
 // var data = require("./MOCK_DATA");
 
 const Popular = (onClick) => {
@@ -12,6 +15,23 @@ const Popular = (onClick) => {
   const onChange = (event) => {
     setValue(event.target.value);
   };
+  const [disprofile, setdisprofile] = useState(false)
+
+  const dishan = () => {
+
+    if (disprofile === false) {
+
+      setdisprofile(true)
+
+    }
+
+    else {
+
+      setdisprofile(false)
+
+    }
+
+  }
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
     console.log("search", searchTerm);
@@ -21,7 +41,7 @@ const Popular = (onClick) => {
     const [data, setData] = useState({});
     useEffect(() => {
       //call API
-      axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/cityList',
+      axios.get('http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/cityList',
       { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
 
       )
@@ -34,10 +54,57 @@ const Popular = (onClick) => {
     }, []);
     return (
         <>
-    
+    {/* <Navbar/> */}
+    <nav class="fixed-nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+          <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30" /> </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              
+              <li class="nav-item">
+                <div className="wer">
+                  <a class="nav-link" to={Link} href="/userPrevOrders"><h5><span style={{ color: "black" }}>My Previous Orders</span></h5></a>
+                  <div className="right-profile" onClick={dishan}>MT</div>
+                  {
+
+                    disprofile ?
+                      <div className="profile-container">
+                        <div className="ij">
+                          <Link to="/profile" style={{ color: "white", textDecoration: "none" }}><p style={{color:"#A2A9B4",fontSize: '15px',fontStyle:'Proxima Nova'}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+
+                          </svg>Edit profile</p></Link>
+                        </div>
+                        <div className="ji">
+                          <Link to='/changepassword' style={{ color: "white", textDecoration: "none" }}><p style={{color:"#A2A9B4",fontSize: '15px',fontStyle:'Proxima Nova'}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+
+                            <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+
+                          </svg>Changepassword</p></Link>
+                        </div>
+                      </div>
+
+                      : ""
+
+                  }
+
+
+
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+      </nav>
+   
     <div class="whole">
       <div className="Main">
-        <h2>Select Your City</h2>
+        <h3 class="title" >Select Your City</h3>
       </div>
 
       <div className="void">
@@ -54,7 +121,10 @@ const Popular = (onClick) => {
           
 
           <a href="#" class="button">
-            <button type="button">Search</button>
+            {/* <button type="button">Search</button>
+             */}
+          <button name="next" type="button" className="btn btn-primary">Search</button>
+
           </a>
           {/* {data
             .filter((item) => {
@@ -76,15 +146,17 @@ const Popular = (onClick) => {
             ))} */}
         </div>
       </div>
-      <div>
-        <h2>Popular Cities</h2>
-      </div>
+      
         </div>
-        <div className="card-container">
+        <div>
+        <h3 class="title2">Popular Cities</h3>
+      </div>
+        <div className="card-container" >
+        
             <div style={{display:"flex"}}>
            
                     <div>
-                        <Link to="/primary1">
+                        <Link to="/cityselection">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9YFjAlXIhoTve0TEYdxJZs_ui1qjgA1DDA&usqp=CAU"
                         className="card-img-top"
@@ -93,7 +165,9 @@ const Popular = (onClick) => {
                         height="100px"  onClick={handleClick}
                     />
                     </Link>
-                        <p>Hyderabad</p>
+                    
+                    
+                        <p class="title1">Hyderabad</p>
                     </div><br>
                     </br>
                     <div>
@@ -104,7 +178,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px" onClick={handleClick}
                     />
-                        <p>Delhi-NCR</p>
+                        <p class="title1">Delhi-NCR</p>
                     </div>
                     <div >
                     <img
@@ -114,7 +188,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px" onClick={handleClick}
                     />
-                    <p>Mumbai</p>
+                    <p class="title1">Mumbai</p>
                     </div> 
                     <div>
                     <img
@@ -124,7 +198,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px"  onClick={handleClick}
                     />         
-                        <p>Banglore</p>
+                        <p class="title1">Banglore</p>
                     </div>
                     <div>
                     <img
@@ -134,7 +208,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px" onClick={handleClick}
                     />
-                        <p>Chandigarh</p>
+                        <p class="title1">Chandigarh</p>
                     </div><br/>
                    
                     <div>
@@ -145,7 +219,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px"  onClick={handleClick}
                     />
-                        <p>Pune-MR</p>
+                        <p class="title1">Pune-MH</p>
                     </div>
                     <div>
                     <img
@@ -155,7 +229,7 @@ const Popular = (onClick) => {
                         width="100px"
                         height="100px"  disabled onClick={handleClick}
                     />
-                        <p>Chennai</p>
+                        <p class="title1">Chennai</p>
                     </div>
             </div>
         </div>   

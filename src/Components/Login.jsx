@@ -1,21 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import abc from "./online.png";
+import Navbar from "./Navbar";
+
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = React.useState("");
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [usertype, setUsertype] = useState("");
   const [emailError, setemailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setErrors] = useState();
+  // const[loggedin,setLoggedin]=useState();
+  const [loggedin, setLoggedin] = useState("");
 
   const validateEmail = (e) => {
     var email = e.target.value;
@@ -26,58 +29,62 @@ const Login = () => {
       setemailError("Enter valid userName!");
     }
   };
-  
-  function user() {
-    if (userType === 'Agent') {
-      // navigate to page 1
-      navigate('/agent');
-    } else {
-      // navigate to page 2
-      navigate('/login');
-    }
-  }
+
   // Handling the password change
   const handlePassword = (e) => {
     setPassword(e.target.value);
     setSubmitted(false);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload =
-    {
-      "email": email,
-      "password": password
-    }
-    
+    const payload = {
+      email: email,
+      password: password,
+    };
+   
+
     axios
-      .post('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/',
-        payload, 
-       
-    )
+      .post(
+        "http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/login/",
+        payload
+      )
       .then((response) => {
         if (!email || !password) {
           toast.warn("Enter all fields");
         } else if (response?.status === 200) {
-        localStorage.setItem("token",response.data.token)
+          localStorage.setItem("token", response.data.token);
           console.log(response?.status);
           let type = response.data.user_type;
           console.log(type);
           console.log(response);
-          // if(type=='temporary')
-          // navigate('/createProfile');
-          // else
-          // navigate('/home');
-          console.log(response);
-          navigate('/createProfile');
+          if (response.data.loggedin === "permanent") {
+            navigate("/home");
+          } 
+          else if(response.data.loggedin === "tempoorarily"){
+          navigate("/createProfile");
+        }
         }
       })
       .catch((error) => {
         console.log(error.response.data); // handle error
       });
+    
+
     setErrors({});
+
   };
+  // const logout = () => {
+  //   localStorage.removeItem('token');
+  // }
+  // useEffect(() => {
+  //   logout();
+  // }, []);
+
+
   return (
     <>
+      <Navbar />
       <div className="yes">
         <div className="flex">
           <div className="form">
@@ -91,21 +98,29 @@ const Login = () => {
             </div>
             <form>
               <div className="mb-3" id="formBasicemail">
-                <label>Email</label>
+                <label>
+                  <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>                  Email
+                  </p>
+                 
+                  </label>
                 <input
                   type="email"
                   id="email"
                   onChange={(e) => validateEmail(e)}
                   placeholder="Enter email"
-                  className="form-control"
+                  className="form-control" 
                 />
                 <span style={{ color: "red" }}>{emailError}</span>
                 <div className="text-muted">
-                  We'll never share your email with anyone else.
+                  <p style={{color:"black"}}>We'll never share your email with anyone else.</p> 
                 </div>
               </div>
-              <div className="mb-3 " id="formBasicPassword">
-                <label>Password</label>
+              <div className="mb-4" id="formBasicPassword">
+                <label>
+                  <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>
+                    Password
+                    </p>
+                  </label>
                 <input
                   type="password"
                   onChange={handlePassword}
@@ -114,9 +129,10 @@ const Login = () => {
                   className="form-control"
                 ></input>
               </div>
-
-              <div className="mt-2">
+          
+              <div className="d-flex flex-row justify-content-center">
                 <button
+                style={{width:290}}
                   onClick={handleSubmit}
                   className="btn btn-primary"
                   type="LogIn"
@@ -125,7 +141,19 @@ const Login = () => {
                   Log In{" "}
                 </button>
               </div>
-              <div className="d-flex flex-row justify-content-end">
+              
+              <div className="d-flex flex-row justify-content-center">
+                <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>
+                  {" "}
+                  Don't have an account?{" "}
+                  <Link
+                    to="/signup"
+                    style={{ color: "blue", textDecoration: "underline" }}
+                  >
+                    Signup
+                  </Link>
+                </p></div>
+              <div className="d-flex flex-row justify-content-center">
                 <a
                   className="small text-muted"
                   style={{ textDecoration: "none" }}
@@ -133,27 +161,17 @@ const Login = () => {
 
                   <Link
                     to="/OTP"
-                    style={{ color: "black", textDecoration: "none" }}
+                    style={{ color: "blue", textDecoration: "none", fontSize: 16 }}
                   >
-                    Forgotpassword?
+                    <p>Forgot Password?</p>
                   </Link>
                 </a>
               </div>
-              <p>
-                {" "}
-                Don't have an account?{" "}
-                <Link
-                  to="/signup"
-                  style={{ color: "blue", textDecoration: "none" }}
-                >
-                  Signup
-                </Link>
-              </p>
             </form>
           </div>
-        </div>
+        </div >
         <ToastContainer />
-      </div>
+      </div >
     </>
   );
 };

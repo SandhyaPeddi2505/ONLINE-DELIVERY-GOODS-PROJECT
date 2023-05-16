@@ -1,11 +1,12 @@
 * 
 /*Background color*/
   #grad1 {
-    background-color:  #cda1d3;
+    // background-color:  #cda1d3;
     // background-image: linear-gradient(120deg, #da4080, #78b7df);
     background-image: linear-gradient(120deg, #3E5151, #DECBA4);
     height: 900px;
     padding-left: 100px;
+    margin-top: 40px;
   }
   
   /*form styles*/
@@ -49,6 +50,7 @@
     /*stacking fieldsets above each other*/
     position: relative;
   }
+ 
   
   /*Hide all except first fieldset*/
   #msform fieldset:not(:first-of-type) {
