@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import validator from "validator";
-// import { useHistory } from 'react-router-dom';
 import Navbar from "./Navbar";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
