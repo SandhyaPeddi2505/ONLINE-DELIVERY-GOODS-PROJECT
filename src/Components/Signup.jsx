@@ -141,7 +141,7 @@ const Signup = () => {
                         type="email"
                         placeholder="Enter email"
                         className="form-control"
-                        required
+                      required
                       />
 
                       <span style={{ color: "red" }}>{emailError}</span>
@@ -165,7 +165,7 @@ const Signup = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="password"
                         className="form-control"
-                        required
+                      required
                       />
 
                       <span style={{ color: "red" }}>{passwordError}</span>
@@ -190,7 +190,7 @@ const Signup = () => {
                         className="form-control"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirm Password"
-                        required
+                      required
                       />
 
                       <span style={{ color: "red" }}>
@@ -236,3 +236,4 @@ const Signup = () => {
   );
 };
 export default Signup;
+

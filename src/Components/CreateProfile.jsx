@@ -130,17 +130,7 @@ disprofile ?
 
 
             <div className='xyz'>
-                {/* <div className='end '>
-
-                <Link to="/changepassword" style={{ color: 'black', textDecoration: "none" }}>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
-                        <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg>
-                    Changepassword
-
-                </Link>
-            </div> */}
+             
 
 
                 <div className='flex'>
@@ -155,7 +145,7 @@ disprofile ?
                             <form>
                                 <div className='no'>
                                     <div className="mb-2" id="formBasicName">
-                                        <label>Name</label>
+                                        <label><p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Name</p></label>
 
 
                                         <input type="Name" value={name} onChange={(t) => (setname(t.target.value))} id="userName" placeholder="Enter name" className='form-control' />
@@ -163,18 +153,18 @@ disprofile ?
 
                                     </div>
                                     <div className="mb-2" id="formBasicEmail">
-                                        <label> Email </label>
+                                        <label> <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Email</p> </label>
                                         <input type="Email" value={email} onChange={(e) => (setemail(e.target.value))} id="userEmail" placeholder="Enter email" className='form-control' />
 
                                     </div>
                                     <div className="mb-2" id="formBasicnumber">
-                                        <label> Phone number </label>
+                                        <label> </label> <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}> Phone number </p>
 
                                         <input type="number" value={number} onChange={(a) => { if (a.target.value.length <= 10) { (setnumber(a.target.value)) } }} placeholder="Enter phonenumber" className='form-control' />
                                     
                                 </div>
                                 <div >
-                                        <label>Gender :</label>
+                                <label><p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Gender :</p></label>
                                         {!isEditing &&
                                             <input type="radio" value="male" name="gender" onChange={(x) => (setgender(x.target.value))} checked={gender === 'male'} />
                                         }
@@ -186,12 +176,12 @@ disprofile ?
                                             <input type="radio" value="female" name="gender" onChange={(y) => (setgender(y.target.value))} checked={gender === 'female'} />}Female
                                     </div>
                                 <div className="mb-2" id="formBasicAddress">
-                                    <label> Address </label>
+                                <label><p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Address</p></label>
                                   <Map1 map={maphan} lat={lathan}/>
                                 </div>
                                
                                 <div className="mb-2" id="formBasicnumber">
-                                    <label> Pincode </label>
+                                <label><p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Pincode</p></label>
                                     
                                         <input type="number" value={pincode} onChange={(e) => { if (e.target.value.length <= 6) { (setpincode(e.target.value)) } }} placeholder="Enter pincode" className='form-control' />
 
@@ -212,15 +202,7 @@ disprofile ?
                 </Link>
               </div>
 
-                            {/* <div className='m'>
-                                <button className='btn btn-primary' onClick={handleSubmit}>
-                                    Next
-                                    <i class="bi bi-arrow-right"></i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                    </svg>
-                                </button>
-                            </div> */}
+                           
                         </div>
                     </div>
                 </div>
