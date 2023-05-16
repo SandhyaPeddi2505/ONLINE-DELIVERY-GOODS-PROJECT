@@ -95,18 +95,18 @@ const Forgotpassword = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password.length < 8) {
-            alert('Password must be at least 8 characters long');
+            toast.error('Password must be at least 8 characters long');
           } else if (!password.match(/[a-z]/) || !password.match(/[A-Z]/) || !password.match(/[0-9]/) || !password.match(/[!@#$%^&*]/)) {
-            alert(' password must contain cap,small,num,special characters');
+            toast.error(' password must contain cap,small,num,special characters');
           } else if (password !== confirmPassword) {
-            alert('Passwords do not match');
+            toast.error('Passwords do not match');
           } 
           else if(otp.length !==6){
-            alert("OTP must be 6 characters long")
+            toast.error("OTP must be 6 characters long")
 
           }
           else {
-            alert('password changed successfully')
+            toast.success('password changed successfully')
             navigate('/')
             // send password change request to server
           }

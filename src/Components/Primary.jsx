@@ -5,13 +5,14 @@ import { ToastContainer, toast } from "react-toastify";
 import { DatePicker } from "antd";
 // import PlacesAutocomplete from "react-places-autocomplete";
 import "./Primary.scss";
-import Map1 from "./Map";
+import Map1 from "./Map5";
 import third from "./third";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import axios from "axios";
 // import { Calendar, DatePicker } from 'antd';
 
-const Primary = () => {
+const CitySelection = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
@@ -35,10 +36,32 @@ const Primary = () => {
       setSelectedDate(date);
     }
   };
+  const payload = {
+    "source_address": selectedSource,
+    "destination_address": selectedDestination,
+    // "selectedDate":selectedDate
+  };
+  axios
+  .post(
+    " http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/address  ",
+    payload,
+    { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+  ).then((response) => {
+    console.log(response)
+    //  console.log(error.response.data)
+  })
+  .catch(error=>{
+    console.log(error.response.data)
+  })
+  console.log(selectedSource,"sow")
+ 
+  // .catch((error)=>{
+  //   console.log(error)
+  // })
   // const handleChange = (event) => {
   //   setDate(event.target.value);
   //   if (event.target.value < today) {
-  //     toast.warn("Choose the date which is yet to come !");
+  //     toast.warn("ChoosehandlechNthe date which is yet to come !");
   //     setTimeout(() => window.location.reload(), 6500);
   //   } else {
   //     setDate(event.target.value );
@@ -73,13 +96,13 @@ const Primary = () => {
     } else if (!selectedDestination) {
       toast.warn("Destination address field is empty, please select");
     } else if (!selectedDate) {
-      toast.warn("Date field is empty, please select");
+      toast.warn("Please Select Valid Date");
     } else {
       console.log(`Source is ${selectedSource}`);
       console.log(`Destination is ${selectedDestination}`);
       console.log(`Date is ${selectedDate}`);
 
-      window.location.replace("/Source");
+      window.location.replace("/items");
     }
   };
 
@@ -152,4 +175,4 @@ const Primary = () => {
     </>
   );
 };
-export default Primary;
+export default CitySelection;

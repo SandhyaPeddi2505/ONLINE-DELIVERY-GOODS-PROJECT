@@ -42,11 +42,11 @@ import"./Components/Tracking.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Signup from './Components/Signup';
-import OTP from './Components/OTP';
-import User from './Components/User';
-import Changepassword from './Components/Changepassword';
-import Profile from './Components/Profile';
-import Forgotpassword from './Components/Forgotpassword';
+// import OTP from './Components/OTP';
+// import User from './Components/User';
+// import Changepassword from './Components/Changepassword';
+// import Profile from './Components/Profile';
+// import Forgotpassword from './Components/Forgotpassword';
 
 const App = () => {
   // function App() {
@@ -82,30 +82,29 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<HomeNew />} />
-          <Route path="/primary1" element={<Primary />} />
-          <Route path="/hi" element={<Hello />} />
+          {/* <Route path="/home" element={<HomeNew />} /> */}
+          {/* <Route path="/primary1" element={<Primary />} /> */}
+          {/* <Route path="/hi" element={<Hello />} /> */}
           <Route path="/t" element={<Layout />} />
           <Route path="/source" element={<StepperWrapper/>}/>
           <Route path="/items" element={<Order/>}/>
           <Route path="/source" element={<Source />} />
-          <Route path="/destination" element={<Destination />} />
-          <Route path="/submit" element={<Submit />} />
-          <Route path="/confirm" element={<Confirm />} />
+          {/* <Route path="/destination" element={<Destination />} /> */}
+          {/* <Route path="/submit" element={<Submit />} /> */}
+          {/* <Route path="/confirm" element={<Confirm />} /> */}
           <Route path='/' element={<Home />}></Route>
           <Route path='/agent' element={<Agent />} />
-          <Route path='/agentdash' element={<Agentdash display={ddata}/>} />
-          <Route path='/previous' element={<Previous />} />
-          <Route path="/tracking" element={<VerticalStepper />} />
-          <Route path="/confirmscreen" element={<Confirmscreen display1={key1} />} />
-          
+          {/* <Route path='/agentdash' element={<Agentdash />} /> */}
+          {/* <Route path='/previous' element={<Previous />} /> */}
+          {/* <Route path="/tracking" element={<VerticalStepper />} /> */}
+          {/* <Route path="/confirmScreen" element={<Confirmscreen />} /> */}
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/OTP' element={<OTP />}></Route>
-          <Route path='/user' element={<User />}></Route>
-          <Route path='/changepassword' element={<Changepassword />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
-          <Route path='/forgotpassword' element={<Forgotpassword />}></Route>
+          {/* <Route path='/OTP' element={<OTP />}></Route> */}
+          {/* <Route path='/user' element={<User />}></Route> */}
+          {/* <Route path='/changepassword' element={<Changepassword />}></Route> */}
+          {/* <Route path='/profile' element={<Profile />}></Route> */}
+          {/* <Route path='/forgotpassword' element={<Forgotpassword />}></Route> */}
         </Routes>
       </BrowserRouter>
       <React.Fragment>

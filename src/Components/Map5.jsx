@@ -19,7 +19,7 @@ import {
 
 const Map1 = (props) => {
   const [address, setAddress] = useState("");
-  const [latlang, setlatlang] = useState([])
+//   const [latlang, setlatlang] = useState([])
   const handleChange = (address) => {
     setAddress(address);
     console.log({ address });
@@ -42,19 +42,19 @@ const Map1 = (props) => {
     radius: 2000,
 
   }
-  const handleSelect = (address) => {
-    geocodeByAddress(address)
+//   const handleSelect = (address) => {
+//     geocodeByAddress(address)
 
-      .then(results => getLatLng(results[0])).then(({ lat, lng }) => {
-        setAddress(address); // set the selected address
-        setlatlang([lat, lng]);
-      })
-      .catch(error => console.error('Error', error));
-
-
+//       .then(results => getLatLng(results[0])).then(({ lat, lng }) => {
+//         setAddress(address); // set the selected address
+//         setlatlang([lat, lng]);
+//       })
+//       .catch(error => console.error('Error', error));
 
 
-  };
+
+
+//   };
   // geocodeByAddress(address)
 
   //   .then(results => getLatLng(results[0]))
@@ -65,14 +65,14 @@ const Map1 = (props) => {
 
   //   );
   props.map(address)
-  props.lat(latlang)
+//   props.lat(latlang)
   return (
     <div className="canvas" height="">
       <PlacesAutocomplete
         value={address}
 
         onChange={handleChange}
-        onSelect={handleSelect}
+        onSelect={handleChange}
         searchOptions={searchOptions}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
