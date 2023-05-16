@@ -116,7 +116,7 @@ const Agentdash = (props) => {
   }
    useEffect(() => {
       //call API
-      axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/order_info/',
+      axios.get('http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/order_info/',
       { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
 
       )

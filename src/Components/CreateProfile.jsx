@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 // import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import abc from './pic.png';
-// import Swal from "swal"
-import Swal from 'sweetalert2';
 import axios from "axios";
 // import { toast } from 'react-toastify';
 import { ToastContainer, toast } from "react-toastify";
+import Map1 from './Map';
 import "./Navbar.scss"
 import logo from "./sk.png";
 
@@ -20,63 +19,55 @@ const Create = () => {
     const [gender, setgender] = useState("")
     const [address, setaddress] = useState("")
     const [pincode, setpincode] = useState("")
-    const savehandle = () => {
-        toast.success("Saved successfully")
-        console.log({ "name": name, "email": email, "number": number, "gender": gender, "address": address, "pincode": pincode });
-    }
-
+    const [add,setadd]=useState("")
+    const [latit,selatit]=useState([])
+   
 
     const [dataa, setDataa] = useState({});
-    useEffect(() => {
-        const headers = { 'Authorization': 'Bearer token' };
+   
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        const payload =
+        
+        {
 
-        axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/userinfo',
-            { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } }
+            "name": name,
+
+            "email": email,
+
+            "phone": number,
+
+            "gender": gender,
+
+            "primary_address": add,
+
+            "primary_location": latit
+
+        }
+       
+        
+        axios.post('http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/createprofile', payload,
+        { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
         )
-            .then(response => {
-                setDataa(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, []);
-    const handleSubmit = () => {
-        Swal.fire({
-            title: 'Do you want to order from this address?',
-            // text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
-
-
-        }).then((result) => {
-            if (result.value) {
-                //   Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                window.location.href = "/source";
-            }
-            else {
-                window.location.href = "/home"
-            }
-        });
+          .then(response => {
+            setDataa(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+          toast.success("Saved successfully")
+          console.log({ "name": name, "email": email, "number": number, "gender": gender, "pincode": pincode,"primary_address":add ,"primary_location":latit});
+          navigate('/')
     };
-
-
-
-    // }).then((result) => {
-    //     if (result.value) {
-    //         //   Swal.fire("Deleted!", "Your file has been deleted.", "success");
-    //         window.location.href = "/source";
-    //     }
-    //     else {
-    //         window.location.href = "/home"
-    //     }
-    // });
-    // };
-
-    const [disprofile, setdisprofile] = useState(false)
-
+       
+const maphan=(i)=>{
+    setadd(i)
+}
+const lathan=(p)=>{
+selatit(p)
+}
+const [disprofile, setdisprofile] = useState(false)
     const dishan = () => {
 
         if (disprofile === false) {
@@ -180,26 +171,28 @@ disprofile ?
                                         <label> Phone number </label>
 
                                         <input type="number" value={number} onChange={(a) => { if (a.target.value.length <= 10) { (setnumber(a.target.value)) } }} placeholder="Enter phonenumber" className='form-control' />
-
+                                    
+                                </div>
+                                <div >
+                                        <label>Gender :</label>
+                                        {!isEditing &&
+                                            <input type="radio" value="male" name="gender" onChange={(x) => (setgender(x.target.value))} checked={gender === 'male'} />
+                                        }
+                                        {isEditing &&
+                                            <input type="radio" value="male" name="gender" onChange={(x) => (setgender(x.target.value))} checked={gender === 'male'} />}Male
+                                        {!isEditing &&
+                                            <input type="radio" value="female" name="gender" onChange={(y) => (setgender(y.target.value))} checked={gender === 'female'} />}
+                                        {isEditing &&
+                                            <input type="radio" value="female" name="gender" onChange={(y) => (setgender(y.target.value))} checked={gender === 'female'} />}Female
                                     </div>
-                                    <div >
-                                        <label>Gender</label>
-
-                                        <input type="radio" name="gender" value="male" />Male
-
-                                        <input type="radio" name="gender" value="female" />Female
-
-                                    </div>
-                                    <div className="mb-2" id="formBasicAddress">
-                                        <label> Address </label>
-
-                                        <textarea value={address} onChange={(b) => (setaddress(b.target.value))} rows="4" cols="10" placeholder="Enter address" className='form-control'></textarea>
-
-                                    </div>
-
-                                    <div className="mb-2" id="formBasicnumber">
-                                        <label> Pincode </label>
-
+                                <div className="mb-2" id="formBasicAddress">
+                                    <label> Address </label>
+                                  <Map1 map={maphan} lat={lathan}/>
+                                </div>
+                               
+                                <div className="mb-2" id="formBasicnumber">
+                                    <label> Pincode </label>
+                                    
                                         <input type="number" value={pincode} onChange={(e) => { if (e.target.value.length <= 6) { (setpincode(e.target.value)) } }} placeholder="Enter pincode" className='form-control' />
 
                                     </div>
@@ -210,15 +203,16 @@ disprofile ?
                             </form>
                             <br>
                             </br>
-                            <div className='cc'>
+                                   <br></br>
+              <div className="cc">
+                <Link to="/">
+                  <button className="btn btn-primary" onClick={handleSubmit}>
+                    Save
+                  </button>
+                </Link>
+              </div>
 
-                                <button className='btn btn-primary' onClick={savehandle} >
-                                    Save
-                                </button>
-
-                            </div>
-
-                            <div className='m'>
+                            {/* <div className='m'>
                                 <button className='btn btn-primary' onClick={handleSubmit}>
                                     Next
                                     <i class="bi bi-arrow-right"></i>
@@ -226,7 +220,7 @@ disprofile ?
                                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                                     </svg>
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

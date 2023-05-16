@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 // import Routing from "./Components/Routing"
 import Submit from "./Components/Submit";
 import Source from "./Components/Source";
 import Destination from "./Components/Destination";
 import Layout from "./Components/Layout";
 import Confirm from "./Components/Confirm";
+import Order from "./Components/Items";
 import "./Components/Styles.scss";
+import "./Components/OrderConfirm";
+import "./Components/OrderConfirm.scss";
 import { Outlet } from "react-router-dom";
 import Next from "./Components/Other.jsx";
 import "./styles.scss";
@@ -29,8 +33,10 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 
 import "./Login.scss";
 import "./Signup.scss";
+import VerticalStepper from "./Components/Tracking";
 import "./OTP.scss";
 import "./Changepassword.scss";
+import Orderss from "./Components/userPreviousOrders";
 import "./Forgotpassword.scss";
 import Create from "./Components/CreateProfile";
 import "./Profile.scss";
@@ -43,34 +49,47 @@ import OTP from "./Components/OTP";
 import User from "./Components/User";
 import Changepassword from "./Components/Changepassword";
 import Profile from "./Components/Profile";
+// import Order from './Components/OrderConfirm';
 import Forgotpassword from "./Components/Forgotpassword";
 import reportWebVitals from './reportWebVitals';
+import OrderDetails from './Components/OrderConfirm';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
         <Routes>
-          <Route path='/home' element={
+          {/* <Route path='/home' element={
 <ProtectedRoute>
 <HomeNew />
 </ProtectedRoute>
-} />
+} /> */}
            
-            <Route path='/primary1' element={
+           {/* <Route path='/home' element={
+<ProtectedRoute>
+<HomeNew />
+</ProtectedRoute>
+} /> */}
+ {/* <Route path='/home' element={
+<ProtectedRoute>
+<HomeNew />
+</ProtectedRoute>
+} /> */}
+            {/* <Route path='/citySelection' element={
 <ProtectedRoute>
 <Primary />
 </ProtectedRoute>
-} />
+} /> */}
           
-            <Route path='/hi' element={
+            {/* <Route path='/hi' element={
 <ProtectedRoute>
 <Hello />
 </ProtectedRoute>
-} />
+} /> */}
            
             {/* <Route path='/source' element={
 <ProtectedRoute>
@@ -78,7 +97,7 @@ root.render(
 </ProtectedRoute>
 } /> */}
             
-            <Route path='/destination' element={
+            {/* <Route path='/destination' element={
 <ProtectedRoute>
 <Destination />
 </ProtectedRoute>
@@ -88,9 +107,9 @@ root.render(
 <ProtectedRoute>
 <Submit />
 </ProtectedRoute>
-} />
+} /> */}
            
-            <Route path='/confirm' element={
+            {/* <Route path='/confirm' element={
 <ProtectedRoute>
 <Confirm />
 </ProtectedRoute>
@@ -102,13 +121,13 @@ root.render(
 // </ProtectedRoute>
 // } /> */}
             
-            <Route path='/agentdash' element={
+            {/* <Route path='/agentdash' element={
 <ProtectedRoute>
 <Agentdash />
 </ProtectedRoute>
-} />
+} /> */}
             
-            <Route path='/previous' element={
+            {/* <Route path='/previous' element={
 <ProtectedRoute>
 <Previous/>
 </ProtectedRoute>
@@ -116,11 +135,11 @@ root.render(
            
             <Route path='/tracking' element={
 <ProtectedRoute>
-// <Tracking />
+<VerticalStepper />
 </ProtectedRoute>
-} />
+} />  */}
             
-            <Route path='/confirmScreen' element={
+            {/* <Route path='/confirmScreen' element={
 <ProtectedRoute>
 <Confirmscreen />
 </ProtectedRoute>
@@ -131,9 +150,9 @@ root.render(
 <ProtectedRoute>
 <OTP />
 </ProtectedRoute>
-} />
+} /> */}
          
-            <Route path='/user' element={
+            {/* <Route path='/user' element={
 <ProtectedRoute>
 <User />
 </ProtectedRoute>
@@ -155,13 +174,18 @@ root.render(
 <Create />
 </ProtectedRoute>
 } />
+     <Route path='/OrderConfirm' element={
+<ProtectedRoute>
+<Order />
+</ProtectedRoute>
+} />
             
             <Route path='/forgotpassword' element={
 <ProtectedRoute>
 <Forgotpassword />
 </ProtectedRoute>
 } />
-                
+                 */}
                      {/* <Route path='/' element={
 <ProtectedRoute>
 <Home />
@@ -171,25 +195,22 @@ root.render(
              <Route path="/" element={<Home />} /> 
              </Route> */}
              <Route path="/" element={<Home />}/>
+             <Route path="/items" element={<Order/>}/>
+             <Route path="/source" element={<StepperWrapper/>}/>
              <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Signup />} />
+            <Route path="/citySelection" element={<Primary />} />
              <Route path="/agent" element={<Agent />} />
-             <Route path="/source" element={<StepperWrapper />} />
-             {/* <Route path="*" element={<div>Page Not Found!!</div>} />
+             <Route path="/userPrevOrders" element={<Orderss/>}/>
+             {/* <Route path="*" element={<div>Page Not Found!!</div>} /> */}
              <Route path="/createProfile" element={<Create />} />
-             <Route path="/denied" element={<PermissionDenied />} /> 
              <Route path="/home" element={<HomeNew />} />
-             <Route path="/primary1" element={<Primary />} />
+              {/* <Route path="/primary1" element={<Primary />} /> */}
              <Route path="/hi" element={<Hello />} />
-            
              <Route path="/destination" element={<Destination/>}/>
              <Route path="/confirm" element={<Confirm/>}/>
-             <Route path="/submit" element={<Submit/>}/> */}
-             {/* <Route path="agent" element={<ProtectedRoute roleRequired="AGENT" />} >
-             <Route path="/agent" element={<Agent />} />  */}
-             {/* </Route> */}
-             
-             {/* <Route path="/t" element={<Layout/>}/> 
+             <Route path="/submit" element={<Submit/>}/>
+             <Route path="/t" element={<Layout/>}/> 
               <Route path="/agentdash" element={<Agentdash />} />
              <Route path="/previous" element={<Previous />} />
              <Route path="/tracking" element={<Tracking />} />
@@ -198,8 +219,8 @@ root.render(
              <Route path="/user" element={<User />} />
              <Route path="/changepassword" element={<Changepassword />} />
              <Route path="/profile" element={<Profile />} />
-           
-             <Route path="/forgotpassword" element={<Forgotpassword />} /> */}
+             <Route path="/forgotpassword" element={<Forgotpassword />} />
+             <Route path="/OrderConfirm" element={<OrderDetails />}/>
         
           {/* </Route> */}
         </Routes>
