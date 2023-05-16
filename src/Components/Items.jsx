@@ -11,7 +11,7 @@ const Order=() =>{
   const navigate = useNavigate();
   const [orderType, setOrderType] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
   const today= new Date();
   const [placeholderText, setPlaceholderText] = useState('Select a date');
   
