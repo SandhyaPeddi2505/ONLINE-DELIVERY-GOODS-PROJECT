@@ -46,19 +46,19 @@ const Login = () => {
 
     axios
       .post(
-        "http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/login/",
+        "http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/login/",
         payload
       )
       .then((response) => {
         if (!email || !password) {
           toast.warn("Enter all fields");
         } else if (response?.status === 200) {
-          sessionStorage.setItem("token", response.data.token);
+          localStorage.setItem("token", response.data.token);
           console.log(response?.status);
           let type = response.data.user_type;
           console.log(type);
           console.log(response);
-          if (response.data.loggedin === "permanant") {
+          if (response.data.loggedin === "permanent") {
             navigate("/home");
           } 
           else if(response.data.loggedin === "tempoorarily"){

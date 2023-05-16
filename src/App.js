@@ -57,7 +57,7 @@ const App = () => {
     // };
   
     const checkUserToken = () => {
-      const userToken = sessionStorage.getItem("token");
+      const userToken = localStorage.getItem("token");
   
       if (!userToken || userToken === "undefined") {
         setIsLoggedIn(false);

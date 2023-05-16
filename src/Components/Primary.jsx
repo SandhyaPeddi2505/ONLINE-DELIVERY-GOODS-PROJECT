@@ -43,12 +43,18 @@ const CitySelection = () => {
   };
   axios
   .post(
-    " http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/address  ",
+    " http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/address  ",
     payload,
-    { headers: {"Authorization" : `Bearer ${sessionStorage.getItem("token")}`}}
+    { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
   ).then((response) => {
     console.log(response)
+    //  console.log(error.response.data)
   })
+  .catch(error=>{
+    console.log(error.response.data)
+  })
+  console.log(selectedSource,"sow")
+ 
   // .catch((error)=>{
   //   console.log(error)
   // })

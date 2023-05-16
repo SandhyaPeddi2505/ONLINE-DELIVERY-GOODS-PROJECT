@@ -73,7 +73,7 @@ const Signup = () => {
 
     axios
       .post(
-        "http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/register/",
+        "http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/register/",
 
         payload
       )

@@ -9,8 +9,9 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     const [dataa, setDataa] = useState([]);
     // const [sweet,setSweet]=useState([])
     const [Address,setAddress]=useState("")
-    const [sourceLocation,setSourceLocation]=useState([])
-    const [isConfirmed,setIsConfirmed]=useState(sessionStorage.getItem("isConfirmed"))
+    const [primary_location,setPrimary_Location]=useState([])
+    // const [socation,setSourceLocation]=useState([])
+    const [isConfirmed,setIsConfirmed]=useState(localStorage.getItem("isConfirmed"))
     const [details, setDetails] = useState(
         {
         name: "",
@@ -19,32 +20,39 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     );
     const [primaryAddress, setPrimaryAddress] = useState({
         name: "",
-        address:"",
-        phone: ""
+        Address:"",
+        phone: "",
+        primary_location:""
     });
     useEffect(() => {
         axios
         .get(
-          "http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
+          "http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
           
-          { headers: {"Authorization" : `Bearer ${sessionStorage.getItem("token")}`}}
+          { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
           // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
           // )}`}}
         ).then((response) => {
        
                       setPrimaryAddress({name:response.data?.name,
-                        // address:response.data[0]?.Address,
-                        phone:response.data?.phone});
-        })
+                        Address:response.data?.address,
+                        phone:response.data?.phone,
+                        primary_location:response.data?.primary_location})
+                        console.log(response.data.primary_location,"2222")
+        },[])
+        console.log(deliveryData.name,"2222")
         console.log(deliveryData, "dfdf");
+        // console.log(response?.primary_location,"2222")
         // setIsConfirmed(localStorage.getItem('isConfirmed'))
         if (deliveryData && !deliveryData.Source.isPrimary) {
             setDetails({
                 ...details,
                 name: deliveryData.Source.name,
-                // Address: deliveryData.Source.Address,
-                phone: deliveryData.Source.phone
+                Address: deliveryData.Source.Address,
+                phone: deliveryData.Source.phone,
+                primary_location:deliveryData.Source.primary_location
             });
+            console.log(deliveryData.primary_location,Address,"2222")
         }
     }, []);
   
@@ -55,6 +63,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
    
     const handleSubmit = (e) => {
         e.preventDefault();
+        // debugger;
         console.log(deliveryData);
         console.log("address123",+Address)
     };
@@ -85,7 +94,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         setAddress(data1)
     }
     const lathandle=(p)=>{
-        setSourceLocation(p)
+        setPrimary_Location(p)
     }
           
     return (
@@ -135,7 +144,8 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                                     <div className="col-md-6 md-4">
                                                                         <div className="form-outline">
                                                                             <label style={{ color: "black" }}><b>Address:</b>
-                                                                                <input type="text" name="address" value={primaryAddress.address} placeholder="Address" onChange={handleChange} />
+                                                                            {/* <Map1 maper={addressHandler} maper1={lathandle}/> */}
+                                                                                <input type="text" name="Address" value={primaryAddress.Address} placeholder="Address" onChange={handleChange} />
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -174,10 +184,11 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                             <button type="submit"
                                                 className="btn btn-primary"
                                                 onClick={() => {
+                                                    console.log(isPrimary,primaryAddress,primary_location)
                                                     if (isPrimary) {
-                                                        onNextClick({ isPrimary: true, ...dataa[0] });
+                                                        onNextClick({ isPrimary: true, ...primaryAddress});
                                                     } else if (details.name && details.name.length >= 3 && Address && Address.length >= 5 && details.phone && details.phone.length === 10 && !isNaN(details.phone)) {
-                                                        onNextClick({ isPrimary: false, ...details ,Address,sourceLocation});
+                                                        onNextClick({ isPrimary: false, ...details ,Address,primary_location});
                                                     }
                                                 }}>
                                                 Next

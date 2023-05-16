@@ -2,34 +2,35 @@ import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
-const Submit = ({ onNextClick, onPrevClick, deliveryData, details,address,lat}) => {
+const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
     const { Source, Destination } = deliveryData;
     useEffect((e) => {
         //getDetails()
         console.log(deliveryData)
+        console.log(Source)
     }, [])
     const payload=  {
         "source_info":{
             "name":Source.name,
             "phone":Source.phone,
             "address":Source.Address,
-            "location":[12.2345,12.4321]
+            "location":Source.primary_location 
         },
         "destination_info":{
             "name":Destination.name,
             "phone":Destination.phone,
             "address":Destination.address,
-            "location":[12.2345,12.4321]
+            "location":Destination.destinationLocation
         }
     }
     axios
-       .post("http://ec2-65-0-110-218.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
+       .post("http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
          
          payload,
-         { headers: {"Authorization" : `Bearer ${sessionStorage.getItem("token")}`}}
+         { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
        ).then((response) => {
          console.log(response)
-         sessionStorage.setItem("orderId",response.data.OrderID)
+         localStorage.setItem("orderId",response.data.OrderID)
        })
     // useEffect(() => {
     //     axios.post("http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/login/").then(response => {

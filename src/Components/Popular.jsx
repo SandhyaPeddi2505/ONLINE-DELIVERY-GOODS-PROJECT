@@ -39,19 +39,19 @@ const Popular = (onClick) => {
     const handleClick=()=>{
     }
     const [data, setData] = useState({});
-    // useEffect(() => {
-    //   //call API
-    //   axios.get('http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/cityList',
-    //   { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+    useEffect(() => {
+      //call API
+      axios.get('http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/cityList',
+      { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
 
-    //   )
-    //     .then(response => {
-    //       setData(response.data);
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    // }, []);
+      )
+        .then(response => {
+          setData(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }, []);
     return (
         <>
     {/* <Navbar/> */}
