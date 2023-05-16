@@ -50,11 +50,15 @@ import Signup from './Components/Signup';
 
 const App = () => {
   // function App() {
+    const [key1,setKey1]=useState([])
+    const ddata=(l)=> {
+      setKey1(()=>[l])
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);
     // const handleLogin = () => {
     //   setIsAuthenticated(true);
     // };
+    }
   
     const checkUserToken = () => {
       const userToken = localStorage.getItem("token");
@@ -67,9 +71,9 @@ const App = () => {
       else{
         // <Navigate  to =''
       }
-  
+    
       setIsLoggedIn(true);
-    // };
+    };
   
     useEffect(() => {
       checkUserToken();
@@ -114,5 +118,5 @@ const App = () => {
     </>
   );
 };
-};
+
 export default App;
