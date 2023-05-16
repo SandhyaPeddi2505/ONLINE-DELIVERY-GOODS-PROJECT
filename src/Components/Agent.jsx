@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import logo from "./sk.png";
-import axios from "axios";
+
   const Agent = () => {
     const [imageFile, setImageFile] = useState('');
     const [base64, setBase64] = useState();
