@@ -31,7 +31,7 @@ const Changepassword = () => {
     )
       .then(response => {
         if (response?.status === 200) {
-          alert("Password Changed successfully");
+          toast.success("Password Changed successfully");
           navigate('/');
           console.log(response?.status);
         }

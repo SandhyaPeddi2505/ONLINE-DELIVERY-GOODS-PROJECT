@@ -3,6 +3,7 @@ import qwe from "./12.png";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer,toast } from 'react-toastify';
 import logo from "./sk.png";
 
   const Agent = () => {
@@ -262,6 +263,7 @@ import logo from "./sk.png";
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </>
     );
   };

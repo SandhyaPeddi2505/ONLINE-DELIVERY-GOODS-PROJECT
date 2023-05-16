@@ -28,9 +28,8 @@ import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
 import StepperWrapper from "./Components/StepperWrapper";
 import Login from "./Components/Login";
-
+// import Order from './Components/Items';
 import ProtectedRoute from "./Components/ProtectedRoute";
-
 import "./Login.scss";
 import "./Signup.scss";
 import VerticalStepper from "./Components/Tracking";
@@ -69,17 +68,7 @@ root.render(
 </ProtectedRoute>
 } /> */}
            
-           {/* <Route path='/home' element={
-<ProtectedRoute>
-<HomeNew />
-</ProtectedRoute>
-} /> */}
- {/* <Route path='/home' element={
-<ProtectedRoute>
-<HomeNew />
-</ProtectedRoute>
-} /> */}
-            {/* <Route path='/citySelection' element={
+            {/* <Route path='/primary1' element={
 <ProtectedRoute>
 <Primary />
 </ProtectedRoute>
@@ -101,9 +90,9 @@ root.render(
 <ProtectedRoute>
 <Destination />
 </ProtectedRoute>
-} />
+} /> */}
            
-            <Route path='/submit' element={
+            {/* <Route path='/submit' element={
 <ProtectedRoute>
 <Submit />
 </ProtectedRoute>
@@ -113,7 +102,7 @@ root.render(
 <ProtectedRoute>
 <Confirm />
 </ProtectedRoute>
-} />
+} /> */}
            
            {/* <Route path='/agent' element={ */}
 {/* // <ProtectedRoute>
@@ -131,22 +120,22 @@ root.render(
 <ProtectedRoute>
 <Previous/>
 </ProtectedRoute>
-} />
+} /> */}
            
-            <Route path='/tracking' element={
+            {/* <Route path='/tracking' element={
 <ProtectedRoute>
 <VerticalStepper />
 </ProtectedRoute>
-} />  */}
+} /> */}
             
             {/* <Route path='/confirmScreen' element={
 <ProtectedRoute>
 <Confirmscreen />
 </ProtectedRoute>
-} />
+} /> */}
            
             
-            <Route path='/OTP' element={
+            {/* <Route path='/OTP' element={
 <ProtectedRoute>
 <OTP />
 </ProtectedRoute>
@@ -156,36 +145,31 @@ root.render(
 <ProtectedRoute>
 <User />
 </ProtectedRoute>
-} />
+} /> */}
       
-            <Route path='changepassword' element={
+            {/* <Route path='changepassword' element={
 <ProtectedRoute>
 <Changepassword />
 </ProtectedRoute>
-} /> 
-    <Route path='/profile' element={
+} />  */}
+    {/* <Route path='/profile' element={
 <ProtectedRoute>
 <Profile />
 </ProtectedRoute>
-} />
+} /> */}
            
-            <Route path='/createProfile' element={
+            {/* <Route path='/createProfile' element={
 <ProtectedRoute>
 <Create />
 </ProtectedRoute>
-} />
-     <Route path='/OrderConfirm' element={
-<ProtectedRoute>
-<Order />
-</ProtectedRoute>
-} />
+} /> */}
             
-            <Route path='/forgotpassword' element={
+            {/* <Route path='/forgotpassword' element={
 <ProtectedRoute>
 <Forgotpassword />
 </ProtectedRoute>
-} />
-                 */}
+} /> */}
+                
                      {/* <Route path='/' element={
 <ProtectedRoute>
 <Home />
@@ -201,21 +185,28 @@ root.render(
             <Route path="/signup" element={<Signup />} />
             <Route path="/citySelection" element={<Primary />} />
              <Route path="/agent" element={<Agent />} />
-             <Route path="/userPrevOrders" element={<Orderss/>}/>
-             {/* <Route path="*" element={<div>Page Not Found!!</div>} /> */}
+             <Route path="/source" element={<StepperWrapper />} />
+             <Route path="*" element={<div>Page Not Found!!</div>} />
              <Route path="/createProfile" element={<Create />} />
+             {/* <Route path="/denied" element={<PermissionDenied />} />  */}
              <Route path="/home" element={<HomeNew />} />
-              {/* <Route path="/primary1" element={<Primary />} /> */}
+             <Route path="/primary1" element={<Primary />}/>
+             <Route path="/userPrevOrders" element={<Orderss/>}/>
              <Route path="/hi" element={<Hello />} />
              <Route path="/destination" element={<Destination/>}/>
              <Route path="/confirm" element={<Confirm/>}/>
              <Route path="/submit" element={<Submit/>}/>
+             <Route path="agent" element={<ProtectedRoute roleRequired="AGENT" />} />
+             <Route path="/agent" element={<Agent />} /> 
+             {/* </Route> */}
+             
              <Route path="/t" element={<Layout/>}/> 
               <Route path="/agentdash" element={<Agentdash />} />
              <Route path="/previous" element={<Previous />} />
              <Route path="/tracking" element={<Tracking />} />
              <Route path="/confirmScreen" element={<Confirmscreen />} />
              <Route path="/OTP" element={<OTP />} />
+             <Route path="/items" element={<Order/>}/>
              <Route path="/user" element={<User />} />
              <Route path="/changepassword" element={<Changepassword />} />
              <Route path="/profile" element={<Profile />} />

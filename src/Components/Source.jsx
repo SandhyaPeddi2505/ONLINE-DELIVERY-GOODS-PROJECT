@@ -66,6 +66,14 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         // debugger;
         console.log(deliveryData);
         console.log("address123",+Address)
+        // toast.error("Please enter valid details");
+        // if (details.Name && details.Name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
+        //     return true;
+        // } else {
+        //     toast.error("Please enter the valid details.");
+        //     return false;
+
+        // }
     };
     // const [secondaryAddress, setSecondaryAddress] = useState({
     //     name1: "",
