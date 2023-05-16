@@ -53,7 +53,7 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
                                     <ul id="progressbar">
                                         <li className="active" id="source"><strong>Source</strong></li>
                                         <li id="destination" class="active" ><strong>Destination</strong></li>
-                                        <li id="submit" class="active" ><strong>Submit</strong></li>
+                                        <li id="submit" class="active" ><strong>Details</strong></li>
                                         <li id="confirm" ><strong>Confirm</strong></li>
                                     </ul>
                                     <fieldset>
@@ -73,9 +73,10 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
                                             {/* {console.log({latlng,lat,lng})} */}
                                             <br></br>
                                         </div>
-                                        <button name="previous" type="button" className="btn btn-secondary" onClick={() => onPrevClick(details)}>Previous</button>
-                                        <button name="next" type="button" className="btn btn-primary" onClick={() => onNextClick(details)}>Submit</button>
-                                        
+                                        <div>
+                                        <button name="previous" type="button" className="btn btn-secondary" id="sand1" onClick={() => onPrevClick(details)}>Previous</button>
+                                        <button name="next" type="button" className="btn btn-primary" id="sand1"  onClick={() => onNextClick(details)}>Submit</button>
+                                        </div>
                                     </fieldset>
                                 </form>
                             </div>

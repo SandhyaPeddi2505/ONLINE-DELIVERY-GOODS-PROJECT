@@ -16,6 +16,7 @@ import { Outlet } from "react-router-dom";
 import Next from "./Components/Other.jsx";
 import "./styles.scss";
 import Primary from "./Components/Primary";
+// import Icon from "./Components/Icon";
 import Hello from "./Components/Hello";
 import "./Style.scss";
 import Agent from "./Components/Agent";
@@ -38,6 +39,7 @@ import "./Changepassword.scss";
 import Orderss from "./Components/userPreviousOrders";
 import "./Forgotpassword.scss";
 import Create from "./Components/CreateProfile";
+import Logout from "./Components/Logout"
 import "./Profile.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -183,7 +185,9 @@ root.render(
              <Route path="/source" element={<StepperWrapper/>}/>
              <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Signup />} />
+            <Route path="/Logout" element={<Logout/>} />
             <Route path="/citySelection" element={<Primary />} />
+            {/* <Route path="/icon" element={<Icon/>} /> */}
              <Route path="/agent" element={<Agent />} />
              <Route path="/source" element={<StepperWrapper />} />
              <Route path="*" element={<div>Page Not Found!!</div>} />

@@ -110,15 +110,15 @@ const CitySelection = () => {
     <>
       <Navbar />
       <div className="primaryCont">
-        <h1 style={{ textAlign: "center ", padding: "40px 0 0 0px" }}>
-          Address Details!!
+        <h1 style={{ textAlign: "center ", padding: "40px 0 0 0px" ,color:"black"}}>
+          Choose the place!
         </h1>
 
         <form class="form" onSubmit={handleSubmit}>
-          <FaMapMarkerAlt />
+          <FaMapMarkerAlt  className="ic" />
           <Map1 map={handleSourceChange} class="map" />
           <br></br>
-          <FaMapMarker />
+          <FaMapMarker className="ic" />
           <Map1 map={handleDestinationChange} class="map" />
 
           {/* <select
@@ -148,7 +148,7 @@ const CitySelection = () => {
           ))}
         </select> */}
 
-          <FaCalendarAlt />
+          <FaCalendarAlt  className="ic" />
           {/* <input type="date" onChange={handleChange} /> */}
           <DatePicker
             type="date"

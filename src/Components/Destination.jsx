@@ -61,7 +61,7 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa, details })
                                     <ul id="progressbar">
                                         <li class="active" id="source"><strong>Source</strong></li>
                                         <li class="active" id="destination"  ><strong>Destination</strong></li>
-                                        <li id="submit" >Submit<strong></strong></li>
+                                        <li id="submit" >Details<strong></strong></li>
                                         <li id="confirm" ><strong>Confirm</strong></li>
                                     </ul>
                                     <fieldset>
@@ -71,12 +71,14 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa, details })
                                             <input type="text" name="phone" placeholder="PhoneNo" value={dest.phone} onChange={handleChange} required pattern="/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/" min="10" />
                                             <Map1 maper1={addressHandle} maper2={zxc} />
                                         </div>
-                                        <button name="previous" type="button" className="btn btn-secondary" onClick={() => onPrevClick(dataa)}>Previous</button>
-                                        <button name="submit" type="submit" className="btn btn-primary" onClick={() => {
+                                        <div >
+                                        <button name="previous" type="button" className="btn btn-secondary" id="sand1" onClick={() => onPrevClick(dataa)}>Previous</button>
+                                        <button name="submit" type="submit" className="btn btn-primary" id="sand1" onClick={() => {
                                             if (checkFormValidation()) {
                                                 onNextClick({ ...dest, address, destinationLocation });
                                             }
                                         }}>Next</button>
+                                        </div>
                                     </fieldset>
                                 </form>
                             </div>

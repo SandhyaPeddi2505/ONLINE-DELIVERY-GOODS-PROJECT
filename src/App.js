@@ -86,6 +86,7 @@ const App = () => {
           {/* <Route path="/primary1" element={<Primary />} /> */}
           {/* <Route path="/hi" element={<Hello />} /> */}
           <Route path="/t" element={<Layout />} />
+          {/* <Route path="/t" element={<Layout />} /> */}
           <Route path="/source" element={<StepperWrapper/>}/>
           <Route path="/items" element={<Order/>}/>
           <Route path="/source" element={<Source />} />

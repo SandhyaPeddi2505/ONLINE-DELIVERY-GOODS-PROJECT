@@ -28,20 +28,24 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
   return (
     <div className="con">
       <div className="order-confirmation-header">
-        <h2 className="fs-title text-center">Order placed, thank you!</h2>
+
       </div>
       <div className="row justify-content-center">
-        <div className="col-3">
+        <div className="col-3" id="pic" >
           <img
             src="https://img.icons8.com/color/96/000000/ok--v2.png"
-            class="fit-image"
+            // class="fit-image"
           />
         </div>
+        <br></br>
       </div>
+      <h2 className=" fs-title text-center" style={{color: "black"}}>Thank you, Your order is confirmed!</h2>
+      <hr/>
       <div className="order-details">
-        <p className="fs-title text-center">
-          Order ID: {localStorage.getItem("orderId")}
-        </p>
+        <h5 className="text center" id="cen"  style={{color: "black"}}>
+          Your OrderID is :
+           {localStorage.getItem("orderId")}
+        </h5>
         {/* <p className="fs-title text-center">
           Expected Delivery Date:{" "}
           {isExpectedDeliveryToday() ? "Today" : expectedDeliveryDate}

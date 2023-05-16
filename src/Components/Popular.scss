@@ -2,7 +2,12 @@
   width:680px;
   height:120px;
   background-color: #ff4081, #81d4fa;
-}
+    align-items: center;
+    // display: flex;
+   border-left: 90px;
+  //  gap:20px;
+  }
+
 .body{
   background-image: linear-gradient(120deg, #ff4081, #81d4fa);
 }
@@ -22,10 +27,14 @@
 .input{
   // align-items:center;
   // padding-left: 90px;
-  margin-left: 90px;
+  margin-left: 70px;
   // background-color: #ff4081;
   width:468px;
   height :35px; 
+}
+.gap{
+  // margin-left: 15px;
+  // gap: 150px;
 }
 .title2{
   color: black;
@@ -64,6 +73,9 @@ padding-right: 630px;
     height:25px;
     width:35px;
     padding-right:15px;
+  }
+  #same{
+    margin-right: 10px;
   }
   .whole{
     // padding-right: 15px;

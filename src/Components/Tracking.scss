@@ -1,7 +1,15 @@
 .ee{
-    background-image: linear-gradient(120deg, #3E5151, #DECBA4);
-    position: relative;
+    background-image: linear-gradient(120deg, #3E5151, #8b8a88);
+    // position: relative;
     margin-top:0px;
     margin-left: 0px;
     padding:163px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.steps{
+    // align-items: center;
+    display: flex;
 }

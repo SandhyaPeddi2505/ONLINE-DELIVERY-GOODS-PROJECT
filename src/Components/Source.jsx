@@ -120,7 +120,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                             <ul id="progressbar">
                                                 <li class="active" id="source"><strong>Source</strong></li>
                                                 <li id="destination"><strong>Destination</strong></li>
-                                                <li id="submit"><strong>Submit</strong></li>
+                                                <li id="submit"><strong>Details</strong></li>
                                                 <li id="confirm"><strong>Confirm</strong></li>
                                             </ul>
                                         </div>
@@ -187,10 +187,11 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                     </div>
                                                 )}
                                             </div>
-                                            <div></div>
-                                            <button type="button" onClick={handleCancel} className="btn btn-secondary">Cancel</button>
+                                            <div classname="buttons">
+                                            <button type="button" onClick={handleCancel} className="btn btn-secondary" id="sand1">Cancel</button>
                                             <button type="submit"
                                                 className="btn btn-primary"
+                                                id="sand1"
                                                 onClick={() => {
                                                     console.log(isPrimary,primaryAddress,primary_location)
                                                     if (isPrimary) {
@@ -200,7 +201,8 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                     }
                                                 }}>
                                                 Next
-                                            </button>                                
+                                            </button>   
+                                            </div>                             
                                         </fieldset>
                                     </form>
                                 </div>

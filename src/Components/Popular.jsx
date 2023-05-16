@@ -108,13 +108,14 @@ const Popular = (onClick) => {
       </div>
 
       <div className="void">
-        <div>
+        <div className="gap">
           <input
             type="text"
             value={value}
             onChange={onChange}
             className="input"
-            
+            id="same"
+            placeholder="Search your City.."
           />
 
           
@@ -123,7 +124,7 @@ const Popular = (onClick) => {
           <a href="#" class="button">
             {/* <button type="button">Search</button>
              */}
-          <button name="next" type="button" className="btn btn-primary">Search</button>
+          <button name="next" type="button" className="btn btn-primary" id="same">Search</button>
 
           </a>
           {/* {data

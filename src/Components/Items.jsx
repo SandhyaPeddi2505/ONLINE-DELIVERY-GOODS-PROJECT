@@ -174,12 +174,14 @@ const handleClose = () => {
             </form><hr/>
             <form className="mt-5 pb-5 pt-5 mr-4">
               <label><b>Quantity</b></label>
+              <div className="quan" >
             <input
               type="number"
               placeholder="Quantity in Kgs"
               onChange={handleQuantityChange}
-            /><br/>
-            <label className="mt-2 pt-3 m-3"><b>Date</b></label>
+            />
+            </div><br/>
+            {/* <label className="mt-2 pt-3 m-3"><b>Date</b></label>
             <DatePicker
         selected={selectedDate}
         onChange={handleChange}
@@ -190,15 +192,10 @@ const handleClose = () => {
             setPlaceholderText('Select a date');
           }
         }} onClose={handleClose}
-      />
-            {/* <DatePicker
-        selected={selectedDate}
-        onChange={handleChange}
-        placeholderText={selectedDate ? selectedDate.toDateString() : 'Select a date' } 
       /> */}
-            {/* <DatePicker type="date" placeholderText={placeholder} selected={selectedDate} onChange={handleChange}  style={{height:"30px",width:"160px"}}/> */}
-            {/* <input type="date" placeholder="Date" onChange={handleDateChange} /> */}
-            <a href="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1">Submit</button></a>
+           
+           
+            <a href="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1" >Submit</button></a>
             
             </form>
         </div>
