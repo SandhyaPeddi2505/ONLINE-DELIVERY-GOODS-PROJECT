@@ -14,14 +14,11 @@ import "./Profile.scss";
 import "./Components/Tracking.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 const App = () => {
-  
   const [key1, setKey1] = useState([]);
   const ddata = (l) => {
     setKey1(() => [l]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    
   };
 
   const checkUserToken = () => {
@@ -40,7 +37,7 @@ const App = () => {
   }, [isLoggedIn]);
   return (
     <>
-      
+    
       <React.Fragment>
         {isLoggedIn && <HomeNew />}
 
