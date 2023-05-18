@@ -92,16 +92,6 @@ const Previous = () => {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-           
-            {/* <li class="nav-item"> */}
-              {/* <a class="hi nav-link" to={Link} href="/previous" ><p className="qb"><span style={{ color: "black" }}>previous</span></p></a> */}
-            {/* </li> */}
-           
-            <li class="nav-item">
-              
-                {/* <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a> */}
-              
-            </li>
 
           </ul>
         </div>
