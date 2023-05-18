@@ -8,16 +8,7 @@ import { Link } from "react-router-dom";
 
 
 const Home = () => {
-  const [disprofile, setdisprofile] = useState(false)
-  const dishan = () => {
-    if (disprofile === false) {
-      setdisprofile(true)
-    }
-    else {
-      setdisprofile(false)
-    }
-
-  }
+  
   return (
     <>
       <nav class="fixed-nav-bar">
@@ -36,6 +27,9 @@ const Home = () => {
               <li class="nav-item">
                 <div className="wer">
                   <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a>
+                  
+
+
                 </div>
               </li>
 

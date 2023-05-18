@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useState,useEffect} from 'react'
 import 'rsuite/dist/rsuite.min.css';
 import Navbar from './Navbar';
+import "./Tracking.scss";
 
 
  const VerticalStepper = () => {

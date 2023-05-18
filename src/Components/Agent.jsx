@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import qwe from "./12.png";
 import { useState } from "react";
-import { ToastContainer,  toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify-dist/ReactToastify.css";
 import axios from "axios";
-import {Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "./sk.png";
 const Agent = () => {
-  const [imageFile, setImageFile] = useState('');
+  const [imageFile, setImageFile] = useState("");
   const [base64, setBase64] = useState();
   const home = useNavigate();
   const [base641, setBase641] = useState();
@@ -61,11 +61,10 @@ const Agent = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
     const validFirstName = firstName.length > 0;
     const validLastName = lastName.length > 0;
     const validEmail = email.includes("@gmail.com");
-    const validPassword = password.match(/[a-z]/) ;
+    const validPassword = password.match(/[a-z]/);
     // && password.match(/[A-Z]/) && password.match(/[0-9]/) && password.match(/[!@#$%^&*]/)
     const validPhoneNumber = phoneNumber.length > 8;
     const validAddress = address.length > 0;
@@ -78,63 +77,68 @@ const Agent = () => {
       validEmail &&
       validPassword &&
       validPhoneNumber &&
-      validAddress 
+      validAddress
       // validFile &&
       // validFiles
     ) {
       toast.success(
-        'User Successfully Registred \r Admin will get back to you once \r your details are verified!!');
-        // setTimeout(function() { window.location.replace('/'); }, 2000)
+        "User Successfully Registred \r Admin will get back to you once \r your details are verified!!"
+      );
+      // setTimeout(function() { window.location.replace('/'); }, 2000)
       // home("/");
     } else if (!password.match(/[a-z]/)) {
       // || !password.match(/[A-Z]/) || !password.match(/[0-9]/) || !password.match(/[!@#$%^&*]/)
-      alert(' Password must contain capital,small,num,special characters');
-    }
-    else {
+      alert(" Password must contain capital,small,num,special characters");
+    } else {
       alert("Error Occurred!");
     }
-    let az = []
+    let az = [];
     let abc = {
-      "name": imageFile1.name,
-      "BASE642": base641
-    }
-    az.push(abc)
+      name: imageFile1.name,
+      BASE642: base641
+    };
+    az.push(abc);
     let def = {
-      "name": imageFile.name,
-      "BASE64": base64
-    }
-    az.push(def)
+      name: imageFile.name,
+      BASE64: base64
+    };
+    az.push(def);
 
-    console.log({ firstName, lastName, email, password, phoneNumber, address, "INFO": az })
-    axios.post(`http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/agentRegister/`,
-      
-      {
-        "firstname": firstName,
-        "lastname": lastName,
-        "password": password,
-        "email": email,
-        "address": address,
-        "mobile": phoneNumber,
-        "aadhar":file,
-        "driving_licence":files
-      }
-    )
-    .then(
-      res=>{
-        localStorage.setItem("Token",res.data.token);
-        console.log(res)
+    console.log({
+      firstName,
+      lastName,
+      email,
+      password,
+      phoneNumber,
+      address,
+      INFO: az
+    });
+    axios
+      .post(
+        `http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/agentRegister/`,
+
+        {
+          firstname: firstName,
+          lastname: lastName,
+          password: password,
+          email: email,
+          address: address,
+          mobile: phoneNumber,
+          aadhar: file,
+          driving_licence: files
+        }
+      )
+      .then((res) => {
+        localStorage.setItem("Token", res.data.token);
+        console.log(res);
         // home('/home')
-      }
-    )
-    .catch(
-      ()=>{
-        alert("enter valid details!!")
-      }
-    )
+      })
+      .catch(() => {
+        alert("enter valid details!!");
+      });
     // console.log({"INFO":az});
 
     // console.log(b);
-
   };
 
   return (
@@ -157,8 +161,7 @@ const Agent = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <div className="">
-              </div>
+              <div className=""></div>
             </ul>
           </div>
         </nav>
@@ -241,33 +244,43 @@ const Agent = () => {
                         />
                       </div>
 
-                      
                       {/* <img src={file} height="50px" width="50px" /> */}
                       <div className="mb-3">
-                      <h6 class="font-bold mb-2">Aadhar Image:</h6>
-                      <input
-                        type="file"
-                        id="imageFileInput"
-                        onChange={handleFileInputChange}
-                      />
-                      <h6 class="font-bold mb-2">Licence Image:</h6>
-                      <input
-                        type="file"
-                        id="imageFileInput1"
-                        onChange={handleFileInputChange1}
-                      />
-                      {/* <img
+                        <h6 class="font-bold mb-2">Aadhar Image:</h6>
+                        <input
+                          type="file"
+                          id="imageFileInput"
+                          onChange={handleFileInputChange}
+                        />
+                        <h6 class="font-bold mb-2">Licence Image:</h6>
+                        <input
+                          type="file"
+                          id="imageFileInput1"
+                          onChange={handleFileInputChange1}
+                        />
+                        {/* <img
                         src={files}
                         height="50px"
                         width="50px"
                       /> */}
                       </div>
                       <div className="heading6">
-                        <button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+                        <button
+                          className="btn btn-primary"
+                          onClick={handleSubmit}
+                        >
+                          Submit
+                        </button>
                       </div>
                       <div className="d-flex flex-row justify-content-center">
                         <h5 className="aglogin">Already have an account? </h5>
-                        <Link to="/agentlogin"><h5><a className="nn" href="">Login</a></h5></Link>
+                        <Link to="/agentlogin">
+                          <h5>
+                            <a className="nn" href="">
+                              Login
+                            </a>
+                          </h5>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -276,17 +289,18 @@ const Agent = () => {
             </div>
           </div>
         </div>
-        <ToastContainer style={{marginTop:"80px"}}
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+        <ToastContainer
+          style={{ marginTop: "80px" }}
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </>
   );

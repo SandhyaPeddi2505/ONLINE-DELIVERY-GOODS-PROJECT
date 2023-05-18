@@ -14,6 +14,7 @@ import Hello from "./Components/Hello";
 // import Create from "./Components/CreateProfile";
 
 // import logo from './logo.svg';
+import OrderDetails from  "./Components/OrderConfirm";
 // import './App.css';
 import "./Style.scss";
 // import React from 'react';
@@ -94,17 +95,18 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<HomeNew />} />
-          <Route path="/primary1" element={<Primary />} />
-          <Route path="/hi" element={<Hello />} />
+          <Route path="/citySelection" element={<Primary />} />
+          {/* <Route path="/hi" element={<Hello />} /> */}
           <Route path="/t" element={<Layout />} />
           <Route path="/source" element={<StepperWrapper/>}/>
           <Route path="/items" element={<Order/>}/>
           <Route path="/source" element={<Source />} />
-          <Route path="/destination" element={<Destination />} />
-          <Route path="/submit" element={<Submit />} />
+          {/* <Route path="/destination" element={<Destination />} /> */}
+          {/* <Route path="/submit" element={<Submit />} /> */}
           <Route path="/confirm" element={<Confirm />} />
           <Route path='/' element={<Home />}></Route>
           <Route path='/agent' element={<Agent />} />
+          <Route path='/orderConfirm' element={<OrderDetails />}></Route>
           <Route path='/agentdash' element={<Agentdash display={ddata} dis={fun1}/>} />
           <Route path='/previous' element={<Previous />} />
           <Route path="/tracking" element={<VerticalStepper />} />

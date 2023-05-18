@@ -7,60 +7,88 @@ import Navbar from './Navbar';
 const Source = ({ onNextClick, deliveryData, props }) => {
     const [isPrimary, setIsPrimary] = useState(true);
     const [dataa, setDataa] = useState([]);
+    // const [sweet,setSweet]=useState([])
     const [Address,setAddress]=useState("")
-    const [sourceLocation,setSourceLocation]=useState([])
-    const [details, setDetails] = useState({
-        Name: "",
+    const [primary_location,setPrimary_Location]=useState([])
+    // const [socation,setSourceLocation]=useState([])
+    const [isConfirmed,setIsConfirmed]=useState(localStorage.getItem("isConfirmed"))
+    const [details, setDetails] = useState(
+        {
+        name: "",
         // Address: "",
-        Phone_number: "",
+        phone: "",}
+    );
+    const [primaryAddress, setPrimaryAddress] = useState({
+        name: "",
+        Address:"",
+        phone: "",
+        primary_location:""
     });
     useEffect(() => {
         axios
-            .get("http://localhost:3000/posts")
-            .then((response) => {
-                setDataa(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        .get(
+          "http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
+          
+          { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
+          // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
+          // )}`}}
+        ).then((response) => {
+       
+                      setPrimaryAddress({name:response.data?.name,
+                        Address:response.data?.address,
+                        phone:response.data?.phone,
+                        primary_location:response.data?.primary_location})
+                        console.log(response.data.primary_location,"2222")
+        },[])
+        console.log(deliveryData.name,"2222")
         console.log(deliveryData, "dfdf");
+        // console.log(response?.primary_location,"2222")
+        // setIsConfirmed(localStorage.getItem('isConfirmed'))
         if (deliveryData && !deliveryData.Source.isPrimary) {
             setDetails({
                 ...details,
-                Name: deliveryData.Source.Name,
-                // Address: deliveryData.Source.Address,
-                Phone_number: deliveryData.Source.Phone_number
+                name: deliveryData.Source.name,
+                Address: deliveryData.Source.Address,
+                phone: deliveryData.Source.phone,
+                primary_location:deliveryData.Source.primary_location
             });
+            console.log(deliveryData.primary_location,Address,"2222")
         }
     }, []);
+  
     const changeHandle = (e) => {
         const { name, value } = e.target;
         setDetails({ ...details, [name]: value });
     };
-    const [primaryAddress, setPrimaryAddress] = useState({
-        name2: "Sandhya",
-        address2: "Hyderabad",
-        phone2: "9087898078"
-    });
+   
     const handleSubmit = (e) => {
         e.preventDefault();
+        // debugger;
         console.log(deliveryData);
         console.log("address123",+Address)
+        // toast.error("Please enter valid details");
+        // if (details.Name && details.Name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
+        //     return true;
+        // } else {
+        //     toast.error("Please enter the valid details.");
+        //     return false;
+
+        // }
     };
-    const [secondaryAddress, setSecondaryAddress] = useState({
-        name1: "",
-        address1: "",
-        phoneno1: ""
-    });
+    // const [secondaryAddress, setSecondaryAddress] = useState({
+    //     name1: "",
+    //     address1: "",
+    //     phoneno1: ""
+    // });
 
     const handleChange = (e) => {
         if (isPrimary) {
-            setPrimaryAddress({ ...primaryAddress, [e.target.Name]: e.target.value });
+            setPrimaryAddress({ ...primaryAddress, [e.target.name]: e.target.value });
         } else {
-            if (e.target.Name === "Address") {
-                setPrimaryAddress({ ...primaryAddress, Address: e.target.value });
+            if (e.target.name === "Address") {
+                setPrimaryAddress({ ...primaryAddress, address: e.target.value });
             }
-            setSecondaryAddress({ ...secondaryAddress, [e.target.name1]: e.target.value });
+            setDetails({ ...details, [e.target.name1]: e.target.value });
         }
     };
     const handleAddressTypeChange = (e) => {
@@ -74,8 +102,9 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         setAddress(data1)
     }
     const lathandle=(p)=>{
-        setSourceLocation(p)
+        setPrimary_Location(p)
     }
+          
     return (
         <>
         <Navbar/>
@@ -109,41 +138,42 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                 </div>
                                                 {isPrimary ? (
                                                     <div className="row">
-                                                        {dataa.map((value, i) => {
+                                                        {/* {dataa.map((value, i) => {
 
-                                                            return (
+                                                            return ( */}
                                                                 <>
                                                                     <div className="col-md-4">
                                                                         <div className="form-outline">
                                                                             <label style={{ color: "black" }}><b>Name:</b>
-                                                                                <input type="text" name="Name" value={value.Name} placeholder="Name" onChange={handleChange} />
+                                                                                <input type="text" name="name" value={primaryAddress.name} placeholder="Name" onChange={changeHandle} />
                                                                             </label>
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6 md-4">
                                                                         <div className="form-outline">
                                                                             <label style={{ color: "black" }}><b>Address:</b>
-                                                                                <input type="text" name="Address" value={value.Address} placeholder="Address" onChange={handleChange} />
+                                                                            {/* <Map1 maper={addressHandler} maper1={lathandle}/> */}
+                                                                                <input type="text" name="Address" value={primaryAddress.Address} placeholder="Address" onChange={handleChange} />
                                                                             </label>
                                                                         </div>
                                                                     </div>
                                                                     <label style={{ color: "black" }}><b>Phone:</b>
-                                                                        <input type="tel" name="Phone_number" value={value.Phone_number} placeholder="PhoneNo" onChange={handleChange} />
+                                                                        <input type="tel" name="phone" value={primaryAddress.phone} placeholder="PhoneNo" onChange={handleChange} />
                                                                     </label>
                                                                 </>
-                                                            );
-                                                        })}
+                                                            {/* );
+                                                        })} */}
                                                     </div>
                                                 ) : (
                                                     <div className="row">
                                                         <div className="col">
                                                             <label style={{ color: "black" }}><b>Name:</b>
-                                                                <input type="text" name="Name" value={details.Name} onChange={changeHandle} required minLength={3} />{" "}
+                                                                <input type="text" name="name" value={details.name} onChange={changeHandle} required minLength={3} />{" "}
                                                                 
                                                             </label>
                                                         </div>
                                                         <label style={{ color: "black" }}><b>Phone:</b>
-                                                            <input type="text" name="Phone_number" value={details.Phone_number} onChange={changeHandle} required />
+                                                            <input type="text" name="phone" value={details.phone} onChange={changeHandle} required />
                                                             
                                                         </label>
                                                         <div className="col">
@@ -162,10 +192,11 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                             <button type="submit"
                                                 className="btn btn-primary"
                                                 onClick={() => {
+                                                    console.log(isPrimary,primaryAddress,primary_location)
                                                     if (isPrimary) {
-                                                        onNextClick({ isPrimary: true, ...dataa[0] });
-                                                    } else if (details.Name && details.Name.length >= 3 && Address && Address.length >= 5 && details.Phone_number && details.Phone_number.length === 10 && !isNaN(details.Phone_number)) {
-                                                        onNextClick({ isPrimary: false, ...details ,Address,sourceLocation});
+                                                        onNextClick({ isPrimary: true, ...primaryAddress});
+                                                    } else if (details.name && details.name.length >= 3 && Address && Address.length >= 5 && details.phone && details.phone.length === 10 && !isNaN(details.phone)) {
+                                                        onNextClick({ isPrimary: false, ...details ,Address,primary_location});
                                                     }
                                                 }}>
                                                 Next

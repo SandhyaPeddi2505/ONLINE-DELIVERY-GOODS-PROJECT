@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
-import {
-
-  geocodeByAddress,
-
-  getLatLng,
-
-} from 'react-places-autocomplete';
+import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 // import {
 
 //   geocodeByAddress,
@@ -19,41 +13,33 @@ import {
 
 const Map1 = (props) => {
   const [address, setAddress] = useState("");
-  const [latlang, setlatlang] = useState([])
+  const [latlang, setlatlang] = useState([]);
   const handleChange = (address) => {
     setAddress(address);
     console.log({ address });
   };
-  const google = window.google
+  const google = window.google;
 
   const hydBounds = new google.maps.LatLngBounds(
-
     new google.maps.LatLng(17.385044, 78.486671),
 
     new google.maps.LatLng(17, 78)
-
-  )
+  );
   const searchOptions = {
-
-    componentRestrictions: { country: ['in'] },
+    componentRestrictions: { country: ["in"] },
 
     bounds: hydBounds,
 
-    radius: 2000,
-
-  }
+    radius: 2000
+  };
   const handleSelect = (address) => {
     geocodeByAddress(address)
-
-      .then(results => getLatLng(results[0])).then(({ lat, lng }) => {
+      .then((results) => getLatLng(results[0]))
+      .then(({ lat, lng }) => {
         setAddress(address); // set the selected address
         setlatlang([lat, lng]);
       })
-      .catch(error => console.error('Error', error));
-
-
-
-
+      .catch((error) => console.error("Error", error));
   };
   // geocodeByAddress(address)
 
@@ -64,13 +50,12 @@ const Map1 = (props) => {
   //     console.log('Successfully got latitude and longitude', { lat, lng })
 
   //   );
-  props.map(address)
-  props.lat(latlang)
+  props.map(address);
+  props.lat(latlang);
   return (
     <div className="canvas" height="">
       <PlacesAutocomplete
         value={address}
-
         onChange={handleChange}
         onSelect={handleSelect}
         searchOptions={searchOptions}
@@ -78,19 +63,28 @@ const Map1 = (props) => {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
+            required
               {...getInputProps({
                 placeholder: "Search Places ...",
-                className: "location-search-input",
-
-
-              })} style={{ width: "180px", height: "40px", borderRadius: "10px", Autocomplete: "on" }}
+                className: "location-search-input"
+            
+              })}
+              style={{
+                width: "180px",
+                height: "40px",
+                borderRadius: "10px",
+                Autocomplete: "on"
+              }}
             />
             {/* <div>
             <input>
             </input>
             </div> */}
 
-            <div className="autocomplete-dropdown-container" style={{ height: "40px", width: "180px" }}>
+            <div
+              className="autocomplete-dropdown-container"
+              style={{ height: "40px", width: "180px" }}
+            >
               {loading && <div>Loading...</div>}
               {suggestions.map((suggestion) => {
                 const className = suggestion.active
@@ -107,13 +101,13 @@ const Map1 = (props) => {
                       style
                     })}
                   >
-                    {suggestion.description.includes('Hyderabad') &&
-
+                    {suggestion.description.includes("Hyderabad") && (
                       <>
-
                         <i className="material-icons">location_on</i>
 
-                        <span>{suggestion.description}</span></>}
+                        <span>{suggestion.description}</span>
+                      </>
+                    )}
                     {/* <i class="material-icons">location_on</i>{" "}
                     <span>{suggestion.description}</span> */}
                   </div>

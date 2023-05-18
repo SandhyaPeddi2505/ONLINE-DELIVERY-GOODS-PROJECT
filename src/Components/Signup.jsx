@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import validator from "validator";
-// import { useHistory } from 'react-router-dom';
 import Navbar from "./Navbar";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,55 +8,45 @@ import { ToastContainer, toast } from "react-toastify";
 import abc from "./online.png";
 
 const Signup = () => {
-  const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
-  const [password, passwordchange] = useState("");
-  const [cpassword, setCpassword] = useState("");
-  const [username, setuserName] = useState("");
-  const navigate = useNavigate();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [cPasswordError, setCpasswordError] = useState("");
-  const [error, setErrors] = useState();
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const navigate = useNavigate();
 
-  const validateEmail = (e) => {
-    var email = e.target.value;
-    if (e.target.name === "username") {
-      setuserName(e.target.value);
+  const validateEmail = (email) => {
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Invalid email address");
+      return false;
+    } else {
+      setEmailError("");
+      return true;
     }
-
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-      if (validator.isEmail(email)) {
-        setEmailError("");
-      } else {
-        setEmailError("Enter valid Email!");
-      }
+  };
+  const validatePassword = (password) => {
+    // Password validation regex
+    const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setPasswordError(
+        "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character"
+      );
+      return false;
+    } else {
+      setPasswordError("");
+      return true;
     }
-    if (e.target.name === "password") {
-      passwordchange(e.target.value);
-      if (!password) {
-        setPasswordError("Password is required");
-      } else if (
-        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
-          password
-        )
-      ) {
-        setPasswordError(
-          "Password must contain capital,small,numeric,special characters"
-        );
-      } else if (password.length < 6) {
-        setPasswordError("Password must be atleast 6 characters");
-      } else {
-        setPasswordError("");
-      }
-    }
-    if (e.target.name === "cpassword") {
-      setCpassword(e.target.value);
-      if (e.target.value !== password) {
-        setCpasswordError("Passwords do not match");
-      } else {
-        setCpasswordError("");
-      }
+  };
+  const validateConfirmPassword = (confirmPassword) => {
+    if (password !== confirmPassword) {
+      setConfirmPasswordError("Passwords do not match");
+      return false;
+    } else {
+      setConfirmPasswordError("");
+      return true;
     }
   };
   const handleSubmit = (e) => {
@@ -70,36 +58,48 @@ const Signup = () => {
 
       password: password
     };
-
-    axios
-      .post(
-        "http://ec2-65-2-80-226.ap-south-1.compute.amazonaws.com:8001/register/",
-
-        payload
-      )
-      .then((response) => {
-        console.log(response);
-        if (response?.status === 200) {
-          console.log(response?.status);
-          // navigate("/login");
-        }
-      })
-
-      .catch((error) => {
-        console.log(error.response.data); // handle error
-      });
-
-    setErrors({});
-    if (username !== "" && email !== "" && password !== "") {
-      toast.success("successfully signed up!");
-      setTimeout(() => {
-        navigate("/login");
-      }, 6000);
-    } else {
-      toast.warn("noo");
+    if (!email || !password || !confirmPassword) {
+      // alert("Enter all details");
+      toast.error("Enter all Details");
     }
-    setErrors({});
+
+    // Check if all fields are valid before submitting
+    if (
+      validateEmail(email) &&
+      validatePassword(password) &&
+      validateConfirmPassword(confirmPassword)
+    ) {
+      // Submit form
+      axios
+        .post(
+          "http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/register/",
+
+          payload
+        )
+        .then(
+          (response) => {
+            console.log(response);
+
+            // if (response?.status === 201) {
+            toast.success("Register Successfully");
+            setTimeout(function () {
+              window.location.replace("/login");
+            }, 1000);
+            // setTimeout(() => {
+            //   navigate("/login");
+            // }, 6000);
+
+            console.log(response?.status);
+          }
+          // }
+        )
+
+        .catch((error) => {
+          console.log(error.response.data); // handle error
+        });
+    }
   };
+
   const loginNavigate = (e) => {
     navigate("/login");
     window.location.reload();
@@ -120,70 +120,101 @@ const Signup = () => {
               <div className="pg">
                 <h1>Sign Up</h1>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div>
-                    {/* <div className="mb-3" id="formBasicUsername">
-                      <label>Username</label>
-                      <input
-                        onChange={(e) => validateEmail(e)}
-                        name="username"
-                        type="text"
-                        placeholder="Enter Username"
-                        className="form-control"
-                        required
-                      />
-                    </div> */}
-
                     <div className="mb-3" id="formBasicEmail">
-                      <label>Email address</label>
+                      <label>
+                        <p
+                          style={{
+                            fontSize: 16,
+                            color: "black",
+                            paddingTop: 5,
+                            alignItems: "center"
+                          }}
+                        >
+                          Email address
+                        </p>
+                      </label>
                       <input
-                        onChange={(e) => validateEmail(e)}
+                        onChange={(e) => setEmail(e.target.value)}
                         name="email"
                         type="email"
                         placeholder="Enter email"
                         className="form-control"
-                        required
+                      required
                       />
 
                       <span style={{ color: "red" }}>{emailError}</span>
                     </div>
                     <div className="mb-3" id="formBasicLastName">
-                      <label>Password</label>
+                      <label>
+                        <p
+                          style={{
+                            fontSize: 16,
+                            color: "black",
+                            paddingTop: 5,
+                            alignItems: "center"
+                          }}
+                        >
+                          Password
+                        </p>
+                      </label>
                       <input
                         type="password"
                         name="password"
-                        onChange={(e) => validateEmail(e)}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="password"
                         className="form-control"
-                        required
+                      required
                       />
 
                       <span style={{ color: "red" }}>{passwordError}</span>
                     </div>
-                    {console.log(error)}
+                    {/* {console.log(error)} */}
                     <div className="mb-3">
-                      <label>Confirm Password</label>
+                      <label>
+                        <p
+                          style={{
+                            fontSize: 16,
+                            color: "black",
+                            paddingTop: 5,
+                            alignItems: "center"
+                          }}
+                        >
+                          Confirm Password
+                        </p>
+                      </label>
                       <input
                         type="password"
                         name="cpassword"
                         className="form-control"
-                        onChange={(e) => validateEmail(e)}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirm Password"
-                        required
+                      required
                       />
 
-                      <span style={{ color: "red" }}>{cPasswordError}</span>
+                      <span style={{ color: "red" }}>
+                        {confirmPasswordError}
+                      </span>
                     </div>
 
                     <button
-                      onClick={handleSubmit}
+                      // onClick={handleSubmit}
+                      style={{ width: 250 }}
                       className="btn btn-primary"
                       type="Submit"
                     >
                       Submit
                     </button>
                     <div>
-                      <p>
+                      <p
+                        style={{
+                          fontSize: 16,
+                          color: "black",
+                          paddingTop: 20,
+                          alignItems: "center"
+                        }}
+                      >
                         Already have an account ?
                         <Link
                           style={{ color: "blue", textDecoration: "none" }}
@@ -204,5 +235,5 @@ const Signup = () => {
     </>
   );
 };
-
 export default Signup;
+
