@@ -19,11 +19,11 @@ const Home = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <div className="">
+              {/* <div className="">
                 <li class="nav-item">
                   <a class="hi nav-link" to={Link} href="/tracking" ><p className="qb"><span style={{ color: "black" }}>Tracking</span></p></a>
                 </li>
-              </div>
+              </div> */}
               <li class="nav-item">
                 <div className="wer">
                   <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a>

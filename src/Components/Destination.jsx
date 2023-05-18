@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { ToastContainer,toast } from 'react-toastify';
 import Map1 from "./Map2"
+import NavwithIcon from "./NavwithIcon";
 
 const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa, details }) => {
     const [address, setAddress] = useState("")
@@ -50,6 +51,7 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa, details })
 
     return (
         <>
+        <NavwithIcon/>
         <div className="container-fluid" id="grad1">
             <div className="row justify-content-center mt-0">
                 <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">

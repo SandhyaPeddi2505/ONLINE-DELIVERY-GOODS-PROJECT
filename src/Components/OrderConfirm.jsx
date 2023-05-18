@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import NavwithIcon from "./NavwithIcon";
+import { API_BASE_URL } from './api.jsx';
 const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
   const [orderid, setOrderId] = useState("");
 
@@ -16,17 +17,20 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
     );
   };
 
-  axios
-    .get(
-      "http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/successorder"
+  // axios
+  //   .get(
+  //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/successorder"
       //  payload
+      axios.get(`${API_BASE_URL}/successorder`
     )
     .then((response) => {
       console.log(response);
-      localStorage.clear()
+      // localStorage.clear()
     });
   return (
+   <><NavwithIcon/>
     <div className="con">
+       
       <div className="order-confirmation-header">
 
       </div>
@@ -42,8 +46,9 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
       <h2 className=" fs-title text-center" style={{color: "black"}}>Thank you, Your order is confirmed!</h2>
       <hr/>
       <div className="order-details">
-        <h5 className="text center" id="cen"  style={{color: "black"}}>
-          Your OrderID is :
+        <h5 className=" center" id="cen"  
+        style={{color: "black"}}>
+          <b class="bold">Your OrderID is :</b>
            {localStorage.getItem("orderId")}
         </h5>
         {/* <p className="fs-title text-center">
@@ -59,6 +64,7 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
         </button>
       </Link>
     </div>
+    </>
   );
 };
 export default OrderDetails;

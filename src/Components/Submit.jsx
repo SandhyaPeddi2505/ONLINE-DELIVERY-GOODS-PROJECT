@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
+import NavwithIcon from "./NavwithIcon";
+import { API_BASE_URL } from './api.jsx';
 
 const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
     const { Source, Destination } = deliveryData;
@@ -23,8 +25,10 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
             "location":Destination.destinationLocation
         }
     }
-    axios
-       .post("http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
+    // axios
+    //    .post("http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/sourceDestination"
+    axios.post(`${API_BASE_URL}/sourceDestination`
+       ,
          
          payload,
          { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
@@ -42,6 +46,7 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
     // }, [])
 
     return (
+        <>  <NavwithIcon/>
         <div className="container-fluid" id="grad1">
             <div className="row justify-content-center mt-0">
                 <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
@@ -85,6 +90,7 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 export default Submit;

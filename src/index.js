@@ -1,35 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-
-// import Routing from "./Components/Routing"
-import Submit from "./Components/Submit";
-import Source from "./Components/Source";
-import Destination from "./Components/Destination";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 import Layout from "./Components/Layout";
 import Confirm from "./Components/Confirm";
 import Order from "./Components/Items";
 import "./Components/Styles.scss";
 import "./Components/OrderConfirm";
 import "./Components/OrderConfirm.scss";
-import { Outlet } from "react-router-dom";
-import Next from "./Components/Other.jsx";
 import "./styles.scss";
 import Primary from "./Components/Primary";
-// import Icon from "./Components/Icon";
-import Hello from "./Components/Hello";
 import "./Style.scss";
 import Agent from "./Components/Agent";
 import "bootstrap/dist/css/bootstrap.css";
+import NavwithIcon from "./Components/NavwithIcon";
 import HomeNew from "./Components/HomeNew";
 import Home from "./Components/Home";
 import Previous from "./Components/Previous";
 import Agentdash from "./Components/Agentdash";
-import Tracking from "./Components/Tracking";
 import Confirmscreen from "./Components/Confirmscreen";
 import StepperWrapper from "./Components/StepperWrapper";
 import Login from "./Components/Login";
-// import Order from './Components/Items';
 import ProtectedRoute from "./Components/ProtectedRoute";
 import "./Login.scss";
 import "./Signup.scss";
@@ -38,188 +28,157 @@ import "./OTP.scss";
 import "./Changepassword.scss";
 import Orderss from "./Components/userPreviousOrders";
 import "./Forgotpassword.scss";
-import Create from "./Components/CreateProfile";
-import Logout from "./Components/Logout"
+import CreateProfile from "./Components/CreateProfile";
+// import Logout from "./Components/Logout"
 import "./Profile.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import PrivateRoute from './PrivateRoute';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./Components/Signup";
 import OTP from "./Components/OTP";
-import User from "./Components/User";
 import Changepassword from "./Components/Changepassword";
 import Profile from "./Components/Profile";
-// import Order from './Components/OrderConfirm';
 import Forgotpassword from "./Components/Forgotpassword";
-import reportWebVitals from './reportWebVitals';
-import OrderDetails from './Components/OrderConfirm';
+import reportWebVitals from "./reportWebVitals";
+import OrderDetails from "./Components/OrderConfirm";
 
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-        <Routes>
-          {/* <Route path='/home' element={
+      <Routes>
+      <Route path='/createProfile' element={
+<ProtectedRoute>
+<CreateProfile />
+</ProtectedRoute>
+} />
+        <Route path='/home' element={
 <ProtectedRoute>
 <HomeNew />
 </ProtectedRoute>
-} /> */}
-           
-            {/* <Route path='/primary1' element={
+} />
+
+        <Route path='/citySelection' element={
 <ProtectedRoute>
 <Primary />
 </ProtectedRoute>
-} /> */}
-          
-            {/* <Route path='/hi' element={
+} />
+ <Route path='/items' element={
 <ProtectedRoute>
-<Hello />
+<Order/>
 </ProtectedRoute>
-} /> */}
-           
-            {/* <Route path='/source' element={
+} />
+
+        <Route path='/source' element={
 <ProtectedRoute>
 <StepperWrapper/>
 </ProtectedRoute>
-} /> */}
-            
-            {/* <Route path='/destination' element={
-<ProtectedRoute>
-<Destination />
-</ProtectedRoute>
-} /> */}
-           
-            {/* <Route path='/submit' element={
-<ProtectedRoute>
-<Submit />
-</ProtectedRoute>
-} /> */}
-           
-            {/* <Route path='/confirm' element={
+} />
+
+        <Route path='/confirm' element={
 <ProtectedRoute>
 <Confirm />
 </ProtectedRoute>
-} /> */}
-           
-           {/* <Route path='/agent' element={ */}
-{/* // <ProtectedRoute>
-// <Agent/>
-// </ProtectedRoute>
-// } /> */}
-            
-            {/* <Route path='/agentdash' element={
+} />
+
+<Route path='/OrderConfirm' element={
 <ProtectedRoute>
-<Agentdash />
+<OrderDetails />
 </ProtectedRoute>
-} /> */}
-            
-            {/* <Route path='/previous' element={
-<ProtectedRoute>
-<Previous/>
-</ProtectedRoute>
-} /> */}
-           
-            {/* <Route path='/tracking' element={
+} />
+
+<Route path='/tracking' element={
 <ProtectedRoute>
 <VerticalStepper />
 </ProtectedRoute>
-} /> */}
-            
-            {/* <Route path='/confirmScreen' element={
+} />
+
+       
+
+        <Route path='/agentdash' element={
 <ProtectedRoute>
-<Confirmscreen />
+<Agentdash />
 </ProtectedRoute>
-} /> */}
-           
-            
-            {/* <Route path='/OTP' element={
+} />
+
+        <Route path='/previous' element={
+<ProtectedRoute>
+<Previous/>
+</ProtectedRoute>
+} />
+
+
+        <Route path='/OTP' element={
 <ProtectedRoute>
 <OTP />
 </ProtectedRoute>
-} /> */}
-         
-            {/* <Route path='/user' element={
+} />
+  <Route path='/userprevorders' element={
 <ProtectedRoute>
-<User />
+<Orderss />
 </ProtectedRoute>
-} /> */}
-      
-            {/* <Route path='changepassword' element={
+} />
+
+
+       
+
+        <Route path='changepassword' element={
 <ProtectedRoute>
 <Changepassword />
 </ProtectedRoute>
-} />  */}
-    {/* <Route path='/profile' element={
+} /> 
+        <Route path='/profile' element={
 <ProtectedRoute>
 <Profile />
 </ProtectedRoute>
-} /> */}
-           
-            {/* <Route path='/createProfile' element={
-<ProtectedRoute>
-<Create />
-</ProtectedRoute>
-} /> */}
-            
-            {/* <Route path='/forgotpassword' element={
+} />
+
+      
+
+        <Route path='/forgotpassword' element={
 <ProtectedRoute>
 <Forgotpassword />
 </ProtectedRoute>
-} /> */}
-                
-                     {/* <Route path='/' element={
+} />
+ <Route path='/confirmScreen' element={
 <ProtectedRoute>
-<Home />
-</ProtectedRoute> */}
-{/* 
-             <Route path="home" element={<PublicRoutes />
-             <Route path="/" element={<Home />} /> 
-             </Route> */}
-             <Route path="/" element={<Home />}/>
-             <Route path="/items" element={<Order/>}/>
-             <Route path="/source" element={<StepperWrapper/>}/>
-             <Route path="/login" element={<Login />}/>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/Logout" element={<Logout/>} />
-            <Route path="/citySelection" element={<Primary />} />
-            {/* <Route path="/icon" element={<Icon/>} /> */}
-             <Route path="/agent" element={<Agent />} />
-             <Route path="/source" element={<StepperWrapper />} />
-             <Route path="*" element={<div>Page Not Found!!</div>} />
-             <Route path="/createProfile" element={<Create />} />
-             {/* <Route path="/denied" element={<PermissionDenied />} />  */}
-             <Route path="/home" element={<HomeNew />} />
-             <Route path="/primary1" element={<Primary />}/>
-             <Route path="/userPrevOrders" element={<Orderss/>}/>
-             <Route path="/hi" element={<Hello />} />
-             <Route path="/destination" element={<Destination/>}/>
-             <Route path="/confirm" element={<Confirm/>}/>
-             <Route path="/submit" element={<Submit/>}/>
-             <Route path="agent" element={<ProtectedRoute roleRequired="AGENT" />} />
-             <Route path="/agent" element={<Agent />} /> 
-             {/* </Route> */}
-             
-             <Route path="/t" element={<Layout/>}/> 
-              <Route path="/agentdash" element={<Agentdash />} />
-             <Route path="/previous" element={<Previous />} />
-             <Route path="/tracking" element={<Tracking />} />
-             <Route path="/confirmScreen" element={<Confirmscreen />} />
-             <Route path="/OTP" element={<OTP />} />
-             <Route path="/items" element={<Order/>}/>
-             <Route path="/user" element={<User />} />
-             <Route path="/changepassword" element={<Changepassword />} />
-             <Route path="/profile" element={<Profile />} />
-             <Route path="/forgotpassword" element={<Forgotpassword />} />
-             <Route path="/OrderConfirm" element={<OrderDetails />}/>
+<Confirmscreen />
+</ProtectedRoute>
+} />
+
+
+         <Route path="*" element={<div>Page Not Found!!</div>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/agent" element={<Agent />} />
+        <Route path="/NavwithIcon" element={<NavwithIcon />} />
+        <Route path="/t" element={<Layout />} />
+    
+      
+        {/* <Route path="/createProfile" element={<CreateProfile />} />
+        <Route path="/home" element={<HomeNew />} />
+        <Route path="/citySelection" element={<Primary />} />
+        <Route path="/items" element={<Order />} />
+        <Route path="/source" element={<StepperWrapper />} />
+        <Route path="/confirm" element={<Confirm />} />
+        <Route path="/OrderConfirm" element={<OrderDetails />} />
+        <Route path="/tracking" element={<VerticalStepper />} /> */}
+       
+        {/* Agent SIDE */}
+        {/* <Route path="/confirmScreen" element={<Confirmscreen />} /> */}
+
+        {/* <Route path="/agentdash" element={<Agentdash />} /> */}
+        {/* <Route path="/previous" element={<Previous />} /> */}
         
-          {/* </Route> */}
-        </Routes>
-       </BrowserRouter>
+        {/* ON HOLD */}
+        {/* <Route path="/OTP" element={<OTP />} />
+        <Route path="/changepassword" element={<Changepassword />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/forgotpassword" element={<Forgotpassword />} /> */}
+
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

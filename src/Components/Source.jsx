@@ -2,7 +2,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Map1 from "./Map1";
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
+import NavwithIcon from "./NavwithIcon";
+import { API_BASE_URL } from './api.jsx';
 
 const Source = ({ onNextClick, deliveryData, props }) => {
     const [isPrimary, setIsPrimary] = useState(true);
@@ -25,9 +27,11 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         primary_location:""
     });
     useEffect(() => {
-        axios
-        .get(
-          "http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
+        axios.get(`${API_BASE_URL}/primaryUserDetails`
+        // axios
+        // .get(
+        //   "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails"
+          ,
           
           { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
           // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
@@ -107,7 +111,8 @@ const Source = ({ onNextClick, deliveryData, props }) => {
           
     return (
         <>
-        <Navbar/>
+        {/* <Navbar/> */}
+        <NavwithIcon/>
             <div className="container-fluid" id="grad1">
                 <div className="row justify-content-center mt-0">
                     <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">

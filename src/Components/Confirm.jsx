@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import NavwithIcon from "./NavwithIcon";
 const Confirm = () => {
     return (
         <>
+        <NavwithIcon/>
             <div className="container-fluid" id="grad1">
                 <div className="row justify-content-center mt-0">
                     <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
