@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { FaMapMarkerAlt, FaCalendarAlt, FaMapMarker } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { API_BASE_URL } from './api.jsx';
 import { DatePicker } from "antd";
 // import PlacesAutocomplete from "react-places-autocomplete";
 import "./Primary.scss";
 import Map1 from "./Map5";
 import third from "./third";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
+import NavwithIcon from "./NavwithIcon";
 import axios from "axios";
 // import { Calendar, DatePicker } from 'antd';
 
@@ -41,9 +43,11 @@ const CitySelection = () => {
     "destination_address": selectedDestination,
     // "selectedDate":selectedDate
   };
-  axios
-  .post(
-    " http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/address  ",
+  // axios
+  // .post(
+    // " http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/address  "
+    axios.post(`${API_BASE_URL}/address`
+    ,
     payload,
     { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
   ).then((response) => {
@@ -108,17 +112,18 @@ const CitySelection = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <NavwithIcon/>
       <div className="primaryCont">
-        <h1 style={{ textAlign: "center ", padding: "40px 0 0 0px" }}>
-          Address Details!!
-        </h1>
+        <h2 style={{ textAlign: "center ", padding: "40px 0 0 0px" ,color:"white"}}>
+         City Selection!
+        </h2>
 
         <form class="form" onSubmit={handleSubmit}>
-          <FaMapMarkerAlt />
+          <FaMapMarkerAlt  className="ic" />
           <Map1 map={handleSourceChange} class="map" />
           <br></br>
-          <FaMapMarker />
+          <FaMapMarker className="ic" />
           <Map1 map={handleDestinationChange} class="map" />
 
           {/* <select
@@ -148,7 +153,7 @@ const CitySelection = () => {
           ))}
         </select> */}
 
-          <FaCalendarAlt />
+          <FaCalendarAlt  className="ic" />
           {/* <input type="date" onChange={handleChange} /> */}
           <DatePicker
             type="date"

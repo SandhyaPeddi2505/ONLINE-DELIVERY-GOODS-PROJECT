@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import abc from "./online.png";
 import Navbar from "./Navbar";
-
+import { API_BASE_URL } from './api.jsx';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,15 +40,16 @@ const Login = () => {
     e.preventDefault();
     const payload = {
       email: email,
-      password: password,
+      password: password
     };
-   
 
-    axios
-      .post('http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/login/',
-        payload, 
-       
-    )
+    // axios
+    //   .post(
+    //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/login/"
+    axios.post(`${API_BASE_URL}/login/`
+        ,
+        payload
+      )
       .then((response) => {
         if (!email || !password) {
           toast.warn("Enter all fields");
@@ -60,19 +61,16 @@ const Login = () => {
           console.log(response);
           if (response.data.loggedin === "permanent") {
             navigate("/home");
-          } 
-          else if(response.data.loggedin === "tempoorarily"){
-          navigate("/createProfile");
-        }
+          } else if (response.data.loggedin === "tempoorarily") {
+            navigate("/createProfile");
+          }
         }
       })
       .catch((error) => {
         console.log(error.response.data); // handle error
       });
-    
 
     setErrors({});
-
   };
   // const logout = () => {
   //   localStorage.removeItem('token');
@@ -80,7 +78,6 @@ const Login = () => {
   // useEffect(() => {
   //   logout();
   // }, []);
-
 
   return (
     <>
@@ -99,28 +96,45 @@ const Login = () => {
             <form>
               <div className="mb-3" id="formBasicemail">
                 <label>
-                  <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>                  Email
+                  <p
+                    style={{
+                      fontSize: 16,
+                      color: "black",
+                      paddingTop: 20,
+                      alignItems: "center"
+                    }}
+                  >
+                    {" "}
+                    Email
                   </p>
-                 
-                  </label>
+                </label>
                 <input
                   type="email"
                   id="email"
                   onChange={(e) => validateEmail(e)}
                   placeholder="Enter email"
-                  className="form-control" 
+                  className="form-control"
                 />
                 <span style={{ color: "red" }}>{emailError}</span>
                 <div className="text-muted">
-                  <p style={{color:"black"}}>We'll never share your email with anyone else.</p> 
+                  <p style={{ color: "black" }}>
+                    We'll never share your email with anyone else.
+                  </p>
                 </div>
               </div>
               <div className="mb-4" id="formBasicPassword">
                 <label>
-                  <p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>
+                  <p
+                    style={{
+                      fontSize: 16,
+                      color: "black",
+                      paddingTop: 5,
+                      alignItems: "center"
+                    }}
+                  >
                     Password
-                    </p>
-                  </label>
+                  </p>
+                </label>
                 <input
                   type="password"
                   onChange={handlePassword}
@@ -129,10 +143,10 @@ const Login = () => {
                   className="form-control"
                 ></input>
               </div>
-          
+
               <div className="d-flex flex-row justify-content-center">
                 <button
-                style={{width:290}}
+                  style={{ width: 290 }}
                   onClick={handleSubmit}
                   className="btn btn-primary"
                   type="LogIn"
@@ -141,9 +155,16 @@ const Login = () => {
                   Log In{" "}
                 </button>
               </div>
-              
+
               <div className="d-flex flex-row justify-content-center">
-                <p style={{ fontSize: 16, color: 'black', paddingTop: 20, alignItems: 'center' }}>
+                <p
+                  style={{
+                    fontSize: 16,
+                    color: "black",
+                    paddingTop: 20,
+                    alignItems: "center"
+                  }}
+                >
                   {" "}
                   Don't have an account?{" "}
                   <Link
@@ -152,16 +173,20 @@ const Login = () => {
                   >
                     Signup
                   </Link>
-                </p></div>
+                </p>
+              </div>
               <div className="d-flex flex-row justify-content-center">
                 <a
                   className="small text-muted"
                   style={{ textDecoration: "none" }}
                 >
-
                   <Link
                     to="/OTP"
-                    style={{ color: "blue", textDecoration: "none", fontSize: 16 }}
+                    style={{
+                      color: "blue",
+                      textDecoration: "none",
+                      fontSize: 16
+                    }}
                   >
                     <p>Forgot Password?</p>
                   </Link>
@@ -169,9 +194,9 @@ const Login = () => {
               </div>
             </form>
           </div>
-        </div >
+        </div>
         <ToastContainer />
-      </div >
+      </div>
     </>
   );
 };

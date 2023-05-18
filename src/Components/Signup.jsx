@@ -6,6 +6,7 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import abc from "./online.png";
+import { API_BASE_URL } from './api.jsx';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -70,9 +71,20 @@ const Signup = () => {
       validateConfirmPassword(confirmPassword)
     ) {
       // Submit form
-      axios
-        .post(
-          "http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/register/",
+      // const MyComponent = () => {
+      //   const fetchData = async () => {
+      //     try {
+      //       const response = await axios.post(`${API_BASE_URL}/endpoint`);
+      //       // Handle the response data
+      //     } catch (error) {
+      //       // Handle any errors
+      //     }
+      //   };
+      axios.post(`${API_BASE_URL}/register/`
+      // axios
+      //   .post(
+      //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/register/"
+          ,
 
           payload
         )
@@ -84,7 +96,7 @@ const Signup = () => {
             toast.success("Register Successfully");
             setTimeout(function () {
               window.location.replace("/login");
-            }, 1000);
+            }, 3000);
             // setTimeout(() => {
             //   navigate("/login");
             // }, 6000);

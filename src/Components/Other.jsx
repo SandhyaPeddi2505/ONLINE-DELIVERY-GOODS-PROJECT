@@ -153,11 +153,11 @@ const Next = () => {
         </div>
       </div>
       <div class="net">
-        <Link to="/cityselection">
+        {/* <Link to="/cityselection">
           <button name="next" className="btn btn-primary">
             Next
           </button>
-        </Link>
+        </Link> */}
        
       </div>
     </>
