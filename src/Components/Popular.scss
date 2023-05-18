@@ -2,6 +2,19 @@
   width:680px;
   height:120px;
   background-color: #ff4081, #81d4fa;
+    align-items: center;
+    // display: flex;
+   border-left: 90px;
+  //  gap:20px;
+  }
+.qv{
+  align-items: center;
+  font-size: 20px;
+  font-family: 'times new roman', sans-serif;
+  font-weight: 400;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 .body{
   background-image: linear-gradient(120deg, #ff4081, #81d4fa);
@@ -22,10 +35,22 @@
 .input{
   // align-items:center;
   // padding-left: 90px;
-  margin-left: 90px;
+  margin-left: 70px;
   // background-color: #ff4081;
   width:468px;
   height :35px; 
+}
+.jiv{
+  position: relative;
+  bottom: 30px;
+  right:35px
+
+}
+.itc{
+  position: relative;
+  bottom: 10px;
+  right:25px
+
 }
 .title2{
   color: black;
@@ -65,6 +90,9 @@ padding-right: 630px;
     width:35px;
     padding-right:15px;
   }
+  #same{
+    margin-right: 10px;
+  }
   .whole{
     // padding-right: 15px;
     margin-left: 20%;
@@ -89,5 +117,5 @@ padding-right: 630px;
   }
   .Main{
     margin-top: 60px;
-    // margin-bottom: 50px;
+    margin-left: 0px;
   }

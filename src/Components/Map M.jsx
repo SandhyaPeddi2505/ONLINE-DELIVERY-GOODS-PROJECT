@@ -65,7 +65,7 @@ const Map1 = (props) => {
             <input
             required
               {...getInputProps({
-                placeholder: "Search Places ...",
+                placeholder: "Choose your Address",
                 className: "location-search-input"
             
               })}

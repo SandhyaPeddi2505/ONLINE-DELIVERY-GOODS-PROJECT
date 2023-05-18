@@ -36,7 +36,7 @@ const Changepassword = () => {
       )
       .then((response) => {
         if (response?.status === 200) {
-          alert("Password Changed successfully");
+          alert("Password changed successfully");
           navigate("/");
           console.log(response?.status);
         }
