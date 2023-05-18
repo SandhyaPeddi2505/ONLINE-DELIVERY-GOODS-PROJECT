@@ -27,7 +27,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
     useEffect(() => {
         axios
         .get(
-          "http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
+          "http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/primaryUserDetails",
           
           { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
           // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"

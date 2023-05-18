@@ -30,7 +30,7 @@ const Changepassword = () => {
 
     axios
       .post(
-        "http://ec2-13-233-151-187.ap-south-1.compute.amazonaws.com:8001/changepassword",
+        "http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/changepassword",
         passwords,
         payload
       )

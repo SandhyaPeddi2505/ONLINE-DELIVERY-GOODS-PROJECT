@@ -24,7 +24,7 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
         }
     }
     axios
-       .post("http://ec2-65-1-92-110.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
+       .post("http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/sourceDestination",
          
          payload,
          { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}

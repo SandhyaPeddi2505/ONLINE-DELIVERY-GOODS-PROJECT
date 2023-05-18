@@ -30,7 +30,7 @@ const Signup = () => {
   const validatePassword = (password) => {
     // Password validation regex
     const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
-    if (!passwordRegex.test(password)) {
+    if (!passwordRegex.test(password)){
       setPasswordError(
         "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character"
       );
@@ -72,7 +72,7 @@ const Signup = () => {
       // Submit form
       axios
         .post(
-          "http://ec2-13-233-40-8.ap-south-1.compute.amazonaws.com:8001/register/",
+          "http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/register/",
 
           payload
         )
