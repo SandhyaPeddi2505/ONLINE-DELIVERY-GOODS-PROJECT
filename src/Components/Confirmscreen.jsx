@@ -3,7 +3,7 @@ import React from 'react'
 export default function Confirmscreen() {
   return (
     <div>
-     <h1> hi</h1>
+     <h1> hello</h1>
     </div>
   )
 }
