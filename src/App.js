@@ -11,14 +11,15 @@ import Next from "./Components/Other.jsx";
 import "./styles.scss";
 import Primary from "./Components/Primary";
 import Hello from "./Components/Hello";
+// import Create from "./Components/CreateProfile";
 
 // import logo from './logo.svg';
 // import './App.css';
 import "./Style.scss";
-import React from 'react';
+// import React from 'react';
 import Agent from './Components/Agent';
 import { Navigate, Outlet } from "react-router-dom";
-import { useState, useEffect } from "react";
+// import {useEffect } from "react";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -46,40 +47,50 @@ import OTP from './Components/OTP';
 import User from './Components/User';
 import Changepassword from './Components/Changepassword';
 import Profile from './Components/Profile';
+import CreateProfile from "./Components/CreateProfile";
 import Forgotpassword from './Components/Forgotpassword';
+import Agentlogin from "./Components/Agentlogin";
+import Acceptscreen from "./Components/Acceptscreen";
+import Rejectscreen from "./Components/Rejectscreen";
 
 const App = () => {
   // function App() {
     const [key1,setKey1]=useState([])
     const ddata=(l)=> {
       setKey1(()=>[l])
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);
     // const handleLogin = () => {
     //   setIsAuthenticated(true);
     // };
     }
   
-    const checkUserToken = () => {
-      const userToken = localStorage.getItem("token");
+    // const checkUserToken = () => {
+    //   const userToken = localStorage.getItem("token");
   
-      if (!userToken || userToken === "undefined") {
-        setIsLoggedIn(false);
-        Navigate("/");
-        // toast.warn("redirecting you to login page please login into and access it!")
-      }
-      else{
-        // <Navigate  to =''
-      }
+    //   if (!userToken || userToken === "undefined") {
+    //     setIsLoggedIn(false);
+    //     Navigate("/");
+    //     // toast.warn("redirecting you to login page please login into and access it!")
+    //   }
+    //   else{
+    //     // <Navigate  to =''
+    //   }
     
-      setIsLoggedIn(true);
-    };
+    //   setIsLoggedIn(true);
+    // };
   
-    useEffect(() => {
-      checkUserToken();
-    }, [isLoggedIn]);
+    // useEffect(() => {
+    //   checkUserToken();
+    // }, [isLoggedIn]);
+    const [uid,setUid]=useState("");
+    const fun1=(q)=> {
+      setUid(q)
+    }
   return (
     <>
+    
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<HomeNew />} />
@@ -94,30 +105,33 @@ const App = () => {
           <Route path="/confirm" element={<Confirm />} />
           <Route path='/' element={<Home />}></Route>
           <Route path='/agent' element={<Agent />} />
-          <Route path='/agentdash' element={<Agentdash display={ddata}/>} />
+          <Route path='/agentdash' element={<Agentdash display={ddata} dis={fun1}/>} />
           <Route path='/previous' element={<Previous />} />
           <Route path="/tracking" element={<VerticalStepper />} />
-          <Route path="/confirmscreen" element={<Confirmscreen display1={key1} />} />
-          
+          <Route path="/confirmscreen" element={<Confirmscreen display1={key1} dis1={uid} />} />
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/OTP' element={<OTP />}></Route>
           <Route path='/user' element={<User />}></Route>
           <Route path='/changepassword' element={<Changepassword />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
+          <Route path="/createprofile" element={<CreateProfile/>}/>
           <Route path='/forgotpassword' element={<Forgotpassword />}></Route>
+          <Route path="/confirmScreen" element={<Confirmscreen />} />
+          <Route path="/agentlogin" element={<Agentlogin/>}/>
+          <Route path="/acceptscreen" element={<Acceptscreen/>}/>
+          <Route path="/rejectscreen" element={<Rejectscreen/>}/>
         </Routes>
       </BrowserRouter>
       <React.Fragment>
-      {isLoggedIn && <HomeNew />}
+      {/* {isLoggedIn && <HomeNew />}
 
       <Outlet />
 
-      {isLoggedIn && <Login />}
+      {isLoggedIn && <Login />} */}
     </React.Fragment>
-  <ToastContainer/>
+  {/* <ToastContainer/> */}
     </>
   );
 };
-
 export default App;
