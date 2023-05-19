@@ -1,8 +1,10 @@
 .con{
     background-image: linear-gradient(120deg, #3E5151, #DECBA4);
-    height:635px;
+    height:680px;
+    width:1400px;
     text-decoration-color: white;
     padding-top: 40px;
+    position:fixed;
 
 }
 #css{
@@ -17,6 +19,9 @@
 }
 .bold{
     color: white;
+    position: relative;
+    right:50px
+
 }
 .cen{
     align-items: flex-end;

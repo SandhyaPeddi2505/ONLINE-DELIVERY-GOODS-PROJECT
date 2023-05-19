@@ -67,7 +67,7 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa, details })
                                         <li id="confirm" ><strong>Confirm</strong></li>
                                     </ul>
                                     <fieldset>
-                                        <div className="form-card">
+                                        <div className="form-card" style={{height:"270px"}}>
                                             <h2 className="fs-title">Destination Details</h2>
                                             <input type="text" name="name" placeholder="Name" value={dest.name} onChange={handleChange} required />
                                             <input type="text" name="phone" placeholder="PhoneNo" value={dest.phone} onChange={handleChange} required pattern="/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/" min="10" />

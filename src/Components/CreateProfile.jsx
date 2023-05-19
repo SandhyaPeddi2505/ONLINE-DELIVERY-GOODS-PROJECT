@@ -99,10 +99,122 @@ const CreateProfile = () => {
                     </div>
                     <div className="col-md-5">
                         <div className='yy'>
-                            <h1>Create your Profile !</h1>
+                            <h1>Create your Profile!</h1>
                         </div>
                         <div >
-                            <form>
+                        <form>
+  <div className="no">
+    <div className="mb-2" id="formBasicName">
+      <label>
+        <p className="input-label" style={{color:"#333333"}}>Name</p>
+      </label>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setname(e.target.value)}
+        id="userName"
+        placeholder="Enter name"
+        className="form-control"
+      />
+    </div>
+    <div className="mb-2" id="formBasicEmail">
+      <label>
+        <p className="input-label" style={{color:"#333333"}}>Email</p>
+      </label>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setemail(e.target.value)}
+        id="userEmail"
+        placeholder="Enter email"
+        className="form-control"
+      />
+    </div>
+    <div className="mb-2" id="formBasicnumber">
+      <label>
+        <p className="input-label" style={{color:"#333333"}}>Phone number</p>
+      </label>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => {
+          if (e.target.value.length <= 10) {
+            setnumber(e.target.value);
+          }
+        }}
+        placeholder="Enter phone number"
+        className="form-control"
+      />
+    </div>
+    <div>
+      <label>
+        <p className="input-label" style={{color:"#333333"}}>Gender:</p>
+      </label>
+      {!isEditing && (
+        <input
+          type="radio"
+          value="male"
+          name="gender"
+          onChange={(e) => setgender(e.target.value)}
+          checked={gender === "male"}
+        />
+      )}
+      {isEditing && (
+        <input
+          type="radio"
+          value="male"
+          name="gender"
+          onChange={(e) => setgender(e.target.value)}
+          checked={gender === "male"}
+        />
+      )}
+      Male
+      {!isEditing && (
+        <input
+          type="radio"
+          value="female"
+          name="gender"
+          onChange={(e) => setgender(e.target.value)}
+          checked={gender === "female"}
+        />
+      )}
+      {isEditing && (
+        <input
+          type="radio"
+          value="female"
+          name="gender"
+          onChange={(e) => setgender(e.target.value)}
+          checked={gender === "female"}
+        />
+      )}
+      Female
+    </div>
+    <div className="mb-2" id="formBasicAddress" style={{ margin: '-5px 0px',}}>
+      <label>
+        <p className="input-label" style={{color:"#333333"}}>Address</p>
+      </label>
+      <Map1 map={maphan} lat={lathan} />
+    </div>
+    <div className="mb-2" id="formBasicnumber" style={{ margin: '-40px 0px',position:"absolute"}}>
+      <label>
+        <p className="input-label" style={{color:"#333333"}}>Pincode</p>
+      </label>
+      <input
+        type="number"
+        value={pincode}
+        onChange={(e) => {
+          if (e.target.value.length <= 6) {
+            setpincode(e.target.value);
+          }
+        }}
+        placeholder="Enter pincode"
+        className="form-control"
+      />
+    </div>
+  </div>
+</form>
+
+                            {/* <form>
                                 <div className='no'>
                                     <div className="mb-2" id="formBasicName">
                                         <label><p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Name</p></label>
@@ -136,18 +248,18 @@ const CreateProfile = () => {
                                             <input type="radio" value="female" name="gender" onChange={(y) => (setgender(y.target.value))} checked={gender === 'female'} />}Female
                                     </div>
                                     <div className="mb-2" id="formBasicAddress">
-                                        <label><p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Address</p></label>
+                                        <label><p style={{  color: 'black', paddingTop: 5, alignItems: 'center' }}>Address</p></label>
                                         <Map1 map={maphan} lat={lathan} />
                                     </div>
 
-                                    <div className="mb-2" id="formBasicnumber">
-                                        <label><p style={{ fontSize: 16, color: 'black', paddingTop: 5, alignItems: 'center' }}>Pincode</p></label>
+                                    <div className="mb-2" id="formBasicnumber" style={{border:"50%"}}>
+                                        <label><p style={{ color: 'black', paddingTop: 5, alignItems: 'center' }}>Pincode</p></label>
 
                                         <input type="number" value={pincode} onChange={(e) => { if (e.target.value.length <= 6) { (setpincode(e.target.value)) } }} placeholder="Enter pincode" className='form-control' />
 
                                     </div>
                                 </div>
-                            </form>
+                            </form> */}
                             <br>
                             </br>
                             <br></br>

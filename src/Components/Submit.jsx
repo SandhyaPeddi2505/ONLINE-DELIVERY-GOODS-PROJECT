@@ -62,13 +62,13 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details}) => {
                                         <li id="confirm" ><strong>Confirm</strong></li>
                                     </ul>
                                     <fieldset>
-                                        <div className="form-card">
+                                        <div className="form-card" >
                                             <h2 className="fs-title">Source Details</h2>
                                             <label style={{ color: 'black' }}><b>Name:</b> {Source.name}</label><br />
                                             <label style={{ color: 'black' }}><b>Address:</b> {Source.Address}</label><br />
                                             <label style={{ color: 'black' }}><b>Phoneno:</b>{Source.phone}</label><br />
                                         </div>
-                                        <div className="form-card">
+                                        <div className="form-card" >
                                             <h2 className="fs-title">Destination Details</h2>
                                             <label style={{ color: 'black' }} ><b>Name:</b>{Destination.name}</label><br />
                                             <label style={{ color: 'black' }}><b>Address:</b>{Destination.address}</label><br />

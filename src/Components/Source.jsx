@@ -129,10 +129,10 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                 <li id="confirm"><strong>Confirm</strong></li>
                                             </ul>
                                         </div>
-                                        <fieldset>
+                                        <fieldset >
                                             <div
                                                 className="form-card"
-                                                style={{ direction: "flex", flexDirection: "row" }}>
+                                                style={{ direction: "flex", flexDirection: "row",}}>
                                                 <div className="col  mx-5">
                                                     <label style={{ color: "black", position: "relative", padding: "20px" }}>Primary
                                                         <input type="radio" name="addressType" value="primary" checked={isPrimary} onChange={handleAddressTypeChange} />

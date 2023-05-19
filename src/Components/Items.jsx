@@ -135,43 +135,43 @@ const Order = () => {
       <NavwithIcon />
       <div className="container-fluid" >
         <div className="container pb-5 pt-5">
-          <h3 className="form-head-contact-h3" style={{ margintop: "10%", padding: "50px" }}>Select Category</h3>
+          <h3 className="form-head-contact-h3" style={{ margintop: "10%", padding: "50px" ,color:"#333333"}}>Select Category</h3>
           <form onSubmit={handleSubmit}>
             <div className="row" style={{ paddingLeft: "20%" }} >
               <div className="col-md-6">
                 <div className="form-check m-3" >
                   <input className="form-check-input" type="checkbox" name="Food" value="Food" checked={orderType.includes("Food")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label">Food</label>
+                  <label className="form-check-label"style={{ color:"#333333"}}>Food</label>
                 </div>
                 <div className="form-check m-3" >
                   <input className="form-check-input" type="checkbox" name="Groceries" value="Groceries" checked={orderType.includes("Groceries")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label">Groceries</label>
+                  <label className="form-check-label" style={{ color:"#333333"}}>Groceries</label>
                 </div>
                 <div className="form-check m-3">
                   <input className="form-check-input" type="checkbox" name="Medicines" value="Medicines" checked={orderType.includes("Medicines")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label"> Medicines</label>
+                  <label className="form-check-label" style={{ color:"#333333"}}> Medicines</label>
                 </div>
                 <div className="form-check m-3" >
                   <input className="form-check-input" type="checkbox" name="Documents" value="Documents" checked={orderType.includes("Documents")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label"> Documents</label>
+                  <label className="form-check-label" style={{ color:"#333333"}}> Documents</label>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-check m-3" >
                   <input className="form-check-input" type="checkbox" name="Electronics" value="Electronics" checked={orderType.includes("Electronics")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label">Electronics</label>
+                  <label className="form-check-label" style={{ color:"#333333"}}>Electronics</label>
                 </div>
                 <div className="form-check m-3" >
                   <input className="form-check-input" type="checkbox" name="Clothes" value="Clothes" checked={orderType.includes("Clothes")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label">Clothes</label>
+                  <label className="form-check-label" style={{ color:"#333333"}}>Clothes</label>
                 </div>
                 <div className="form-check m-3">
                   <input className="form-check-input" type="checkbox" name="Gifts" value="Gifts" checked={orderType.includes("Gifts")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label">Gifts</label>
+                  <label className="form-check-label" style={{ color:"#333333"}}>Gifts</label>
                 </div>
                 <div className="form-check m-3" >
                   <input className="form-check-input" type="checkbox" name="Others" value="Others" checked={orderType.includes("Others")} onChange={handleCheckboxChange} />
-                  <label className="form-check-label">Others</label>
+                  <label className="form-check-label" style={{ color:"#333333"}}>Others</label>
                 </div>
 
               </div>
@@ -179,7 +179,7 @@ const Order = () => {
 
           </form><hr />
           <form className="mt-5 pb-5 pt-5" style={{ display: "flex", alignItems: "center" ,marginLeft:"200px"}}>
-            <label style={{ color: "black" }}><b><h5>Quantity</h5></b></label>
+            <label style={{ color: "black" }}><h5>Quantity</h5></label>
             <div className="quan" style={{ position: "text-center" }}>
               <input style={{height:"40px",width:"300px",marginLeft:"10px",borderRadius:"10px"}}
                 type="number" id="quan1"

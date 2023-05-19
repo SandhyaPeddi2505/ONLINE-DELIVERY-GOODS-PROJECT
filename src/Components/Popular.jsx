@@ -86,6 +86,7 @@ const Popular = (onClick) => {
               
               <li class="nav-item">
                 <div className="wer">
+                <a class="nav-link" to={Link} href="/userprevOrders"><h5><span style={{ color: "#888888 " ,position:"relative",marginRight:"780px"}}>My Orders</span></h5></a>
                   <a class="nav-link" to={Link} href="/tracking"><h5><span style={{ color: "#888888 " }}>Tracking</span></h5></a>
                   <div className="right-profile" onClick={dishan}>MT</div>
                   {
@@ -181,7 +182,7 @@ const Popular = (onClick) => {
       </div>
       
         </div>
-        <div>
+        <div className="pop">
         <h3 class="title2">Popular Cities</h3>
       </div>
         <div className="card-container" >

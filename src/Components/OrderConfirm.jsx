@@ -29,7 +29,7 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
     });
   return (
    <><NavwithIcon/>
-    <div className="con">
+    <div className="con" >
        
       <div className="order-confirmation-header">
 
@@ -48,7 +48,7 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
       <div className="order-details">
         <h5 className=" center" id="cen"  
         style={{color: "black"}}>
-          <b class="bold">Your OrderID is :</b>
+          <b class="bold"> OrderID :</b>
            {localStorage.getItem("orderId")}
         </h5>
         {/* <p className="fs-title text-center">
