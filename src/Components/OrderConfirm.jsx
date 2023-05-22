@@ -21,12 +21,12 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
   //   .get(
   //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/successorder"
       //  payload
-      axios.get(`${API_BASE_URL}/successorder`
-    )
-    .then((response) => {
-      console.log(response);
-      // localStorage.clear()
-    });
+    //   axios.get(`${API_BASE_URL}/successorder`
+    // )
+    // .then((response) => {
+    //   console.log(response);
+    //   // localStorage.clear()
+    // });
   return (
    <><NavwithIcon/>
     <div className="con" >

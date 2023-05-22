@@ -5,7 +5,6 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { API_BASE_URL } from './api.jsx';
 const Changepassword = () => {
   const [passwords, setPasswords] = useState({
     email: "",
@@ -23,23 +22,16 @@ const Changepassword = () => {
       return;
     }
 
-    const payload = {
-      email: "",
-      password: "",
-      newpassword: ""
-    };
+   
 
-    // axios
-    //   .post(
-    //     "http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/changepassword"
-    axios.post(`${API_BASE_URL}/changepassword`
-        ,
-        passwords,
-        payload
+    axios
+      .post(
+        "http://ec2-13-235-76-28.ap-south-1.compute.amazonaws.com:8001/changepassword",
+        passwords
       )
       .then((response) => {
         if (response?.status === 200) {
-          alert("Password changed successfully");
+          toast.success("Password changed successfully");
           navigate("/");
           console.log(response?.status);
         }
@@ -53,22 +45,32 @@ const Changepassword = () => {
 
   const validate = (values) => {
     const errors = {};
+    if (!values.email || !values.password || !values.newpassword) {
+      toast.error("Enter  all fields");
+    }
+    if (!values.email) {
+      errors.email = "User Name is required";
+    }
 
-    if (
-      !values.email ||
-      !values.password ||
-      !values.newpassword ||
-      !values.confirmNewPassword
-    ) {
-      toast.error(" All fields are required");
+    if (!values.password) {
+      errors.password = "Current password is required";
+    }
+
+    if (!values.newpassword) {
+      errors.newpassword = "New password is required";
     } else if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
         values.newpassword
       )
     ) {
-      toast.error(
-        "Password must contain capital,small,numeric,special characters"
-      );
+      errors.newpassword =
+        "Password must contain capital,small,numeric,special characters";
+    } else if (values.newpassword.length < 8) {
+      errors.newpassword = "New password must be at least 8 characters long";
+    }
+
+    if (!values.confirmNewPassword) {
+      errors.confirmNewPassword = "Confirm new password is required";
     } else if (values.newpassword !== values.confirmNewPassword) {
       errors.confirmNewPassword =
         "New password and confirm new password must match";
@@ -111,6 +113,7 @@ const Changepassword = () => {
                     }
                     className="form-control"
                     placeholder=" Enter email"
+                    // required
                   />
                   {errors.email && (
                     <span style={{ color: "red" }}>{errors.email}</span>
@@ -142,8 +145,9 @@ const Changepassword = () => {
                       }
                       className="form-control"
                       placeholder="Old Password"
+                      // required
                     />
-                    {errors.assword && (
+                    {errors.password && (
                       <span style={{ color: "red" }}>{errors.password}</span>
                     )}
                   </div>
@@ -172,8 +176,9 @@ const Changepassword = () => {
                       }
                       className="form-control"
                       placeholder="New Password"
+                      // required
                     />
-                    {errors.newPassword && (
+                    {errors.newpassword && (
                       <span style={{ color: "red" }}>{errors.newpassword}</span>
                     )}
                   </div>
@@ -202,6 +207,7 @@ const Changepassword = () => {
                       }
                       className="form-control"
                       placeholder="Confirm New Password"
+                      // required
                     />
                     {errors.confirmNewPassword && (
                       <span style={{ color: "red" }}>
