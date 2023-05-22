@@ -91,7 +91,7 @@ const Login = () => {
           </div>
           <div className="nn">
             <div className="mb-3">
-              <h1>Log In</h1>
+              <h1 style={{color:"#555555"}}>Log In</h1>
             </div>
             <form>
               <div className="mb-3" id="formBasicemail">

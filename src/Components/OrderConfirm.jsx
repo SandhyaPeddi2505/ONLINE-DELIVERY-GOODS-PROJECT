@@ -21,15 +21,15 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
   //   .get(
   //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/successorder"
       //  payload
-      axios.get(`${API_BASE_URL}/successorder`
-    )
-    .then((response) => {
-      console.log(response);
-      // localStorage.clear()
-    });
+    //   axios.get(`${API_BASE_URL}/successorder`
+    // )
+    // .then((response) => {
+    //   console.log(response);
+    //   // localStorage.clear()
+    // });
   return (
    <><NavwithIcon/>
-    <div className="con">
+    <div className="con" >
        
       <div className="order-confirmation-header">
 
@@ -48,7 +48,7 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
       <div className="order-details">
         <h5 className=" center" id="cen"  
         style={{color: "black"}}>
-          <b class="bold">Your OrderID is :</b>
+          <b class="bold"> OrderID :</b>
            {localStorage.getItem("orderId")}
         </h5>
         {/* <p className="fs-title text-center">

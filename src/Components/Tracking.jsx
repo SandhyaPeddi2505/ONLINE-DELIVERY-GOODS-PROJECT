@@ -32,7 +32,7 @@ import "./Tracking.scss";
 
     let count = 0;
     APIResponse.map((i) => {
-      if (i["status_code"] === 0) {
+      if (i["status_code"] === 200) {
         count += 1;
       }
     });

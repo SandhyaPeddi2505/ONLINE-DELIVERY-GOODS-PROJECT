@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Navbar from "./Navbar";
 import Map1 from "./Map M";
+import { API_BASE_URL } from './api.jsx';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -37,9 +38,11 @@ const Profile = () => {
       primary_location: latit
     };
 
-    axios
-      .post(
-        "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/createprofile",
+    // axios
+    //   .post(
+    //     "http://ec2-65-0-179-201.ap-south-1.compute.amazonaws.com:8001/createprofile"
+    axios.post(`${API_BASE_URL}/createprofile`
+        ,
         payload,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
