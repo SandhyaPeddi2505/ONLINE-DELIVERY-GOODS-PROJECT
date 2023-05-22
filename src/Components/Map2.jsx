@@ -55,7 +55,7 @@ const Map1 = ({ maper1,maper2 }) => {
             <fieldset>
               <input
                 {...getInputProps({
-                  placeholder: "Search Places ...",
+                  placeholder: "Choose your address",
                   className: "location-search-input"
                 })}
               />

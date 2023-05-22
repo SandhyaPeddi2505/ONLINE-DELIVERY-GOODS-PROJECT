@@ -1,11 +1,31 @@
 .con{
     background-image: linear-gradient(120deg, #3E5151, #DECBA4);
-    height:635px;
+    height:680px;
+    width:1400px;
     text-decoration-color: white;
+    padding-top: 40px;
+    position:fixed;
 
 }
 #css{
     text-align: center;
     align-items: center;
     margin-left: 580px;
+}
+#pic{
+    align-items: center;
+    padding-left: 90px;
+    padding-top: 50px;
+}
+.bold{
+    color: white;
+    position: relative;
+    right:50px
+
+}
+.cen{
+    align-items: flex-end;
+    // padding-right: 90px;
+   
+   
 }

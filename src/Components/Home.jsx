@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import logo from "./nav-logo.png"
 import logo from "./sk.png";
 // import Navbar from 'react-bootstrap/Navbar';
-// import aaa from './del1.png';
+import aaa from "./websiteimg1.png";
 import { Link } from "react-router-dom";
 
 
@@ -19,11 +19,11 @@ const Home = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <div className="">
+              {/* <div className="">
                 <li class="nav-item">
                   <a class="hi nav-link" to={Link} href="/tracking" ><p className="qb"><span style={{ color: "black" }}>Tracking</span></p></a>
                 </li>
-              </div>
+              </div> */}
               <li class="nav-item">
                 <div className="wer">
                   <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a>
@@ -43,9 +43,8 @@ const Home = () => {
 
 
       <div className="bgj">
-        <div className="blur">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-4">
               <div className="r">
                 <h1 className="heading1 mb-4">Fastest</h1>
                 <h1 className="heading1 mb-4"><p></p><span style={{ color: 'red' }}>Delivery </span>&</h1>
@@ -63,13 +62,14 @@ const Home = () => {
               </div>
             </div>
 
-            {/* <div className="col-md-6">
+            <div className="col-md-2"></div>
+
+            <div className="col-md-6 mb-3">
               <div className="flex">
-                <img src={aaa} alt='dele' height="500" width="600" />
+                <img src={aaa} alt='dele' height="550" width="550" />
               </div>
-            </div> */}
+            </div>
           </div>
-        </div>
       </div>
 
     </>

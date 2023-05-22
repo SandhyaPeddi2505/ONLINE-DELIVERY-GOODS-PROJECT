@@ -2,7 +2,9 @@ import { Steps } from 'rsuite';
 import axios from 'axios';
 import {useState,useEffect} from 'react'
 import 'rsuite/dist/rsuite.min.css';
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
+import { API_BASE_URL } from './api.jsx';
+import NavwithIcon from "./NavwithIcon";
 import "./Tracking.scss";
 
 
@@ -11,9 +13,15 @@ import "./Tracking.scss";
   const [APIResponse, setAPIResponse] = useState([]);
   
   useEffect(()=>{
-          axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/DUMMY_INFO/').then((response)=>{
-            setAPIResponse(response.data)
-          })
+    axios.get(`${API_BASE_URL}/DUMMY_INFO`
+    )
+    .then((response) => {
+      console.log(response);
+      localStorage.clear()
+    });
+          // axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/DUMMY_INFO/').then((response)=>{
+          //   setAPIResponse(response.data)
+          // })
         },[])
     
     // APIResponse.map((i) => {
@@ -24,7 +32,7 @@ import "./Tracking.scss";
 
     let count = 0;
     APIResponse.map((i) => {
-      if (i["status_code"] === 0) {
+      if (i["status_code"] === 200) {
         count += 1;
       }
     });
@@ -49,7 +57,8 @@ import "./Tracking.scss";
     
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
+    <NavwithIcon/>
 <div className='ee'>
     
     <div className='steps'>
