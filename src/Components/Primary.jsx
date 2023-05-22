@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaMapMarkerAlt, FaCalendarAlt, FaMapMarker } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import { API_BASE_URL } from './api.jsx';
+import { API_BASE_URL } from "./api.jsx";
 import { DatePicker } from "antd";
 // import PlacesAutocomplete from "react-places-autocomplete";
 import "./Primary.scss";
@@ -39,26 +39,27 @@ const CitySelection = () => {
     }
   };
   const payload = {
-    "source_address": selectedSource,
-    "destination_address": selectedDestination,
+    source_address: selectedSource,
+    destination_address: selectedDestination
     // "selectedDate":selectedDate
   };
   // axios
   // .post(
-    // " http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/address  "
-    axios.post(`${API_BASE_URL}/address`
-    ,
-    payload,
-    { headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}}
-  ).then((response) => {
-    console.log(response)
-    //  console.log(error.response.data)
-  })
-  .catch(error=>{
-    console.log(error.response.data)
-  })
-  console.log(selectedSource,"sow")
- 
+  // " http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/address  "
+  axios
+    .post(`${API_BASE_URL}/address`, payload, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    })
+    .then((response) => {
+      console.log(response);
+      localStorage.setItem("temp_order_id", response.data.temp_order_id);
+      console.log(response.data.temp_order_id);
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+  console.log(selectedSource, "sow");
+
   // .catch((error)=>{
   //   console.log(error)
   // })
@@ -113,14 +114,20 @@ const CitySelection = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <NavwithIcon/>
+      <NavwithIcon />
       <div className="primaryCont">
-        <h2 style={{ textAlign: "center ", padding: "40px 0 0 0px" ,color:"white"}}>
-         City Selection!
+        <h2
+          style={{
+            textAlign: "center ",
+            padding: "40px 0 0 0px",
+            color: "white"
+          }}
+        >
+          City Selection!
         </h2>
 
         <form class="form" onSubmit={handleSubmit}>
-          <FaMapMarkerAlt  className="ic" />
+          <FaMapMarkerAlt className="ic" />
           <Map1 map={handleSourceChange} class="map" />
           <br></br>
           <FaMapMarker className="ic" />
@@ -153,7 +160,7 @@ const CitySelection = () => {
           ))}
         </select> */}
 
-          <FaCalendarAlt  className="ic" />
+          <FaCalendarAlt className="ic" />
           {/* <input type="date" onChange={handleChange} /> */}
           <DatePicker
             type="date"

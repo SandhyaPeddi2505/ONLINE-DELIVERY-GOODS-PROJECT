@@ -5,6 +5,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from './api.jsx';
 const Changepassword = () => {
   const [passwords, setPasswords] = useState({
     email: "",
@@ -28,9 +29,11 @@ const Changepassword = () => {
       newpassword: ""
     };
 
-    axios
-      .post(
-        "http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/changepassword",
+    // axios
+    //   .post(
+    //     "http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/changepassword"
+    axios.post(`${API_BASE_URL}/changepassword`
+        ,
         passwords,
         payload
       )
