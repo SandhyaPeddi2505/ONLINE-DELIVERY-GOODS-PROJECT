@@ -40,17 +40,13 @@ const Confirm = () => {
 
                                                             <Link to="/source">
 
-                                                                <button className="btn btn-danger" id="sand1" type="submit"
-
-                                                                >
+                                                                <button className="btn btn-danger" id="sand1" type="submit">
                                                                     No
                                                                 </button>
                                                             </Link>
                                                             <Link to="/orderConfirm">
 
-                                                                <button className="btn btn-primary" id="sand1" type="submit"
-
-                                                                >
+                                                                <button className="btn btn-primary" id="sand1" type="submit">
                                                                     Yes
                                                                 </button>
                                                             </Link>

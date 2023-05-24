@@ -190,17 +190,19 @@ const Profile = () => {
                       />
                     ) : (
                       <input
-                        type="number"
-                        value={number}
-                        onChange={(a) => {
-                          if (a.target.value.length <= 10) {
-                            setnumber(a.target.value);
-                          }
-                        }}
-                        required
-                        placeholder="Enter phonenumber"
-                        className="form-control"
-                      />
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      value={number}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 10) {
+                          setnumber(e.target.value);
+                        }
+                      }}
+                      placeholder="Enter phone number"
+                      className="form-control"
+                    />
+                      
                     )}
                   </div>
                   <div className="row">
@@ -250,6 +252,46 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="mb-2" id="formBasicAddress">
+                  <label>
+                      <p
+                        style={{
+                          fontSize: 16,
+                          color: "black",
+                          paddingTop: 5,
+                          alignItems: "center"
+                        }}
+                      >
+                        {" "}
+                        Pincode{" "}
+                      </p>
+                    </label>
+                    {!isEditing ? (
+                      <input
+                        value={pincode}
+                        className="form-control"
+                        required
+                        placeholder="Enter pincode"
+                      />
+                    ) : (
+                      <input
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      value={pincode}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 6) {
+                          setpincode(e.target.value);
+                        }
+                      }}
+                      placeholder="Enter pincode"
+                      className="form-control" />
+            
+                    )}
+                    
+                  </div>
+
+                  <div className="mb-2" id="formBasicnumber">
+                   
                     <label>
                       <p
                         style={{
@@ -278,43 +320,6 @@ const Profile = () => {
                       </>
                     )}
                   </div>
-
-                  <div className="mb-2" id="formBasicnumber">
-                    <label>
-                      <p
-                        style={{
-                          fontSize: 16,
-                          color: "black",
-                          paddingTop: 5,
-                          alignItems: "center"
-                        }}
-                      >
-                        {" "}
-                        Pincode{" "}
-                      </p>
-                    </label>
-                    {!isEditing ? (
-                      <input
-                        value={pincode}
-                        className="form-control"
-                        required
-                        placeholder="Enter pincode"
-                      />
-                    ) : (
-                      <input
-                        type="number"
-                        value={pincode}
-                        onChange={(e) => {
-                          if (e.target.value.length <= 6) {
-                            setpincode(e.target.value);
-                          }
-                        }}
-                        required
-                        placeholder="Enter pincode"
-                        className="form-control"
-                      />
-                    )}
-                  </div>
                 </div>
                 <ToastContainer
                   position="top-right"
@@ -328,13 +333,14 @@ const Profile = () => {
                   pauseOnHover
                 />
                 {save && (
+                  <div className="save1">
                   <button
                     className="btn btn-primary"
                     type="submit"
-                    onClick={savehandle}
-                  >
+                    onClick={savehandle} 
+                   >
                     Save
-                  </button>
+                  </button></div>
                 )}
               </form>
               <div className="cc">
@@ -344,8 +350,8 @@ const Profile = () => {
                   </button>
                 )}
               </div>
-
-              <div className="m"></div>
+                <div className="m"></div>
+              
             </div>
           </div>
         </div>
