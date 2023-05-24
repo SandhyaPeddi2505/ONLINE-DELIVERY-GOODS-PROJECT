@@ -3,6 +3,7 @@ import qwe from "./12.png";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import logo from "./sk.png";
 import agl from "./agl2.png";
 
@@ -16,7 +17,7 @@ const Agentlogin = () => {
     // http://ec2-13-233-151-187.ap-south-1.compute.amazonaws.com:8001/AgentLogin
     axios
       .post(
-        `http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/AgentLogin`,
+        `http://ec2-52-66-237-19.ap-south-1.compute.amazonaws.com:8001/AgentLogin`,
         {
           email: email,
           password: password
@@ -24,12 +25,12 @@ const Agentlogin = () => {
       )
       .then((res) => {
         // if (res.status === 200){
-        sessionStorage.setItem("Access", res.data.token);
+          localStorage.setItem("Access", res.data.token);
         console.log(res.data.token);
         localStorage.setItem("Token", res.data.token);
-        setTimeout(function () {
-          window.location.replace("/agentdash");
-        }, 2000);
+        toast.success("Wooh! Delivery Accepted.")
+        setTimeout(function () {window.location.replace("/agentdash"); }, 2000);
+
         // alert('logged succesfully')
         // }
       })
@@ -61,13 +62,13 @@ const Agentlogin = () => {
 
   return (
     <>
-      <nav class="fixed-nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-dark ">
-          <a class="navbar-brand" href="#">
+      <nav className="fixed-nav-bar">
+        <nav className="navbar navbar-expand-lg navbar-dark ">
+          <a className="navbar-brand" href="#">
             <img src={logo} alt="qwe" width="95" height="30" />{" "}
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNav"
@@ -75,9 +76,9 @@ const Agentlogin = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav"></div>
+          <div className="collapse navbar-collapse" id="navbarNav"></div>
         </nav>
       </nav>
 
@@ -95,7 +96,7 @@ const Agentlogin = () => {
                   <center>
                     <h4>Agent Login here!</h4>
                   </center>
-                  <div class="row">
+                  <div className="row">
                     {/* <div className="col-4"></div> */}
                     <div class="col-md-12">
                       <div>
@@ -132,7 +133,7 @@ const Agentlogin = () => {
                           <h5 className="aglogin">Don't have an account? </h5>
                           <Link to="/agent">
                             <h5>
-                              <a className="nn" href="">
+                              <a className="" href="">
                                 Register
                               </a>
                             </h5>

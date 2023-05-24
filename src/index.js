@@ -125,14 +125,14 @@ root.render(
           }
         />
 
-        <Route
+        {/* <Route
           path="/agentdash"
           element={
             <ProtectedRoute>
-              <Agentdash />
+<Agentdash />
             </ProtectedRoute>
           }
-        />
+        /> */}
 
         <Route
           path="/previous"
@@ -185,6 +185,14 @@ root.render(
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/forgotpassword"
+          element={
+            <ProtectedRoute>
+              <Rejectscreen />
+            </ProtectedRoute>
+          }
+        />
         {/* <Route
           path="/confirmScreen"
           element={
@@ -193,6 +201,21 @@ root.render(
             </ProtectedRoute>
           }
         /> */}
+        {/* <Route
+          path="/agentdash"
+          element={
+            <ProtectedRoute>
+              <Agentdash/>
+            </ProtectedRoute>
+          }
+        /><Route
+        path="/confirmScreen"
+        element={
+          <ProtectedRoute>
+            <Rejectscreen />
+          </ProtectedRoute>
+        }
+      /> */}
 
         <Route path="*" element={<div>Page Not Found!!</div>} />
         <Route path="/" element={<Home />} />
@@ -212,12 +235,12 @@ root.render(
         <Route path="/tracking" element={<VerticalStepper />} /> */}
 
         {/* Agent SIDE */}
-        <Route path="/confirmScreen" element={<Confirmscreen />} />
-        <Route path="/agentlogin" element={<Agentlogin/>}/>
-        <Route path="/acceptscreen" element={<Acceptscreen/>}/>
-        <Route path="/rejectscreen" element={<Rejectscreen/>}/>
+        <Route path="/confirmscreen" element={<Confirmscreen />} />
+        <Route path="/agentlogin" element={<Agentlogin />} />
+        <Route path="/acceptscreen" element={<Acceptscreen />} />
+        <Route path="/rejectscreen" element={<Rejectscreen />} />
 
-        {/* <Route path="/agentdash" element={<Agentdash />} /> */}
+        <Route path="/agentdash" element={<Agentdash />} />
         {/* <Route path="/previous" element={<Previous />} /> */}
 
         {/* ON HOLD */}

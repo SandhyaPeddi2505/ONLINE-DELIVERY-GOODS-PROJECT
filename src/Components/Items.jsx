@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const Order = () => {
   const navigate = useNavigate();
   const [orderType, setOrderType] = useState("");
-  const [qty, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [temp, setTemp] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
   const today = new Date();
@@ -22,7 +22,7 @@ const Order = () => {
   const handleCheckboxChange = (e) => {
     const itemName = e.target.name;
     if (e.target.checked) {
-      setOrderType([...orderType, itemName]);
+      setOrderType(...orderType, itemName);
     } else {
       setOrderType(orderType.filter((item) => item !== itemName));
     }
@@ -54,39 +54,49 @@ const Order = () => {
       setSelectedDate(date);
     }
   };
+  
   const payload = {
-    order_type: JSON.stringify(orderType),
-    qty: qty
+    // order_type: JSON.stringify(orderType) ,
+    order_type: orderType,
+    qty: quantity,
     // temp_order_id: temp
+
+    //  "orderType":orderType,
+    //  "quantity":quantity,
+    //  "date":date
   };
- 
-  const  data= JSON.stringify(payload)
+  // axios
+  //   .post(
+  //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/ordertype"
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(
-        `${API_BASE_URL}/ordertype`,
-        data,
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-        }
-        // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
-        // )}`}}
-      )
-      .then((response) => {
-        console.log(response);
-        localStorage.setItem("temp_order_id", response.data.temp_order_id);
-        console.log(response.data.temp_order_id);
-        navigate("/source");
-      });
-
-    if (orderType === "" || qty === "" || selectedDate === "") {
+    .post(
+      `${API_BASE_URL}/ordertype`, 
+      payload,
+      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+      // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
+      // )}`}}
+    )
+    .then((response) => {
+      console.log(response);
+      localStorage.setItem("temp_order_id", response.data.temp_order_id);
+      console.log(response.data.temp_order_id);
+      navigate("/source");
+    });
+   
+    if (orderType === "" || quantity === "" || selectedDate === "") {
       toast.error("Fill out all the fields");
     } else {
       console.log(orderType);
-      console.log(qty);
+      console.log(quantity);
       console.log(selectedDate);
-      
+      // console.log(temp)
+
+      // console.log(date)
+     
     }
   };
  

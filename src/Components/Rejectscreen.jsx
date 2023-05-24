@@ -1,45 +1,45 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from "./sk.png";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-const Rejectscreen=()=> {
+const Rejectscreen = () => {
 
-    const [reje,setreje]=useState([]);
+  const [reje, setreje] = useState([]);
 
-    useEffect(()=> {
-        console.log(`${localStorage.getItem("Token")}`)
-        axios.get(`http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/orderstatus_userdata?status=rejected`,
-        { headers: {"Authorization" : `Bearer ${localStorage.getItem("Token")}`}}
-        
-        // {headers:{Authorization:`${localStorage.getItem("Token")}`}}
-        ).then((res)=> {
-            setreje(res.data.message)
-          console.log(res.data.message)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-      
-  
-      },[])
-  
-    return (
-        <>
-             <nav class="fixed-nav-bar">
-      <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30"/> </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+  useEffect(() => {
+    console.log(`${localStorage.getItem("Token")}`)
+    axios.get(`http://ec2-52-66-237-19.ap-south-1.compute.amazonaws.com:8001/orderstatus_userdata?status=rejected`,
+      { headers: { "Authorization": `Bearer ${localStorage.getItem("Token")}` } }
 
-          </ul>
-        </div>
+      // {headers:{Authorization:`${localStorage.getItem("Token")}`}}
+    ).then((res) => {
+      setreje(res.data.message)
+      console.log(res.data.message)
+    })
+      .catch(error => {
+        console.log(error)
+      })
+
+
+  }, [])
+
+  return (
+    <>
+      <nav class="fixed-nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+          <a class="navbar-brand" href="#"><img src={logo} alt="qwe" width="95" height="30" /> </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+            </ul>
+          </div>
+        </nav>
       </nav>
-      </nav>
 
-<div className='bgj'>
+      <div className='bgj'>
         <div className="blur">
           <div className='row'>
             <div className='col-2 sidenav hidden-xs'>
@@ -56,15 +56,7 @@ const Rejectscreen=()=> {
                     <h3><Link to="/agentdash"><span style={{ color: '#FFFFFF', textDecoration: 'none' }}>Dashboard</span></Link></h3>
                     {/* <h3>Dashboard</h3> */}
                   </div>
-                  <div className='gap'></div>
-                  <div class="nav-option option2">
-                    <img src=
-                      "https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/9.png"
-                      class="nav-img"
-                      alt="articles" />
-                    {/* <Link to='/previous'><button className='btn btn-outline-secondary'>Previous</button></Link> */}
-                  </div>
-                  <div className='gap'></div>
+                  
 
                   <div class="nav-option option3">
                     <img src=
@@ -72,7 +64,7 @@ const Rejectscreen=()=> {
                       class="nav-img"
                       alt="report" />
                     {/* <h3> Report</h3> */}
-                    <button  className='btn btn-outline-secondary'>Report</button>
+                    <button className='btn btn-outline-secondary'>Report</button>
                   </div>
 
                   <div className='gap'></div>
@@ -94,7 +86,7 @@ const Rejectscreen=()=> {
                       class="nav-img"
                       alt="logout" />
                     {/* <h3>Logout</h3> */}
-                    <button  className='btn btn-outline-secondary'>Logout</button>
+                    <button className='btn btn-outline-secondary'>Logout</button>
                   </div>
                   {/* </div> */}
                 </div>
@@ -104,41 +96,41 @@ const Rejectscreen=()=> {
             <div className='col-10'>
               <div className=''>
                 <div className="tab">
-                <table>
+                  <table className='table'>
                     <thead>
-                        <tr>
-                            <th scope='col'>Order ID</th>
-                            <th scope='col'>Order Type</th>
-                            <th scope='col'>Source destination</th>
-                            <th scope='col'>Destination</th>
-                            <th scope='col'>Quantity</th>
-                            <th scope='col'>Status</th>
-                        </tr>
+                      <tr>
+                        <th scope='col'>Order ID</th>
+                        <th scope='col'>Order Type</th>
+                        {/* <th scope='col'>Source destination</th> */}
+                        {/* <th scope='col'>Destination</th> */}
+                        <th scope='col'>Quantity</th>
+                        <th scope='col'>Status</th>
+                      </tr>
                     </thead>
 
                     <tbody>
-                         {reje && reje.map((i, k) => {
+                      {reje && reje.map((i, k) => {
                         return (
-                            <tr key={k}>
-                            <td>{i.order_id}</td>
-                            <td>{i.order_type}</td>
-                            <td>{i.source_address}</td>
-                            <td>{i.destination_address}</td>
-                            <td>{i.qty}</td>
-                            <td>{i.status}</td>
-                        </tr>
+                          <tr key={k}>
+                            <td className='tbname'>{i.order_id}</td>
+                            <td className='tbname'>{i.order_type}</td>
+                            {/* <td className='tbname'>{i.source_address}</td> */}
+                            {/* <td className='tbname'>{i.destination_address}</td> */}
+                            <td className='tbname'>{i.qty}</td>
+                            <td><span style={{ color: 'red' }}>{i.status}</span></td>
+                          </tr>
                         )
-                    })}
-                    
-                        
-                    
+                      })}
+
+
+
                     </tbody>
-                    </table>
+                  </table>
 
 
                 </div>
               </div>
-              
+
               <div className="row">
                 <div className="col-12">
                   <div className="">
@@ -169,7 +161,7 @@ const Rejectscreen=()=> {
       </div>
 
 
-        </>
-    )
+    </>
+  )
 }
 export default Rejectscreen;

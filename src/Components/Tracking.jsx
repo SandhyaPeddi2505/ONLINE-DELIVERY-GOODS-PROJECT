@@ -13,11 +13,14 @@ import "./Tracking.scss";
   const [APIResponse, setAPIResponse] = useState([]);
   
   useEffect(()=>{
-    axios.get(`${API_BASE_URL}/DUMMY_INFO`
+    axios.get(`${API_BASE_URL}/order_status/${localStorage.getItem("orderId")}`,
+    // http://ec2-52-66-237-19.ap-south-1.compute.amazonaws.com:8001/order_status/{localStorage.getItem("orderId")}`, 
+     { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+    // axios.get(/order_status",
     )
     .then((response) => {
       console.log(response);
-      localStorage.clear()
+      // localStorage.clear()
     });
           // axios.get('http://ec2-13-235-67-132.ap-south-1.compute.amazonaws.com:8001/DUMMY_INFO/').then((response)=>{
           //   setAPIResponse(response.data)
@@ -65,9 +68,9 @@ import "./Tracking.scss";
 
       <Steps vertical current={count}>
 
-        <Steps.Item description=<h6 style={{ color: "white"}}>Order confirmed</h6>/>
+        <Steps.Item description=<h6 style={{ color: "white"}}>Order placed</h6>/>
 
-        <Steps.Item description=<h6 style={{ color: "white"}}>Awaiting for Agent</h6>/>
+        {/* <Steps.Item description=<h6 style={{ color: "white"}}>Awaiting for Agent</h6>/> */}
 
         <Steps.Item description=<h6 style={{ color: "white"}}>Agent confirmed</h6>/>
 
