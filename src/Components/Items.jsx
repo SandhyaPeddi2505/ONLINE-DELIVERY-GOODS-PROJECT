@@ -17,6 +17,7 @@ const Order = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const today = new Date();
   const [placeholderText, setPlaceholderText] = useState("Select a date");
+  
 
   const handleCheckboxChange = (e) => {
     const itemName = e.target.name;
@@ -98,22 +99,7 @@ const Order = () => {
      
     }
   };
-  // const payload = {
-
-  //   "order_type":"Toys",
-
-  //   "quantity":"22"
-
-  //   };
-  //   axios
-  //   .post("http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/ordertype",
-  //   payload,
-
-  //   { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
-  //   )}`}}
-  //   ).then((response) => {
-  //     console.log(response)
-  //   })
+ 
   const handleClose = () => {
     if (!selectedDate) {
       setPlaceholderText("Select a date");
@@ -251,9 +237,9 @@ const Order = () => {
                   marginLeft: "10px",
                   borderRadius: "10px"
                 }}
-                type="number"
+                type="text"
                 id="quan1"
-                placeholder="Quantity in Kgs"
+                placeholder="Quantity required"
                 onChange={handleQuantityChange}
               />
             </div>
@@ -271,31 +257,7 @@ const Order = () => {
             </a>
           </form>
 
-          {/* <form className="mt-5 pb-5 pt-5 mr-4">
-              <label style={{color:"black"}}><b>Quantity</b></label>
-              <div className="quan" style={{position:"text-center"}}>
-            <input
-              type="number" id="quan1"
-              placeholder="Quantity in Kgs"
-              onChange={handleQuantityChange}
-            />
-            </div><br/> */}
-          {/* <label className="mt-2 pt-3 m-3"><b>Date</b></label>
-            <DatePicker
-        selected={selectedDate}
-        onChange={handleChange}
-        placeholderText={placeholderText}
-        onFocus={() => setPlaceholderText('Select a date')}
-        onBlur={() => {
-          if (!selectedDate) {
-            setPlaceholderText('Select a date');
-          }
-        }} onClose={handleClose}
-      /> */}
-
-          {/* <a href="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1" >Submit</button></a>
-            
-            </form> */}
+          
         </div>
       </div>
       <ToastContainer />
@@ -304,15 +266,6 @@ const Order = () => {
 };
 
 export default Order;
-
-
-
-
-
-
-
-
-
 
 
 
@@ -326,7 +279,6 @@ export default Order;
 // import NavwithIcon from "./NavwithIcon";
 // import axios from "axios";
 // import { useNavigate } from "react-router-dom";
-
 
 // const Order = () => {
 //   const navigate = useNavigate();
@@ -347,7 +299,6 @@ export default Order;
 //   useEffect(() => {
 //     console.log(orderType);
 //   }, [orderType]);
-
 
 //   const handleQuantityChange = (e) => {
 //     setQuantity(e.target.value);
@@ -428,7 +379,7 @@ export default Order;
 //     }
 
 //   }
-//   // const payload = { 
+//   // const payload = {
 
 //   //   "order_type":"Toys",
 
@@ -511,7 +462,6 @@ export default Order;
 //             </a>
 //           </form>
 
-
 //           {/* <form className="mt-5 pb-5 pt-5 mr-4">
 //               <label style={{color:"black"}}><b>Quantity</b></label>
 //               <div className="quan" style={{position:"text-center"}}>
@@ -534,9 +484,8 @@ export default Order;
 //         }} onClose={handleClose}
 //       /> */}
 
-
 //           {/* <a href="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1" >Submit</button></a>
-            
+
 //             </form> */}
 //         </div>
 //       </div>
@@ -546,84 +495,3 @@ export default Order;
 // }
 
 // export default Order;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

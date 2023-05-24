@@ -10,7 +10,7 @@ const Next = () => {
       <div className="other">
         <div className="row">
           <div className="col-md-6">
-        <h3 class="title4">Other Cities</h3>
+        {/* <h3 class="title4">Other Cities</h3>
         <a href="/cityselection"  className="sow" onClick={(Amaravathi) => {}}>
           Amaravathi
         </a>
@@ -148,7 +148,7 @@ const Next = () => {
         <a href="/cityselection"  className="sow" onClick={(WestBengal) => {}}>
           WestBengal
         </a>
-        <br />
+        <br /> */}
         </div>
         </div>
       </div>
