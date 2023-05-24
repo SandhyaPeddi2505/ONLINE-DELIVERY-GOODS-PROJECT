@@ -161,7 +161,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                                         </div>
                                                                     </div>
                                                                     <label style={{ color: "black" }}><b>Phone:</b>
-                                                                        <input type="tel" name="phone" value={primaryAddress.phone} placeholder="PhoneNo" onChange={handleChange}  pattern="[0-9]*"/>
+                                                                        <input type="text" inputMode="numeric" pattern="[0-9]*" name="phone" value={primaryAddress.phone} placeholder="PhoneNo" onChange={handleChange}  />
                                                                     </label>
                                                                 </>
                                                             

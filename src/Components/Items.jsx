@@ -216,12 +216,24 @@ const Order = () => {
             </div>
           </form>
           <hr />
-          <form
+          {/* <form
             className="mt-5 pb-5 pt-5"
             style={{
               display: "flex",
               alignItems: "center",
               marginLeft: "200px"
+            }}
+          > */}
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                <form
+            className=" pb-5 pt-5"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              // marginLeft: "200px"
+              justifyContent:"center"
             }}
           >
             <label style={{ color: "black" }}>
@@ -235,7 +247,9 @@ const Order = () => {
                   height: "40px",
                   width: "300px",
                   marginLeft: "10px",
-                  borderRadius: "10px"
+                  borderRadius: "10px",
+                  border:"none",
+                  paddingLeft:"10px"
                 }}
                 type="text"
                 id="quan1"
@@ -250,12 +264,16 @@ const Order = () => {
                 onClick={handleSubmit}
                 id="button"
                 className="m-4"
-                style={{ border: "90%" }}
+                style={{ border: "90%",color:"white" }}
               >
                 Submit
               </button>
             </a>
-          </form>
+            </form>
+            </div>
+            </div>
+            </div>
+        
 
           
         </div>
