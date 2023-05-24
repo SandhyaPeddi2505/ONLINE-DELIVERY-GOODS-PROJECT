@@ -1,86 +1,37 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
+import axios from "axios";
 // import Navbar from 'react-bootstrap/Navbar';
 import DataTable from "react-data-table-component";
 import styled from "styled-components";
 import "./userPreviousOrders.scss";
 import logo from "./sk.png";
 const Orderss = () => {
-    const items = [
-        {
-            DeliveryId: 1223311,
-        CustomerName: "saikrishna",
-        SourceAddress: "Raidurg",
-        DestinationAddress: "Durgam cheruvu",
-        Status: "Completed"
-        },
-        {
-            DeliveryId: 1223312,
-        CustomerName: "manoja",
-        SourceAddress: "Raidurg",
-        DestinationAddress: "Durgam cheruvu",
-        Status: "Completed"
-        },
-        {
-            DeliveryId: 1223313,
-        CustomerName: "sowmya",
-        SourceAddress: "Raidurg",
-        DestinationAddress: "Durgam cheruvu",
-        Status: "Completed"
-        },
-        {
-            DeliveryId: 1223314,
-        CustomerName: "sandhya",
-        SourceAddress: "Raidurg",
-        DestinationAddress: "Durgam cheruvu",
-        Status: "Completed"
-        },
-        {
-            DeliveryId: 1223315,
-        CustomerName: "Arun",
-        SourceAddress: "Raidurg",
-        DestinationAddress: "Durgam cheruvu",
-        Status: "Completed"
-        }];
-        function getCssClass(Status) {
-        if (Status === "Completed") return "high";
-        if (Status === "Pending") return "small";
-        else if (Status === "Reject") return "medium";
-        return "low";
-        }
-    const StyledCell = styled.div`
-  &.low {
-    color: orange !important;
-    font-size:20px;
-    text-align: center;
+const [sinfo,setSinfo]=useState([]);
+const [dinfo,setDinfo]=useState([]);
+const [pinfo,setPinfo]=useState([]);
+const [fullinfo,setfullinfo]=useState([])
+useEffect(()=>{
+    axios.get("http://ec2-52-66-237-19.ap-south-1.compute.amazonaws.com:8001/user_order_info/",  {
+  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+})
+.then((response) => {
+//     setDinfo([response.data.message.Destination_info])
+//     setSinfo([response.data.message.source_info])
+//     setPinfo(response.data.message.order_type)
+    
+  console.log([response.data.Destination_info]);
+  console.log([response.data.source_info]);
+//   console.log(response.data.message.);
+  setfullinfo(response.data.message)
+  console.log(response.data.message)
+  // console.log(response.data.message)
 
-    // width: 100%;
-    // height: 100%;
-  }
-  &.medium {
-    color: red;
-    font-size:20px;
-    text-align: center;
+  
 
-    // width: 100%;
-    // height: 100%;
-  }
-  &.high {
-    color: green !important;
-    font-size:20px;
-    text-align: center;
+//   localStorage.setItem("orderId", response.data.OrderID);
+});
 
-    // width: 100%;
-    // height: 100%;
-  }
-  &.small {
-    color: yellow;
-    font-size:20px;
-    text-align: center;
-    // width: 100%;
-    // height: 100%;
-    border-radius: 5px;
-  }
-`;
+},[])
 
 
     return (
@@ -108,56 +59,47 @@ const Orderss = () => {
         </div>
       </nav>
       </nav>
-            <div className='bgj'>
-                <div className="pre-table">
-                    <div className="blur">
-                <DataTable
-                    defaultSortAsc="false"
-                    // responsive
-                    // defaultSortAsc={false}
-                    // striped
-                    // highlightOnHover
-                    data={items}
-                    columns={[
-                        {
-                            name: "Number",
-                            selector: (row, index) => index + 1,
-                            disableSortBy: true
-                        },
-                        {
-                            name: "DeliveryId",
-                            selector: "DeliveryId",
-                            sortable: true
-                        },
-                        {
-                            name: "Customer Name",
-                            selector: "CustomerName",
-                            sortable: true
-                        },
-                        {
-                            name: "Source Address",
-                            selector: "SourceAddress",
-                            sortable: true
-                        },
-                        {
-                            name: "Destination Address",
-                            selector: "DestinationAddress",
-                            sortable: true
-                        },
-                        {
-                            name: "Status",
-                            selector: "Status",
-                            sortable: true,
-                            cell: (row) => (
-                                <StyledCell className={getCssClass(row.Status)}>
-                                    {row.Status}
-                                </StyledCell>
-                            )
-                        }
-                    ]}
-                />
+            <div className='bgj mt-5'>
+            <div>
+                <div>
+                    <table className='table'>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Order ID</th>
+                                <th>Order-type</th>
+                                <th>Source Address</th>
+                                <th>Deliver to</th>
+                                <th>Destination Address</th>
+                                 <th>OrderStatus</th>
+
+                            </tr>
+                          
+
+                        </thead>
+                        <tbody>
+                            {fullinfo && fullinfo?.map((orderInfo,index)=>{
+                              {console.log(orderInfo,"orderinfo")}
+                              return(
+                                <tr>
+                                   <td>{orderInfo?.date_info}</td>
+                                <td>{orderInfo?.order_id}</td>
+                                <td>{orderInfo?.order_type}</td>
+                                <td>{orderInfo?.source_info?.address}</td>
+                                <td>{orderInfo?.Destination_info?.name}</td>
+                                <td>{orderInfo?.Destination_info?.address}</td>
+                                {/* <td>{orderInfo?.source_info?.address}</td> */}
+                               
+                                <td>{orderInfo?.Your_order_status}</td>
+                                </tr>
+                              )
+                                
+                            })}
+                          
+                          </tbody>
+                    </table>
                 </div>
-                </div>
+            </div>
                 
             </div>
 

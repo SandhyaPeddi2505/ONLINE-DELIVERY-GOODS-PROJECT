@@ -25,6 +25,7 @@
 //     setSelectedSource(even);
 //     // console.log("P"+selectedSource)
 //   };
+  
 
 //   const handleDestinationChange = (event) => {
 //     setSelectedDestination(event);
@@ -67,8 +68,8 @@
 //     })
 //     .then((response) => {
 //       console.log(response);
-//       localStorage.setItem("temp_order_id", response.data.temp_order_id);
-//       console.log(response.data.temp_order_id);
+      // localStorage.setItem("temp_order_id", response.data.temp_order_id);
+      // console.log(response.data.temp_order_id);
 //       window.location.replace("/items");
 
 //     })
@@ -77,6 +78,7 @@
 //     });
 //     console.log(selectedSource, "sow");
 
+ 
 //     if (selectedSource === selectedDestination && selectedSource !== "") {
 //       toast.warn(
 //         "Please select different source address from destination address"
@@ -189,7 +191,8 @@ const CitySelection = () => {
         })
         .then((response) => {
           console.log(response);
-         
+          localStorage.setItem("temp_order_id", response.data.temp_order_id);
+          console.log(response.data.temp_order_id);
           console.log(`Source is ${selectedSource}`);
           console.log(`Destination is ${selectedDestination}`);
           console.log(`Date is ${selectedDate}`);
@@ -200,6 +203,7 @@ const CitySelection = () => {
         });
     }
   };
+
 
   return (
     <>
