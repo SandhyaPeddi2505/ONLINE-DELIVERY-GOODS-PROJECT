@@ -21,7 +21,7 @@ const Order = () => {
   const handleCheckboxChange = (e) => {
     const itemName = e.target.name;
     if (e.target.checked) {
-      setOrderType([...orderType, itemName]);
+      setOrderType(...orderType, itemName);
     } else {
       setOrderType(orderType.filter((item) => item !== itemName));
     }
@@ -53,10 +53,12 @@ const Order = () => {
       setSelectedDate(date);
     }
   };
+  
   const payload = {
+    // order_type: JSON.stringify(orderType) ,
     order_type: orderType,
-    quantity: quantity,
-    temp_order_id: temp
+    qty: quantity,
+    // temp_order_id: temp
 
     //  "orderType":orderType,
     //  "quantity":quantity,
@@ -65,9 +67,13 @@ const Order = () => {
   // axios
   //   .post(
   //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/ordertype"
-  axios
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
     .post(
-      `${API_BASE_URL}/ordertype`,
+      `${API_BASE_URL}/ordertype`, 
       payload,
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
@@ -75,10 +81,11 @@ const Order = () => {
     )
     .then((response) => {
       console.log(response);
+      localStorage.setItem("temp_order_id", response.data.temp_order_id);
+      console.log(response.data.temp_order_id);
+      navigate("/source");
     });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+   
     if (orderType === "" || quantity === "" || selectedDate === "") {
       toast.error("Fill out all the fields");
     } else {
@@ -88,7 +95,7 @@ const Order = () => {
       // console.log(temp)
 
       // console.log(date)
-      navigate("/source");
+     
     }
   };
   // const payload = {

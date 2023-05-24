@@ -62,7 +62,13 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
         <button className="btn btn-primary" id="css" type="track">
           Track your Order
         </button>
+        
       </Link>
+      <Link to="/userprevorders">
+      <button className="btn btn-primary" id="csss" type="track">
+          Previous
+        </button>
+        </Link>
     </div>
     </>
   );

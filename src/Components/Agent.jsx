@@ -124,8 +124,10 @@ const Agent = () => {
           email: email,
           address: address,
           mobile: phoneNumber,
-          aadhar: file,
-          driving_licence: files
+          // aadhar: file,
+          aadhar:imageFile1,
+          // driving_licence: files
+          driving_license:imageFile
         }
       )
       .then((res) => {

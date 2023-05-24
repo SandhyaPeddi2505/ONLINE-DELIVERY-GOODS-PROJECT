@@ -117,9 +117,9 @@ const Login = () => {
                 />
                 <span style={{ color: "red" }}>{emailError}</span>
                 <div className="text-muted">
-                  <p style={{ color: "black" }}>
+                  {/* <p style={{ color: "black" }}>
                     We'll never share your email with anyone else.
-                  </p>
+                  </p> */}
                 </div>
               </div>
               <div className="mb-4" id="formBasicPassword">
