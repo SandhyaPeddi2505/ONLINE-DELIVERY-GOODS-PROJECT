@@ -1,11 +1,11 @@
 // // Agent
 import React, { useEffect } from "react";
 import qwe from "./12.png";
-// import axios from "axios";
+import axios from "axios";
 // import Form from 'react-bootstrap/Form';
 // import { Button } from 'react-bootstrap';
 
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import axios from 'axios';
@@ -35,6 +35,29 @@ const Agent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios
+  .post(
+    "http://ec2-52-66-237-19.ap-south-1.compute.amazonaws.com:8001/agentRegister/",
+
+    {
+      firstname: firstName,
+      lastname: lastName,
+      password: password,
+      email: email,
+      address: address,
+      mobile: phoneNumber,
+      aadhar: file,
+      driving_licence: files
+    }
+  )
+  .then((res) => {
+    localStorage.setItem("Token", res.data.token);
+    console.log(res);
+    // home('/home')
+  })
+  .catch(() => {
+    alert("enter valid details!!");
+  });
     const validFirstName = firstName.length > 0;
     const validLastName = lastName.length > 0;
     const validEmail = email.includes("@gmail.com");
@@ -69,15 +92,6 @@ const Agent = () => {
 
     aadharReader.readAsDataURL(aadharFile);
     licenseReader.readAsDataURL(licenseFile);
-        console.log({
-      firstName,
-      lastName,
-      email,
-      password,
-      phoneNumber,
-      address,
-     
-    });
 
     aadharReader.onload = () => {
       licenseReader.onload = () => {
@@ -96,6 +110,8 @@ const Agent = () => {
       };
     };
   };
+  
+
   return (
     <>
       <nav class="fixed-nav-bar">
@@ -222,6 +238,11 @@ const Agent = () => {
                           Submit
                         </button>
                       </div>
+                      <div className="d-flex flex-row justify-content-center">
+                         <h5 className="aglogin">Already have an account? </h5>
+                         <Link to="/agentlogin"><h5 className="">Login</h5>
+                         </Link>
+                      </div>
                       <div></div>
                     </div>
                   </div>
@@ -235,6 +256,9 @@ const Agent = () => {
   );
 };
 export default Agent;
+
+
+
 
 
 // import React, { useEffect } from "react";
@@ -343,18 +367,18 @@ export default Agent;
 //     };
 //     az.push(def);
 
-    // console.log({
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password,
-    //   phoneNumber,
-    //   address,
-    //   INFO: az
-    // });
+//     console.log({
+//       firstName,
+//       lastName,
+//       email,
+//       password,
+//       phoneNumber,
+//       address,
+//       INFO: az
+//     });
 //     axios
 //       .post(
-//         `http://ec2-3-111-51-229.ap-south-1.compute.amazonaws.com:8001/agentRegister/`,
+//         `http://ec2-15-207-248-174.ap-south-1.compute.amazonaws.com:8001/agentRegister/`,
 
 //         {
 //           firstname: firstName,
@@ -513,12 +537,7 @@ export default Agent;
 //                       </div>
 //                       <div className="d-flex flex-row justify-content-center">
 //                         <h5 className="aglogin">Already have an account? </h5>
-//                         <Link to="/agentlogin">
-//                           <h5>
-//                             <a className="nn" href="">
-//                               Login
-//                             </a>
-//                           </h5>
+//                         <Link to="/agentlogin"><h5 className="">Login</h5>
 //                         </Link>
 //                       </div>
 //                     </div>

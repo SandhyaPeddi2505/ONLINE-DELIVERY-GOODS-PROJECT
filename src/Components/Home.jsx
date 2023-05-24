@@ -114,11 +114,10 @@ const Home = () => {
               </div> */}
               <li class="nav-item">
                 <div className="wer">
-                  <a class="nav-link" to={Link} href="/agent">
-                    <p>
-                      <span style={{ color: "black" }}>Agent Registration</span>
-                    </p>
-                  </a>
+                  <a class="nav-link" to={Link} href="/agent"><p><span style={{ color: "black" }}>Agent Registration</span></p></a>
+
+
+
                 </div>
               </li>
             </ul>
