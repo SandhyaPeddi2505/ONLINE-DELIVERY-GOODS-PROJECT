@@ -190,7 +190,7 @@ const Popular = (onClick) => {
             <div style={{display:"flex"}}>
            
                     <div>
-                        <Link to="/cityselection">
+                        <Link to="/items">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9YFjAlXIhoTve0TEYdxJZs_ui1qjgA1DDA&usqp=CAU"
                         className="card-img-top"

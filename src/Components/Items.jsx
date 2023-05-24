@@ -12,11 +12,12 @@ import { useNavigate } from "react-router-dom";
 const Order = () => {
   const navigate = useNavigate();
   const [orderType, setOrderType] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [qty, setQuantity] = useState("");
   const [temp, setTemp] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
   const today = new Date();
   const [placeholderText, setPlaceholderText] = useState("Select a date");
+  
 
   const handleCheckboxChange = (e) => {
     const itemName = e.target.name;
@@ -54,59 +55,41 @@ const Order = () => {
     }
   };
   const payload = {
-    order_type: orderType,
-    quantity: quantity,
-    temp_order_id: temp
-
-    //  "orderType":orderType,
-    //  "quantity":quantity,
-    //  "date":date
+    order_type: JSON.stringify(orderType),
+    qty: qty
+    // temp_order_id: temp
   };
-  // axios
-  //   .post(
-  //     "http://ec2-15-206-148-202.ap-south-1.compute.amazonaws.com:8001/ordertype"
-  axios
-    .post(
-      `${API_BASE_URL}/ordertype`,
-      payload,
-      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
-      // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
-      // )}`}}
-    )
-    .then((response) => {
-      console.log(response);
-    });
-
+ 
+  const  data= JSON.stringify(payload)
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (orderType === "" || quantity === "" || selectedDate === "") {
+    axios
+      .post(
+        `${API_BASE_URL}/ordertype`,
+        data,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        }
+        // { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
+        // )}`}}
+      )
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("temp_order_id", response.data.temp_order_id);
+        console.log(response.data.temp_order_id);
+        navigate("/source");
+      });
+
+    if (orderType === "" || qty === "" || selectedDate === "") {
       toast.error("Fill out all the fields");
     } else {
       console.log(orderType);
-      console.log(quantity);
+      console.log(qty);
       console.log(selectedDate);
-      // console.log(temp)
-
-      // console.log(date)
-      navigate("/source");
+      
     }
   };
-  // const payload = {
-
-  //   "order_type":"Toys",
-
-  //   "quantity":"22"
-
-  //   };
-  //   axios
-  //   .post("http://ec2-13-126-94-51.ap-south-1.compute.amazonaws.com:8001/ordertype",
-  //   payload,
-
-  //   { headers: {"Authorization" : `Bearer ${localStorage.getItem("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQ1NGNhOTZlYzAyMjJlZWMzY2M1ZTNkIiwiZXhwIjoxNjgzNTMwODA0LCJpYXQiOjE2ODM1MjcyMDR9.QxxyDtPw55hiR3A387eszfvDIsfyUzTVNHlB35BAB8I"
-  //   )}`}}
-  //   ).then((response) => {
-  //     console.log(response)
-  //   })
+ 
   const handleClose = () => {
     if (!selectedDate) {
       setPlaceholderText("Select a date");
@@ -244,9 +227,9 @@ const Order = () => {
                   marginLeft: "10px",
                   borderRadius: "10px"
                 }}
-                type="number"
+                type="text"
                 id="quan1"
-                placeholder="Quantity in Kgs"
+                placeholder="Quantity required"
                 onChange={handleQuantityChange}
               />
             </div>
@@ -264,31 +247,7 @@ const Order = () => {
             </a>
           </form>
 
-          {/* <form className="mt-5 pb-5 pt-5 mr-4">
-              <label style={{color:"black"}}><b>Quantity</b></label>
-              <div className="quan" style={{position:"text-center"}}>
-            <input
-              type="number" id="quan1"
-              placeholder="Quantity in Kgs"
-              onChange={handleQuantityChange}
-            />
-            </div><br/> */}
-          {/* <label className="mt-2 pt-3 m-3"><b>Date</b></label>
-            <DatePicker
-        selected={selectedDate}
-        onChange={handleChange}
-        placeholderText={placeholderText}
-        onFocus={() => setPlaceholderText('Select a date')}
-        onBlur={() => {
-          if (!selectedDate) {
-            setPlaceholderText('Select a date');
-          }
-        }} onClose={handleClose}
-      /> */}
-
-          {/* <a href="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1" >Submit</button></a>
-            
-            </form> */}
+          
         </div>
       </div>
       <ToastContainer />
@@ -297,15 +256,6 @@ const Order = () => {
 };
 
 export default Order;
-
-
-
-
-
-
-
-
-
 
 
 
@@ -319,7 +269,6 @@ export default Order;
 // import NavwithIcon from "./NavwithIcon";
 // import axios from "axios";
 // import { useNavigate } from "react-router-dom";
-
 
 // const Order = () => {
 //   const navigate = useNavigate();
@@ -340,7 +289,6 @@ export default Order;
 //   useEffect(() => {
 //     console.log(orderType);
 //   }, [orderType]);
-
 
 //   const handleQuantityChange = (e) => {
 //     setQuantity(e.target.value);
@@ -421,7 +369,7 @@ export default Order;
 //     }
 
 //   }
-//   // const payload = { 
+//   // const payload = {
 
 //   //   "order_type":"Toys",
 
@@ -504,7 +452,6 @@ export default Order;
 //             </a>
 //           </form>
 
-
 //           {/* <form className="mt-5 pb-5 pt-5 mr-4">
 //               <label style={{color:"black"}}><b>Quantity</b></label>
 //               <div className="quan" style={{position:"text-center"}}>
@@ -527,9 +474,8 @@ export default Order;
 //         }} onClose={handleClose}
 //       /> */}
 
-
 //           {/* <a href="/source"><button type="submit" value="Submit" onClick={handleSubmit} id="button" className="m-1" >Submit</button></a>
-            
+
 //             </form> */}
 //         </div>
 //       </div>
@@ -539,84 +485,3 @@ export default Order;
 // }
 
 // export default Order;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
