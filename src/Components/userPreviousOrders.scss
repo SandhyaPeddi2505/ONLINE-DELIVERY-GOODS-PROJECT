@@ -135,3 +135,23 @@
     bottom: 10px;
 
 }
+.bgj mt-5{
+    margin-bottom: 29px;
+}
+.pagination-item.active {
+    background-color: #171a1d;
+    margin-bottom: 20px;
+    color: white;
+    
+//    size:70%
+  }
+  .order_placed {
+    background-color: yellow;
+  }
+  .pagination-item{
+    height:10px;
+    width:10px;
+    border-radius: 0%;
+    border-radius: 80%;
+
+  }

@@ -57,16 +57,16 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
         </p> */}
       </div>
       <br></br>
-      <Link to="/tracking">
+      {/* <Link to="/tracking">
         {" "}
         <button className="btn btn-primary" id="css" type="track">
           Track your Order
         </button>
         
-      </Link>
+      </Link> */}
       <Link to="/userprevorders">
-      <button className="btn btn-primary" id="csss" type="track">
-          Previous
+      <button className="btn btn-primary" id="css" type="track">
+          My Orders
         </button>
         </Link>
     </div>
