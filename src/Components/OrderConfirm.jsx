@@ -29,8 +29,8 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
     // });
   return (
    <><NavwithIcon/>
-    <div className="con" >
-       
+    <div className="con d-flex" >
+       <div className="card m-auto confirm-card">
       <div className="order-confirmation-header">
 
       </div>
@@ -44,31 +44,35 @@ const OrderDetails = ({ orderId, expectedDeliveryDate }) => {
         <br></br>
       </div>
       <h2 className=" fs-title text-center" style={{color: "black"}}>Thank you, Your order is confirmed!</h2>
-      <hr/>
+   
       <div className="order-details">
-        <h5 className=" center" id="cen"  
+      <p class="bold"> OrderID :</p>
+        <h5 className=" center order-id" id="cen" title="{localStorage.getItem('orderId')}"
         style={{color: "black"}}>
-          <b class="bold"> OrderID :</b>
+          
            {localStorage.getItem("orderId")}
         </h5>
         {/* <p className="fs-title text-center">
           Expected Delivery Date:{" "}
           {isExpectedDeliveryToday() ? "Today" : expectedDeliveryDate}
         </p> */}
+        
       </div>
-      <br></br>
-      <Link to="/tracking">
+      <Link to="/userprevorders" className="text-center mt-5"> 
+      <button className="btn btn-primary" id="css" type="track">
+          My Orders
+        </button>
+        </Link>
+      {/* <br></br> */}
+      {/* <Link to="/tracking">
         {" "}
         <button className="btn btn-primary" id="css" type="track">
           Track your Order
         </button>
         
-      </Link>
-      <Link to="/userprevorders">
-      <button className="btn btn-primary" id="csss" type="track">
-          Previous
-        </button>
-        </Link>
+      </Link> */}
+      
+        </div>
     </div>
     </>
   );
