@@ -5,9 +5,9 @@ const Confirm = () => {
         <>
             <NavwithIcon />
             <div className="container-fluid" id="grad1" style={{ position: "fixed" }}>
-                <div className="row justify-content-center mt-0">
-                    <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-                        <div className="card px-0 pt-4 pb-0 mt-3 mb-3">
+            <div className="row m-auto w-100 mt-5 ">
+                <div className="col-md-12 w-75 m-auto text-center p-0 mt-4 mb-2">
+                    <div className="card w-100">
                             <h2>Confirm!</h2>
                             <div className="row">
                                 <div className="col-md-12 mx-0">
@@ -34,7 +34,7 @@ const Confirm = () => {
                                                         <br></br>
                                                     </div>
 
-                                                    <div className="div" style={{ paddingLeft: "150px" }}
+                                                    <div className="div"
                                                     >
                                                         <div class="tom">
 

@@ -114,9 +114,9 @@ const Source = ({ onNextClick, deliveryData, props }) => {
         {/* <Navbar/> */}
         <NavwithIcon/>
             <div className="container-fluid" id="grad1">
-                <div className="row justify-content-center mt-0">
-                    <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-                        <div className="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <div className="row m-auto w-100 mt-5">
+                    <div className="col-md-12 w-75 m-auto text-center p-0 mt-4 mb-2">
+                        <div className="card w-100">
                             <h1>Source Information</h1>
                             <div className="row">
                                 <div className="col-md-12 mx-0">
@@ -133,7 +133,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                             <div
                                                 className="form-card"
                                                 style={{ direction: "flex", flexDirection: "row",}}>
-                                                <div className="col  mx-5">
+                                                <div className="col  mx-5 text-center">
                                                     <label style={{ color: "black", position: "relative", padding: "20px" }}>Primary
                                                         <input type="radio" name="addressType" value="primary" checked={isPrimary} onChange={handleAddressTypeChange} />
                                                     </label>
@@ -152,7 +152,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                                             </label>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="col-md-6 md-4">
+                                                                    <div className="col-md-4 md-4">
                                                                         <div className="form-outline">
                                                                             <label style={{ color: "black" }}><b>Address:</b>
                                                                             
@@ -160,25 +160,29 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                                             </label>
                                                                         </div>
                                                                     </div>
+                                                                    <div className="col-md-4">
                                                                     <label style={{ color: "black" }}><b>Phone:</b>
                                                                         <input type="text" inputMode="numeric" pattern="[0-9]*" name="phone" value={primaryAddress.phone} placeholder="PhoneNo" onChange={handleChange}  />
                                                                     </label>
+                                                                    </div>
                                                                 </>
                                                             
                                                     </div>
                                                 ) : (
                                                     <div className="row">
-                                                        <div className="col">
+                                                        <div className="col-md-4">
                                                             <label style={{ color: "black" }}><b>Name:</b>
-                                                                <input type="text" name="name" value={details.name} onChange={changeHandle} required minLength={3} />{" "}
+                                                                <input className="mb-0" type="text" name="name" value={details.name} onChange={changeHandle} required minLength={3} />{" "}
                                                                 
                                                             </label>
                                                         </div>
+                                                        <div className="col-md-4">
                                                         <label style={{ color: "black" }}><b>Phone:</b>
-                                                            <input type="text" name="phone" value={details.phone} onChange={changeHandle} pattern="[0-9]*" required />
+                                                            <input type="text" className="mb-0" name="phone" value={details.phone} onChange={changeHandle} pattern="[0-9]*" required />
                                                             
                                                         </label>
-                                                        <div className="col">
+                                                        </div>
+                                                        <div className="col-md-4 address-feild">
                                                             <label style={{ color: "black" }}><b>Address:</b>
                                                             <Map1 maper={addressHandler} maper1={lathandle}/>
                                                                

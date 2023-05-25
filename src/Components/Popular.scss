@@ -92,10 +92,10 @@
   color: black
 }
 
-// .other {
-//   left: 10px;
-//   text-align: left;
-// }
+.other {
+  left: 10px;
+  text-align: left;
+}
 
 .button {
   height: 25px;
@@ -110,7 +110,7 @@
 .whole {
   // padding-right: 15px;
   // margin-left: 20%;
-  margin-top: 70px;
+  margin-top: 60px;
 
   .city-title {
     text-align: right;
@@ -160,7 +160,7 @@
       border-radius: 50%;
       width: 150px;
       height: 150px;
-      margin: 18px;
+      margin:8px;
 
       &:hover {
         box-shadow: 0px 16px 50px rgba(29, 29, 29, 0.12);

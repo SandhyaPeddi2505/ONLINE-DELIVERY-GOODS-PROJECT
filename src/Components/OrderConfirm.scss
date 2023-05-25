@@ -1,7 +1,7 @@
 .con{
     background-image: linear-gradient(120deg, #3E5151, #DECBA4);
-    height:680px;
-    width:1400px;
+    height:100%;
+    width:100%;
     text-decoration-color: white;
     padding-top: 40px;
     position:fixed;
@@ -10,17 +10,17 @@
 #css{
     text-align: center;
     align-items: center;
-    margin-left: 580px;
+    // margin-left: 580px;
 }
 #pic{
     align-items: center;
-    padding-left: 90px;
-    padding-top: 50px;
+    // padding-left: 90px;
+    // padding-top: 50px;
 }
 .bold{
-    color: white;
-    position: relative;
-    right:50px
+    // color: white;
+    // position: relative;
+    // right:50px
 
 }
 .cen{
@@ -28,4 +28,22 @@
     // padding-right: 90px;
    
    
+}
+.confirm-card{
+    width: 650px;
+    height: 350px;
+    padding: 40px;
+}
+.order-details{
+   display: flex;
+   margin: auto;
+   margin-top: 0px;
+   margin-bottom: 0px;
+}
+.order-id{
+    // width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 15px;
 }

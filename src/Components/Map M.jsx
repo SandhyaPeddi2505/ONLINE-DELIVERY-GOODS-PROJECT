@@ -83,7 +83,7 @@ const Map1 = (props) => {
 
             <div
               className="autocomplete-dropdown-container"
-              style={{ height: "40px", width: "180px" }}
+               style={{ height: "40px", width: "180px" }}
             >
               {loading && <div>Loading...</div>}
               {suggestions.map((suggestion) => {

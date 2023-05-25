@@ -53,9 +53,9 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa, details })
         <>
         <NavwithIcon/>
         <div className="container-fluid" id="grad1">
-            <div className="row justify-content-center mt-0">
-                <div className="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-                    <div className="card px-0 pt-4 pb-0 mt-3 mb-3">
+            <div className="row m-auto w-100 mt-5 ">
+                <div className="col-md-12 w-75 m-auto text-center p-0 mt-4 mb-2">
+                    <div className="card w-100">
                         <h1>Destination Details</h1>
                         <div className="row">
                             <div className="col-md-12 mx-0">
@@ -67,11 +67,19 @@ const Destination = ({ onNextClick, onPrevClick, deliveryData, dataa, details })
                                         <li id="confirm" ><strong>Confirm</strong></li>
                                     </ul>
                                     <fieldset>
-                                        <div className="form-card" style={{height:"270px"}}>
+                                        <div className="form-card">
                                             <h2 className="fs-title">Destination Details</h2>
-                                            <input type="text" name="name" placeholder="Name" value={dest.name} onChange={handleChange} required />
-                                            <input type="text" name="phone" placeholder="PhoneNo" value={dest.phone} onChange={handleChange} required pattern="/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/" min="10" />
+                                            <div className="row">
+<div className="col-md-4">
+                                            <input type="text"className="mb-0"  name="name" placeholder="Name" value={dest.name} onChange={handleChange} required />
+                                            </div>
+                                            <div className="col-md-4">
+                                            <input type="text" className="mb-0" name="phone" placeholder="PhoneNo" value={dest.phone} onChange={handleChange} required pattern="/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/" min="10" />
+                                            </div>
+                                            <div className="col-md-4 address-feild">
                                             <Map1 maper1={addressHandle} maper2={zxc} />
+                                            </div>
+                                            </div>
                                         </div>
                                         <div >
                                         <button name="previous" type="button" className="btn btn-secondary" id="sand1" onClick={() => onPrevClick(dataa)}>Previous</button>
