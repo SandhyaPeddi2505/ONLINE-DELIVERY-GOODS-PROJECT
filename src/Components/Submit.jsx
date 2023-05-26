@@ -72,6 +72,8 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details }) => {
                       </li>
                     </ul>
                     <fieldset>
+                      <div className="row">
+                        <div className="col-md-6">
                       <div className="form-card">
                         <h2 className="fs-title">Source Details</h2>
                         <label style={{ color: "black" }}>
@@ -87,6 +89,8 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details }) => {
                         </label>
                         <br />
                       </div>
+                      </div>
+                      <div className="col-md-6">
                       <div className="form-card">
                         <h2 className="fs-title">Destination Details</h2>
                         <label style={{ color: "black" }}>
@@ -102,6 +106,8 @@ const Submit = ({ onNextClick, onPrevClick, deliveryData, details }) => {
                         </label>
                         <br />
                         <br></br>
+                      </div>
+                      </div>
                       </div>
                       <div>
                         <button

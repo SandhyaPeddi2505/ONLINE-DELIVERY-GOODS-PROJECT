@@ -90,20 +90,21 @@ const Profile = () => {
   return (
     <>
       <Navbar />
-      <div className="xyz">
-        <div className="end "></div>
-        <div className="flex">
-          <div className="rm">
+      <div className="d-grid">
+      <div className="vv">
+        
+        <div className="flex m-auto pt-5">
+          <div className="yz">
             <img src={abc} alt="dele" height="500" width="500" />
           </div>
-          <div className="col-md-5">
-            <div className="yy">
+         
+            <div className="ab">
               <h2>Edit Profile </h2>
-            </div>
-            <div>
+            
+            
               <form onSubmit={handlesubmit}>
-                <div className="no">
-                  <div className="mb-2" id="formBasicName">
+                <div className="">
+                  <div className="mb-1" id="formBasicName">
                     <label>
                       <p
                         style={{
@@ -135,7 +136,7 @@ const Profile = () => {
                       />
                     )}
                   </div>
-                  <div className="mb-2" id="formBasicEmail">
+                  <div className="mb-1" id="formBasicEmail">
                     <label>
                       <p
                         style={{
@@ -167,7 +168,7 @@ const Profile = () => {
                       />
                     )}
                   </div>
-                  <div className="mb-2" id="formBasicnumber">
+                  <div className="mb-1" id="formBasicnumber">
                     <label>
                       <p
                         style={{
@@ -206,13 +207,13 @@ const Profile = () => {
                     )}
                   </div>
                   <div className="row">
-                    <div className="col-3">
+                    <div className="col-4 align-self-end">
                       <label>
                         <p
                           style={{
-                            fontSize: 16,
+                            // fontSize: 16,
                             color: "black",
-                            paddingTop: 5,
+                            paddingTop: 0,
                             alignItems: "center"
                           }}
                         >
@@ -220,7 +221,7 @@ const Profile = () => {
                         </p>
                       </label>
                     </div>
-                    <div className="col-3 mt-2">
+                    <div className="col-4 mt-2">
                       {!isEditing ? (
                         <input type="radio" name="gender" disabled />
                       ) : (
@@ -235,7 +236,7 @@ const Profile = () => {
                       )}
                       Male
                     </div>
-                    <div className="col-3 mt-2">
+                    <div className="col-4 mt-2">
                       {!isEditing ? (
                         <input type="radio" value="female" disabled />
                       ) : (
@@ -343,18 +344,20 @@ const Profile = () => {
                   </button></div>
                 )}
               </form>
-              <div className="cc">
+              <div className="">
                 {!isEditing && (
-                  <button className="btn btn-primary" onClick={edithandle}>
+                  <button className="btn btn-primary" onClick={edithandle} style={{ marginTop:30,width:110 }}>
                     Edit
                   </button>
                 )}
               </div>
                 <div className="m"></div>
               
+            
             </div>
-          </div>
+          
         </div>
+      </div>
       </div>
     </>
   );

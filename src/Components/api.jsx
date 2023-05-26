@@ -1,1 +1,1 @@
-export const API_BASE_URL = 'http://ec2-65-2-83-93.ap-south-1.compute.amazonaws.com:8001';
+export const API_BASE_URL = 'http://ec2-3-111-52-112.ap-south-1.compute.amazonaws.com:8001';

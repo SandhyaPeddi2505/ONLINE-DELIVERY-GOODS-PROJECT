@@ -82,16 +82,16 @@ const Changepassword = () => {
   return (
     <>
       <Navbar />
-      <div>
+      <div className="d-grid">
         <div className="vv">
-          <div className="flex">
+          <div className="flex m-auto pt-5">
             <div className="yz">
               <img src={abc} height="500" width="500" alt="del" />
             </div>
             <div class="ab">
               <h1>Change password ?</h1>
               <form onSubmit={handleChangePassword}>
-                <div className="m-2" id="formBasicPassword">
+                <div className="mb-1" id="formBasicPassword">
                   <label htmlFor="Username">
                     <p
                       style={{
@@ -120,7 +120,7 @@ const Changepassword = () => {
                   )}
                 </div>
                 <div className="cd">
-                  <div className="m-2" id="formBasicPassword">
+                  <div className="mb-1" id="formBasicPassword">
                     <label htmlFor="old-password">
                       <p
                         style={{
@@ -151,7 +151,7 @@ const Changepassword = () => {
                       <span style={{ color: "red" }}>{errors.password}</span>
                     )}
                   </div>
-                  <div className="m-2" id="formBasicPassword">
+                  <div className="mb-1" id="formBasicPassword">
                     <label htmlFor="new-password">
                       <p
                         style={{
@@ -182,7 +182,7 @@ const Changepassword = () => {
                       <span style={{ color: "red" }}>{errors.newpassword}</span>
                     )}
                   </div>
-                  <div className="m-2" id="formBasicPassword">
+                  <div className="mb-1" id="formBasicPassword">
                     <label htmlFor="confirm-new-password">
                       <p
                         style={{
@@ -215,10 +215,10 @@ const Changepassword = () => {
                       </span>
                     )}
                   </div>
-                  <div className="m-2">
+                  <div className="mb-1">
                     <button
                       type="submit"
-                      style={{ width: 380 }}
+                      style={{ marginTop:30,width:110 }}
                       className="btn btn-primary"
                     >
                       Confirm
