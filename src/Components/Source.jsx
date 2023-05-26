@@ -131,7 +131,7 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                         </div>
                                         <fieldset >
                                             <div
-                                                className="form-card"
+                                                className="form-card source-form"
                                                 style={{ direction: "flex", flexDirection: "row",}}>
                                                 <div className="col  mx-5 text-center">
                                                     <label style={{ color: "black", position: "relative", padding: "20px" }}>Primary
@@ -183,11 +183,11 @@ const Source = ({ onNextClick, deliveryData, props }) => {
                                                         </label>
                                                         </div>
                                                         <div className="col-md-4 address-feild">
-                                                            <label style={{ color: "black" }}><b>Address:</b>
+                                                            <label style={{ color: "black" }}><b>Address:</b>  </label>
                                                             <Map1 maper={addressHandler} maper1={lathandle}/>
                                                                
                                                                 
-                                                            </label>
+                                                          
                                                         </div>
                                                         
                                                     </div>
